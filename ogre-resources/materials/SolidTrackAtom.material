@@ -1,0 +1,14 @@
+material SolidTrackAtom
+{
+   technique
+   {
+      pass
+      {
+         lighting on
+ 
+         ambient 0.1 0.1 0.1 1
+         diffuse 0.5 0.5 0.5 1
+         emissive 0 0 0 1
+      }
+   }
+}
