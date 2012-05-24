@@ -15,7 +15,7 @@ public:
 	JumpPadTrackAtom(game::BoundingBox bbox);
 	virtual ~JumpPadTrackAtom();
 
-	virtual void applyEffects(Vehicle* ship, HitSide hs);
+	virtual void applyContactEffects(Vehicle* ship, HitSide hs);
 	//virtual void handleCollision(Vehicle* ship,  HitSide hs);
 
 	float mJumpVelocity;

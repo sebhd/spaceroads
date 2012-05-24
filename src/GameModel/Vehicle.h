@@ -73,6 +73,7 @@ private:
 
 	cml::vector3f mGravity;
 
+bool mFreeFlight;
 
 	cml::vector3f mBBoxPosOffset;
 };

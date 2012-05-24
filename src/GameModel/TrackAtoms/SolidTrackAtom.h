@@ -15,8 +15,8 @@ public:
 	SolidTrackAtom(game::BoundingBox bbox);
 	virtual ~SolidTrackAtom();
 
-	virtual void applyEffects(Vehicle* ship, HitSide hs);
-	virtual void handleCollision(Vehicle* ship, HitSide hs);
+	virtual void applyContactEffects(Vehicle* ship, HitSide hs);
+	virtual void applyCounterForces(Vehicle* ship, HitSide hs);
 };
 
 #endif /* SOLIDTRACKATOM_H_ */

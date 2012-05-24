@@ -18,8 +18,8 @@ DeadlyTrackAtom::~DeadlyTrackAtom() {
 }
 
 
-void DeadlyTrackAtom::handleCollision(Vehicle* ship,  HitSide hs) {
-	SolidTrackAtom::handleCollision(ship, hs);
+void DeadlyTrackAtom::applyCounterForces(Vehicle* ship,  HitSide hs) {
+	SolidTrackAtom::applyCounterForces(ship, hs);
 
 	ship->mKilled = true;
 }

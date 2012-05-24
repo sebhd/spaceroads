@@ -31,16 +31,17 @@ GameModel::GameModel() {
 	mTrackAtoms.push_back(ta);
 
 	// Dach über dem Anfangsteil:
-	//mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(0, 10, -40), cml::vector3d(10, 1, 40))));
+	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(0, 10, -10), cml::vector3d(10, 1, 10))));
 
-	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(-20, 0, -100), cml::vector3d(10, 1, 50))));
-	//mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(-20, 0, -100), cml::vector3d(10, 1, 50))));
 
 	// Seitenwand vorne links:
 	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(-1, 1, -20), cml::vector3d(1, 10, 20))));
 
 	// Seitenwand vorne rechts:
 	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(10, 1, -20), cml::vector3d(1, 10, 20))));
+
+	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(-20, 0, -100), cml::vector3d(10, 1, 50))));
+	//mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(-20, 0, -100), cml::vector3d(10, 1, 50))));
 
 
 	mTrackAtoms.push_back(

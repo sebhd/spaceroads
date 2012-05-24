@@ -30,9 +30,9 @@ public:
 
 	std::string name;
 
-	virtual void handleCollision(Vehicle* ship, HitSide hs) = 0;
+	virtual void applyCounterForces(Vehicle* ship, HitSide hs) = 0;
 
-	virtual void applyEffects(Vehicle* ship, HitSide hs) = 0;
+	virtual void applyContactEffects(Vehicle* ship, HitSide hs) = 0;
 };
 
 #endif /* TRACKATOM_H_ */

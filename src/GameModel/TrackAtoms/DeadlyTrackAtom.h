@@ -15,7 +15,7 @@ public:
 	DeadlyTrackAtom(game::BoundingBox bbox);
 	virtual ~DeadlyTrackAtom();
 
-	virtual void handleCollision(Vehicle* ship,  HitSide hs);
+	virtual void applyCounterForces(Vehicle* ship,  HitSide hs);
 };
 
 #endif /* DEADLYTRACKATOM_H_ */

@@ -17,8 +17,9 @@ SolidTrackAtom::~SolidTrackAtom() {
 	// TODO Auto-generated destructor stub
 }
 
-void SolidTrackAtom::applyEffects(Vehicle* ship, HitSide hs) {
+void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
+	//############### BEGIN Propulsion ###############
 	// Apply sidewards friction:
 	ship->mVelocity -= cml::dot(ship->mVecLeft, ship->mVelocity) * ship->mVecLeft * 0.03;
 
@@ -33,8 +34,19 @@ void SolidTrackAtom::applyEffects(Vehicle* ship, HitSide hs) {
 			ship->mVelocity -= ship->mVecLeft * ship->mAccelLeftRight;
 		}
 	}
+	//############### END Propulsion ###############
 
-	// Jumping:
+	// ################# BEGIN Bouncing ################
+	cml::vector3f u = cml::normalize(ship->getGravity());
+	cml::vector3f bounceVelocity = (cml::dot(u, ship->mVelocity) * u) * 1.5;
+
+	if (!ship->mTryJump && bounceVelocity.length() > 0.5) {
+		ship->mVelocity -= bounceVelocity;
+	}
+	// ################# END Bouncing ################
+
+
+	// ############## BEGIN Jumping ###############
 	if (ship->mTryJump) {
 		cml::vector3f gravNormalized = cml::normalize(ship->getGravity());
 
@@ -49,13 +61,10 @@ void SolidTrackAtom::applyEffects(Vehicle* ship, HitSide hs) {
 			ship->mVelocity -= gravNormalized * 0.7;
 		}
 	}
+	// ############## END Jumping ###############
 }
 
-void SolidTrackAtom::handleCollision(Vehicle* ship, HitSide hs) {
-
-	// Bouncing:
-	cml::vector3f u = cml::normalize(ship->getGravity());
-	cml::vector3f bounceVelocity = (cml::dot(u, ship->mVelocity) * u) * 0.55;
+void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 
 	switch (hs) {
 	case HIT_TOP:
@@ -90,9 +99,4 @@ void SolidTrackAtom::handleCollision(Vehicle* ship, HitSide hs) {
 	default:
 		break;
 	}
-
-	if (!ship->mTryJump && bounceVelocity.length() > 0.3) {
-		ship->mVelocity -= bounceVelocity;
-	}
-
 }

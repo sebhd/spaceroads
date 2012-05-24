@@ -145,62 +145,9 @@ void Vehicle::doPhysicsStep() {
 
 	cml::vector3f bboxPos = mPos + mBBoxPosOffset;
 
-	bool getroffen = false;
 
-
-	for (unsigned int ii = 0; ii < mpGameModel->mTrackAtoms.size(); ii++) {
-
-		bool x = false, y = false, z = false;
-
-		TrackAtom* ta = mpGameModel->mTrackAtoms[ii];
-
-		mBBox.mPos = bboxPos + mVelocity;
-
-		if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 3) {
-
-			mBBox.mPos = bboxPos;
-
-			if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 2) {
-
-				getroffen = true;
-
-				TrackAtom::HitSide hitDir = TrackAtom::HIT_NONE;
-
-				if (!x) {
-
-					if (mVelocity[0] > 0) {
-						hitDir = TrackAtom::HIT_LEFT;
-					} else if (mVelocity[0] < 0) {
-						hitDir = TrackAtom::HIT_RIGHT;
-					}
-				}
-
-				else if (!y) {
-
-					if (mVelocity[1] > 0) {
-						hitDir = TrackAtom::HIT_BOTTOM;
-					} else if (mVelocity[1] < 0) {
-						hitDir = TrackAtom::HIT_TOP;
-					}
-				}
-
-				else if (!z) {
-
-					if (mVelocity[2] > 0) {
-						hitDir = TrackAtom::HIT_BACK;
-					} else if (mVelocity[2] < 0) {
-						hitDir = TrackAtom::HIT_FRONT;
-					}
-				}
-
-				ta->applyEffects(this, hitDir);
-
-			}
-		}
-	}
-
-	if (!getroffen) {
-
+	// ATTENTION: This *must* happen *before* the collision test!!!
+	if (mFreeFlight) {
 
 		if (mMoveLeft) {
 			mVelocity += mVecLeft * mAccelLeftRight;
@@ -212,9 +159,10 @@ void Vehicle::doPhysicsStep() {
 
 		// Apply sidewards friction:
 		mVelocity -= cml::dot(mVecLeft, mVelocity) * mVecLeft * 0.03;
-
 	}
 
+
+	mFreeFlight = true;
 
 	for (unsigned int ii = 0; ii < mpGameModel->mTrackAtoms.size(); ii++) {
 
@@ -230,7 +178,7 @@ void Vehicle::doPhysicsStep() {
 
 			if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 2) {
 
-				getroffen = true;
+				mFreeFlight = false;
 
 				TrackAtom::HitSide hitDir = TrackAtom::HIT_NONE;
 
@@ -261,15 +209,61 @@ void Vehicle::doPhysicsStep() {
 					}
 				}
 
+				ta->applyContactEffects(this, hitDir);
 
-				ta->handleCollision(this, hitDir);
 			}
 		}
 	}
+
+	for (unsigned int ii = 0; ii < mpGameModel->mTrackAtoms.size(); ii++) {
+
+		bool x = false, y = false, z = false;
+
+		TrackAtom* ta = mpGameModel->mTrackAtoms[ii];
+
+		mBBox.mPos = bboxPos + mVelocity;
+
+		if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 3) {
+
+			mBBox.mPos = bboxPos;
+
+			if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 2) {
+
+				TrackAtom::HitSide hitDir = TrackAtom::HIT_NONE;
+
+				if (!x) {
+
+					if (mVelocity[0] > 0) {
+						hitDir = TrackAtom::HIT_LEFT;
+					} else if (mVelocity[0] < 0) {
+						hitDir = TrackAtom::HIT_RIGHT;
+					}
+				}
+
+				else if (!y) {
+
+					if (mVelocity[1] > 0) {
+						hitDir = TrackAtom::HIT_BOTTOM;
+					} else if (mVelocity[1] < 0) {
+						hitDir = TrackAtom::HIT_TOP;
+					}
+				}
+
+				else if (!z) {
+
+					if (mVelocity[2] > 0) {
+						hitDir = TrackAtom::HIT_BACK;
+					} else if (mVelocity[2] < 0) {
+						hitDir = TrackAtom::HIT_FRONT;
+					}
+				}
+
+				ta->applyCounterForces(this, hitDir);
+			}
+		}
+	}
+
 	//######### END Collision detection & handling (may modify velocity vector) ################
-
-
-
 
 	// Finally, move the vehicle by adding the velocity vector to the position:
 	mPos += mVelocity;
