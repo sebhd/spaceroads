@@ -11,8 +11,9 @@
 #include <vector>
 #include <cmath>
 
-Vehicle::Vehicle(GameModel* gameModel) :
-		mpGameModel(gameModel) {
+Vehicle::Vehicle(AbstractTrack* a_track) {
+
+	mpTrack = a_track;
 
 	// Acceleration capability:
 	mAccelLeftRight = 0.01;
@@ -33,7 +34,7 @@ Vehicle::~Vehicle() {
 void Vehicle::reset() {
 
 	mKilled = false;
-	mPos = mpGameModel->mpTrack->mStartPosition;
+	mPos = mpTrack->mStartPosition;
 	mVelocity.set(0, 0, 0);
 
 	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(1, 0, 0), (float) 0);
@@ -188,7 +189,7 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 
 	cml::vector3f bboxPos = mPos + mBBoxPosOffset;
 
-	std::vector<TrackAtom*> trackAtoms = mpGameModel->mpTrack->getTrackAtomsAround(mPos);
+	std::vector<TrackAtom*> trackAtoms = mpTrack->getTrackAtomsAround(mPos);
 
 	for (unsigned int ii = 0; ii < trackAtoms.size(); ++ii) {
 
@@ -269,6 +270,5 @@ void Vehicle::setOrientation(quat rotQuat) {
 }
 
 void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
-	cml::quaternion_rotate_about_local_axis(mpGameModel->mpPlayerVehicle->mDesiredOrientation, axis,
-			(float) (steps * M_PI / 2));
+	cml::quaternion_rotate_about_local_axis(mDesiredOrientation, axis, (float) (steps * M_PI / 2));
 }

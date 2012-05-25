@@ -13,9 +13,9 @@
 
 #include <OISEvents.h>
 #include <OISKeyboard.h>
-#include "GameModel/GameModel.h"
 #include "Renderer/AbstractRenderer.h"
 #include "InputHandler/OISInputHandler.h"
+#include "GameModel/Tracks/AbstractTrack.h"
 
 class AbstractRenderer;
 class AbstractInputHandler;
@@ -37,7 +37,12 @@ public:
 
 	AbstractRenderer* getRenderer();
 
-	GameModel* mpGameModel;
+//	GameModel* mpGameModel;
+
+	Vehicle* mpPlayerVehicle;
+
+	AbstractTrack* mpTrack;
+
 
 private:
 	AbstractRenderer* mpRenderer;

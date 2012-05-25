@@ -43,7 +43,7 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		return false;
 	}
 
-	Vehicle* ship = mpApp->mpGameModel->mpPlayerVehicle;
+	Vehicle* ship = mpApp->mpPlayerVehicle;
 
 	const cml::vector3d& pos = ship->mPos;
 
@@ -324,7 +324,7 @@ bool OgreRenderer::init() {
 	//mPlayerVehicleNode->setScale(0.1,0.1,0.1);
 	//####### END Add player ship to scene graph ##########
 
-	std::vector<TrackAtom*> trackAtoms = mpApp->mpGameModel->mpTrack->getTrackAtomsAround(cml::vector3f(0,0,0));
+	std::vector<TrackAtom*> trackAtoms = mpApp->mpTrack->getTrackAtomsAround(cml::vector3f(0,0,0));
 
 	taCount = 0;
 	// Create track  geometry:

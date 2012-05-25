@@ -8,13 +8,12 @@
 #ifndef SHIP_H_
 #define SHIP_H_
 
-#include "GameModel.h"
 #include "BoundingBox.h"
 #include "TrackAtoms/TrackAtom.h"
+#include "Tracks/AbstractTrack.h"
 #include <vector>
 
-class GameModel;
-
+class AbstractTrack;
 struct CollisionInfo;
 
 // So muss ein Ogre-kompatibles Quaternion aussehen:
@@ -24,7 +23,7 @@ typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first, cml::negative_cr
 class Vehicle {
 
 public:
-	Vehicle(GameModel* gameModel);
+	Vehicle(AbstractTrack*);
 	virtual ~Vehicle();
 
 	void cmd_accelerate(bool enabled);
@@ -59,7 +58,9 @@ private:
 
 	game::BoundingBox mBBox;
 
-	GameModel* mpGameModel;
+
+
+	AbstractTrack* mpTrack;
 
 	quat mDesiredOrientation;
 	quat mOrientation;

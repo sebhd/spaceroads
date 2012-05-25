@@ -16,3 +16,6 @@ AbstractTrack::~AbstractTrack() {
 	// TODO Auto-generated destructor stub
 }
 
+void AbstractTrack::step() {
+	// In derived classes, this is the place for code to modify the track at runtime
+}

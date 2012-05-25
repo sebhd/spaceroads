@@ -11,11 +11,16 @@
 #include <sys/time.h>
 
 #include "Renderer/OgreRenderer.h"
+#include "GameModel/Tracks/HardcodedTrack.h"
 
 Application::Application() {
 
 	quit = false;
-	mpGameModel = new GameModel();
+
+
+	mpTrack = new HardcodedTrack();
+
+	mpPlayerVehicle = new Vehicle(mpTrack);
 }
 
 Application::~Application() {
@@ -30,56 +35,56 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 		quit = true;
 		break;
 	case OIS::KC_SPACE:
-		mpGameModel->mpPlayerVehicle->cmd_tryJump(true);
+		mpPlayerVehicle->cmd_tryJump(true);
 		break;
 
 	case OIS::KC_A:
-		mpGameModel->mpPlayerVehicle->cmd_rotateDesiredOrientation(1,1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(1,1);
 		break;
 
 	case OIS::KC_D:
-		mpGameModel->mpPlayerVehicle->cmd_rotateDesiredOrientation(1,-1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(1,-1);
 		break;
 
 	case OIS::KC_W:
-		mpGameModel->mpPlayerVehicle->cmd_rotateDesiredOrientation(0,-1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(0,-1);
 		break;
 
 	case OIS::KC_S:
-		mpGameModel->mpPlayerVehicle->cmd_rotateDesiredOrientation(0,1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(0,1);
 		break;
 
 	case OIS::KC_Q:
-		mpGameModel->mpPlayerVehicle->cmd_rotateDesiredOrientation(2,-1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,-1);
 		break;
 
 	case OIS::KC_E:
-		mpGameModel->mpPlayerVehicle->cmd_rotateDesiredOrientation(2,1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,1);
 		break;
 
 	case OIS::KC_B:
-		mpGameModel->mpPlayerVehicle->mVelocity.set(0, 0, 0);
+		mpPlayerVehicle->mVelocity.set(0, 0, 0);
 		break;
 
 	case OIS::KC_R:
-		mpGameModel->mpPlayerVehicle->reset();
+		mpPlayerVehicle->reset();
 		break;
 
 
 	case OIS::KC_RIGHT:
-		mpGameModel->mpPlayerVehicle->cmd_moveRight(true);
+		mpPlayerVehicle->cmd_moveRight(true);
 		break;
 
 	case OIS::KC_LEFT:
-		mpGameModel->mpPlayerVehicle->cmd_moveLeft(true);
+		mpPlayerVehicle->cmd_moveLeft(true);
 		break;
 
 
 	case OIS::KC_UP:
-		mpGameModel->mpPlayerVehicle->cmd_accelerate(true);
+		mpPlayerVehicle->cmd_accelerate(true);
 		break;
 	case OIS::KC_DOWN:
-		mpGameModel->mpPlayerVehicle->cmd_brake(true);
+		mpPlayerVehicle->cmd_brake(true);
 		break;
 	default:
 		break;
@@ -95,19 +100,19 @@ bool Application::keyReleased(const OIS::KeyEvent& evt) {
 		quit = true;
 		break;
 	case OIS::KC_SPACE:
-		mpGameModel->mpPlayerVehicle->cmd_tryJump(false);
+		mpPlayerVehicle->cmd_tryJump(false);
 		break;
 	case OIS::KC_LEFT:
-		mpGameModel->mpPlayerVehicle->cmd_moveLeft(false);
+		mpPlayerVehicle->cmd_moveLeft(false);
 		break;
 	case OIS::KC_RIGHT:
-		mpGameModel->mpPlayerVehicle->cmd_moveRight(false);
+		mpPlayerVehicle->cmd_moveRight(false);
 		break;
 	case OIS::KC_UP:
-		mpGameModel->mpPlayerVehicle->cmd_accelerate(false);
+		mpPlayerVehicle->cmd_accelerate(false);
 		break;
 	case OIS::KC_DOWN:
-		mpGameModel->mpPlayerVehicle->cmd_brake(false);
+		mpPlayerVehicle->cmd_brake(false);
 		break;
 	default:
 		break;
@@ -155,8 +160,11 @@ void Application::run() {
 			// Process input:
 			mpInputHandler->processInput();
 
+			// To track stop:
+			mpTrack->step();
+
 			// Do physics / game logic step:
-			mpGameModel->mpPlayerVehicle->doPhysicsStep();
+			mpPlayerVehicle->doPhysicsStep();
 			accumulator -= dt;
 		}
 

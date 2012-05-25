@@ -90,6 +90,7 @@ HardcodedTrack::~HardcodedTrack() {
 }
 
 
-const std::vector<TrackAtom*>& HardcodedTrack::getTrackAtomsAround(cml::vector3f pos) {
+const std::vector<TrackAtom*> HardcodedTrack::getTrackAtomsAround(cml::vector3f pos) {
+
 	return mTrackAtoms;
 }

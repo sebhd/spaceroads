@@ -15,7 +15,7 @@ public:
 	HardcodedTrack();
 	virtual ~HardcodedTrack();
 
-	virtual const std::vector<TrackAtom*>& getTrackAtomsAround(cml::vector3f pos);
+	virtual const std::vector<TrackAtom*> getTrackAtomsAround(cml::vector3f pos);
 
 protected:
 	std::vector<TrackAtom*> mTrackAtoms;
