@@ -21,17 +21,17 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 	//############### BEGIN Propulsion ###############
 	// Apply sidewards friction:
-	ship->mVelocity -= cml::dot(ship->mVecLeft, ship->mVelocity) * ship->mVecLeft * 0.03;
+	ship->mVelocity -= cml::dot(ship->mDirLeft, ship->mVelocity) * ship->mDirLeft * 0.03;
 
 	// Sidewards speed limit:
-	if ((cml::dot(ship->mVecLeft, ship->mVelocity) * ship->mVecLeft).length() < 0.1) {
+	if ((cml::dot(ship->mDirLeft, ship->mVelocity) * ship->mDirLeft).length() < 0.1) {
 
 		if (ship->mMoveLeft) {
-			ship->mVelocity += ship->mVecLeft * ship->mAccelLeftRight;
+			ship->mVelocity += ship->mDirLeft * ship->mAccelLeftRight;
 		}
 
 		if (ship->mMoveRight) {
-			ship->mVelocity -= ship->mVecLeft * ship->mAccelLeftRight;
+			ship->mVelocity -= ship->mDirLeft * ship->mAccelLeftRight;
 		}
 	}
 	//############### END Propulsion ###############

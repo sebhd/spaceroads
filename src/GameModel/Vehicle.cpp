@@ -102,14 +102,12 @@ void Vehicle::doPhysicsStep() {
 	// Initialize acceleration vector as a copy of the gravity vector:
 	cml::vector3f mAccel = getGravity();
 
-	//############ BEGIN Apply player-input-induced modifications to the acceleration vector ############
-
-	cml::vector3f forwardComponent = cml::dot(mVecForward, mVelocity) * mVecForward;
+	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
 
 	if (mAccelerate && !mBrake) {
 		// Forward speed limit:
 		if (forwardComponent.length() < 0.5) {
-			mVelocity += mVecForward * mAccelForward;
+			mVelocity += mDirForward * mAccelForward;
 		}
 	}
 
@@ -117,10 +115,9 @@ void Vehicle::doPhysicsStep() {
 
 		// Driving backwards is not allowed:
 		if (forwardComponent.length() > 0) {
-			mVelocity -= mVecForward * mAccelForward;
+			mVelocity -= mDirForward * mAccelForward;
 		}
 	}
-	//############ END Apply player-input-induced modifications to the acceleration vector ############
 
 	// ################ END STEP 1: Construct acceleration vector ###################
 
@@ -137,33 +134,13 @@ void Vehicle::doPhysicsStep() {
 	}
 
 	// Apply backwards spped limit (moving backwards is not allowed at all):
-	if (cml::dot(mVecForward, mVelocity) < 0) {
-		mVelocity -= cml::dot(mVecForward, mVelocity) * mVecForward;
+	if (cml::dot(mDirForward, mVelocity) < 0) {
+		mVelocity -= cml::dot(mDirForward, mVelocity) * mDirForward;
 	}
 
 	// ################ END STEP 2: Construct velocity vector (mostly enforcing speed limits) ###################
 
-	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
-
-
-
-	// ATTENTION: This *must* happen *before* the collision test!!!
-	if (mFreeFlight) {
-
-		if (mMoveLeft) {
-			mVelocity += mVecLeft * mAccelLeftRight;
-		}
-
-		if (mMoveRight) {
-			mVelocity -= mVecLeft * mAccelLeftRight;
-		}
-
-		// Apply sidewards friction:
-		mVelocity -= cml::dot(mVecLeft, mVelocity) * mVecLeft * 0.03;
-	}
-
-	mFreeFlight = true;
-
+	//######### BEGIN STEP 3: Collision detection & handling (may modify velocity vector) ################
 
 	// Find colliding track atoms and apply contact effects:
 	std::vector<CollisionInfo> collisions = getCollidingTAs();
@@ -179,12 +156,31 @@ void Vehicle::doPhysicsStep() {
 		collisions[ii].ta->applyCounterForces(this, collisions[ii].hs);
 	}
 
-	//######### END Collision detection & handling (may modify velocity vector) ################
+	//######### END STEP 3: Collision detection & handling (may modify velocity vector) ################
 
 	// Finally, move the vehicle by adding the velocity vector to the position:
 	mPos += mVelocity;
-}
 
+	//############### BEGIN Things that we do when there was no contact with a track atom #############
+
+	// ATTENTION:
+	// This *MUST* be done *AFTER* the position vector is updated! Otherwise, collision
+	// handling will NOT work correctly and the vehicle will fall throught walls!!!
+
+	if (collisions.size() == 0) {
+		if (mMoveLeft) {
+			mVelocity += mDirLeft * mAccelLeftRight;
+		}
+
+		if (mMoveRight) {
+			mVelocity -= mDirLeft * mAccelLeftRight;
+		}
+
+		// Apply sidewards friction:
+		mVelocity -= cml::dot(mDirLeft, mVelocity) * mDirLeft * 0.03;
+	}
+	//############### END Things that we do when there was no contact with a track atom #############
+}
 
 std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 
@@ -193,7 +189,6 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 	cml::vector3f bboxPos = mPos + mBBoxPosOffset;
 
 	for (unsigned int ii = 0; ii < mpGameModel->mTrackAtoms.size(); ++ii) {
-
 
 		TrackAtom* ta = mpGameModel->mTrackAtoms[ii];
 
@@ -206,8 +201,6 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 			bool x = false, y = false, z = false;
 
 			if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 2) {
-
-				mFreeFlight = false;
 
 				TrackAtom::HitSide hitSide = TrackAtom::HIT_NONE;
 
@@ -233,7 +226,7 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 
 					if (mVelocity[2] > 0) {
 						hitSide = TrackAtom::HIT_BACK;
-					} else  {
+					} else {
 						hitSide = TrackAtom::HIT_FRONT;
 					}
 				}
@@ -249,7 +242,6 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 
 	return collisions;
 }
-
 
 const cml::vector3f Vehicle::getGravity() {
 	return mGravity;
@@ -268,8 +260,13 @@ void Vehicle::setOrientation(quat rotQuat) {
 	mGravity = cml::rotate_vector(cml::vector3f(0, -0.01, 0), mOrientation_axis, mOrientation_angle);
 
 	// Update left vector:
-	mVecLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), mOrientation_axis, mOrientation_angle);
+	mDirLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), mOrientation_axis, mOrientation_angle);
 
 	// Update forward vector:
-	mVecForward = cml::rotate_vector(cml::vector3f(0, 0, -1), mOrientation_axis, mOrientation_angle);
+	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), mOrientation_axis, mOrientation_angle);
+}
+
+void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
+	cml::quaternion_rotate_about_local_axis(mpGameModel->mpPlayerVehicle->mDesiredOrientation, axis,
+			(float) (steps * M_PI / 2));
 }
