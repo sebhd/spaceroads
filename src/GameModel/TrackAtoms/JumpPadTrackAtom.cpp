@@ -20,6 +20,8 @@ JumpPadTrackAtom::~JumpPadTrackAtom() {
 
 void JumpPadTrackAtom::applyContactEffects(Vehicle* ship,  HitSide hs) {
 
+	SolidTrackAtom::applyContactEffects(ship, hs);
+
 	if (hs == HIT_TOP) {
 		ship->mVelocity[1] = mJumpVelocity;
 	}

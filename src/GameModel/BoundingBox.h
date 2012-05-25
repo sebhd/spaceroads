@@ -21,8 +21,8 @@ public:
 	cml::vector3f mPos;
 	cml::vector3f mSize;
 
-	bool containsPoint(cml::vector3f&);
-	bool intersectsWith(BoundingBox* other);
+	bool containsPoint(const cml::vector3f&);
+	bool intersectsWith(const BoundingBox& other);
 	int getIntersectingAxis(const BoundingBox& other, bool& x, bool& y, bool& z);
 };
 

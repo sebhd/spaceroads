@@ -11,10 +11,8 @@
 #include <string>
 #include "../BoundingBox.h"
 #include "../Vehicle.h"
-//#include "../CollisionInfo.h"
 
 class Vehicle;
-
 
 class TrackAtom {
 public:
@@ -34,5 +32,12 @@ public:
 
 	virtual void applyContactEffects(Vehicle* ship, HitSide hs) = 0;
 };
+
+struct CollisionInfo {
+	TrackAtom* ta;
+	TrackAtom::HitSide hs;
+};
+
+
 
 #endif /* TRACKATOM_H_ */

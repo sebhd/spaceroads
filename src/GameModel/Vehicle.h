@@ -10,8 +10,12 @@
 
 #include "GameModel.h"
 #include "BoundingBox.h"
+#include "TrackAtoms/TrackAtom.h"
+#include <vector>
 
 class GameModel;
+
+struct CollisionInfo;
 
 // ACHTUNG: So muss ein Ogre-kompatibles Quaternion aussehen.
 // Bin mir aber noch nicht sicher ob negative_cross oder positive_cross
@@ -65,6 +69,7 @@ private:
 	GameModel* mpGameModel;
 
 
+	std::vector<CollisionInfo> getCollidingTAs();
 
 	quat mOrientation;
 

@@ -26,7 +26,7 @@ BoundingBox::~BoundingBox() {
 }
 
 
-bool BoundingBox::containsPoint(cml::vector3f& v) {
+bool BoundingBox::containsPoint(const cml::vector3f& v) {
 
 	if (mPos[0] > v[0] || mPos[0] + mSize[0] < v[0]) return false;
 	if (mPos[1] > v[1] || mPos[1] + mSize[1] < v[1]) return false;
@@ -36,16 +36,16 @@ bool BoundingBox::containsPoint(cml::vector3f& v) {
 }
 
 
-bool BoundingBox::intersectsWith(BoundingBox* other) {
+bool BoundingBox::intersectsWith(const BoundingBox& other) {
 
 	cml::vector3d own_max = mPos + mSize;
-	cml::vector3d other_max = other->mPos + other->mSize;
+	cml::vector3d other_max = other.mPos + other.mSize;
 
-	if (own_max[0] < other->mPos[0]) return false;
+	if (own_max[0] < other.mPos[0]) return false;
 	if (mPos[0] > other_max[0]) return false;
-	if (own_max[1] < other->mPos[1]) return false;
+	if (own_max[1] < other.mPos[1]) return false;
 	if (mPos[1] > other_max[1]) return false;
-	if (own_max[2] < other->mPos[2]) return false;
+	if (own_max[2] < other.mPos[2]) return false;
 	if (mPos[2] > other_max[2]) return false;
 
 	return true;
