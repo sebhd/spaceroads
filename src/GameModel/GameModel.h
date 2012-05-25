@@ -11,10 +11,12 @@
 #include <vector>
 #include "Vehicle.h"
 #include "TrackAtoms/TrackAtom.h"
+#include "Tracks/AbstractTrack.h"
 #include "cml/cml.h"
 
 class Vehicle;
 class TrackAtom;
+class AbstractTrack;
 
 class GameModel {
 public:
@@ -23,11 +25,7 @@ public:
 
 	Vehicle* mpPlayerVehicle;
 
-
-	std::vector<TrackAtom*> mTrackAtoms;
-
-	cml::vector3d mInitialPosition;
-
+	AbstractTrack* mpTrack;
 };
 
 #endif /* GAMEMODEL_H_ */

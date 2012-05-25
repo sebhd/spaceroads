@@ -11,6 +11,7 @@ SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) :
 		TrackAtom(bbox) {
 
 	mMaterial = "SolidTrackAtom";
+	meshName = "";
 }
 
 SolidTrackAtom::~SolidTrackAtom() {

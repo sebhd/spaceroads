@@ -45,9 +45,7 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
 	Vehicle* ship = mpApp->mpGameModel->mpPlayerVehicle;
 
-	//game::BoundingBox* pBBox = &mpApp->mpGameModel->mpPlayerVehicle->mBBox;
-
-	const cml::vector3d& pos = mpApp->mpGameModel->mpPlayerVehicle->mPos;
+	const cml::vector3d& pos = ship->mPos;
 
 	mPlayerVehicleNode->setPosition(pos[0], pos[1], pos[2]);
 
@@ -66,8 +64,8 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	mPlayerVehicleNode->setOrientation(q);
 
 	return mpApp->handleFrameRenderingQueuedEvent();
-	//return true;
 }
+
 
 Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int size_y, int size_z, std::string material) {
 
@@ -228,14 +226,36 @@ Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int
 
 void OgreRenderer::createTrackAtomGeometry(TrackAtom* ta) {
 
-	Ogre::String material = ta->mMaterial;
+	Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 
-	Ogre::ManualObject* manual = createBox(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2], ta->mBBox.mSize[0],
-			ta->mBBox.mSize[1], ta->mBBox.mSize[2], material);
+	node->setPosition(ta->mBBox.mPos[0], ta->mBBox.mPos[1],ta->mBBox.mPos[2]);
 
-	manual->setMaterialName(0, material);
 
-	mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(manual);
+	if (ta->meshName == "") {
+
+		Ogre::String material = ta->mMaterial;
+
+		Ogre::ManualObject* manual = createBox(0,0,0, ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2], material);
+
+		manual->setMaterialName(0, material);
+
+		node->attachObject(manual);
+	}
+	else {
+
+		  std::ostringstream s;
+
+		  std::string id;
+		  s << taCount;
+
+		  id = s.str();
+
+		Ogre::Entity* entity = mSceneMgr->createEntity(id + "_" +  ta->meshName, ta->meshName);
+
+		node->attachObject(entity);
+
+		taCount++;
+	}
 
 }
 
@@ -304,9 +324,12 @@ bool OgreRenderer::init() {
 	//mPlayerVehicleNode->setScale(0.1,0.1,0.1);
 	//####### END Add player ship to scene graph ##########
 
+	std::vector<TrackAtom*> trackAtoms = mpApp->mpGameModel->mpTrack->getTrackAtomsAround(cml::vector3f(0,0,0));
+
+	taCount = 0;
 	// Create track  geometry:
-	for (unsigned int ii = 0; ii < mpApp->mpGameModel->mTrackAtoms.size(); ii++) {
-		createTrackAtomGeometry(mpApp->mpGameModel->mTrackAtoms[ii]);
+	for (unsigned int ii = 0; ii < trackAtoms.size(); ii++) {
+		createTrackAtomGeometry(trackAtoms[ii]);
 	}
 
 	// Create the camera
@@ -337,7 +360,7 @@ bool OgreRenderer::init() {
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
 	l->setType(Ogre::Light::LT_POINT);
 	l->setCastShadows(true);
-	l->setPosition(0, 100, 50);
+	l->setPosition(0, 100, 0);
 	mPlayerVehicleNode->attachObject(l);
 	//l->setDirection(0, -1, -1);
 

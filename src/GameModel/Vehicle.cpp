@@ -33,7 +33,7 @@ Vehicle::~Vehicle() {
 void Vehicle::reset() {
 
 	mKilled = false;
-	mPos = mpGameModel->mInitialPosition;
+	mPos = mpGameModel->mpTrack->mStartPosition;
 	mVelocity.set(0, 0, 0);
 
 	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(1, 0, 0), (float) 0);
@@ -188,9 +188,11 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 
 	cml::vector3f bboxPos = mPos + mBBoxPosOffset;
 
-	for (unsigned int ii = 0; ii < mpGameModel->mTrackAtoms.size(); ++ii) {
+	std::vector<TrackAtom*> trackAtoms = mpGameModel->mpTrack->getTrackAtomsAround(mPos);
 
-		TrackAtom* ta = mpGameModel->mTrackAtoms[ii];
+	for (unsigned int ii = 0; ii < trackAtoms.size(); ++ii) {
+
+		TrackAtom* ta = trackAtoms[ii];
 
 		mBBox.mPos = bboxPos + mVelocity;
 

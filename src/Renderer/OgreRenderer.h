@@ -40,6 +40,7 @@ protected:
     void createTrackAtomGeometry(TrackAtom*);
     void createScene();
 
+    int taCount;
 
     Ogre::ManualObject* createBox(int x, int y, int z, int size_x, int size_y, int size_z, std::string material);
 
