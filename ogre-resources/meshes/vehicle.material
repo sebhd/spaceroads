@@ -19,10 +19,9 @@ material _missing_material_
 material VehicleSkin 
 {
     receive_shadows on
-    
-    technique b2ogre_1337760089.652949
+    technique b2ogre_1337941130.180061
     {
-        pass b2ogre_1337760089.653027
+        pass b2ogre_1337941130.180162
         {
             ambient 0.33763429522514343 0.0 0.800000011920929 1.0
             diffuse 0.2701074402050292 0.0 0.6400000190734865 1.0
@@ -44,7 +43,6 @@ material VehicleSkin
             scene_blend_op add
             shading gouraud
             transparent_sorting on
-            cast_shadows on
         }
     }
 }

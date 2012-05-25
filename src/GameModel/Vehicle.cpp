@@ -5,22 +5,23 @@
  *      Author: sebastian
  */
 
-// TODO 3: Lenken im Flug soll nicht möglich sein
-// TODO 3: Je schneller man ist, desto weiter soll man zur Seite springen können
+// TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
+// TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
 #include "Vehicle.h"
 #include <vector>
 #include <cmath>
 
-Vehicle::Vehicle(GameModel* gameModel) :
-		mpGameModel(gameModel) {
+Vehicle::Vehicle(GameModel* gameModel) : mpGameModel(gameModel) {
 
+	// Acceleration capability:
 	mAccelLeftRight = 0.01;
 	mAccelForward = 0.01;
 
+	// Configure the vehicle's collision AABB:
 	mBBox.mSize.set(4, 4, 4);
 	mBBox.mPos.set(0, 4, 0);
-
 	mBBoxPosOffset = cml::vector3f(-2, -2, -2);
+
 	reset();
 }
 
@@ -35,6 +36,7 @@ void Vehicle::reset() {
 	mVelocity.set(0, 0, 0);
 
 	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(1, 0, 0), (float) 0);
+
 	setOrientation(mOrientation);
 
 	mDesiredOrientation = mOrientation;
@@ -104,21 +106,21 @@ void Vehicle::doPhysicsStep() {
 	cml::vector3f forwardComponent = cml::dot(mVecForward, mVelocity) * mVecForward;
 
 	if (mAccelerate && !mBrake) {
-
 		// Forward speed limit:
 		if (forwardComponent.length() < 0.5) {
-			mAccel[2] -= mAccelForward;
+			mVelocity += mVecForward * mAccelForward;
 		}
 	}
 
 	if (mBrake && !mAccelerate) {
 
 		// Driving backwards is not allowed:
-//		if (cml::dot(mVecForward, mVelocity) > 0) {
-		mAccel[2] += mAccelForward;
-		//	}
+		if (forwardComponent.length() > 0) {
+			mVelocity -= mVecForward * mAccelForward;
+		}
 	}
 	//############ END Apply player-input-induced modifications to the acceleration vector ############
+
 
 	// ################ END STEP 1: Construct acceleration vector ###################
 
@@ -210,10 +212,10 @@ void Vehicle::doPhysicsStep() {
 				}
 
 				ta->applyContactEffects(this, hitDir);
-
 			}
 		}
 	}
+
 
 	for (unsigned int ii = 0; ii < mpGameModel->mTrackAtoms.size(); ii++) {
 

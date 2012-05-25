@@ -296,10 +296,7 @@ bool OgreRenderer::init() {
 
 
 	//Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "ogrehead.mesh");
-	Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "Cube.mesh");
-
-
-	entVehicle->setCastShadows(true);
+	Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "Vehicle.mesh");
 
 	mPlayerVehicleNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	mPlayerVehicleNode->attachObject(entVehicle);
@@ -380,7 +377,7 @@ std::string OgreRenderer::getWindowSize() {
 //Adjust mouse clipping area
 void OgreRenderer::windowResized(Ogre::RenderWindow* rw) {
 
-	// TODO 2: Reimplement!
+	// TODO 4: Reimplement!
 	/*
 	 unsigned int width, height, depth;
 	 int left, top;

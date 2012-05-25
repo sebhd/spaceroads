@@ -32,11 +32,29 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 	case OIS::KC_SPACE:
 		mpGameModel->mpPlayerVehicle->cmd_tryJump(true);
 		break;
+
 	case OIS::KC_A:
-		cml::quaternion_rotate_about_local_z(mpGameModel->mpPlayerVehicle->mDesiredOrientation, float(-M_PI/2));
+		cml::quaternion_rotate_about_local_y(mpGameModel->mpPlayerVehicle->mDesiredOrientation, (float) M_PI / 2);
 		break;
 
 	case OIS::KC_D:
+		cml::quaternion_rotate_about_local_y(mpGameModel->mpPlayerVehicle->mDesiredOrientation, (float) -M_PI / 2);
+		break;
+
+	case OIS::KC_W:
+		cml::quaternion_rotate_about_local_x(mpGameModel->mpPlayerVehicle->mDesiredOrientation, float(-M_PI/2));
+		break;
+	case OIS::KC_S:
+		cml::quaternion_rotate_about_local_x(mpGameModel->mpPlayerVehicle->mDesiredOrientation, float(M_PI/2));
+		break;
+
+
+
+	case OIS::KC_Q:
+		cml::quaternion_rotate_about_local_z(mpGameModel->mpPlayerVehicle->mDesiredOrientation, float(-M_PI/2));
+		break;
+
+	case OIS::KC_E:
 		cml::quaternion_rotate_about_local_z(mpGameModel->mpPlayerVehicle->mDesiredOrientation, float(M_PI/2));
 		break;
 
