@@ -41,7 +41,10 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	cml::vector3f u = cml::normalize(ship->getGravity());
 	cml::vector3f bounceVelocity = (cml::dot(u, ship->mVelocity) * u) * 1.5;
 
-	if (!ship->mTryJump && bounceVelocity.length() > 0.5) {
+
+	// NOTE: The value on the right side of the following inequation is the 'bouncyness factor'.
+	// The smaller it is, the longer the vehicle will bounce:
+	if (!ship->mTryJump && bounceVelocity.length() > 0.7) {
 		ship->mVelocity -= bounceVelocity;
 	}
 	// ################# END Bouncing ################
@@ -70,7 +73,6 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	switch (hs) {
 	case HIT_TOP:
 		ship->mVelocity[1] = 0;
-
 		break;
 
 	case HIT_BOTTOM:

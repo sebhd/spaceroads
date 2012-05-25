@@ -37,7 +37,7 @@ protected:
 
     // Ogre::FrameListener
     virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-    void createTrackAtomGeometry(TrackAtom*);
+    Ogre::MovableObject* getTrackAtomGeometry(TrackAtom*);
     void createScene();
 
     int taCount;
@@ -46,6 +46,9 @@ protected:
 
 
 private:
+
+    void buildTrackSubgraph();
+
     // OGRE stuff:
     Ogre::Root* mRoot;
     Ogre::String mResourcesCfg;
@@ -54,6 +57,9 @@ private:
     Ogre::SceneManager* mSceneMgr;
     Ogre::Camera* mCamera;
     Ogre::SceneNode* mPlayerVehicleNode;
+    Ogre::SceneNode* mTrackAtomsRootNode;
+
+    std::vector<Ogre::SceneNode*> mTrackAtomSceneNodes;
 };
 
 #endif /* OGRERENDERER_H_ */

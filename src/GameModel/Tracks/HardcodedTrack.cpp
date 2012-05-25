@@ -11,7 +11,7 @@
 #include "../TrackAtoms/DeadlyTrackAtom.h"
 
 
-HardcodedTrack::HardcodedTrack() {
+HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
 	mStartPosition.set(5, 4, -4);
 
@@ -81,7 +81,6 @@ HardcodedTrack::HardcodedTrack() {
 
 	//################# END Construct the track ##################
 
-
 }
 
 HardcodedTrack::~HardcodedTrack() {
@@ -94,3 +93,10 @@ const std::vector<TrackAtom*> HardcodedTrack::getTrackAtomsAround(cml::vector3f 
 
 	return mTrackAtoms;
 }
+
+
+void HardcodedTrack::step() {
+	// In derived classes, this is the place for code to modify the track at runtime
+
+}
+

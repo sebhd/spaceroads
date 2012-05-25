@@ -17,9 +17,10 @@
 #include "InputHandler/OISInputHandler.h"
 #include "GameModel/Tracks/AbstractTrack.h"
 
+class AbstractTrack;
 class AbstractRenderer;
 class AbstractInputHandler;
-
+class Vehicle;
 
 class Application : public OIS::KeyListener {
 public:
@@ -42,6 +43,7 @@ public:
 	Vehicle* mpPlayerVehicle;
 
 	AbstractTrack* mpTrack;
+
 
 
 private:

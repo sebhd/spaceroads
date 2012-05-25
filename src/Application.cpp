@@ -12,20 +12,23 @@
 
 #include "Renderer/OgreRenderer.h"
 #include "GameModel/Tracks/HardcodedTrack.h"
+#include "GameModel/Tracks/RandomTrack.h"
 
 Application::Application() {
 
 	quit = false;
 
-
-	mpTrack = new HardcodedTrack();
+	//mpTrack = new HardcodedTrack();
+	mpTrack = new RandomTrack(this);
 
 	mpPlayerVehicle = new Vehicle(mpTrack);
 }
 
+
 Application::~Application() {
 	// TODO Auto-generated destructor stub
 }
+
 
 bool Application::keyPressed(const OIS::KeyEvent& evt) {
 
@@ -160,11 +163,12 @@ void Application::run() {
 			// Process input:
 			mpInputHandler->processInput();
 
-			// To track stop:
+			// Do track step:
 			mpTrack->step();
 
 			// Do physics / game logic step:
 			mpPlayerVehicle->doPhysicsStep();
+
 			accumulator -= dt;
 		}
 

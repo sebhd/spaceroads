@@ -5,25 +5,37 @@
  *      Author: sebastian
  */
 
+// TODO 3: Implementieren, dass sich bewegende TrackAtoms ein Vehicle mit sich schieben können...
+// Derzeit ist es so, dass sich ein sich bewegendes TrackAtom durch ein stillstehendes Vehicle einfach
+// hindurchbewegt (bzw. umgekehrt). Das ist doof. sbecht 2012-05-25
+
 #ifndef ABSTRACTTRACK_H_
 #define ABSTRACTTRACK_H_
 
 #include <vector>
 #include "../TrackAtoms/TrackAtom.h"
 #include "../../cml/cml.h"
+#include "../../Application.h"
 
+class Application;
 class TrackAtom;
 
 class AbstractTrack {
 public:
-	AbstractTrack();
+	AbstractTrack(Application*);
 	virtual ~AbstractTrack();
 
 	virtual const std::vector<TrackAtom*> getTrackAtomsAround(cml::vector3f pos) = 0;
 
 	virtual void step();
 
+	virtual void reset();
+
 	cml::vector3d mStartPosition;
+
+	Application* mpApp;
+
+	bool mHasChanged;
 };
 
 #endif /* ABSTRACTTRACK_H_ */

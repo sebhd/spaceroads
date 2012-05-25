@@ -46,6 +46,7 @@ public:
 	cml::vector3f mVelocity;
 
 	bool mTryJump;
+
 	bool mKilled;
 	bool mMoveLeft, mMoveRight, mAccelerate, mBrake;
 
@@ -57,8 +58,6 @@ private:
 	void setOrientation(quat rotQuat);
 
 	game::BoundingBox mBBox;
-
-
 
 	AbstractTrack* mpTrack;
 
