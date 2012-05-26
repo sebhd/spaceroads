@@ -17,7 +17,8 @@ Vehicle::Vehicle(AbstractTrack* a_track) {
 
 	// Acceleration capability:
 	mAccelLeftRight = 0.01;
-	mAccelForward = 0.01;
+	mAccelForward = 0.005;
+	mMaxForwardSpeed = 0.7;
 
 	// Configure the vehicle's collision AABB:
 	mBBox.mSize.set(4, 4, 4);
@@ -70,6 +71,7 @@ void Vehicle::doPhysicsStep() {
 
 	// If the ship is destroyed, reset to the starting position:
 	if (mKilled) {
+		std::cout << "Boooooom!!!" << std::endl;
 		reset();
 		return;
 	}
@@ -93,28 +95,26 @@ void Vehicle::doPhysicsStep() {
 	}
 	//################# END Rotation in gewünschte Orientierung ##################
 
-	// ################ BEGIN Construct acceleration vector ###################
 
-	// Initialize acceleration vector as a copy of the gravity vector:
-	cml::vector3f mAccel = getGravity();
+	// ################ BEGIN Apply player vehicle control commands ###################
 
 	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
 
 	if (mAccelerate && !mBrake) {
-		// Forward speed limit:
-		if (forwardComponent.length() < 0.5) {
+		// Accelerate, but enforce forward speed limit:
+		if (forwardComponent.length() < mMaxForwardSpeed) {
 			mVelocity += mDirForward * mAccelForward;
 		}
 	}
 
 	if (mBrake && !mAccelerate) {
-
-		// Driving backwards is not allowed:
+		// Brake, but enforce backwards speed limit:
 		if (forwardComponent.length() > 0) {
 			mVelocity -= mDirForward * mAccelForward;
 		}
 	}
 
+	// Left/right translation in free flight:
 	if (mNoCollision) {
 		if (mMoveLeft) {
 			mVelocity += mDirLeft * mAccelLeftRight;
@@ -123,20 +123,17 @@ void Vehicle::doPhysicsStep() {
 		if (mMoveRight) {
 			mVelocity -= mDirLeft * mAccelLeftRight;
 		}
-	}
 
-	// ################ END Construct acceleration vector ###################
-
-	// Apply acceleration:
-	mVelocity += mAccel;
-
-	// Apply sidewards friction in free flight:
-	// ATTENTION:
-	// For some reason, this must happen *BEFORE* the collision detection & handling.
-	// Otherwise, the vehicle may fall through walls when it is rotated!
-	if (mNoCollision) {
 		mVelocity -= cml::dot(mDirLeft, mVelocity) * mDirLeft * 0.03;
 	}
+
+	// ################ END Apply player vehicle control commands ###################
+
+
+	// Apply gravity:
+	mVelocity += getGravity();
+
+
 
 	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
 

@@ -54,6 +54,8 @@ public:
 
 private:
 
+	float mMaxForwardSpeed;
+
 	bool mNoCollision;
 
 	std::vector<CollisionInfo> getCollidingTAs();

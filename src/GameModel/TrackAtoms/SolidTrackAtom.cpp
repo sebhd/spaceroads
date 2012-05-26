@@ -91,11 +91,11 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	// #################### END Determine wall normal vector #################
 
 
+	cml::vector3f hitComponent = cml::dot(wallNormal, ship->mVelocity) * wallNormal;
+
 	// #################### BEGIN Stop or bounce #################
 	float bounceThreshold = 0.5;
 	float rebound = 1.5;
-
-	cml::vector3f hitComponent = cml::dot(wallNormal, ship->mVelocity) * wallNormal;
 
 	if (hitComponent.length() > bounceThreshold) {
 		ship->mVelocity -= hitComponent * rebound;
@@ -104,4 +104,13 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 		ship->mVelocity -= hitComponent;
 	}
 	// #################### END Stop or bounce #################
+
+
+	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
+	float dot = cml::dot(ship->mDirForward, wallNormal);
+
+	if (dot < -0.8 && hitComponent.length() > 0.5) {
+		ship->mKilled = true;
+	}
+	//################ END Kill vehicle if it hits something with the nose too fast ###############
 }
