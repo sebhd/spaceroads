@@ -54,6 +54,8 @@ public:
 
 private:
 
+	bool mNoCollision;
+
 	std::vector<CollisionInfo> getCollidingTAs();
 	void setOrientation(quat rotQuat);
 

@@ -68,17 +68,11 @@ void Vehicle::cmd_moveRight(bool enabled) {
 
 void Vehicle::doPhysicsStep() {
 
-	// When we fall from the track, reset to start position:
-	if (abs(mPos[1]) > 500 || abs(mPos[0]) > 500) {
-		mKilled = true;
-	}
-
 	// If the ship is destroyed, reset to the starting position:
 	if (mKilled) {
 		reset();
 		return;
 	}
-
 
 	//################# BEGIN Rotation in gewünschte Orientierung ##################
 	if (mOrientation != mDesiredOrientation) {
@@ -99,9 +93,9 @@ void Vehicle::doPhysicsStep() {
 	}
 	//################# END Rotation in gewünschte Orientierung ##################
 
-	// NOTE: Here begins the computation of the vehicle's new position. It consists of three steps:
 
-	// ################ BEGIN STEP 1: Construct acceleration vector ###################
+
+	// ################ BEGIN Construct acceleration vector ###################
 
 	// Initialize acceleration vector as a copy of the gravity vector:
 	cml::vector3f mAccel = getGravity();
@@ -123,28 +117,25 @@ void Vehicle::doPhysicsStep() {
 		}
 	}
 
-	// ################ END STEP 1: Construct acceleration vector ###################
+	if (mNoCollision) {
+		if (mMoveLeft) {
+			mVelocity += mDirLeft * mAccelLeftRight;
+		}
 
-	// ################ BEGIN STEP 2: Construct velocity vector (mostly enforcing speed limits) ###################
+		if (mMoveRight) {
+			mVelocity -= mDirLeft * mAccelLeftRight;
+		}
+	}
+
+	// ################ END Construct acceleration vector ###################
 
 	// Apply acceleration:
 	mVelocity += mAccel;
 
-	// Apply all-direction speed limit:
-	int topSpeed = 2;
 
-	if (mVelocity.length() > topSpeed) {
-		mVelocity = mVelocity.normalize() * topSpeed;
-	}
+	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
 
-	// Apply backwards spped limit (moving backwards is not allowed at all):
-	if (cml::dot(mDirForward, mVelocity) < 0) {
-		mVelocity -= cml::dot(mDirForward, mVelocity) * mDirForward;
-	}
-
-	// ################ END STEP 2: Construct velocity vector (mostly enforcing speed limits) ###################
-
-	//######### BEGIN STEP 3: Collision detection & handling (may modify velocity vector) ################
+	mNoCollision = true;
 
 	// Find colliding track atoms and apply contact effects:
 	std::vector<CollisionInfo> collisions = getCollidingTAs();
@@ -160,31 +151,32 @@ void Vehicle::doPhysicsStep() {
 		collisions[ii].ta->applyCounterForces(this, collisions[ii].hs);
 	}
 
-	//######### END STEP 3: Collision detection & handling (may modify velocity vector) ################
+	//######### END Collision detection & handling (may modify velocity vector) ################
+
+
+	// Apply sidewards friction in free flight:
+	if (mNoCollision) {
+		mVelocity -= cml::dot(mDirLeft, mVelocity) * mDirLeft * 0.03;
+	}
+
+	//################ BEGIN Enfore speed limits ################
+	int topSpeed = 2;
+
+	if (mVelocity.length() > topSpeed) {
+		mVelocity = mVelocity.normalize() * topSpeed;
+	}
+
+	// Apply backwards spped limit (moving backwards is not allowed at all):
+	if (cml::dot(mDirForward, mVelocity) < 0) {
+		mVelocity -= cml::dot(mDirForward, mVelocity) * mDirForward;
+	}
+	//################ END Enfore speed limits ################
+
 
 	// Finally, move the vehicle by adding the velocity vector to the position:
 	mPos += mVelocity;
-
-	//############### BEGIN Things that we do when there was no contact with a track atom #############
-
-	// ATTENTION:
-	// This *MUST* be done *AFTER* the position vector is updated! Otherwise, collision
-	// handling will NOT work correctly and the vehicle will fall throught walls!!!
-
-	if (collisions.size() == 0) {
-		if (mMoveLeft) {
-			mVelocity += mDirLeft * mAccelLeftRight;
-		}
-
-		if (mMoveRight) {
-			mVelocity -= mDirLeft * mAccelLeftRight;
-		}
-
-		// Apply sidewards friction:
-		mVelocity -= cml::dot(mDirLeft, mVelocity) * mDirLeft * 0.03;
-	}
-	//############### END Things that we do when there was no contact with a track atom #############
 }
+
 
 std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 
@@ -207,6 +199,8 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 			bool x = false, y = false, z = false;
 
 			if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 2) {
+
+				mNoCollision = false;
 
 				TrackAtom::HitSide hitSide = TrackAtom::HIT_NONE;
 
