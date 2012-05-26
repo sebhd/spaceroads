@@ -37,19 +37,6 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	}
 	//############### END Propulsion ###############
 
-	/*
-	// ################# BEGIN Bouncing ################
-	cml::vector3f u = cml::normalize(ship->getGravity());
-	cml::vector3f bounceVelocity = (cml::dot(u, ship->mVelocity) * u) * 1.5;
-
-
-	// NOTE: The value on the right side of the following inequation is the 'bouncyness factor'.
-	// The smaller it is, the longer the vehicle will bounce:
-	if (!ship->mTryJump && bounceVelocity.length() > 0.7) {
-		ship->mVelocity -= bounceVelocity;
-	}
-	// ################# END Bouncing ################
-*/
 
 	// ############## BEGIN Jumping ###############
 	if (ship->mTryJump) {
@@ -60,7 +47,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 		// TODO 2: Do this check with a 'ray intersects plane' test instead of the 'point is in box' test
 		// This is better because it is independent of the size of the bounding boxes of vehicle & track atom.
-		cml::vector3f tmp = ship->mPos + gravNormalized * 2.2;
+		cml::vector3f tmp = ship->mPos + gravNormalized * 2.7;
 
 		if (mBBox.containsPoint(tmp)) {
 			ship->mVelocity -= gravNormalized * 0.7;
@@ -105,7 +92,7 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 
 
 	// #################### BEGIN Stop or bounce #################
-	float bounceThreshold = 0.3;
+	float bounceThreshold = 0.5;
 	float rebound = 1.5;
 
 	cml::vector3f hitComponent = cml::dot(wallNormal, ship->mVelocity) * wallNormal;
