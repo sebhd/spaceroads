@@ -37,6 +37,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	}
 	//############### END Propulsion ###############
 
+	/*
 	// ################# BEGIN Bouncing ################
 	cml::vector3f u = cml::normalize(ship->getGravity());
 	cml::vector3f bounceVelocity = (cml::dot(u, ship->mVelocity) * u) * 1.5;
@@ -48,7 +49,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 		ship->mVelocity -= bounceVelocity;
 	}
 	// ################# END Bouncing ################
-
+*/
 
 	// ############## BEGIN Jumping ###############
 	if (ship->mTryJump) {
@@ -70,36 +71,50 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 
+	// #################### BEGIN Determine wall normal vector #################
+	cml::vector3f wallNormal;
+
 	switch (hs) {
 	case HIT_TOP:
-		ship->mVelocity[1] = 0;
+		wallNormal.set(0,1,0);
 		break;
 
 	case HIT_BOTTOM:
-		ship->mVelocity[1] = 0;
-
+		wallNormal.set(0,-1,0);
 		break;
 
 	case HIT_FRONT:
-		ship->mVelocity[2] = 0;
-
+		wallNormal.set(0,0,1);
 		break;
 	case HIT_BACK:
-		ship->mVelocity[2] = 0;
-
+		wallNormal.set(0,0,-1);
 		break;
 
 	case HIT_RIGHT:
-		ship->mVelocity[0] = 0;
-
+		wallNormal.set(1,0,0);
 		break;
 
 	case HIT_LEFT:
-		ship->mVelocity[0] = 0;
-
+		wallNormal.set(-1,0,0);
 		break;
 
 	default:
-		break;
+		return;
 	}
+	// #################### END Determine wall normal vector #################
+
+
+	// #################### BEGIN Stop or bounce #################
+	float bounceThreshold = 0.3;
+	float rebound = 1.5;
+
+	cml::vector3f hitComponent = cml::dot(wallNormal, ship->mVelocity) * wallNormal;
+
+	if (hitComponent.length() > bounceThreshold) {
+		ship->mVelocity -= hitComponent * rebound;
+	}
+	else {
+		ship->mVelocity -= hitComponent;
+	}
+	// #################### END Stop or bounce #################
 }
