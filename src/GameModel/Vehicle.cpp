@@ -93,8 +93,6 @@ void Vehicle::doPhysicsStep() {
 	}
 	//################# END Rotation in gewünschte Orientierung ##################
 
-
-
 	// ################ BEGIN Construct acceleration vector ###################
 
 	// Initialize acceleration vector as a copy of the gravity vector:
@@ -132,6 +130,13 @@ void Vehicle::doPhysicsStep() {
 	// Apply acceleration:
 	mVelocity += mAccel;
 
+	// Apply sidewards friction in free flight:
+	// ATTENTION:
+	// For some reason, this must happen *BEFORE* the collision detection & handling.
+	// Otherwise, the vehicle may fall through walls when it is rotated!
+	if (mNoCollision) {
+		mVelocity -= cml::dot(mDirLeft, mVelocity) * mDirLeft * 0.03;
+	}
 
 	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
 
@@ -153,13 +158,14 @@ void Vehicle::doPhysicsStep() {
 
 	//######### END Collision detection & handling (may modify velocity vector) ################
 
-
-	// Apply sidewards friction in free flight:
-	if (mNoCollision) {
-		mVelocity -= cml::dot(mDirLeft, mVelocity) * mDirLeft * 0.03;
-	}
-
 	//################ BEGIN Enfore speed limits ################
+
+	// ATTENTION:
+	// Be aware of the fact that in the case of a collision, the vehicle will just pass through
+	// a TrackAtom if its speed in the direction of the colliding wall is larger than the
+	// thickness of the block in that direction! sbecht 2012-05-26
+	// TODO 4: Try to fix this.
+
 	int topSpeed = 2;
 
 	if (mVelocity.length() > topSpeed) {
@@ -172,11 +178,9 @@ void Vehicle::doPhysicsStep() {
 	}
 	//################ END Enfore speed limits ################
 
-
 	// Finally, move the vehicle by adding the velocity vector to the position:
 	mPos += mVelocity;
 }
-
 
 std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 

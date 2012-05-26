@@ -58,11 +58,11 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 		break;
 
 	case OIS::KC_Q:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,-1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,1);
 		break;
 
 	case OIS::KC_E:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,-1);
 		break;
 
 	case OIS::KC_B:
