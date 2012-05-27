@@ -41,6 +41,40 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	}
 	//############### END Propulsion ###############
 
+
+	// #################### BEGIN Determine wall normal vector #################
+	cml::vector3f wallNormal;
+
+	switch (hs) {
+	case HIT_TOP:
+		wallNormal.set(0, 1, 0);
+		break;
+
+	case HIT_BOTTOM:
+		wallNormal.set(0, -1, 0);
+		break;
+
+	case HIT_FRONT:
+		wallNormal.set(0, 0, 1);
+		break;
+	case HIT_BACK:
+		wallNormal.set(0, 0, -1);
+		break;
+
+	case HIT_RIGHT:
+		wallNormal.set(1, 0, 0);
+		break;
+
+	case HIT_LEFT:
+		wallNormal.set(-1, 0, 0);
+		break;
+
+	default:
+		return;
+	}
+	// #################### END Determine wall normal vector #################
+
+
 	// ############## BEGIN Jumping ###############
 	if (ship->mTryJump) {
 		cml::vector3f gravNormalized = cml::normalize(ship->getGravity());
@@ -107,6 +141,8 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 			ship->mVelocity -= hitComponent * mRebound;
 		}
 	}
+
+
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	dot = cml::dot(ship->mDirForward, wallNormal);
 

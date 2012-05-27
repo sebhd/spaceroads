@@ -63,7 +63,8 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
 
 
-	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(20, 50, -1000), cml::vector3d(10, 1, 400))));
+	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(20, 50, -900), cml::vector3d(10, 1, 300))));
+
 	mTrackAtoms.push_back(new DeadlyTrackAtom(game::BoundingBox(cml::vector3d(20, 50, -920), cml::vector3d(10, 1, 20))));
 
 	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(20, 50, -1000), cml::vector3d(10, 1, 80))));
