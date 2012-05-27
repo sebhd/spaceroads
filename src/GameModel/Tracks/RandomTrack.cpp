@@ -87,13 +87,20 @@ void RandomTrack::step() {
 
 
 	if (mTrackAtoms.size() < 40) {
+
 		int whoknows = rand() % 10 + 1;
 
 		game::BoundingBox bbox;
 		bbox.mPos.set(nextX, nextY - whoknows * 10, nextZ);
 		bbox.mSize.set(10, whoknows * 10, 100);
 
-		TrackAtom* ta = new SolidTrackAtom(bbox);
+		SolidTrackAtom* ta = new SolidTrackAtom(bbox);
+
+		if (whoknows == 7) {
+			ta->mMaterial = "JumpPadTrackAtom";
+			ta->mRebound = -1;
+			ta->mBounceThreshold = 0;
+		}
 
 		mTrackAtoms.push_back(ta);
 

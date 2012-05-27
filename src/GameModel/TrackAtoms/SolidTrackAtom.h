@@ -17,6 +17,10 @@ public:
 
 	virtual void applyContactEffects(Vehicle* ship, HitSide hs);
 	virtual void applyCounterForces(Vehicle* ship, HitSide hs);
+
+	float mBounceThreshold;
+	float mRebound;
+
 };
 
 #endif /* SOLIDTRACKATOM_H_ */
