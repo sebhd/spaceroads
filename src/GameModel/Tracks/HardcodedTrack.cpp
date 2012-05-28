@@ -7,13 +7,11 @@
 
 #include "HardcodedTrack.h"
 #include "../TrackAtoms/SolidTrackAtom.h"
-
-
+#include "../TrackAtoms/GravChangerTrackAtom.h"
 
 HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
 	mStartPosition.set(5, 4, -4);
-
 
 	//################# BEGIN Construct the track ##################
 
@@ -24,8 +22,17 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
 	// Querteil:
 	ta = new SolidTrackAtom(game::BoundingBox(cml::vector3d(-20, 0, -50), cml::vector3d(50, 1, 10)));
-	ta->name = "Querteil";
 	mTrackAtoms.push_back(ta);
+
+	/*
+	GravChangerTrackAtom* gc = new GravChangerTrackAtom(game::BoundingBox(cml::vector3d(-20, 0, -50), cml::vector3d(50, 1, 10)));
+
+	cml::quaternion_rotation_world_axis(gc->mNewOrientation, 2, (float) (M_PI / 2));
+	gc->mBounceThreshold = 0;
+	gc->mRebound = -1;
+	gc->name = "Querteil";
+	mTrackAtoms.push_back(gc);
+*/
 
 	// Dach über dem Anfangsteil:
 	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(0, 10, -10), cml::vector3d(10, 1, 10))));
@@ -59,8 +66,6 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 	ta->mBounceThreshold = 0;
 	ta->mRebound = -1.5;
 	mTrackAtoms.push_back(ta);
-
-
 
 
 	mTrackAtoms.push_back(new SolidTrackAtom(game::BoundingBox(cml::vector3d(20, 50, -900), cml::vector3d(10, 1, 300))));

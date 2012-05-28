@@ -21,6 +21,8 @@ public:
 	float mBounceThreshold;
 	float mRebound;
 
+
+
 };
 
 #endif /* SOLIDTRACKATOM_H_ */

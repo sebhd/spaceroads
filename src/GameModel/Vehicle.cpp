@@ -47,6 +47,10 @@ void Vehicle::reset() {
 	mpTrack->reset();
 }
 
+void Vehicle::setDesiredOrientation(quat q) {
+	mDesiredOrientation = q;
+}
+
 void Vehicle::cmd_accelerate(bool enabled) {
 	mAccelerate = enabled;
 }
@@ -92,7 +96,10 @@ void Vehicle::doPhysicsStep() {
 		} else {
 			setOrientation(mDesiredOrientation);
 		}
+
+		std::cout << "Rotate!!!";
 	}
+
 	//################# END Rotation in gewünschte Orientierung ##################
 
 

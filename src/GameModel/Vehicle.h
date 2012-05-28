@@ -52,6 +52,8 @@ public:
 
 	float mAccelLeftRight, mAccelForward;
 
+	void setDesiredOrientation(quat q);
+
 private:
 
 	float mMaxForwardSpeed;
