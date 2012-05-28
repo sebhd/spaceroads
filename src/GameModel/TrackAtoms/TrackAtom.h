@@ -31,10 +31,11 @@ public:
 	std::string meshName;
 
 
-
 	virtual void applyCounterForces(Vehicle* ship, HitSide hs) = 0;
 
 	virtual void applyContactEffects(Vehicle* ship, HitSide hs) = 0;
+
+	bool mIsDeadly;
 };
 
 struct CollisionInfo {

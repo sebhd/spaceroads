@@ -24,6 +24,10 @@ SolidTrackAtom::~SolidTrackAtom() {
 
 void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
+	if (mIsDeadly) {
+		ship->mKilled = true;
+	}
+
 	//############### BEGIN Propulsion ###############
 	// Apply sidewards friction:
 	ship->mVelocity -= cml::dot(ship->mDirLeft, ship->mVelocity) * ship->mDirLeft * 0.03;
