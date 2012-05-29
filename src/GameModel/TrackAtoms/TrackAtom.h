@@ -22,18 +22,14 @@ public:
 	TrackAtom(game::BoundingBox bbox);
 	virtual ~TrackAtom();
 
+	virtual void applyContactEffects(Vehicle* ship, HitSide hs) = 0;
+	virtual void applyCounterForces(Vehicle* ship, HitSide hs) = 0;
+
 	game::BoundingBox mBBox;
 
 	std::string mMaterial;
-
 	std::string name;
-
 	std::string meshName;
-
-
-	virtual void applyCounterForces(Vehicle* ship, HitSide hs) = 0;
-
-	virtual void applyContactEffects(Vehicle* ship, HitSide hs) = 0;
 
 	bool mIsDeadly;
 };

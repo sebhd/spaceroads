@@ -33,9 +33,12 @@ public:
 
 	cml::vector3d mStartPosition;
 
-	Application* mpApp;
 
 	bool mHasChanged;
+
+protected:
+	Application* mpApp;
+
 };
 
 #endif /* ABSTRACTTRACK_H_ */

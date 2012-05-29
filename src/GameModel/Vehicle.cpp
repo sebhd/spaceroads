@@ -32,6 +32,10 @@ Vehicle::~Vehicle() {
 	// TODO Auto-generated destructor stub
 }
 
+const cml::vector3f& Vehicle::getPosition() {
+	return mPos;
+}
+
 void Vehicle::reset() {
 
 	mKilled = false;
@@ -71,7 +75,7 @@ void Vehicle::cmd_moveRight(bool enabled) {
 	mMoveRight = enabled;
 }
 
-void Vehicle::doPhysicsStep() {
+void Vehicle::step() {
 
 	// If the ship is destroyed, reset to the starting position:
 	if (mKilled) {
@@ -251,7 +255,7 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 	return collisions;
 }
 
-const cml::vector3f Vehicle::getGravity() {
+const cml::vector3f& Vehicle::getGravity() {
 	return mGravity;
 }
 
@@ -274,6 +278,8 @@ void Vehicle::setOrientation(quat rotQuat) {
 	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), mOrientation_axis, mOrientation_angle);
 }
 
+/*
 void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
 	cml::quaternion_rotate_about_local_axis(mDesiredOrientation, axis, (float) (steps * M_PI / 2));
 }
+*/

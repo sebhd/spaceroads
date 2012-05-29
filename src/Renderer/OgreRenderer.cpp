@@ -49,7 +49,7 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
 	Vehicle* ship = mpApp->mpPlayerVehicle;
 
-	const cml::vector3d& pos = ship->mPos;
+	const cml::vector3d& pos = ship->getPosition();
 
 	mPlayerVehicleNode->setPosition(pos[0], pos[1], pos[2]);
 

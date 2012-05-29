@@ -71,12 +71,14 @@ void RandomTrack::step() {
 	// In derived classes, this is the place for code to modify the track at runtime
 
 
+	cml::vector3f shipPos = mpApp->mpPlayerVehicle->getPosition();
+
 	//############# BEGIN Delete TrackAtoms behind the player vehicle ###########
 	for (unsigned int ii = 0; ii < mTrackAtoms.size(); ii++) {
 
 		TrackAtom* ta = mTrackAtoms[ii];
 
-		if (ta->mBBox.mPos[2] > mpApp->mpPlayerVehicle->mPos[2] + 1000) {
+		if (ta->mBBox.mPos[2] > shipPos[2] + 1000) {
 			mTrackAtoms.erase(mTrackAtoms.begin() + ii);
 
 			mHasChanged = true;

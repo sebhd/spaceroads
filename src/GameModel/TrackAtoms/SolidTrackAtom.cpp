@@ -58,7 +58,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 		// TODO 2: Do this check with a 'ray intersects plane' test instead of the 'point is in box' test
 		// This is better because it is independent of the size of the bounding boxes of vehicle & track atom.
-		cml::vector3f tmp = ship->mPos + gravNormalized * 2.7;
+		cml::vector3f tmp = ship->getPosition() + gravNormalized * 2.7;
 
 		if (mBBox.containsPoint(tmp)) {
 			ship->mVelocity -= gravNormalized * 0.7;

@@ -41,6 +41,7 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 		mpPlayerVehicle->cmd_tryJump(true);
 		break;
 
+	/*
 	case OIS::KC_A:
 		mpPlayerVehicle->cmd_rotateDesiredOrientation(1,1);
 		break;
@@ -64,11 +65,7 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 	case OIS::KC_E:
 		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,-1);
 		break;
-
-	case OIS::KC_B:
-		mpPlayerVehicle->mVelocity.set(0, 0, 0);
-		break;
-
+*/
 	case OIS::KC_R:
 		mpPlayerVehicle->reset();
 		break;
@@ -167,7 +164,7 @@ void Application::run() {
 			mpTrack->step();
 
 			// Do physics / game logic step:
-			mpPlayerVehicle->doPhysicsStep();
+			mpPlayerVehicle->step();
 
 			accumulator -= dt;
 		}

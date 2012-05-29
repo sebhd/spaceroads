@@ -23,6 +23,10 @@ typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first, cml::negative_cr
 class Vehicle {
 
 public:
+
+	// Allow SolidTrackAtom class to access private members of Vehicle:
+	friend class SolidTrackAtom;
+
 	Vehicle(AbstractTrack*);
 	virtual ~Vehicle();
 
@@ -30,31 +34,26 @@ public:
 	void cmd_brake(bool enabled);
 	void cmd_moveLeft(bool enabled);
 	void cmd_moveRight(bool enabled);
-	void cmd_rotateDesiredOrientation(int axis, int steps);
+	//void cmd_rotateDesiredOrientation(int axis, int steps);
 	void cmd_tryJump(bool enabled);
-
-	void doPhysicsStep();
-
-	const cml::vector3f getGravity();
+	void step();
+	const cml::vector3f& getGravity();
 	const quat& getOrientation();
-
+	const cml::vector3f& getPosition();
 	void reset();
-
-	cml::vector3f mDirLeft;
-	cml::vector3f mDirForward;
-	cml::vector3f mPos;
-	cml::vector3f mVelocity;
-
-	bool mTryJump;
-
-	bool mKilled;
-	bool mMoveLeft, mMoveRight, mAccelerate, mBrake;
-
-	float mAccelLeftRight, mAccelForward;
-
 	void setDesiredOrientation(quat q);
 
 private:
+
+	bool mTryJump;
+	bool mKilled;
+	bool mMoveLeft, mMoveRight, mAccelerate, mBrake;
+	float mAccelLeftRight, mAccelForward;
+
+	cml::vector3f mDirLeft;
+	cml::vector3f mDirForward;
+	cml::vector3f mVelocity;
+	cml::vector3f mPos;
 
 	float mMaxForwardSpeed;
 
