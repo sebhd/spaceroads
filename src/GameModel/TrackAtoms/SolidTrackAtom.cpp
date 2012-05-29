@@ -7,14 +7,14 @@
 
 #include "SolidTrackAtom.h"
 
-SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) : TrackAtom(bbox) {
+SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) :
+		TrackAtom(bbox) {
 
 	mMaterial = "SolidTrackAtom";
 	meshName = "";
 
-	mBounceThreshold = 0.5;
+	mBounceThreshold = 0.3;
 	mRebound = 0.5;
-
 
 }
 
@@ -22,14 +22,11 @@ SolidTrackAtom::~SolidTrackAtom() {
 	// TODO Auto-generated destructor stub
 }
 
-
 void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 	if (mIsDeadly) {
 		ship->mKilled = true;
 	}
-
-
 
 	//############### BEGIN Propulsion ###############
 	// Apply sidewards friction:
@@ -48,7 +45,6 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	}
 	//############### END Propulsion ###############
 
-
 	// ############## BEGIN Jumping ###############
 	if (ship->mTryJump) {
 		cml::vector3f gravNormalized = cml::normalize(ship->getGravity());
@@ -66,7 +62,6 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	}
 	// ############## END Jumping ###############
 }
-
 
 void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 
@@ -103,6 +98,25 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	// #################### END Determine wall normal vector #################
 
 	float dot = cml::dot(ship->mVelocity, wallNormal);
+
+	// ATTENTION:
+	// Here we do a sanity check to get around problems which may otherwise happen
+	// further down in the code: If the vehicle's velocity vector points *AWAY* from
+	// the wall (instead of towards it, as we expect it), we abort the function call here.
+
+	// Note that *in theory*, this situation should never happen at all at this part
+	// of the code. However, it occurs in at least one situation, namely when
+	// mBounceThreshold == 0 and the vehicle passes over the border between two TrackAtoms
+	// with the same surface level. In this case, the 'bouncing' will accelerate the vehicle
+	// into the opposite direction than intended, causing it to fall through the ground.
+	// Since this is shit, we better stop it right here. sbecht 2012-05-29
+
+	// TODO 5: Understand why this happens
+
+	if (dot >= 0) {
+		return;
+	}
+
 	cml::vector3f hitComponent = dot * wallNormal;
 
 	ship->mVelocity -= hitComponent;
@@ -110,12 +124,12 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	if (hitComponent.length() > mBounceThreshold) {
 
 		if (mRebound < 0) {
+
 			ship->mVelocity -= wallNormal * mRebound;
 		} else {
 			ship->mVelocity -= hitComponent * mRebound;
 		}
 	}
-
 
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	dot = cml::dot(ship->mDirForward, wallNormal);

@@ -41,7 +41,7 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 		mpPlayerVehicle->cmd_tryJump(true);
 		break;
 
-	/*
+
 	case OIS::KC_A:
 		mpPlayerVehicle->cmd_rotateDesiredOrientation(1,1);
 		break;
@@ -65,7 +65,7 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 	case OIS::KC_E:
 		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,-1);
 		break;
-*/
+
 	case OIS::KC_R:
 		mpPlayerVehicle->reset();
 		break;
@@ -140,6 +140,11 @@ void Application::run() {
 	// 1/100 sec. simulation frequency
 	unsigned int dt = 5000;
 
+	// TODO 3: Understand performance problem on Eray's Macbook. Might have to do with the game speed timing code.
+
+
+	// TODO 4: Make simulation step frequency configurable by introducing a time factor multiplicator in Vehicle::step() and...
+	// all other places where it matters.
 
 	//########### BEGIN The Main Loop! ##########
 	while (!quit) {
@@ -153,6 +158,7 @@ void Application::run() {
 
 		if (accumulator > 20000) {
 			accumulator = 20000;
+		//	std::cout << "Zu lahm!" << std::endl;
 		}
 
 		while (accumulator >= dt) {

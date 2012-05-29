@@ -34,7 +34,7 @@ public:
 	void cmd_brake(bool enabled);
 	void cmd_moveLeft(bool enabled);
 	void cmd_moveRight(bool enabled);
-	//void cmd_rotateDesiredOrientation(int axis, int steps);
+	void cmd_rotateDesiredOrientation(int axis, int steps);
 	void cmd_tryJump(bool enabled);
 	void step();
 	const cml::vector3f& getGravity();

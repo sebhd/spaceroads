@@ -17,7 +17,7 @@ Vehicle::Vehicle(AbstractTrack* a_track) {
 
 	// Acceleration capability:
 	mAccelLeftRight = 0.01;
-	mAccelForward = 0.005;
+	mAccelForward = 0.01;
 	mMaxForwardSpeed = 0.7;
 
 	// Configure the vehicle's collision AABB:
@@ -100,8 +100,6 @@ void Vehicle::step() {
 		} else {
 			setOrientation(mDesiredOrientation);
 		}
-
-		std::cout << "Rotate!!!";
 	}
 
 	//################# END Rotation in gewünschte Orientierung ##################
@@ -278,8 +276,8 @@ void Vehicle::setOrientation(quat rotQuat) {
 	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), mOrientation_axis, mOrientation_angle);
 }
 
-/*
+
 void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
 	cml::quaternion_rotate_about_local_axis(mDesiredOrientation, axis, (float) (steps * M_PI / 2));
 }
-*/
+
