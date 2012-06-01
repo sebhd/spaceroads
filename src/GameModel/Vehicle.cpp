@@ -15,10 +15,8 @@ Vehicle::Vehicle(AbstractTrack* a_track) {
 
 	mpTrack = a_track;
 
-	// Acceleration capability:
-	mAccelLeftRight = 0.005;
-	mAccelForward = 0.01;
-	mMaxForwardSpeed = 0.7;
+
+
 
 	// Configure the vehicle's collision AABB:
 	mBBox.mSize.set(4, 4, 4);
@@ -37,6 +35,21 @@ const cml::vector3f& Vehicle::getPosition() {
 }
 
 void Vehicle::reset() {
+
+	mDoThrustForward = false;
+	mDoThrustLeft = false;
+	mDoThrustRight = false;
+
+
+	mThrustSideward = 0;
+	mThrustForward = 0;
+
+	mMaxThrustForward = 0.03;
+	mMaxThrustSideward = 0.03;
+
+	mMaxSpeedForward = 0.7;
+	mMaxSpeedSideward = 0.2;
+
 
 	mKilled = false;
 	mPos = mpTrack->mStartPosition;
@@ -108,43 +121,68 @@ void Vehicle::step() {
 
 	// ################ BEGIN Apply player vehicle control commands ###################
 
+	//############ BEGIN Update forward thrust ##############
+	if (mDoThrustForward) {
+		mThrustForward += 0.0002;
+	}
+	else if (mDoBrake) {
+		mThrustForward -= 0.0002;
+	}
+
+	if (mThrustForward > mMaxThrustForward) {
+		mThrustForward = mMaxThrustForward;
+	}
+	else if (mThrustForward < 0) {
+		mThrustForward = 0;
+	}
+	//############ END Update forward thrust ##############
+
+
+	//############ BEGIN Apply forward thrust ##############
 	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
+
+	if (mThrustForward > 0 && forwardComponent.length() < mMaxSpeedForward) {
+		mVelocity += mDirForward * mThrustForward;
+	}
+	else if (mThrustForward < 0 && forwardComponent.length() > 0) {
+		mVelocity += mDirForward * mThrustForward;
+	}
+	//############ END Apply forward thrust ##############
+
+
+	//############# BEGIN Update Sideward thrust ###############
+	if (mDoThrustLeft) {
+		mThrustSideward += 0.0005;
+	}
+	else if (mDoThrustRight) {
+		mThrustSideward -= 0.0005;
+	}
+	else {
+		mThrustSideward = 0;
+	}
+
+	if (mThrustSideward > mMaxThrustSideward) {
+		mThrustSideward = mMaxThrustSideward;
+	}
+	else if (mThrustSideward < -mMaxThrustSideward) {
+		mThrustSideward = -mMaxThrustSideward;
+	}
+	//############# END Update Sideward thrust ###############
+
+
+	//############### BEGIN Apply sideward thrust ################
 	cml::vector3f sidewardComponent = cml::dot(mDirLeft, mVelocity) * mDirLeft;
 
-
-	//################ BEGIN Apply forward thrust ##############
-	if (mDoThrustForward && !mDoBrake) {
-		// Accelerate, but enforce forward speed limit:
-		if (forwardComponent.length() < mMaxForwardSpeed) {
-			mVelocity += mDirForward * mAccelForward;
-		}
+	if (sidewardComponent.length() < mMaxSpeedSideward) {
+		mVelocity += mDirLeft * mThrustSideward;
 	}
-
-	if (mDoBrake && !mDoThrustForward) {
-		// Brake, but enforce backwards speed limit:
-		if (forwardComponent.length() > 0) {
-			mVelocity -= mDirForward * mAccelForward;
-		}
-	}
-	//################ END Apply forward thrust ##############
+	//############### END Apply sideward thrust ################
 
 
-	//################ BEGIN Apply sideward thrust, but enforce sideward speed limit ##############
-	if (sidewardComponent.length() < 0.1) {
-
-		if (mDoThrustLeft) {
-			mVelocity += mDirLeft * mAccelLeftRight;
-		}
-
-		if (mDoThrustRight) {
-			mVelocity -= mDirLeft * mAccelLeftRight;
-		}
-	}
-	//################ END Apply sideward thrust, but enforce sideward speed limit ##############
 
 
 	// Apply speed limits / "friction":
-	mVelocity -= forwardComponent * 0.01;
+	mVelocity -= forwardComponent * 0.03;
 	mVelocity -= sidewardComponent * 0.02;
 
 	// ################ END Apply player vehicle control commands ###################

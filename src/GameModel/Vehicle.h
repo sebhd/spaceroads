@@ -61,17 +61,16 @@ private:
 
 	AbstractTrack* mpTrack;
 
-
 	bool mKilled;
-
-	float mAccelLeftRight, mAccelForward;
 
 	cml::vector3f mDirLeft;
 	cml::vector3f mDirForward;
 	cml::vector3f mVelocity;
 	cml::vector3f mPos;
 
-	float mMaxForwardSpeed;
+	float mThrustSideward, mThrustForward;
+	float mMaxThrustForward, mMaxThrustSideward;
+	float mMaxSpeedForward, mMaxSpeedSideward;
 
 
 	quat mOrientation;
