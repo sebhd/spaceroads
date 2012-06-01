@@ -30,24 +30,40 @@ public:
 	Vehicle(AbstractTrack*);
 	virtual ~Vehicle();
 
+
+	/*
 	void cmd_accelerate(bool enabled);
 	void cmd_brake(bool enabled);
 	void cmd_moveLeft(bool enabled);
 	void cmd_moveRight(bool enabled);
+void setDesiredOrientation(quat q);
+	*/
 	void cmd_rotateDesiredOrientation(int axis, int steps);
+
 	void cmd_tryJump(bool enabled);
 	void step();
 	const cml::vector3f& getGravity();
 	const quat& getOrientation();
 	const cml::vector3f& getPosition();
 	void reset();
-	void setDesiredOrientation(quat q);
+
+
+	quat mDesiredOrientation;
+	bool mDoThrustLeft, mDoThrustRight, mDoThrustForward, mDoBrake;
+	bool mTryJump;
 
 private:
 
-	bool mTryJump;
+	std::vector<CollisionInfo> getCollidingTAs();
+	void setOrientation(quat rotQuat);
+
+	game::BoundingBox mBBox;
+
+	AbstractTrack* mpTrack;
+
+
 	bool mKilled;
-	bool mMoveLeft, mMoveRight, mAccelerate, mBrake;
+
 	float mAccelLeftRight, mAccelForward;
 
 	cml::vector3f mDirLeft;
@@ -57,20 +73,9 @@ private:
 
 	float mMaxForwardSpeed;
 
-	bool mNoCollision;
 
-	std::vector<CollisionInfo> getCollidingTAs();
-	void setOrientation(quat rotQuat);
-
-	game::BoundingBox mBBox;
-
-	AbstractTrack* mpTrack;
-
-	quat mDesiredOrientation;
 	quat mOrientation;
-
 	float mOrientation_angle;
-
 	cml::vector3f mOrientation_axis;
 	cml::vector3f mGravity;
 	cml::vector3f mBBoxPosOffset;

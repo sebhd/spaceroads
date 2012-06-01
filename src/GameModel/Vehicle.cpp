@@ -16,7 +16,7 @@ Vehicle::Vehicle(AbstractTrack* a_track) {
 	mpTrack = a_track;
 
 	// Acceleration capability:
-	mAccelLeftRight = 0.01;
+	mAccelLeftRight = 0.005;
 	mAccelForward = 0.01;
 	mMaxForwardSpeed = 0.7;
 
@@ -51,16 +51,17 @@ void Vehicle::reset() {
 	mpTrack->reset();
 }
 
+/*
 void Vehicle::setDesiredOrientation(quat q) {
 	mDesiredOrientation = q;
 }
 
 void Vehicle::cmd_accelerate(bool enabled) {
-	mAccelerate = enabled;
+	mDoThrustForward = enabled;
 }
 
 void Vehicle::cmd_brake(bool enabled) {
-	mBrake = enabled;
+	mDoBrake = enabled;
 }
 
 void Vehicle::cmd_tryJump(bool enabled) {
@@ -68,12 +69,13 @@ void Vehicle::cmd_tryJump(bool enabled) {
 }
 
 void Vehicle::cmd_moveLeft(bool enabled) {
-	mMoveLeft = enabled;
+	mDoThrustLeft = enabled;
 }
 
 void Vehicle::cmd_moveRight(bool enabled) {
-	mMoveRight = enabled;
+	mDoThrustRight = enabled;
 }
+*/
 
 void Vehicle::step() {
 
@@ -104,49 +106,55 @@ void Vehicle::step() {
 
 	//################# END Rotation in gewünschte Orientierung ##################
 
-
 	// ################ BEGIN Apply player vehicle control commands ###################
 
 	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
+	cml::vector3f sidewardComponent = cml::dot(mDirLeft, mVelocity) * mDirLeft;
 
-	if (mAccelerate && !mBrake) {
+
+	//################ BEGIN Apply forward thrust ##############
+	if (mDoThrustForward && !mDoBrake) {
 		// Accelerate, but enforce forward speed limit:
 		if (forwardComponent.length() < mMaxForwardSpeed) {
 			mVelocity += mDirForward * mAccelForward;
 		}
 	}
 
-	if (mBrake && !mAccelerate) {
+	if (mDoBrake && !mDoThrustForward) {
 		// Brake, but enforce backwards speed limit:
 		if (forwardComponent.length() > 0) {
 			mVelocity -= mDirForward * mAccelForward;
 		}
 	}
+	//################ END Apply forward thrust ##############
 
-	// Left/right translation in free flight:
-	if (mNoCollision) {
-		if (mMoveLeft) {
+
+	//################ BEGIN Apply sideward thrust, but enforce sideward speed limit ##############
+	if (sidewardComponent.length() < 0.1) {
+
+		if (mDoThrustLeft) {
 			mVelocity += mDirLeft * mAccelLeftRight;
 		}
 
-		if (mMoveRight) {
+		if (mDoThrustRight) {
 			mVelocity -= mDirLeft * mAccelLeftRight;
 		}
-
-		mVelocity -= cml::dot(mDirLeft, mVelocity) * mDirLeft * 0.03;
 	}
+	//################ END Apply sideward thrust, but enforce sideward speed limit ##############
+
+
+	// Apply speed limits / "friction":
+	mVelocity -= forwardComponent * 0.01;
+	mVelocity -= sidewardComponent * 0.02;
 
 	// ################ END Apply player vehicle control commands ###################
-
 
 	// Apply gravity:
 	mVelocity += getGravity();
 
-
-
 	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
 
-	mNoCollision = true;
+
 
 	// Find colliding track atoms and apply contact effects:
 	std::vector<CollisionInfo> collisions = getCollidingTAs();
@@ -210,8 +218,6 @@ std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 
 			if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 2) {
 
-				mNoCollision = false;
-
 				TrackAtom::HitSide hitSide = TrackAtom::HIT_NONE;
 
 				if (!x) {
@@ -267,7 +273,8 @@ void Vehicle::setOrientation(quat rotQuat) {
 	cml::quaternion_to_axis_angle(mOrientation, mOrientation_axis, mOrientation_angle, (float) 0);
 
 	// Update gravity vector - it depends directly on the orientation:
-	mGravity = cml::rotate_vector(cml::vector3f(0, -0.01, 0), mOrientation_axis, mOrientation_angle);
+	float g = -0.01;
+	mGravity = cml::rotate_vector(cml::vector3f(0, g, 0), mOrientation_axis, mOrientation_angle);
 
 	// Update left vector:
 	mDirLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), mOrientation_axis, mOrientation_angle);
@@ -275,7 +282,6 @@ void Vehicle::setOrientation(quat rotQuat) {
 	// Update forward vector:
 	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), mOrientation_axis, mOrientation_angle);
 }
-
 
 void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
 	cml::quaternion_rotate_about_local_axis(mDesiredOrientation, axis, (float) (steps * M_PI / 2));

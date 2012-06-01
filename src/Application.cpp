@@ -38,7 +38,8 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 		quit = true;
 		break;
 	case OIS::KC_SPACE:
-		mpPlayerVehicle->cmd_tryJump(true);
+		//mpPlayerVehicle->cmd_tryJump(true);
+		mpPlayerVehicle->mTryJump = true;
 		break;
 
 
@@ -72,19 +73,22 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 
 
 	case OIS::KC_RIGHT:
-		mpPlayerVehicle->cmd_moveRight(true);
+		//mpPlayerVehicle->cmd_moveRight(true);
+		mpPlayerVehicle->mDoThrustRight = true;
 		break;
 
 	case OIS::KC_LEFT:
-		mpPlayerVehicle->cmd_moveLeft(true);
+		//mpPlayerVehicle->cmd_moveLeft(true);
+		mpPlayerVehicle->mDoThrustLeft = true;
 		break;
 
 
 	case OIS::KC_UP:
-		mpPlayerVehicle->cmd_accelerate(true);
+		//mpPlayerVehicle->cmd_accelerate(true);
+		mpPlayerVehicle->mDoThrustForward = true;
 		break;
 	case OIS::KC_DOWN:
-		mpPlayerVehicle->cmd_brake(true);
+		mpPlayerVehicle->mDoBrake = true;
 		break;
 	default:
 		break;
@@ -100,19 +104,24 @@ bool Application::keyReleased(const OIS::KeyEvent& evt) {
 		quit = true;
 		break;
 	case OIS::KC_SPACE:
-		mpPlayerVehicle->cmd_tryJump(false);
+		//mpPlayerVehicle->cmd_tryJump(false);
+		mpPlayerVehicle->mTryJump = false;
 		break;
 	case OIS::KC_LEFT:
-		mpPlayerVehicle->cmd_moveLeft(false);
+		//mpPlayerVehicle->cmd_moveLeft(false);
+		mpPlayerVehicle->mDoThrustLeft = false;
 		break;
 	case OIS::KC_RIGHT:
-		mpPlayerVehicle->cmd_moveRight(false);
+		//mpPlayerVehicle->cmd_moveRight(false);
+		mpPlayerVehicle->mDoThrustRight = false;
 		break;
 	case OIS::KC_UP:
-		mpPlayerVehicle->cmd_accelerate(false);
+		//mpPlayerVehicle->cmd_accelerate(false);
+		mpPlayerVehicle->mDoThrustForward = false;
 		break;
 	case OIS::KC_DOWN:
-		mpPlayerVehicle->cmd_brake(false);
+		//mpPlayerVehicle->cmd_brake(false);
+		mpPlayerVehicle->mDoBrake = false;
 		break;
 	default:
 		break;

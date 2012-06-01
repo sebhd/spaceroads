@@ -24,26 +24,11 @@ SolidTrackAtom::~SolidTrackAtom() {
 
 void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
+	// Is this track atom deadly?
 	if (mIsDeadly) {
 		ship->mKilled = true;
 	}
 
-	//############### BEGIN Propulsion ###############
-	// Apply sidewards friction:
-	ship->mVelocity -= cml::dot(ship->mDirLeft, ship->mVelocity) * ship->mDirLeft * 0.03;
-
-	// Sidewards speed limit:
-	if ((cml::dot(ship->mDirLeft, ship->mVelocity) * ship->mDirLeft).length() < 0.1) {
-
-		if (ship->mMoveLeft) {
-			ship->mVelocity += ship->mDirLeft * ship->mAccelLeftRight;
-		}
-
-		if (ship->mMoveRight) {
-			ship->mVelocity -= ship->mDirLeft * ship->mAccelLeftRight;
-		}
-	}
-	//############### END Propulsion ###############
 
 	// ############## BEGIN Jumping ###############
 	if (ship->mTryJump) {

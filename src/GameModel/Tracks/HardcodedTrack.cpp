@@ -64,7 +64,7 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 	ta = new SolidTrackAtom(game::BoundingBox(cml::vector3d(20, -20, -450), cml::vector3d(10, 1, 50)));
 	ta->mMaterial = "JumpPadTrackAtom";
 	ta->mBounceThreshold = 0;
-	ta->mRebound = -1.5;
+	ta->mRebound = -1.7;
 	mTrackAtoms.push_back(ta);
 
 

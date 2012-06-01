@@ -25,7 +25,8 @@ GravChangerTrackAtom::~GravChangerTrackAtom() {
 void GravChangerTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 
-	ship->setDesiredOrientation(mNewOrientation);
+	//ship->setDesiredOrientation(mNewOrientation);
+	ship->mDesiredOrientation = mNewOrientation;
 
 }
 
