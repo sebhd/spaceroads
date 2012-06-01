@@ -126,7 +126,7 @@ void Vehicle::step() {
 		mThrustForward += 0.0002;
 	}
 	else if (mDoBrake) {
-		mThrustForward -= 0.0002;
+		mThrustForward -= 0.0005;
 	}
 
 	if (mThrustForward > mMaxThrustForward) {

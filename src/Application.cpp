@@ -18,8 +18,8 @@ Application::Application() {
 
 	quit = false;
 
-	//mpTrack = new HardcodedTrack(this);
-	mpTrack = new RandomTrack(this);
+	mpTrack = new HardcodedTrack(this);
+	//mpTrack = new RandomTrack(this);
 
 	mpPlayerVehicle = new Vehicle(mpTrack);
 }
