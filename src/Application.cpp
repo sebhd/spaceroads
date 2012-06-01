@@ -18,8 +18,8 @@ Application::Application() {
 
 	quit = false;
 
-	mpTrack = new HardcodedTrack(this);
-	//mpTrack = new RandomTrack(this);
+	//mpTrack = new HardcodedTrack(this);
+	mpTrack = new RandomTrack(this);
 
 	mpPlayerVehicle = new Vehicle(mpTrack);
 }
@@ -74,21 +74,21 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 
 	case OIS::KC_RIGHT:
 		//mpPlayerVehicle->cmd_moveRight(true);
-		mpPlayerVehicle->mDoThrustRight = true;
+		mpPlayerVehicle->mAddThrustRight = true;
 		break;
 
 	case OIS::KC_LEFT:
 		//mpPlayerVehicle->cmd_moveLeft(true);
-		mpPlayerVehicle->mDoThrustLeft = true;
+		mpPlayerVehicle->mAddThrustLeft = true;
 		break;
 
 
 	case OIS::KC_UP:
 		//mpPlayerVehicle->cmd_accelerate(true);
-		mpPlayerVehicle->mDoThrustForward = true;
+		mpPlayerVehicle->mAddThrustForward = true;
 		break;
 	case OIS::KC_DOWN:
-		mpPlayerVehicle->mDoBrake = true;
+		mpPlayerVehicle->mReduceThrustForward = true;
 		break;
 	default:
 		break;
@@ -109,19 +109,19 @@ bool Application::keyReleased(const OIS::KeyEvent& evt) {
 		break;
 	case OIS::KC_LEFT:
 		//mpPlayerVehicle->cmd_moveLeft(false);
-		mpPlayerVehicle->mDoThrustLeft = false;
+		mpPlayerVehicle->mAddThrustLeft = false;
 		break;
 	case OIS::KC_RIGHT:
 		//mpPlayerVehicle->cmd_moveRight(false);
-		mpPlayerVehicle->mDoThrustRight = false;
+		mpPlayerVehicle->mAddThrustRight = false;
 		break;
 	case OIS::KC_UP:
 		//mpPlayerVehicle->cmd_accelerate(false);
-		mpPlayerVehicle->mDoThrustForward = false;
+		mpPlayerVehicle->mAddThrustForward = false;
 		break;
 	case OIS::KC_DOWN:
 		//mpPlayerVehicle->cmd_brake(false);
-		mpPlayerVehicle->mDoBrake = false;
+		mpPlayerVehicle->mReduceThrustForward = false;
 		break;
 	default:
 		break;

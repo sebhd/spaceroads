@@ -36,9 +36,9 @@ const cml::vector3f& Vehicle::getPosition() {
 
 void Vehicle::reset() {
 
-	mDoThrustForward = false;
-	mDoThrustLeft = false;
-	mDoThrustRight = false;
+	mAddThrustForward = false;
+	mAddThrustLeft = false;
+	mAddThrustRight = false;
 
 
 	mThrustSideward = 0;
@@ -64,31 +64,6 @@ void Vehicle::reset() {
 	mpTrack->reset();
 }
 
-/*
-void Vehicle::setDesiredOrientation(quat q) {
-	mDesiredOrientation = q;
-}
-
-void Vehicle::cmd_accelerate(bool enabled) {
-	mDoThrustForward = enabled;
-}
-
-void Vehicle::cmd_brake(bool enabled) {
-	mDoBrake = enabled;
-}
-
-void Vehicle::cmd_tryJump(bool enabled) {
-	mTryJump = enabled;
-}
-
-void Vehicle::cmd_moveLeft(bool enabled) {
-	mDoThrustLeft = enabled;
-}
-
-void Vehicle::cmd_moveRight(bool enabled) {
-	mDoThrustRight = enabled;
-}
-*/
 
 void Vehicle::step() {
 
@@ -122,10 +97,10 @@ void Vehicle::step() {
 	// ################ BEGIN Apply player vehicle control commands ###################
 
 	//############ BEGIN Update forward thrust ##############
-	if (mDoThrustForward) {
+	if (mAddThrustForward) {
 		mThrustForward += 0.0002;
 	}
-	else if (mDoBrake) {
+	else if (mReduceThrustForward) {
 		mThrustForward -= 0.0005;
 	}
 
@@ -151,10 +126,10 @@ void Vehicle::step() {
 
 
 	//############# BEGIN Update Sideward thrust ###############
-	if (mDoThrustLeft) {
+	if (mAddThrustLeft) {
 		mThrustSideward += 0.0005;
 	}
-	else if (mDoThrustRight) {
+	else if (mAddThrustRight) {
 		mThrustSideward -= 0.0005;
 	}
 	else {

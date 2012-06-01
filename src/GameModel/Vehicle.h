@@ -30,14 +30,6 @@ public:
 	Vehicle(AbstractTrack*);
 	virtual ~Vehicle();
 
-
-	/*
-	void cmd_accelerate(bool enabled);
-	void cmd_brake(bool enabled);
-	void cmd_moveLeft(bool enabled);
-	void cmd_moveRight(bool enabled);
-void setDesiredOrientation(quat q);
-	*/
 	void cmd_rotateDesiredOrientation(int axis, int steps);
 
 	void cmd_tryJump(bool enabled);
@@ -47,9 +39,11 @@ void setDesiredOrientation(quat q);
 	const cml::vector3f& getPosition();
 	void reset();
 
+	float getThrustForward() { return mThrustForward; }
+	float getThrustSideward() { return mThrustSideward; }
 
 	quat mDesiredOrientation;
-	bool mDoThrustLeft, mDoThrustRight, mDoThrustForward, mDoBrake;
+	bool mAddThrustLeft, mAddThrustRight, mAddThrustForward, mReduceThrustForward;
 	bool mTryJump;
 
 private:
