@@ -56,8 +56,11 @@ private:
     Ogre::RenderWindow* mWindow;
     Ogre::SceneManager* mSceneMgr;
     Ogre::Camera* mCamera;
-    Ogre::SceneNode* mPlayerVehicleNode;
+    Ogre::SceneNode* mVehicleNode;
     Ogre::SceneNode* mTrackAtomsRootNode;
+
+    Ogre::Quaternion mDesiredVehicleOrientation;
+    Ogre::Quaternion mVehicleOrientation;
 
     std::vector<Ogre::SceneNode*> mTrackAtomSceneNodes;
 };

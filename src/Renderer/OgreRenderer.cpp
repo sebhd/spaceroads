@@ -22,12 +22,15 @@
 #include <ctime>
 #include <string>
 
-//-------------------------------------------------------------------------------------
+
+// Constructor:
 OgreRenderer::OgreRenderer(Application* app) :
 		AbstractRenderer(app), mRoot(0), mResourcesCfg(Ogre::StringUtil::BLANK), mPluginsCfg(Ogre::StringUtil::BLANK) {
-	mPlayerVehicleNode = NULL;
+	mVehicleNode = NULL;
 }
-//-------------------------------------------------------------------------------------
+
+
+// Destructor:
 OgreRenderer::~OgreRenderer(void) {
 
 	//Remove ourself as a Window listener
@@ -36,6 +39,7 @@ OgreRenderer::~OgreRenderer(void) {
 	delete mRoot;
 }
 
+// Handler for frameRenderingQueued event:
 bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
 	if (mpApp->mpTrack->mHasChanged) {
@@ -51,7 +55,41 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
 	const cml::vector3d& pos = ship->getPosition();
 
-	mPlayerVehicleNode->setPosition(pos[0], pos[1], pos[2]);
+	mVehicleNode->setPosition(pos[0], pos[1], pos[2]);
+
+
+
+
+
+
+
+	/*
+	if (mVehicleOrientation != mDesiredVehicleOrientation) {
+
+			quat rotDiff = cml::quaternion_rotation_difference(mDesiredOrientation, mOrientation);
+
+
+
+			float diffAngle = 0;
+			cml::vector3f diffVec;
+			cml::quaternion_to_axis_angle(rotDiff, diffVec, diffAngle, (float) 0);
+
+			if (diffAngle > 0.01) {
+				quat rotQuat;
+				cml::quaternion_rotation_axis_angle(rotQuat, diffVec, -diffAngle * (float) 0.05);
+				setOrientation(mOrientation * rotQuat);
+			} else {
+				setOrientation(mDesiredOrientation);
+			}
+		}
+	*/
+
+
+	//Quaternion delta = Quaternion::Slerp(1, mVehicleOrientation, mDesiredVehicleOrientation, true);
+
+
+
+
 
 	Ogre::Quaternion q;
 
@@ -64,7 +102,9 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	q.y = orientation.as_vector()[2];
 	q.z = orientation.as_vector()[3];
 
-	mPlayerVehicleNode->setOrientation(q);
+	mVehicleOrientation = q;
+
+	mVehicleNode->setOrientation(mVehicleOrientation);
 
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
@@ -315,14 +355,15 @@ bool OgreRenderer::init() {
 
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
+	mSceneMgr->setSkyBox(true, "SpaceRoads/SkyBoxes/2Moons");
 
 	//################## BEGIN Add player ship to scene graph ####################
 
 	//Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "ogrehead.mesh");
 	Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "Vehicle.mesh");
 
-	mPlayerVehicleNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	mPlayerVehicleNode->attachObject(entVehicle);
+	mVehicleNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	mVehicleNode->attachObject(entVehicle);
 
 	//mPlayerVehicleNode->setScale(0.1,0.1,0.1);
 	//################## END Add player ship to scene graph ####################
@@ -339,15 +380,15 @@ bool OgreRenderer::init() {
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 
 	// Position it at 80 in Z direction
-	mCamera->setPosition(Ogre::Vector3(0, 20, 50));
+	mCamera->setPosition(Ogre::Vector3(0, 15, 50));
 
 
 	mCamera->setNearClipDistance(5);
 
 	// Look at the player's vehicle:
-	mCamera->lookAt(mPlayerVehicleNode->getPosition());
+	mCamera->lookAt(mVehicleNode->getPosition());
 
-	mPlayerVehicleNode->attachObject(mCamera);
+	mVehicleNode->attachObject(mCamera);
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -364,7 +405,7 @@ bool OgreRenderer::init() {
 	l->setType(Ogre::Light::LT_POINT);
 	l->setCastShadows(true);
 	l->setPosition(0, 100, 0);
-	mPlayerVehicleNode->attachObject(l);
+	mVehicleNode->attachObject(l);
 	//l->setDirection(0, -1, -1);
 
 	//Set initial mouse clipping size

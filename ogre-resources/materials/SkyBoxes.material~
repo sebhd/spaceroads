@@ -1,0 +1,56 @@
+material SpaceRoads/SkyBoxes/Meadow
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+
+			texture_unit
+			{
+				
+				cubic_texture meadow_fr.jpg meadow_bk.jpg meadow_lf.jpg meadow_rt.jpg meadow_up.jpg meadow_dn.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+material SpaceRoads/SkyBoxes/Space1
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+
+			texture_unit
+			{
+				
+				cubic_texture space1_fr.jpg space1_bk.jpg space1_lf.jpg space1_rt.jpg space1_up.jpg space1_dn.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+material SpaceRoads/SkyBoxes/Space2
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+
+			texture_unit
+			{
+				
+				cubic_texture space2_fr.jpg space2_bk.jpg space2_lf.jpg space2_rt.jpg space2_up.jpg space2_dn.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
