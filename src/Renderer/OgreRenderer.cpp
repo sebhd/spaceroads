@@ -14,8 +14,12 @@
 #include <OgreViewport.h>
 #include <OgreSceneManager.h>
 #include <OgreRenderWindow.h>
+#include <OgreParticle.h>
+#include <OgreParticleSystem.h>
+#include <OgreParticleEmitter.h>
 #include <OgreEntity.h>
 #include <OgreWindowEventUtilities.h>
+#include <OgreBillboardParticleRenderer.h>
 
 #include <cstdio>
 #include <cstdlib>
@@ -85,6 +89,32 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		mVehicleNode->setOrientation(q);
 		mVehicleMeshNode->setOrientation(qSidewardThrustRoll);
 	}
+
+
+
+	//############# BEGIN Update engine particle emitter ####################
+
+	// Set number of particles:
+
+
+
+	mVehicleEngineFlameParticleSystem->setEmitting(ship->mThrustForward > 0);
+	mVehicleEngineSmokeParticleSystem->setEmitting(ship->mThrustForward > 0);
+
+
+
+	Ogre::ParticleEmitter* emitter = mVehicleEngineFlameParticleSystem->getEmitter(0);
+	emitter->setParticleVelocity(ship->mThrustForward * 6000);
+	emitter->setEmissionRate(ship->mThrustForward * 10000);
+
+	emitter = mVehicleEngineSmokeParticleSystem->getEmitter(0);
+	//emitter->setParticleVelocity(ship->mThrustForward * 3000);
+	emitter->setEmissionRate(ship->mThrustForward * 7000);
+
+
+	//############# END Update engine particle emitter ####################
+
+
 
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
@@ -321,7 +351,7 @@ bool OgreRenderer::init() {
 	}
 
 	// Create render window:
-	mWindow = mRoot->initialise(true, "SpaceRoads");
+	mWindow = mRoot->initialise(true, "SpaceRoads 2012-06-08");
 
 	// Set default mipmap level (note: some APIs ignore this)
 	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -342,8 +372,24 @@ bool OgreRenderer::init() {
 
 	mVehicleNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 
+
 	mVehicleMeshNode = mVehicleNode->createChildSceneNode();
 	mVehicleMeshNode->attachObject(entVehicle);
+
+
+	// Set up engine flame particle system:
+	mVehicleEngineFlameParticleSystem = mSceneMgr->createParticleSystem("EngineFlame", "SpaceRoads/EngineFlame");
+	Ogre::SceneNode* particleNode = mVehicleNode->createChildSceneNode("EngineFlame");
+	particleNode->setPosition(0,-1.8,3);
+	particleNode->attachObject((Ogre::ParticleSystem*) mVehicleEngineFlameParticleSystem);
+
+	// Set up engine flame particle system:
+	mVehicleEngineSmokeParticleSystem = mSceneMgr->createParticleSystem("EngineSmoke", "SpaceRoads/EngineSmoke");
+	particleNode = mVehicleNode->createChildSceneNode("EngineSmoke");
+	particleNode->setPosition(0,-1.8,3);
+	particleNode->attachObject((Ogre::ParticleSystem*) mVehicleEngineSmokeParticleSystem);
+
+
 
 	//################## END Add player ship to scene graph ####################
 
@@ -356,7 +402,7 @@ bool OgreRenderer::init() {
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 
 	// Position it at 80 in Z direction
-	mCamera->setPosition(Ogre::Vector3(0, 13, 50));
+	mCamera->setPosition(Ogre::Vector3(0, 15, 40));
 
 	mCamera->setNearClipDistance(5);
 

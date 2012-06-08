@@ -40,7 +40,7 @@ material SpaceRoads/EngineSmoke
 		pass
 		{
 			lighting off
-			scene_blend add
+			scene_blend substract
 			depth_write off
 			diffuse vertexcolour
 

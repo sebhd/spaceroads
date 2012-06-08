@@ -64,6 +64,9 @@ private:
     Ogre::SceneNode* mVehicleMeshNode;
     Ogre::SceneNode* mTrackAtomsRootNode;
 
+    Ogre::ParticleSystem* mVehicleEngineFlameParticleSystem;
+    Ogre::ParticleSystem* mVehicleEngineSmokeParticleSystem;
+
     std::vector<Ogre::SceneNode*> mTrackAtomSceneNodes;
 };
 
