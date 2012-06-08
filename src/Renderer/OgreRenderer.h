@@ -47,7 +47,11 @@ protected:
 
 private:
 
+    bool mSidewardThrustRollCamera;
+
     void buildTrackSubgraph();
+
+    float mVehicleRollAngle;
 
     // OGRE stuff:
     Ogre::Root* mRoot;
@@ -57,6 +61,7 @@ private:
     Ogre::SceneManager* mSceneMgr;
     Ogre::Camera* mCamera;
     Ogre::SceneNode* mVehicleNode;
+    Ogre::SceneNode* mVehicleMeshNode;
     Ogre::SceneNode* mTrackAtomsRootNode;
 
     Ogre::Quaternion mDesiredVehicleOrientation;

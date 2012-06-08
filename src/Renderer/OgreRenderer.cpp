@@ -25,7 +25,8 @@
 // Constructor:
 OgreRenderer::OgreRenderer(Application* app) :
 		AbstractRenderer(app), mRoot(0), mResourcesCfg(Ogre::StringUtil::BLANK), mPluginsCfg(Ogre::StringUtil::BLANK) {
-	mVehicleNode = NULL;
+
+	mSidewardThrustRollCamera = false;
 }
 
 // Destructor:
@@ -55,29 +56,6 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
 	mVehicleNode->setPosition(pos[0], pos[1], pos[2]);
 
-	/*
-	 if (mVehicleOrientation != mDesiredVehicleOrientation) {
-
-	 quat rotDiff = cml::quaternion_rotation_difference(mDesiredOrientation, mOrientation);
-
-
-
-	 float diffAngle = 0;
-	 cml::vector3f diffVec;
-	 cml::quaternion_to_axis_angle(rotDiff, diffVec, diffAngle, (float) 0);
-
-	 if (diffAngle > 0.01) {
-	 quat rotQuat;
-	 cml::quaternion_rotation_axis_angle(rotQuat, diffVec, -diffAngle * (float) 0.05);
-	 setOrientation(mOrientation * rotQuat);
-	 } else {
-	 setOrientation(mDesiredOrientation);
-	 }
-	 }
-	 */
-
-	//Quaternion delta = Quaternion::Slerp(1, mVehicleOrientation, mDesiredVehicleOrientation, true);
-
 	Ogre::Quaternion q;
 
 	q.FromAngleAxis(Ogre::Radian(10), Ogre::Vector3(1, 0, 0));
@@ -91,7 +69,24 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
 	mVehicleOrientation = q;
 
-	mVehicleNode->setOrientation(mVehicleOrientation);
+	if (ship->mThrustSideward != 0) {
+		mVehicleRollAngle = -ship->mThrustSideward * 500;
+	} else {
+		mVehicleRollAngle *= 0.98;
+	}
+
+	//std::cout << mVehicleRollAngle << std::endl;
+
+	Ogre::Quaternion q2(Ogre::Degree(mVehicleRollAngle), Ogre::Vector3(0, 0, -1));
+
+	if (mSidewardThrustRollCamera) {
+		// Roll both vehicle and camera:
+		mVehicleNode->setOrientation(q * q2);
+	} else {
+		// Roll only the vehicle, not the camera:
+		mVehicleNode->setOrientation(q);
+		mVehicleMeshNode->setOrientation(q2);
+	}
 
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
@@ -348,8 +343,9 @@ bool OgreRenderer::init() {
 	Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "Vehicle.mesh");
 
 	mVehicleNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	mVehicleNode->attachObject(entVehicle);
 
+	mVehicleMeshNode = mVehicleNode->createChildSceneNode();
+	mVehicleMeshNode->attachObject(entVehicle);
 
 	//################## END Add player ship to scene graph ####################
 

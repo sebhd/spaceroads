@@ -281,8 +281,8 @@ const quat& Vehicle::getOrientation() {
 }
 
 void Vehicle::setOrientation(quat rotQuat) {
-
 	mOrientation = rotQuat;
+
 	cml::quaternion_to_axis_angle(mOrientation, mOrientation_axis, mOrientation_angle, (float) 0);
 
 	// Update gravity vector - it depends directly on the orientation:

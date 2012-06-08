@@ -46,6 +46,9 @@ public:
 	bool mAddThrustLeft, mAddThrustRight, mAddThrustForward, mReduceThrustForward;
 	bool mTryJump;
 
+	float mThrustSideward, mThrustForward;
+
+
 private:
 
 	std::vector<CollisionInfo> getCollidingTAs();
@@ -62,9 +65,9 @@ private:
 	cml::vector3f mVelocity;
 	cml::vector3f mPos;
 
-	float mThrustSideward, mThrustForward;
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;
+
 
 
 	quat mOrientation;
