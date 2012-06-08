@@ -52,6 +52,7 @@ private:
     void buildTrackSubgraph();
 
     float mVehicleRollAngle;
+    float mVehiclePitchAngle;
 
     // OGRE stuff:
     Ogre::Root* mRoot;
