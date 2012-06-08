@@ -22,13 +22,11 @@
 #include <ctime>
 #include <string>
 
-
 // Constructor:
 OgreRenderer::OgreRenderer(Application* app) :
 		AbstractRenderer(app), mRoot(0), mResourcesCfg(Ogre::StringUtil::BLANK), mPluginsCfg(Ogre::StringUtil::BLANK) {
 	mVehicleNode = NULL;
 }
-
 
 // Destructor:
 OgreRenderer::~OgreRenderer(void) {
@@ -57,39 +55,28 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
 	mVehicleNode->setPosition(pos[0], pos[1], pos[2]);
 
-
-
-
-
-
-
 	/*
-	if (mVehicleOrientation != mDesiredVehicleOrientation) {
+	 if (mVehicleOrientation != mDesiredVehicleOrientation) {
 
-			quat rotDiff = cml::quaternion_rotation_difference(mDesiredOrientation, mOrientation);
+	 quat rotDiff = cml::quaternion_rotation_difference(mDesiredOrientation, mOrientation);
 
 
 
-			float diffAngle = 0;
-			cml::vector3f diffVec;
-			cml::quaternion_to_axis_angle(rotDiff, diffVec, diffAngle, (float) 0);
+	 float diffAngle = 0;
+	 cml::vector3f diffVec;
+	 cml::quaternion_to_axis_angle(rotDiff, diffVec, diffAngle, (float) 0);
 
-			if (diffAngle > 0.01) {
-				quat rotQuat;
-				cml::quaternion_rotation_axis_angle(rotQuat, diffVec, -diffAngle * (float) 0.05);
-				setOrientation(mOrientation * rotQuat);
-			} else {
-				setOrientation(mDesiredOrientation);
-			}
-		}
-	*/
-
+	 if (diffAngle > 0.01) {
+	 quat rotQuat;
+	 cml::quaternion_rotation_axis_angle(rotQuat, diffVec, -diffAngle * (float) 0.05);
+	 setOrientation(mOrientation * rotQuat);
+	 } else {
+	 setOrientation(mDesiredOrientation);
+	 }
+	 }
+	 */
 
 	//Quaternion delta = Quaternion::Slerp(1, mVehicleOrientation, mDesiredVehicleOrientation, true);
-
-
-
-
 
 	Ogre::Quaternion q;
 
@@ -269,7 +256,6 @@ Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int
 
 Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
 
-
 	Ogre::MovableObject* movable;
 
 	// If the TrackAtom has no mesh name assigned, create default geometry for it.
@@ -355,33 +341,28 @@ bool OgreRenderer::init() {
 
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
-	mSceneMgr->setSkyBox(true, "SpaceRoads/SkyBoxes/2Moons");
+	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox);
 
 	//################## BEGIN Add player ship to scene graph ####################
 
-	//Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "ogrehead.mesh");
 	Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "Vehicle.mesh");
 
 	mVehicleNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	mVehicleNode->attachObject(entVehicle);
 
-	//mPlayerVehicleNode->setScale(0.1,0.1,0.1);
-	//################## END Add player ship to scene graph ####################
 
+	//################## END Add player ship to scene graph ####################
 
 	mTrackAtomsRootNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 
-
 	// Build the track:
 	buildTrackSubgraph();
-
 
 	// Create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 
 	// Position it at 80 in Z direction
-	mCamera->setPosition(Ogre::Vector3(0, 15, 50));
-
+	mCamera->setPosition(Ogre::Vector3(0, 13, 50));
 
 	mCamera->setNearClipDistance(5);
 
@@ -419,34 +400,27 @@ bool OgreRenderer::init() {
 	return true;
 }
 
-
 void OgreRenderer::buildTrackSubgraph() {
 
-		std::vector<TrackAtom*> trackAtoms = mpApp->mpTrack->getTrackAtomsAround(cml::vector3f(0, 0, 0));
+	std::vector<TrackAtom*> trackAtoms = mpApp->mpTrack->getTrackAtomsAround(cml::vector3f(0, 0, 0));
 
-		taCount = 0;
+	taCount = 0;
 
-		mTrackAtomsRootNode->removeAllChildren();
+	mTrackAtomsRootNode->removeAllChildren();
 
-		for (unsigned int ii = 0; ii < trackAtoms.size(); ii++) {
+	for (unsigned int ii = 0; ii < trackAtoms.size(); ii++) {
 
-			TrackAtom* ta = trackAtoms[ii];
+		TrackAtom* ta = trackAtoms[ii];
 
-			Ogre::MovableObject* movable = getTrackAtomGeometry(ta);
+		Ogre::MovableObject* movable = getTrackAtomGeometry(ta);
 
-			//Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-			Ogre::SceneNode* node = mTrackAtomsRootNode->createChildSceneNode();
+		//Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+		Ogre::SceneNode* node = mTrackAtomsRootNode->createChildSceneNode();
 
-
-			node->setPosition(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
-			node->attachObject(movable);
-		}
-
-
-
-
+		node->setPosition(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
+		node->attachObject(movable);
+	}
 }
-
 
 bool OgreRenderer::renderOneFrame() {
 	Ogre::WindowEventUtilities::messagePump();
@@ -459,7 +433,6 @@ bool OgreRenderer::renderOneFrame() {
 	return true;
 }
 
-
 std::string OgreRenderer::getWindowSize() {
 	size_t windowHnd = 0;
 	std::ostringstream windowHndStr;
@@ -469,7 +442,6 @@ std::string OgreRenderer::getWindowSize() {
 
 	return windowHndStr.str();
 }
-
 
 //Adjust mouse clipping area
 void OgreRenderer::windowResized(Ogre::RenderWindow* rw) {

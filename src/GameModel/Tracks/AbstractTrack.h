@@ -33,6 +33,7 @@ public:
 
 	cml::vector3d mStartPosition;
 
+	std::string mSkybox;
 
 	bool mHasChanged;
 

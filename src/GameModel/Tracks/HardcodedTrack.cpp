@@ -11,6 +11,8 @@
 
 HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
+	mSkybox = "SpaceRoads/SkyBoxes/Space1";
+
 	mStartPosition.set(5, 4, -4);
 
 	//################# BEGIN Construct the track ##################

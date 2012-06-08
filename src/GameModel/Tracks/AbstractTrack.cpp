@@ -11,6 +11,8 @@ AbstractTrack::AbstractTrack(Application* a_app) {
 	// TODO Auto-generated constructor stub
 
 	mpApp = a_app;
+
+	mSkybox = "SpaceRoads/SkyBoxes/2Moons";
 }
 
 AbstractTrack::~AbstractTrack() {
