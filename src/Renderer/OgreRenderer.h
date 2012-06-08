@@ -64,9 +64,6 @@ private:
     Ogre::SceneNode* mVehicleMeshNode;
     Ogre::SceneNode* mTrackAtomsRootNode;
 
-    Ogre::Quaternion mDesiredVehicleOrientation;
-    Ogre::Quaternion mVehicleOrientation;
-
     std::vector<Ogre::SceneNode*> mTrackAtomSceneNodes;
 };
 

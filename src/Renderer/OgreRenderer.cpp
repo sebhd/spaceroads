@@ -67,25 +67,23 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	q.y = orientation.as_vector()[2];
 	q.z = orientation.as_vector()[3];
 
-	mVehicleOrientation = q;
-
+	//################# BEGIN Construct Sideward thrust roll quaternion ################
 	if (ship->mThrustSideward != 0) {
-		mVehicleRollAngle = -ship->mThrustSideward * 500;
+		mVehicleRollAngle = -ship->mThrustSideward * 700;
 	} else {
 		mVehicleRollAngle *= 0.98;
 	}
 
-	//std::cout << mVehicleRollAngle << std::endl;
-
-	Ogre::Quaternion q2(Ogre::Degree(mVehicleRollAngle), Ogre::Vector3(0, 0, -1));
+	Ogre::Quaternion qSidewardThrustRoll(Ogre::Degree(mVehicleRollAngle), Ogre::Vector3(0, 0, -1));
+	//################# END Construct Sideward thrust roll quaternion ################
 
 	if (mSidewardThrustRollCamera) {
 		// Roll both vehicle and camera:
-		mVehicleNode->setOrientation(q * q2);
+		mVehicleNode->setOrientation(q * qSidewardThrustRoll);
 	} else {
 		// Roll only the vehicle, not the camera:
 		mVehicleNode->setOrientation(q);
-		mVehicleMeshNode->setOrientation(q2);
+		mVehicleMeshNode->setOrientation(qSidewardThrustRoll);
 	}
 
 	return mpApp->handleFrameRenderingQueuedEvent();
