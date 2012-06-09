@@ -49,6 +49,7 @@ public:
 	bool mJumped;
 	float mThrustSideward, mThrustForward;
 
+	float mAccelForward;
 
 private:
 

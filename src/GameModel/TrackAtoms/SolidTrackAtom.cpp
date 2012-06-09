@@ -15,7 +15,7 @@ SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) :
 
 	mBounceThreshold = 0.3;
 	mRebound = 0.3;
-	mJumpForce = 0.5;
+	mJumpForce = 0.7;
 }
 
 SolidTrackAtom::~SolidTrackAtom() {

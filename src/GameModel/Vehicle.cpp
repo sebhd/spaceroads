@@ -44,6 +44,12 @@ void Vehicle::reset() {
 
 	mKilled = false;
 
+	// Somewhat close to original game:
+	//mAccelForward = 0.00005;
+
+	mAccelForward = 0.0001;
+
+
 	mThrustSideward = 0;
 	mThrustForward = 0;
 
@@ -98,9 +104,9 @@ void Vehicle::step() {
 
 	//############ BEGIN Update forward thrust ##############
 	if (mAddThrustForward) {
-		mThrustForward += 0.0002;
+		mThrustForward += mAccelForward;
 	} else if (mReduceThrustForward) {
-		mThrustForward -= 0.0005;
+		mThrustForward -= mAccelForward;
 	}
 
 	if (mThrustForward > mMaxThrustForward) {
@@ -108,6 +114,9 @@ void Vehicle::step() {
 	} else if (mThrustForward < 0) {
 		mThrustForward = 0;
 	}
+
+	//std::cout << mThrustForward << " / " << mMaxThrustForward << std::endl;
+
 	//############ END Update forward thrust ##############
 
 	//############ BEGIN Apply forward thrust ##############

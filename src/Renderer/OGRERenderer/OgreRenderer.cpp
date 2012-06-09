@@ -5,6 +5,8 @@
  *      Author: sebastian
  */
 
+// TODO 2: Implement "classic" camera that doesn't translate left/right ...
+// with the vehicle but stays in the centerline of the track instead (problems with some concepts?)
 #include "OgreRenderer.h"
 
 #include <OgreException.h>
@@ -293,7 +295,17 @@ bool OgreRenderer::init() {
 	}
 
 	// Create render window:
-	mWindow = mRoot->initialise(true, "SpaceRoads 2012-06-08");
+	time_t timestamp;
+	tm *nun;
+	timestamp = time(0);
+	nun = localtime(&timestamp);
+
+	std::stringstream windowTitle;
+
+	windowTitle << "SpaceRoads - built "<< nun->tm_year + 1900 << "-" << nun->tm_mon + 1 << "-" << nun->tm_mday << " " << nun->tm_hour << ":" << nun->tm_min << ":" << nun->tm_sec;
+
+
+	mWindow = mRoot->initialise(true, windowTitle.str());
 
 	// Set default mipmap level (note: some APIs ignore this)
 	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -313,7 +325,8 @@ bool OgreRenderer::init() {
 	buildTrackSubgraph();
 
 	// Set up skybox:
-	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox);
+	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox, 100);
+
 
 	// Set up ambient light
 	// TODO 2: Define ambient light in track
@@ -343,7 +356,7 @@ bool OgreRenderer::init() {
 
 	// Position the camera behind the player's vehicle:
 	mpVehicle->mVehicleNode->attachObject(mCamera);
-	mCamera->setPosition(Ogre::Vector3(0, 15, 40));
+	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
 	mCamera->lookAt(mpVehicle->mVehicleNode->getPosition());
 	//mCamera->lookAt(mpVehicle->mVehicleNode);
 	//mCamera->setAutoTracking(true, mpVehicle->mVehicleNode, Ogre::Vector3(0,0,0));

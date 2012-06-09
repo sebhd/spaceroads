@@ -32,13 +32,13 @@ OGREVehicle::OGREVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
 	// Set up engine flame particle system:
 	mVehicleEngineFlameParticleSystem = mpSceneManager->createParticleSystem("EngineFlame", "SpaceRoads/EngineFlame");
 	Ogre::SceneNode* particleNode = mVehicleNode->createChildSceneNode("EngineFlame");
-	particleNode->setPosition(0, -1.8, 3);
+	particleNode->setPosition(0, -1.5, 3);
 	particleNode->attachObject((Ogre::ParticleSystem*) mVehicleEngineFlameParticleSystem);
 
 	// Set up engine flame particle system:
 	mVehicleEngineSmokeParticleSystem = mpSceneManager->createParticleSystem("EngineSmoke", "SpaceRoads/EngineSmoke");
 	particleNode = mVehicleNode->createChildSceneNode("EngineSmoke");
-	particleNode->setPosition(0, -1.8, 3);
+	particleNode->setPosition(0, -1.5, 3);
 	particleNode->attachObject((Ogre::ParticleSystem*) mVehicleEngineSmokeParticleSystem);
 
 }
@@ -69,7 +69,7 @@ void OGREVehicle::update() {
 	//################# BEGIN Construct Sideward thrust roll quaternion ################
 
 	if (mpVehicle->mAddThrustLeft || mpVehicle->mAddThrustRight) {
-		mVehicleRollAngle = -mpVehicle->mThrustSideward * 700;
+		mVehicleRollAngle = -mpVehicle->mThrustSideward * 500;
 	} else {
 		mVehicleRollAngle *= 0.98;
 	}

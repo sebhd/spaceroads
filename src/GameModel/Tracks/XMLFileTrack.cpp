@@ -18,6 +18,8 @@ XMLFileTrack::XMLFileTrack(Application* a_app) : AbstractTrack(a_app) {
 
 	TiXmlElement* trackElem = doc.FirstChildElement("Track");
 
+	mSkybox = trackElem->Attribute("skybox");
+
 	for(TiXmlElement* taElem = trackElem->FirstChildElement("Atom"); taElem != NULL; taElem = taElem->NextSiblingElement("Atom")) {
 
 		 float x = atof(taElem->Attribute("x"));
