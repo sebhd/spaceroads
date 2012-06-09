@@ -6,33 +6,34 @@
 <Atom x="0" 
       y="0" 
       z="0" 
-      sizex="10" 
+      sizex="50" 
       sizey="1" 
-      sizez="100"
+      sizez="2000"
       name="blablubb"
-      material="SpaceRoads/Track/White">
+      material="SpaceRoads/Track/Orange">
 </Atom>
 
-<Atom x="0" 
-      y="0" 
+<Atom x="10" 
+      y="1" 
       z="100" 
       sizex="10" 
-      sizey="1" 
-      sizez="100"
+      sizey="5" 
+      sizez="5"
       name="blablubb"
-      material="SpaceRoads/Track/Blue"
+      material="SpaceRoads/Track/Yellow"
       >
 </Atom>
 
-<Atom x="0" 
-      y="0" 
-      z="200" 
-      sizex="100" 
-      sizey="1" 
-      sizez="10"
+
+<Atom x="20" 
+      y="1" 
+      z="400" 
+      sizex="10" 
+      sizey="5" 
+      sizez="5"
       name="blablubb"
-      material="SpaceRoads/Track/Jump"
+      material="SpaceRoads/Track/Yellow"
       >
 </Atom>
- 
+
 </Track>

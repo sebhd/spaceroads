@@ -122,7 +122,7 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	dot = cml::dot(ship->mDirForward, wallNormal);
 
-	if (dot < -0.8 && hitComponent.length() > 0.5) {
+	if (dot < -0.8 && hitComponent.length() > 0.3) {
 		ship->mKilled = true;
 	}
 	//################ END Kill vehicle if it hits something with the nose too fast ###############

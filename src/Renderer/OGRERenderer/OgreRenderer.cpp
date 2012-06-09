@@ -327,7 +327,7 @@ bool OgreRenderer::init() {
 	l->setType(Ogre::Light::LT_DIRECTIONAL);
 	l->setCastShadows(true);
 	//l->setDirection(1, -1, 1);
-	l->setDirection(0, -1, 0);
+	l->setDirection(0, -1, -0.3);
 	l->setDiffuseColour(1, 1, 1);
 	l->setSpecularColour(1, 1, 1);
 

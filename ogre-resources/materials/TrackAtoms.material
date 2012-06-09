@@ -74,3 +74,34 @@ material SpaceRoads/Track/Blue
       }
    }
 }
+
+
+material SpaceRoads/Track/Yellow
+{
+   technique
+   {
+      pass
+      {
+         lighting on
+ 
+         ambient 0 0 0.1 1
+         diffuse 1 1 0 1
+         emissive 0 0 0 1
+      }
+   }
+}
+
+material SpaceRoads/Track/Orange
+{
+   technique
+   {
+      pass
+      {
+         lighting on
+ 
+         ambient 0 0 0.1 1
+         diffuse 1 0.5 0 1
+         emissive 0 0 0 1
+      }
+   }
+}

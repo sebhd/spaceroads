@@ -36,8 +36,13 @@ const cml::vector3f& Vehicle::getPosition() {
 void Vehicle::reset() {
 
 	mAddThrustForward = false;
+	mReduceThrustForward = false;
 	mAddThrustLeft = false;
 	mAddThrustRight = false;
+	mTryJump = false;
+
+
+	mKilled = false;
 
 	mThrustSideward = 0;
 	mThrustForward = 0;
@@ -48,7 +53,6 @@ void Vehicle::reset() {
 	mMaxSpeedForward = 0.7;
 	mMaxSpeedSideward = 0.2;
 
-	mKilled = false;
 	mPos = mpTrack->mStartPosition;
 	mVelocity.set(0, 0, 0);
 
