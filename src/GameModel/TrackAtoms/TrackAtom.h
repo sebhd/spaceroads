@@ -27,9 +27,9 @@ public:
 
 	game::BoundingBox mBBox;
 
-	std::string mMaterial;
-	std::string name;
-	std::string meshName;
+	std::string mName;
+	std::string mRenderMaterial;
+	std::string mRenderMeshName;
 
 	bool mIsDeadly;
 };

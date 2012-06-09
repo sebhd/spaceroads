@@ -1,4 +1,4 @@
-material DeadlyTrackAtom
+material SpaceRoads/Track/Deadly
 {
    technique
    {
@@ -14,7 +14,7 @@ material DeadlyTrackAtom
 }
 
 
-material JumpPadTrackAtom
+material SpaceRoads/Track/Jump
 {
    technique
    {
@@ -29,7 +29,7 @@ material JumpPadTrackAtom
    }
 }
 
-material SolidTrackAtom
+material SpaceRoads/Track/Solid
 {
    technique
    {
@@ -39,6 +39,37 @@ material SolidTrackAtom
  
          ambient 0.1 0.1 0.1 1
          diffuse 0.5 0.5 0.5 1
+         emissive 0 0 0 1
+      }
+   }
+}
+
+material SpaceRoads/Track/White
+{
+   technique
+   {
+      pass
+      {
+         lighting on
+ 
+         ambient 0.1 0.1 0.1 1
+         diffuse 1 1 1 1
+         emissive 0 0 0 1
+      }
+   }
+}
+
+
+material SpaceRoads/Track/Blue
+{
+   technique
+   {
+      pass
+      {
+         lighting on
+ 
+         ambient 0 0 0.1 1
+         diffuse 0 0 1 1
          emissive 0 0 0 1
       }
    }

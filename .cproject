@@ -41,6 +41,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1027265983" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 								<option id="gnu.cpp.link.option.libs.681576066" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="OgreMain"/>
+									<listOptionValue builtIn="false" value="tinyxml"/>
 									<listOptionValue builtIn="false" value="OIS"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1584815567" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">

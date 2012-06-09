@@ -5,6 +5,8 @@
  *      Author: sebastian
  */
 
+// TODO 3: Detect irrecoverable falling-off the track (and in that case, reset the vehicle)
+// TODO 3: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
 #include "Vehicle.h"
@@ -14,9 +16,6 @@
 Vehicle::Vehicle(AbstractTrack* a_track) {
 
 	mpTrack = a_track;
-
-
-
 
 	// Configure the vehicle's collision AABB:
 	mBBox.mSize.set(4, 4, 4);
@@ -40,7 +39,6 @@ void Vehicle::reset() {
 	mAddThrustLeft = false;
 	mAddThrustRight = false;
 
-
 	mThrustSideward = 0;
 	mThrustForward = 0;
 
@@ -49,7 +47,6 @@ void Vehicle::reset() {
 
 	mMaxSpeedForward = 0.7;
 	mMaxSpeedSideward = 0.2;
-
 
 	mKilled = false;
 	mPos = mpTrack->mStartPosition;
@@ -63,7 +60,6 @@ void Vehicle::reset() {
 
 	mpTrack->reset();
 }
-
 
 void Vehicle::step() {
 
@@ -99,51 +95,42 @@ void Vehicle::step() {
 	//############ BEGIN Update forward thrust ##############
 	if (mAddThrustForward) {
 		mThrustForward += 0.0002;
-	}
-	else if (mReduceThrustForward) {
+	} else if (mReduceThrustForward) {
 		mThrustForward -= 0.0005;
 	}
 
 	if (mThrustForward > mMaxThrustForward) {
 		mThrustForward = mMaxThrustForward;
-	}
-	else if (mThrustForward < 0) {
+	} else if (mThrustForward < 0) {
 		mThrustForward = 0;
 	}
 	//############ END Update forward thrust ##############
-
 
 	//############ BEGIN Apply forward thrust ##############
 	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
 
 	if (mThrustForward > 0 && forwardComponent.length() < mMaxSpeedForward) {
 		mVelocity += mDirForward * mThrustForward;
-	}
-	else if (mThrustForward < 0 && forwardComponent.length() > 0) {
+	} else if (mThrustForward < 0 && forwardComponent.length() > 0) {
 		mVelocity += mDirForward * mThrustForward;
 	}
 	//############ END Apply forward thrust ##############
 
-
 	//############# BEGIN Update Sideward thrust ###############
 	if (mAddThrustLeft) {
 		mThrustSideward += 0.0005;
-	}
-	else if (mAddThrustRight) {
+	} else if (mAddThrustRight) {
 		mThrustSideward -= 0.0005;
-	}
-	else {
+	} else {
 		mThrustSideward = 0;
 	}
 
 	if (mThrustSideward > mMaxThrustSideward) {
 		mThrustSideward = mMaxThrustSideward;
-	}
-	else if (mThrustSideward < -mMaxThrustSideward) {
+	} else if (mThrustSideward < -mMaxThrustSideward) {
 		mThrustSideward = -mMaxThrustSideward;
 	}
 	//############# END Update Sideward thrust ###############
-
 
 	//############### BEGIN Apply sideward thrust ################
 	cml::vector3f sidewardComponent = cml::dot(mDirLeft, mVelocity) * mDirLeft;
@@ -152,9 +139,6 @@ void Vehicle::step() {
 		mVelocity += mDirLeft * mThrustSideward;
 	}
 	//############### END Apply sideward thrust ################
-
-
-
 
 	// Apply speed limits / "friction":
 	mVelocity -= forwardComponent * 0.03;
@@ -166,8 +150,6 @@ void Vehicle::step() {
 	mVelocity += getGravity();
 
 	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
-
-
 
 	// Find colliding track atoms and apply contact effects:
 	std::vector<CollisionInfo> collisions = getCollidingTAs();

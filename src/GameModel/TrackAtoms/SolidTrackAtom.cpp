@@ -10,12 +10,12 @@
 SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) :
 		TrackAtom(bbox) {
 
-	mMaterial = "SolidTrackAtom";
-	meshName = "";
+	mRenderMaterial = "SpaceRoads/Track/Solid";
+	mRenderMeshName = "";
 
 	mBounceThreshold = 0.3;
-	mRebound = 0.5;
-
+	mRebound = 0.3;
+	mJumpForce = 0.5;
 }
 
 SolidTrackAtom::~SolidTrackAtom() {
@@ -31,6 +31,8 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 
 	// ############## BEGIN Jumping ###############
+
+	// TODO 3: Is this the correct place for the jump code?
 	if (ship->mTryJump) {
 		cml::vector3f gravNormalized = cml::normalize(ship->getGravity());
 
@@ -42,7 +44,8 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 		cml::vector3f tmp = ship->getPosition() + gravNormalized * 2.7;
 
 		if (mBBox.containsPoint(tmp)) {
-			ship->mVelocity -= gravNormalized * 0.7;
+			ship->mVelocity -= gravNormalized * mJumpForce;
+			ship->mJumped = true;
 		}
 	}
 	// ############## END Jumping ###############

@@ -5,6 +5,8 @@
  *      Author: sebastian
  */
 
+// TODO 4: Implement pitching on up/down movement (jumping/falling) like in the original game
+
 #include "OGREVehicle.h"
 
 #include <OgreParticle.h>
@@ -16,6 +18,9 @@ OGREVehicle::OGREVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
 
 	mpSceneManager = a_sceneMgr;
 	mpVehicle = a_vehicle;
+
+	mVehicleRollAngle = 0;
+	mVehiclePitchAngle = 0;
 
 	Ogre::Entity* entVehicle = mpSceneManager->createEntity("Vehicle", "Vehicle.mesh");
 
@@ -44,12 +49,9 @@ OGREVehicle::~OGREVehicle() {
 
 void OGREVehicle::update() {
 
-
 	const cml::vector3d& pos = mpVehicle->getPosition();
 
 	mVehicleNode->setPosition(pos[0], pos[1], pos[2]);
-
-
 
 	Ogre::Quaternion q;
 
@@ -62,6 +64,8 @@ void OGREVehicle::update() {
 	q.y = orientation.as_vector()[2];
 	q.z = orientation.as_vector()[3];
 
+
+
 	//################# BEGIN Construct Sideward thrust roll quaternion ################
 
 	if (mpVehicle->mAddThrustLeft || mpVehicle->mAddThrustRight) {
@@ -72,10 +76,16 @@ void OGREVehicle::update() {
 
 	Ogre::Quaternion qSidewardThrustRoll(Ogre::Degree(mVehicleRollAngle), Ogre::Vector3(0, 0, -1));
 
-	if (mpVehicle->mAddThrustForward) {
-		mVehiclePitchAngle = -mpVehicle->mThrustForward * 300;
+	/*
+	if (mpVehicle->mJumped) {
+		mVehiclePitchAngle = 10;
+		mpVehicle->mJumped = false;
+	}
+*/
+	if (mpVehicle->mAddThrustForward && mVehiclePitchAngle > -7) {
+		mVehiclePitchAngle -= 0.1;
 	} else {
-		mVehiclePitchAngle *= 0.99;
+		mVehiclePitchAngle *= 0.95;
 	}
 
 	Ogre::Quaternion qForwardThrustPitch(Ogre::Degree(mVehiclePitchAngle), Ogre::Vector3(1, 0, 0));
@@ -92,8 +102,6 @@ void OGREVehicle::update() {
 		mVehicleNode->setOrientation(q);
 		mVehicleMeshNode->setOrientation(qSidewardThrustRoll * qForwardThrustPitch);
 	}
-
-
 
 	//############# BEGIN Update engine particle emitter ####################
 

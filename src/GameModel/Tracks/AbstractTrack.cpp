@@ -11,6 +11,7 @@ AbstractTrack::AbstractTrack(Application* a_app) {
 	// TODO Auto-generated constructor stub
 
 	mpApp = a_app;
+	mStartPosition.set(5,10,5);
 
 	mSkybox = "SpaceRoads/SkyBoxes/2Moons";
 }
@@ -25,4 +26,9 @@ void AbstractTrack::step() {
 
 void AbstractTrack::reset() {
 
+}
+
+const std::vector<TrackAtom*> AbstractTrack::getTrackAtomsAround(cml::vector3f pos) {
+
+	return mTrackAtoms;
 }

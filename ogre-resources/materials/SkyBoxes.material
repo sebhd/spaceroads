@@ -56,3 +56,22 @@ material SpaceRoads/SkyBoxes/2Moons
 	}
 }
 
+material SpaceRoads/SkyBoxes/BlueCloudySky
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+
+			texture_unit
+			{
+				
+				cubic_texture frontax2.jpg backax2.jpg leftax2.jpg rightax2.jpg topax2.jpg topax2.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+

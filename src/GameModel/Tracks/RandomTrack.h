@@ -15,13 +15,10 @@ public:
 	RandomTrack(Application* a_app);
 	virtual ~RandomTrack();
 
-	virtual const std::vector<TrackAtom*> getTrackAtomsAround(cml::vector3f pos);
-
 	virtual void step();
 	virtual void reset();
 
 protected:
-	std::vector<TrackAtom*> mTrackAtoms;
 
 	int nextX, nextY, nextZ;
 };

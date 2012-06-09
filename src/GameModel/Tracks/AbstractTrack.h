@@ -25,7 +25,7 @@ public:
 	AbstractTrack(Application*);
 	virtual ~AbstractTrack();
 
-	virtual const std::vector<TrackAtom*> getTrackAtomsAround(cml::vector3f pos) = 0;
+	const std::vector<TrackAtom*> getTrackAtomsAround(cml::vector3f pos);
 
 	virtual void step();
 
@@ -39,6 +39,8 @@ public:
 
 protected:
 	Application* mpApp;
+
+	std::vector<TrackAtom*> mTrackAtoms;
 
 };
 

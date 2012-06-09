@@ -13,13 +13,15 @@
 #include "Renderer/OGRERenderer/OgreRenderer.h"
 #include "GameModel/Tracks/HardcodedTrack.h"
 #include "GameModel/Tracks/RandomTrack.h"
+#include "GameModel/Tracks/XMLFileTrack.h"
 
 Application::Application() {
 
 	quit = false;
 
-	mpTrack = new HardcodedTrack(this);
+	//mpTrack = new HardcodedTrack(this);
 	//mpTrack = new RandomTrack(this);
+	mpTrack = new XMLFileTrack(this);
 
 	mpPlayerVehicle = new Vehicle(mpTrack);
 }

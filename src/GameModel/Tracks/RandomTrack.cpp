@@ -62,10 +62,6 @@ RandomTrack::~RandomTrack() {
 	// TODO Auto-generated destructor stub
 }
 
-const std::vector<TrackAtom*> RandomTrack::getTrackAtomsAround(cml::vector3f pos) {
-
-	return mTrackAtoms;
-}
 
 void RandomTrack::step() {
 	// In derived classes, this is the place for code to modify the track at runtime
@@ -99,7 +95,7 @@ void RandomTrack::step() {
 		SolidTrackAtom* ta = new SolidTrackAtom(bbox);
 
 		if (whoknows == 7) {
-			ta->mMaterial = "JumpPadTrackAtom";
+			ta->mRenderMaterial = "JumpPadTrackAtom";
 			ta->mRebound = -1;
 			ta->mBounceThreshold = 0;
 		}

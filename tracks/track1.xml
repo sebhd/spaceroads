@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Track>
+  
+ 
+<Atom x="0" 
+      y="0" 
+      z="0" 
+      sizex="10" 
+      sizey="1" 
+      sizez="100"
+      name="blablubb"
+      material="SpaceRoads/Track/White">
+</Atom>
+
+<Atom x="0" 
+      y="0" 
+      z="100" 
+      sizex="10" 
+      sizey="1" 
+      sizez="100"
+      name="blablubb"
+      material="SpaceRoads/Track/Blue"
+      >
+</Atom>
+
+<Atom x="0" 
+      y="0" 
+      z="200" 
+      sizex="100" 
+      sizey="1" 
+      sizez="10"
+      name="blablubb"
+      material="SpaceRoads/Track/Jump"
+      >
+</Atom>
+ 
+</Track>

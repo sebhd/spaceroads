@@ -11,8 +11,8 @@
 TrackAtom::TrackAtom(game::BoundingBox bbox) {
 
 	mBBox = bbox;
-	mMaterial = "SolidTrackAtom";
-	name = "Unnamed Track Atom";
+	mRenderMaterial = "SolidTrackAtom";
+	mName = "Unnamed Track Atom";
 	mIsDeadly = false;
 
 }

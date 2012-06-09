@@ -16,7 +16,6 @@
 #include <OgreRenderWindow.h>
 #include <OgreEntity.h>
 #include <OgreWindowEventUtilities.h>
-#include <OgreBillboardParticleRenderer.h>
 
 #include <cstdio>
 #include <cstdlib>
@@ -67,6 +66,8 @@ Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int
 	Ogre::ManualObject* manual = mSceneMgr->createManualObject();
 
 // Top:
+
+// TODO 2: Generate cube meshes that support shadows
 
 	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
 
@@ -224,9 +225,9 @@ Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
 
 	// If the TrackAtom has no mesh name assigned, create default geometry for it.
 	// This will be a simple block with the same size and shape as the TrackAtom's collision bounding box:
-	if (ta->meshName == "") {
+	if (ta->mRenderMeshName == "") {
 
-		Ogre::String material = ta->mMaterial;
+		Ogre::String material = ta->mRenderMaterial;
 
 		Ogre::ManualObject* manual = createBox(0, 0, 0, ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2],
 				material);
@@ -245,7 +246,7 @@ Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
 		id = s.str();
 		taCount++;
 
-		movable = mSceneMgr->createEntity(id + "_" + ta->meshName, ta->meshName);
+		movable = mSceneMgr->createEntity(id + "_" + ta->mRenderMeshName, ta->mRenderMeshName);
 	}
 
 	return movable;
@@ -305,51 +306,53 @@ bool OgreRenderer::init() {
 
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
-	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox);
-
-	// Set ambient light
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
-
-
-
-
+	// ############### BEGIN Set up track / environment rendering ################
 	mTrackAtomsRootNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 
 	// Build the track:
 	buildTrackSubgraph();
 
+	// Set up skybox:
+	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox);
+
+	// Set up ambient light
+	// TODO 2: Define ambient light in track
+	//mSceneMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
+
+	// Set up directional light:
+	// TODO 2: Read light settings from Track class
+
+	Ogre::Light* l = mSceneMgr->createLight("MainLight");
+	l->setType(Ogre::Light::LT_DIRECTIONAL);
+	l->setCastShadows(true);
+	//l->setDirection(1, -1, 1);
+	l->setDirection(0, -1, 0);
+	l->setDiffuseColour(1, 1, 1);
+	l->setSpecularColour(1, 1, 1);
+
+	//mSceneMgr->getRootSceneNode()->attachObject(l);
+
+	// ############### END Set up track / environment rendering ################
+
 	mpVehicle = new OGREVehicle(mSceneMgr, mpApp->mpPlayerVehicle);
 
 	// Create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
-
-	// Position it at 80 in Z direction
-	mCamera->setPosition(Ogre::Vector3(0, 15, 40));
-
-
 	mCamera->setNearClipDistance(5);
 
-	// Look at the player's vehicle:
-	mCamera->lookAt(mpVehicle->mVehicleNode->getPosition());
-
+	// Position the camera behind the player's vehicle:
 	mpVehicle->mVehicleNode->attachObject(mCamera);
+	mCamera->setPosition(Ogre::Vector3(0, 15, 40));
+	mCamera->lookAt(mpVehicle->mVehicleNode->getPosition());
+	//mCamera->lookAt(mpVehicle->mVehicleNode);
+	//mCamera->setAutoTracking(true, mpVehicle->mVehicleNode, Ogre::Vector3(0,0,0));
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
 	vp->setBackgroundColour(Ogre::ColourValue(0.95, 0.95, 0.95));
 	// Alter the camera aspect ratio to match the viewport
 	mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
-
-
-
-	// Create a light
-	// TODO 3: Read light settings from Track class
-	Ogre::Light* l = mSceneMgr->createLight("MainLight");
-	l->setType(Ogre::Light::LT_DIRECTIONAL);
-	l->setCastShadows(true);
-	l->setDirection(0, -1, 0);
-	mSceneMgr->getRootSceneNode()->attachObject(l);
-
 
 	//Set initial mouse clipping size
 	windowResized(mWindow);

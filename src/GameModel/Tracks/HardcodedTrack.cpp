@@ -11,7 +11,7 @@
 
 HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
-	mSkybox = "SpaceRoads/SkyBoxes/Space1";
+	mSkybox = "SpaceRoads/SkyBoxes/2Moons";
 
 	mStartPosition.set(5, 4, -4);
 
@@ -19,7 +19,7 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
 	// Anfangsteil:
 	SolidTrackAtom* ta = new SolidTrackAtom(game::BoundingBox(cml::vector3d(0, 0, -40), cml::vector3d(10, 1, 40)));
-	ta->name = "anfangsteil";
+	ta->mName = "anfangsteil";
 	mTrackAtoms.push_back(ta);
 
 	// Querteil:
@@ -51,7 +51,7 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
 	// Jump Pad am Anfang:
 	ta = new SolidTrackAtom(game::BoundingBox(cml::vector3d(-20, 0, -120), cml::vector3d(50, 5, 20)));
-	ta->mMaterial = "JumpPadTrackAtom";
+	ta->mRenderMaterial = "JumpPadTrackAtom";
 	ta->mBounceThreshold = 0;
 	ta->mRebound = -0.5;
 	mTrackAtoms.push_back(ta);
@@ -64,7 +64,7 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
 	// JumpPad auf die höhere Ebene:
 	ta = new SolidTrackAtom(game::BoundingBox(cml::vector3d(20, -20, -450), cml::vector3d(10, 1, 50)));
-	ta->mMaterial = "JumpPadTrackAtom";
+	ta->mRenderMaterial = "JumpPadTrackAtom";
 	ta->mBounceThreshold = 0;
 	ta->mRebound = -1.7;
 	mTrackAtoms.push_back(ta);
@@ -74,7 +74,7 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 
 	ta = new SolidTrackAtom(game::BoundingBox(cml::vector3d(20, 50, -920), cml::vector3d(10, 1, 20)));
 	ta->mIsDeadly = true;
-	ta->mMaterial = "DeadlyTrackAtom";
+	ta->mRenderMaterial = "DeadlyTrackAtom";
 
 	mTrackAtoms.push_back(ta);
 
@@ -100,12 +100,6 @@ HardcodedTrack::HardcodedTrack(Application* a_app) : AbstractTrack(a_app) {
 HardcodedTrack::~HardcodedTrack() {
 	// TODO Auto-generated destructor stub
 
-}
-
-
-const std::vector<TrackAtom*> HardcodedTrack::getTrackAtomsAround(cml::vector3f pos) {
-
-	return mTrackAtoms;
 }
 
 
