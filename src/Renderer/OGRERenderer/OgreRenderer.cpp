@@ -14,9 +14,6 @@
 #include <OgreViewport.h>
 #include <OgreSceneManager.h>
 #include <OgreRenderWindow.h>
-#include <OgreParticle.h>
-#include <OgreParticleSystem.h>
-#include <OgreParticleEmitter.h>
 #include <OgreEntity.h>
 #include <OgreWindowEventUtilities.h>
 #include <OgreBillboardParticleRenderer.h>
@@ -31,6 +28,8 @@ OgreRenderer::OgreRenderer(Application* app) :
 		AbstractRenderer(app), mRoot(0), mResourcesCfg(Ogre::StringUtil::BLANK), mPluginsCfg(Ogre::StringUtil::BLANK) {
 
 	mSidewardThrustRollCamera = false;
+
+	mpVehicle = NULL;
 }
 
 // Destructor:
@@ -54,78 +53,9 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		return false;
 	}
 
-	Vehicle* ship = mpApp->mpPlayerVehicle;
-
-	const cml::vector3d& pos = ship->getPosition();
-
-	mVehicleNode->setPosition(pos[0], pos[1], pos[2]);
-
-	Ogre::Quaternion q;
-
-	q.FromAngleAxis(Ogre::Radian(10), Ogre::Vector3(1, 0, 0));
-
-	const quat& orientation = ship->getOrientation();
-
-	q.w = orientation.as_vector()[0];
-	q.x = orientation.as_vector()[1];
-	q.y = orientation.as_vector()[2];
-	q.z = orientation.as_vector()[3];
-
-	//################# BEGIN Construct Sideward thrust roll quaternion ################
-	//if (ship->mThrustSideward != 0) {
-	if (ship->mAddThrustLeft || ship->mAddThrustRight) {
-		mVehicleRollAngle = -ship->mThrustSideward * 700;
-	} else {
-		mVehicleRollAngle *= 0.98;
+	if (mpVehicle != NULL) {
+		mpVehicle->update();
 	}
-
-	Ogre::Quaternion qSidewardThrustRoll(Ogre::Degree(mVehicleRollAngle), Ogre::Vector3(0, 0, -1));
-
-
-	if (ship->mAddThrustForward) {
-		mVehiclePitchAngle = -ship->mThrustForward * 300;
-	} else {
-		mVehiclePitchAngle *= 0.99;
-	}
-
-	Ogre::Quaternion qForwardThrustPitch(Ogre::Degree(mVehiclePitchAngle), Ogre::Vector3(1, 0, 0));
-
-	//################# END Construct Sideward thrust roll quaternion ################
-
-	if (mSidewardThrustRollCamera) {
-		// Roll both vehicle and camera:
-		mVehicleNode->setOrientation(q * qSidewardThrustRoll * qForwardThrustPitch);
-	} else {
-		// Roll only the vehicle, not the camera:
-		mVehicleNode->setOrientation(q);
-		mVehicleMeshNode->setOrientation(qSidewardThrustRoll * qForwardThrustPitch);
-	}
-
-
-
-	//############# BEGIN Update engine particle emitter ####################
-
-	// Set number of particles:
-
-
-
-	mVehicleEngineFlameParticleSystem->setEmitting(ship->mThrustForward > 0);
-	mVehicleEngineSmokeParticleSystem->setEmitting(ship->mThrustForward > 0);
-
-
-
-	Ogre::ParticleEmitter* emitter = mVehicleEngineFlameParticleSystem->getEmitter(0);
-	emitter->setParticleVelocity(ship->mThrustForward * 6000);
-	emitter->setEmissionRate(ship->mThrustForward * 10000);
-
-	emitter = mVehicleEngineSmokeParticleSystem->getEmitter(0);
-	//emitter->setParticleVelocity(ship->mThrustForward * 3000);
-	emitter->setEmissionRate(ship->mThrustForward * 7000);
-
-
-	//############# END Update engine particle emitter ####################
-
-
 
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
@@ -377,37 +307,18 @@ bool OgreRenderer::init() {
 
 	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox);
 
-	//################## BEGIN Add player ship to scene graph ####################
-
-	Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "Vehicle.mesh");
-
-	mVehicleNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-
-
-	mVehicleMeshNode = mVehicleNode->createChildSceneNode();
-	mVehicleMeshNode->attachObject(entVehicle);
-
-
-	// Set up engine flame particle system:
-	mVehicleEngineFlameParticleSystem = mSceneMgr->createParticleSystem("EngineFlame", "SpaceRoads/EngineFlame");
-	Ogre::SceneNode* particleNode = mVehicleNode->createChildSceneNode("EngineFlame");
-	particleNode->setPosition(0,-1.8,3);
-	particleNode->attachObject((Ogre::ParticleSystem*) mVehicleEngineFlameParticleSystem);
-
-	// Set up engine flame particle system:
-	mVehicleEngineSmokeParticleSystem = mSceneMgr->createParticleSystem("EngineSmoke", "SpaceRoads/EngineSmoke");
-	particleNode = mVehicleNode->createChildSceneNode("EngineSmoke");
-	particleNode->setPosition(0,-1.8,3);
-	particleNode->attachObject((Ogre::ParticleSystem*) mVehicleEngineSmokeParticleSystem);
+	// Set ambient light
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
 
 
 
-	//################## END Add player ship to scene graph ####################
 
 	mTrackAtomsRootNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 
 	// Build the track:
 	buildTrackSubgraph();
+
+	mpVehicle = new OGREVehicle(mSceneMgr, mpApp->mpPlayerVehicle);
 
 	// Create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
@@ -415,30 +326,30 @@ bool OgreRenderer::init() {
 	// Position it at 80 in Z direction
 	mCamera->setPosition(Ogre::Vector3(0, 15, 40));
 
+
 	mCamera->setNearClipDistance(5);
 
 	// Look at the player's vehicle:
-	mCamera->lookAt(mVehicleNode->getPosition());
+	mCamera->lookAt(mpVehicle->mVehicleNode->getPosition());
 
-	mVehicleNode->attachObject(mCamera);
+	mpVehicle->mVehicleNode->attachObject(mCamera);
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
 	vp->setBackgroundColour(Ogre::ColourValue(0.95, 0.95, 0.95));
-
 	// Alter the camera aspect ratio to match the viewport
 	mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 
-	// Set ambient light
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
+
 
 	// Create a light
+	// TODO 3: Read light settings from Track class
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
-	l->setType(Ogre::Light::LT_POINT);
+	l->setType(Ogre::Light::LT_DIRECTIONAL);
 	l->setCastShadows(true);
-	l->setPosition(0, 100, 0);
-	mVehicleNode->attachObject(l);
-	//l->setDirection(0, -1, -1);
+	l->setDirection(0, -1, 0);
+	mSceneMgr->getRootSceneNode()->attachObject(l);
+
 
 	//Set initial mouse clipping size
 	windowResized(mWindow);

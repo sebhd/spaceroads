@@ -10,7 +10,7 @@
 #include <ctime>
 #include <sys/time.h>
 
-#include "Renderer/OgreRenderer.h"
+#include "Renderer/OGRERenderer/OgreRenderer.h"
 #include "GameModel/Tracks/HardcodedTrack.h"
 #include "GameModel/Tracks/RandomTrack.h"
 

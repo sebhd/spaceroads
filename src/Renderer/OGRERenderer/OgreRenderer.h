@@ -13,8 +13,9 @@
 #include <OgreRoot.h>
 #include <OgreWindowEventUtilities.h>
 
-#include "AbstractRenderer.h"
-#include "../GameModel/TrackAtoms/TrackAtom.h"
+#include "../AbstractRenderer.h"
+#include "../../GameModel/TrackAtoms/TrackAtom.h"
+#include "OGREVehicle.h"
 
 class Application;
 
@@ -47,12 +48,11 @@ protected:
 
 private:
 
-    bool mSidewardThrustRollCamera;
-
     void buildTrackSubgraph();
 
-    float mVehicleRollAngle;
-    float mVehiclePitchAngle;
+    OGREVehicle* mpVehicle;
+
+    bool mSidewardThrustRollCamera;
 
     // OGRE stuff:
     Ogre::Root* mRoot;
@@ -61,13 +61,8 @@ private:
     Ogre::RenderWindow* mWindow;
     Ogre::SceneManager* mSceneMgr;
     Ogre::Camera* mCamera;
-    Ogre::SceneNode* mVehicleNode;
-    Ogre::SceneNode* mVehicleMeshNode;
+
     Ogre::SceneNode* mTrackAtomsRootNode;
-
-    Ogre::ParticleSystem* mVehicleEngineFlameParticleSystem;
-    Ogre::ParticleSystem* mVehicleEngineSmokeParticleSystem;
-
     std::vector<Ogre::SceneNode*> mTrackAtomSceneNodes;
 };
 
