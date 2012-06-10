@@ -40,7 +40,6 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 		quit = true;
 		break;
 	case OIS::KC_SPACE:
-		//mpPlayerVehicle->cmd_tryJump(true);
 		mpPlayerVehicle->mTryJump = true;
 		break;
 
@@ -149,15 +148,24 @@ void Application::run() {
 	// TODO 4: Make simulation step frequency configurable by introducing a time factor multiplicator in Vehicle::step() and...
 	// all other places where it matters.
 
+	unsigned int frametimetotal = 0;
+	unsigned int framecount = 0;
+
+	timeval before, after;
+
 	//########### BEGIN The Main Loop! ##########
 	while (!quit) {
 
 		gettimeofday(&newTime, NULL);
 
 		long frameTime = newTime.tv_usec - currentTime.tv_usec;
+
 		currentTime = newTime;
 
 		accumulator += frameTime;
+
+		frametimetotal += frameTime;
+		framecount++;
 
 		if (accumulator > 20000) {
 			accumulator = 20000;
@@ -178,13 +186,23 @@ void Application::run() {
 			accumulator -= dt;
 		}
 
+		gettimeofday(&before, NULL);
+
+
 		// Render next frame:
 		if (!mpRenderer->renderOneFrame()) {
 			//	return false;
 			break;
 		}
+
+		gettimeofday(&after, NULL);
+
+		std::cout << after.tv_usec - before.tv_usec << std::endl;
+
 	}
 	//########### END The Main Loop! ##########
+
+	std::cout << double(frametimetotal) / framecount << std::endl;
 }
 
 AbstractRenderer* Application::getRenderer() {

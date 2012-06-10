@@ -61,166 +61,148 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
 
-Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int size_y, int size_z,
-		std::string material) {
+Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int size_y, int size_z, std::string material) {
 
-// TODO 4: Memory management for this?
 	Ogre::ManualObject* manual = mSceneMgr->createManualObject();
 
-// Top:
-
-// TODO 2: Generate cube meshes that support shadows
-
+	//#################### BEGIN Front #####################
 	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+	manual->normal(0, 0, 1);
+	manual->position(x, y + size_y, z); // left  front top 		- vertex1
+	manual->position(x, y, z); // left front bottom 	- vertex2
+	manual->position(x + size_x, y, z); // right front bottom 	- vertex3
+	manual->position(x + size_x, y + size_y, z); // right front top 		- vertex4
+	manual->position(x, y, z + size_z); // left back bottom 	- vertex5
+	manual->position(x + size_x, y, z + size_z); // right back bottom 	- vertex6
+	manual->position(x + size_x, y + size_y, z + size_z); //  right back top 		- vertex7
+	manual->position(x, y + size_y, z + size_z); // left  back top 		- vertex8
 
-	manual->position(x, y + size_y, z + size_z); // left  back top
-	manual->normal(0, 1, 0);
-	manual->position(x + size_x, y + size_y, z); // right front top
-	manual->normal(0, 1, 0);
-	manual->position(x, y + size_y, z); // left  front top
-	manual->normal(0, 1, 0);
-
-	manual->position(x, y + size_y, z + size_z); // left  back top
-	manual->normal(0, 1, 0);
-	manual->position(x + size_x, y + size_y, z + size_z); //  right back top
-	manual->normal(0, 1, 0);
-	manual->position(x + size_x, y + size_y, z); // right front top
-	manual->normal(0, 1, 0);
+	manual->index(1);
+	manual->index(0);
+	manual->index(2);
+	manual->index(3);
+	manual->index(2);
+	manual->index(0);
 
 	manual->end();
+	//#################### END Front #####################
 
-	// Front:
+
+	//#################### BEGIN Back #####################
 	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
-	manual->position(x, y + size_y, z); //  right back  bottom
-	manual->normal(0, 0, 1);
-	manual->position(x + size_x, y + size_y, z); //  right back  bottom
-	manual->normal(0, 0, 1);
-	manual->position(x, y, z); // right front bottom
-	manual->normal(0, 0, 1);
+	manual->normal(0, 0, -1);
+	manual->position(x, y + size_y, z); // left  front top 		- vertex1
+	manual->position(x, y, z); // left front bottom 	- vertex2
+	manual->position(x + size_x, y, z); // right front bottom 	- vertex3
+	manual->position(x + size_x, y + size_y, z); // right front top 		- vertex4
+	manual->position(x, y, z + size_z); // left back bottom 	- vertex5
+	manual->position(x + size_x, y, z + size_z); // right back bottom 	- vertex6
+	manual->position(x + size_x, y + size_y, z + size_z); //  right back top 		- vertex7
+	manual->position(x, y + size_y, z + size_z); // left  back top 		- vertex8
 
-	manual->position(x + size_x, y + size_y, z); //  right back  bottom
-	manual->normal(0, 0, 1);
-	manual->position(x + size_x, y, z); //  right back  bottom
-	manual->normal(0, 0, 1);
-	manual->position(x, y, z); // right front bottom
-	manual->normal(0, 0, 1);
+	manual->index(7);
+	manual->index(4);
+	manual->index(6);
+	manual->index(5);
+	manual->index(6);
+	manual->index(4);
 
 	manual->end();
+	//#################### END Back #####################
 
-	// Left:
+
+	//#################### BEGIN Top #####################
 	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
-	manual->position(x, y + size_y, z + size_z); // left back top
-	manual->normal(-1, 0, 0);
-	manual->position(x, y + size_y, z); // left front top
-	manual->normal(-1, 0, 0);
-	manual->position(x, y, z + size_z); // left  back  bottom
-	manual->normal(-1, 0, 0);
+	manual->normal(0, 1, 0);
+	manual->position(x, y + size_y, z); // left  front top 		- vertex1
+	manual->position(x, y, z); // left front bottom 	- vertex2
+	manual->position(x + size_x, y, z); // right front bottom 	- vertex3
+	manual->position(x + size_x, y + size_y, z); // right front top 		- vertex4
+	manual->position(x, y, z + size_z); // left back bottom 	- vertex5
+	manual->position(x + size_x, y, z + size_z); // right back bottom 	- vertex6
+	manual->position(x + size_x, y + size_y, z + size_z); //  right back top 		- vertex7
+	manual->position(x, y + size_y, z + size_z); // left  back top 		- vertex8
 
-	manual->position(x, y + size_y, z); // left front top
-	manual->normal(-1, 0, 0);
-	manual->position(x, y, z); // left front bottom
-	manual->normal(-1, 0, 0);
-	manual->position(x, y, z + size_z); // left  back  bottom
-	manual->normal(-1, 0, 0);
+	manual->index(0);
+	manual->index(7);
+	manual->index(3);
+	manual->index(6);
+	manual->index(3);
+	manual->index(7);
 
 	manual->end();
+	//#################### END Top #####################
 
-	// Right:
+	//#################### BEGIN Bottom #####################
 	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+	manual->normal(0, -1, 0);
+	manual->position(x, y + size_y, z); // left  front top 		- vertex1
+	manual->position(x, y, z); // left front bottom 	- vertex2
+	manual->position(x + size_x, y, z); // right front bottom 	- vertex3
+	manual->position(x + size_x, y + size_y, z); // right front top 		- vertex4
+	manual->position(x, y, z + size_z); // left back bottom 	- vertex5
+	manual->position(x + size_x, y, z + size_z); // right back bottom 	- vertex6
+	manual->position(x + size_x, y + size_y, z + size_z); //  right back top 		- vertex7
+	manual->position(x, y + size_y, z + size_z); // left  back top 		- vertex8
 
-	manual->position(x + size_x, y + size_y, z); // right front top
-	manual->normal(1, 0, 0);
-	manual->position(x + size_x, y + size_y, z + size_z); //  right back top
-	manual->normal(1, 0, 0);
-	manual->position(x + size_x, y, z); // right front bottom
-	manual->normal(1, 0, 0);
-
-	manual->position(x + size_x, y + size_y, z + size_z); //  right back top
-	manual->normal(1, 0, 0);
-	manual->position(x + size_x, y, z + size_z); // right back bottom
-	manual->normal(1, 0, 0);
-	manual->position(x + size_x, y, z); // right front bottom
-	manual->normal(1, 0, 0);
+	manual->index(4);
+	manual->index(1);
+	manual->index(5);
+	manual->index(2);
+	manual->index(5);
+	manual->index(1);
 
 	manual->end();
+	//#################### END Bottom #####################
 
-	// Back:
+	//#################### BEGIN Right #####################
 	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
-	manual->position(x + size_x, y + size_y, z + size_z); //  right back top
-	manual->normal(0, 0, 1);
-	manual->position(x, y + size_y, z + size_z); // left back top
-	manual->normal(0, 0, 1);
-	manual->position(x + size_x, y, z + size_z); // right back bottom
-	manual->normal(0, 0, 1);
+	manual->normal(1, 0, 0);
+	manual->position(x, y + size_y, z); // left  front top 		- vertex1
+	manual->position(x, y, z); // left front bottom 	- vertex2
+	manual->position(x + size_x, y, z); // right front bottom 	- vertex3
+	manual->position(x + size_x, y + size_y, z); // right front top 		- vertex4
+	manual->position(x, y, z + size_z); // left back bottom 	- vertex5
+	manual->position(x + size_x, y, z + size_z); // right back bottom 	- vertex6
+	manual->position(x + size_x, y + size_y, z + size_z); //  right back top 		- vertex7
+	manual->position(x, y + size_y, z + size_z); // left  back top 		- vertex8
 
-	manual->position(x, y + size_y, z + size_z); // left back top
-	manual->normal(0, 0, 1);
-	manual->position(x, y, z + size_z); // left back bottom
-	manual->normal(0, 0, 1);
-	manual->position(x + size_x, y, z + size_z); // right back bottom
-	manual->normal(0, 0, 1);
-	manual->end();
-
-	// Bottom:
-	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
-	manual->position(x + size_x, y, z); // right front bottom
-	manual->normal(0, -1, 0);
-	manual->position(x + size_x, y, z + size_z); // right back bottom
-	manual->normal(0, -1, 0);
-	manual->position(x, y, z); // left front bottom
-	manual->normal(0, -1, 0);
-
-	manual->position(x + size_x, y, z + size_z); // right back bottom
-	manual->normal(0, -1, 0);
-	manual->position(x, y, z + size_z); // left  back bottom
-	manual->normal(0, -1, 0);
-	manual->position(x, y, z); // left front bottom
-	manual->normal(0, -1, 0);
+	manual->index(3);
+	manual->index(6);
+	manual->index(2);
+	manual->index(5);
+	manual->index(2);
+	manual->index(6);
 
 	manual->end();
+	//#################### END Right #####################
 
-	/*
-	 // Neue box mit indices:
-	 // Front:
-	 manual->begin("BaseWhite", Ogre::RenderOperation::OT_TRIANGLE_LIST);
-	 manual->position(x, y, z + size_z);
-	 manual->position(x, y + size_y, z + size_z);
-	 manual->position(x + size_x, y + size_y, z + size_z);
-	 manual->position(x + size_x, y, z + size_z);
+	//#################### BEGIN Left #####################
+	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+	//manual->normal(0, 0, 1);
+	manual->position(x, y + size_y, z); // left  front top 		- vertex1
+	manual->position(x, y, z); // left front bottom 	- vertex2
+	manual->position(x + size_x, y, z); // right front bottom 	- vertex3
+	manual->position(x + size_x, y + size_y, z); // right front top 		- vertex4
+	manual->position(x, y, z + size_z); // left back bottom 	- vertex5
+	manual->position(x + size_x, y, z + size_z); // right back bottom 	- vertex6
+	manual->position(x + size_x, y + size_y, z + size_z); //  right back top 		- vertex7
+	manual->position(x, y + size_y, z + size_z); // left  back top 		- vertex8
 
-	 manual->index(0);
-	 manual->index(2);
-	 manual->index(1);
-	 manual->index(0);
-	 manual->index(3);
-	 manual->index(2);
-	 manual->end();
+	manual->index(0);
+	manual->index(1);
+	manual->index(7);
+	manual->index(4);
+	manual->index(7);
+	manual->index(1);
 
-	 manual->position(x, y, z);
-	 manual->position(x, y + size_y, z);
-	 manual->position(x + size_x, y + size_y, z);
-	 manual->position(x + size_x, y, z);
+	manual->end();
+	//#################### END Left #####################
 
-	 // Top:
-
-	 manual->index(1);
-	 manual->index(6);
-	 manual->index(5);
-	 manual->index(1);
-	 manual->index(2);
-	 manual->index(6);
-
-	 // Right:
-	 manual->index(3);
-	 manual->index(7);
-	 manual->index(6);
-	 manual->index(3);
-	 manual->index(6);
-	 manual->index(2);
-	 */
 	return manual;
 }
 
+/*
 Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
 
 	Ogre::MovableObject* movable;
@@ -234,7 +216,7 @@ Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
 		Ogre::ManualObject* manual = createBox(0, 0, 0, ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2],
 				material);
 
-		manual->setMaterialName(0, material);
+		//	manual->setMaterialName(0, material);
 
 		movable = (Ogre::MovableObject*) manual;
 
@@ -253,6 +235,7 @@ Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
 
 	return movable;
 }
+*/
 
 bool OgreRenderer::init() {
 #ifdef _DEBUG
@@ -302,8 +285,8 @@ bool OgreRenderer::init() {
 
 	std::stringstream windowTitle;
 
-	windowTitle << "SpaceRoads - built "<< nun->tm_year + 1900 << "-" << nun->tm_mon + 1 << "-" << nun->tm_mday << " " << nun->tm_hour << ":" << nun->tm_min << ":" << nun->tm_sec;
-
+	windowTitle << "SpaceRoads - built " << nun->tm_year + 1900 << "-" << nun->tm_mon + 1 << "-" << nun->tm_mday << " "
+			<< nun->tm_hour << ":" << nun->tm_min << ":" << nun->tm_sec;
 
 	mWindow = mRoot->initialise(true, windowTitle.str());
 
@@ -314,19 +297,18 @@ bool OgreRenderer::init() {
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 
 	// Create the SceneManager, in this case a generic one:
-	mSceneMgr = mRoot->createSceneManager("DefaultSceneManager");
+	mSceneMgr = mRoot->createSceneManager("OctreeSceneManager");
 
-	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+//	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
 	// ############### BEGIN Set up track / environment rendering ################
-	mTrackAtomsRootNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	mTrackAtomsRootNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("TrackAtomsRootNode");
 
 	// Build the track:
 	buildTrackSubgraph();
 
 	// Set up skybox:
 	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox, 100);
-
 
 	// Set up ambient light
 	// TODO 2: Define ambient light in track
@@ -353,13 +335,12 @@ bool OgreRenderer::init() {
 	// Create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 	mCamera->setNearClipDistance(5);
+	mCamera->setFarClipDistance(2000);
 
 	// Position the camera behind the player's vehicle:
 	mpVehicle->mVehicleNode->attachObject(mCamera);
 	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
 	mCamera->lookAt(mpVehicle->mVehicleNode->getPosition());
-	//mCamera->lookAt(mpVehicle->mVehicleNode);
-	//mCamera->setAutoTracking(true, mpVehicle->mVehicleNode, Ogre::Vector3(0,0,0));
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -386,18 +367,32 @@ void OgreRenderer::buildTrackSubgraph() {
 
 	mTrackAtomsRootNode->removeAllChildren();
 
+	Ogre::StaticGeometry *sg = mSceneMgr->createStaticGeometry("TrackAtoms");
+
+	// TODO 2: Calculate extent of the static geometry
+	sg->setRegionDimensions(Ogre::Vector3(10000, 10000, 10000));
+	sg->setOrigin(Ogre::Vector3(0, 0, 0));
+
+
+	Ogre::ManualObject* unitCube = createBox(0, 0, 0, 1,1,1, "SpaceRoads/Track/White");
+	unitCube->convertToMesh("unitCube");
+	Ogre::Entity* entUnitCube = mSceneMgr->createEntity("entUnitCube", "unitCube");
+
 	for (unsigned int ii = 0; ii < trackAtoms.size(); ii++) {
 
 		TrackAtom* ta = trackAtoms[ii];
 
-		Ogre::MovableObject* movable = getTrackAtomGeometry(ta);
+		 Ogre::Vector3 pos(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
+		 Ogre::Vector3 scale(ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2]);
+		 Ogre::Quaternion orientation;
+		 orientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3::UNIT_Y);
 
-		//Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-		Ogre::SceneNode* node = mTrackAtomsRootNode->createChildSceneNode();
-
-		node->setPosition(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
-		node->attachObject(movable);
+		 Ogre::String material = ta->mRenderMaterial;
+		 entUnitCube->setMaterialName(material);
+		 sg->addEntity(entUnitCube, pos, orientation, scale);
 	}
+
+	sg->build();
 }
 
 bool OgreRenderer::renderOneFrame() {

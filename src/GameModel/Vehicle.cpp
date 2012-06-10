@@ -5,6 +5,7 @@
  *      Author: sebastian
  */
 
+// TODO 2: Implement some sort of spatial index to speed up collision detection
 // TODO 3: Detect irrecoverable falling-off the track (and in that case, reset the vehicle)
 // TODO 3: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
@@ -12,6 +13,8 @@
 #include "Vehicle.h"
 #include <vector>
 #include <cmath>
+#include <ctime>
+#include <sys/time.h>
 
 Vehicle::Vehicle(AbstractTrack* a_track) {
 
@@ -167,6 +170,11 @@ void Vehicle::step() {
 
 	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
 
+
+	timeval before, after;
+
+	gettimeofday(&before, NULL);
+
 	// Find colliding track atoms and apply contact effects:
 	std::vector<CollisionInfo> collisions = getCollidingTAs();
 
@@ -180,6 +188,12 @@ void Vehicle::step() {
 	for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 		collisions[ii].ta->applyCounterForces(this, collisions[ii].hs);
 	}
+
+	gettimeofday(&after, NULL);
+
+	long time = after.tv_usec - before.tv_usec;
+
+//	std::cout << time << std::endl;
 
 	//######### END Collision detection & handling (may modify velocity vector) ################
 

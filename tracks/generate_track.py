@@ -16,7 +16,7 @@ outfile.write("<Track skybox=\"SpaceRoads/SkyBoxes/PurpleNebula2\">\n")
 
 mat = 0
 
-for ii in range(0,100):
+for ii in range(0,1000):
   
   x = 0
   y = 0

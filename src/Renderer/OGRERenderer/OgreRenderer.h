@@ -38,7 +38,7 @@ protected:
 
     // Ogre::FrameListener
     virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-    Ogre::MovableObject* getTrackAtomGeometry(TrackAtom*);
+    //Ogre::MovableObject* getTrackAtomGeometry(TrackAtom*);
     void createScene();
 
     int taCount;
