@@ -11,7 +11,9 @@ AbstractTrack::AbstractTrack(Application* a_app) {
 	// TODO Auto-generated constructor stub
 
 	mpApp = a_app;
-	mStartPosition.set(5,10,5);
+
+	// TODO 3: Make start position configurable in the track
+	mStartPosition.set(2.5, 10, 5);
 
 	mSkybox = "SpaceRoads/SkyBoxes/2Moons";
 }

@@ -63,6 +63,7 @@ void Vehicle::reset() {
 	mVelocity.set(0, 0, 0);
 
 	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(1, 0, 0), (float) 0);
+	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(0, 1, 0), (float) M_PI);
 
 	setOrientation(mOrientation);
 

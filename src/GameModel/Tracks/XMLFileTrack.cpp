@@ -14,7 +14,7 @@ XMLFileTrack::XMLFileTrack(Application* a_app) : AbstractTrack(a_app) {
 	// TODO Auto-generated constructor stub
 
 	TiXmlDocument doc;
-	doc.LoadFile("tracks/track1.xml");
+	doc.LoadFile("tracks/default_track.xml");
 
 	TiXmlElement* trackElem = doc.FirstChildElement("Track");
 
