@@ -46,7 +46,7 @@ OgreRenderer::~OgreRenderer(void) {
 bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
 	if (mpApp->mpTrack->mHasChanged) {
-		buildTrackSubgraph();
+		buildTrackGeometry();
 		mpApp->mpTrack->mHasChanged = false;
 	}
 
@@ -61,7 +61,8 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
 
-Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int size_y, int size_z, std::string material) {
+Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int size_y, int size_z,
+		std::string material) {
 
 	Ogre::ManualObject* manual = mSceneMgr->createManualObject();
 
@@ -87,7 +88,6 @@ Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int
 	manual->end();
 	//#################### END Front #####################
 
-
 	//#################### BEGIN Back #####################
 	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
 	manual->normal(0, 0, -1);
@@ -109,7 +109,6 @@ Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int
 
 	manual->end();
 	//#################### END Back #####################
-
 
 	//#################### BEGIN Top #####################
 	manual->begin(material, Ogre::RenderOperation::OT_TRIANGLE_LIST);
@@ -203,39 +202,39 @@ Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int
 }
 
 /*
-Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
+ Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
 
-	Ogre::MovableObject* movable;
+ Ogre::MovableObject* movable;
 
-	// If the TrackAtom has no mesh name assigned, create default geometry for it.
-	// This will be a simple block with the same size and shape as the TrackAtom's collision bounding box:
-	if (ta->mRenderMeshName == "") {
+ // If the TrackAtom has no mesh name assigned, create default geometry for it.
+ // This will be a simple block with the same size and shape as the TrackAtom's collision bounding box:
+ if (ta->mRenderMeshName == "") {
 
-		Ogre::String material = ta->mRenderMaterial;
+ Ogre::String material = ta->mRenderMaterial;
 
-		Ogre::ManualObject* manual = createBox(0, 0, 0, ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2],
-				material);
+ Ogre::ManualObject* manual = createBox(0, 0, 0, ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2],
+ material);
 
-		//	manual->setMaterialName(0, material);
+ //	manual->setMaterialName(0, material);
 
-		movable = (Ogre::MovableObject*) manual;
+ movable = (Ogre::MovableObject*) manual;
 
-	}
-	// However, if a mesh is defined, we try to load this mesh from file:
-	else {
+ }
+ // However, if a mesh is defined, we try to load this mesh from file:
+ else {
 
-		std::ostringstream s;
-		std::string id;
-		s << taCount;
-		id = s.str();
-		taCount++;
+ std::ostringstream s;
+ std::string id;
+ s << taCount;
+ id = s.str();
+ taCount++;
 
-		movable = mSceneMgr->createEntity(id + "_" + ta->mRenderMeshName, ta->mRenderMeshName);
-	}
+ movable = mSceneMgr->createEntity(id + "_" + ta->mRenderMeshName, ta->mRenderMeshName);
+ }
 
-	return movable;
-}
-*/
+ return movable;
+ }
+ */
 
 bool OgreRenderer::init() {
 #ifdef _DEBUG
@@ -300,12 +299,23 @@ bool OgreRenderer::init() {
 	mSceneMgr = mRoot->createSceneManager("OctreeSceneManager");
 
 //	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
 	// ############### BEGIN Set up track / environment rendering ################
-	mTrackAtomsRootNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("TrackAtomsRootNode");
+
+
+
+	Ogre::ManualObject* unitCube = createBox(0, 0, 0, 1, 1, 1, "SpaceRoads/Track/White");
+	Ogre::MeshPtr meshPtr = unitCube->convertToMesh("unitCube");
+
+	meshPtr.get()->buildEdgeList();
+
+	entUnitCube = mSceneMgr->createEntity("entUnitCube", "unitCube");
+
+	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
 
 	// Build the track:
-	buildTrackSubgraph();
+	buildTrackGeometry();
 
 	// Set up skybox:
 	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox, 100);
@@ -321,8 +331,9 @@ bool OgreRenderer::init() {
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
 	l->setType(Ogre::Light::LT_DIRECTIONAL);
 	l->setCastShadows(true);
-	//l->setDirection(1, -1, 1);
-	l->setDirection(0, -1, -0.3);
+
+	l->setDirection(0.5, -1, 0.5);
+
 	l->setDiffuseColour(1, 1, 1);
 	l->setSpecularColour(1, 1, 1);
 
@@ -359,40 +370,33 @@ bool OgreRenderer::init() {
 	return true;
 }
 
-void OgreRenderer::buildTrackSubgraph() {
+void OgreRenderer::buildTrackGeometry() {
 
-	std::vector<TrackAtom*> trackAtoms = mpApp->mpTrack->getTrackAtomsAround(cml::vector3f(0, 0, 0));
-
-	taCount = 0;
-
-	mTrackAtomsRootNode->removeAllChildren();
-
-	Ogre::StaticGeometry *sg = mSceneMgr->createStaticGeometry("TrackAtoms");
+	mTrackStaticGeometry->destroy();
 
 	// TODO 2: Calculate extent of the static geometry
-	sg->setRegionDimensions(Ogre::Vector3(10000, 10000, 10000));
-	sg->setOrigin(Ogre::Vector3(0, 0, 0));
+	mTrackStaticGeometry->setRegionDimensions(Ogre::Vector3(10000, 10000, 10000));
+	mTrackStaticGeometry->setOrigin(Ogre::Vector3(0, 0, 0));
 
-
-	Ogre::ManualObject* unitCube = createBox(0, 0, 0, 1,1,1, "SpaceRoads/Track/White");
-	unitCube->convertToMesh("unitCube");
-	Ogre::Entity* entUnitCube = mSceneMgr->createEntity("entUnitCube", "unitCube");
+	std::vector<TrackAtom*> trackAtoms = mpApp->mpTrack->getTrackAtomsAround(cml::vector3f(0, 0, 0));
 
 	for (unsigned int ii = 0; ii < trackAtoms.size(); ii++) {
 
 		TrackAtom* ta = trackAtoms[ii];
 
-		 Ogre::Vector3 pos(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
-		 Ogre::Vector3 scale(ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2]);
-		 Ogre::Quaternion orientation;
-		 orientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3::UNIT_Y);
+		Ogre::Vector3 pos(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
+		Ogre::Vector3 scale(ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2]);
+		Ogre::Quaternion orientation;
+		orientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3::UNIT_Y);
 
-		 Ogre::String material = ta->mRenderMaterial;
-		 entUnitCube->setMaterialName(material);
-		 sg->addEntity(entUnitCube, pos, orientation, scale);
+		entUnitCube->setMaterialName(Ogre::String(ta->mRenderMaterial));
+		entUnitCube->setCastShadows(true);
+		mTrackStaticGeometry->addEntity(entUnitCube, pos, orientation, scale);
 	}
 
-	sg->build();
+	mTrackStaticGeometry->setCastShadows(true);
+	mTrackStaticGeometry->build();
+
 }
 
 bool OgreRenderer::renderOneFrame() {

@@ -41,14 +41,11 @@ protected:
     //Ogre::MovableObject* getTrackAtomGeometry(TrackAtom*);
     void createScene();
 
-    int taCount;
-
     Ogre::ManualObject* createBox(int x, int y, int z, int size_x, int size_y, int size_z, std::string material);
-
 
 private:
 
-    void buildTrackSubgraph();
+    void buildTrackGeometry();
 
     OGREVehicle* mpVehicle;
 
@@ -63,7 +60,15 @@ private:
     Ogre::Camera* mCamera;
 
     Ogre::SceneNode* mTrackAtomsRootNode;
-    std::vector<Ogre::SceneNode*> mTrackAtomSceneNodes;
+
+    Ogre::StaticGeometry* mTrackStaticGeometry;
+
+
+
+
+
+    	Ogre::Entity* entUnitCube;
+
 };
 
 #endif /* OGRERENDERER_H_ */

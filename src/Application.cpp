@@ -197,7 +197,7 @@ void Application::run() {
 
 		gettimeofday(&after, NULL);
 
-		std::cout << after.tv_usec - before.tv_usec << std::endl;
+		//std::cout << after.tv_usec - before.tv_usec << std::endl;
 
 	}
 	//########### END The Main Loop! ##########
