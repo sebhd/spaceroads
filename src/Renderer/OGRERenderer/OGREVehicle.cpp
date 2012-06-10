@@ -5,42 +5,37 @@
  *      Author: sebastian
  */
 
-// TODO 4: Implement pitching on up/down movement (jumping/falling) like in the original game
-
 #include "OGREVehicle.h"
-
 #include <OgreParticle.h>
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
-//#include "cml/cml.h"
 
 OGREVehicle::OGREVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
 
-	mpSceneManager = a_sceneMgr;
+	mSceneManager = a_sceneMgr;
 	mpVehicle = a_vehicle;
 
-	mVehicleRollAngle = 0;
-	mVehiclePitchAngle = 0;
+	mRollAngle = 0;
+	mPitchAngle = 0;
 
-	Ogre::Entity* entVehicle = mpSceneManager->createEntity("Vehicle", "Vehicle.mesh");
+	Ogre::Entity* entVehicle = mSceneManager->createEntity("Vehicle", "Vehicle.mesh");
 
-
-	mVehicleNode = mpSceneManager->getRootSceneNode()->createChildSceneNode();
+	mVehicleNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
 	mVehicleMeshNode = mVehicleNode->createChildSceneNode();
 	mVehicleMeshNode->attachObject(entVehicle);
 
 	// Set up engine flame particle system:
-	mVehicleEngineFlameParticleSystem = mpSceneManager->createParticleSystem("EngineFlame", "SpaceRoads/EngineFlame");
+	mEngineFlameParticleSystem = mSceneManager->createParticleSystem("EngineFlame", "SpaceRoads/EngineFlame");
 	Ogre::SceneNode* particleNode = mVehicleNode->createChildSceneNode("EngineFlame");
 	particleNode->setPosition(0, -1.5, 3);
-	particleNode->attachObject((Ogre::ParticleSystem*) mVehicleEngineFlameParticleSystem);
+	particleNode->attachObject((Ogre::ParticleSystem*) mEngineFlameParticleSystem);
 
 	// Set up engine flame particle system:
-	mVehicleEngineSmokeParticleSystem = mpSceneManager->createParticleSystem("EngineSmoke", "SpaceRoads/EngineSmoke");
+	mEngineSmokeParticleSystem = mSceneManager->createParticleSystem("EngineSmoke", "SpaceRoads/EngineSmoke");
 	particleNode = mVehicleNode->createChildSceneNode("EngineSmoke");
 	particleNode->setPosition(0, -1.5, 3);
-	particleNode->attachObject((Ogre::ParticleSystem*) mVehicleEngineSmokeParticleSystem);
+	particleNode->attachObject((Ogre::ParticleSystem*) mEngineSmokeParticleSystem);
 
 }
 
@@ -65,24 +60,15 @@ void OGREVehicle::update() {
 	q.y = orientation.as_vector()[2];
 	q.z = orientation.as_vector()[3];
 
-
-
 	//################# BEGIN Construct Sideward thrust roll quaternion ################
 
 	if (mpVehicle->mAddThrustLeft || mpVehicle->mAddThrustRight) {
-		mVehicleRollAngle = -mpVehicle->mThrustSideward * 500;
+		mRollAngle = -mpVehicle->mThrustSideward * 500;
 	} else {
-		mVehicleRollAngle *= 0.98;
+		mRollAngle *= 0.98;
 	}
 
-	Ogre::Quaternion qSidewardThrustRoll(Ogre::Degree(mVehicleRollAngle), Ogre::Vector3(0, 0, -1));
-
-
-	if (mpVehicle->mAddThrustForward && mVehiclePitchAngle > -7) {
-		mVehiclePitchAngle -= 0.1;
-	} else {
-		mVehiclePitchAngle *= 0.95;
-	}
+	Ogre::Quaternion qSidewardThrustRoll(Ogre::Degree(mRollAngle), Ogre::Vector3(0, 0, -1));
 
 	cml::vector3f g = mpVehicle->getGravity();
 
@@ -91,15 +77,25 @@ void OGREVehicle::update() {
 	float dot = cml::dot(velDirGravityComponent, g);
 
 	if (velDirGravityComponent.length() > 0.000001) {
-	if (dot < 0) {
-		mVehiclePitchAngle = 13;
-	}
-	else {
-		mVehiclePitchAngle = -13;
-	}
+
+		if (dot < 0) {
+			mDesiredPitchAngle = 17;
+		} else {
+			mDesiredPitchAngle = -17;
+		}
+
+		mPitchAngle += (mDesiredPitchAngle - mPitchAngle) * 0.05;
+	} else {
+		mDesiredPitchAngle = 0;
+
+		if (mpVehicle->mAddThrustForward && mPitchAngle > -7) {
+			mPitchAngle -= 0.1;
+		} else {
+			mPitchAngle *= 0.95;
+		}
 	}
 
-	Ogre::Quaternion qForwardThrustPitch(Ogre::Degree(mVehiclePitchAngle), Ogre::Vector3(1, 0, 0));
+	Ogre::Quaternion qForwardThrustPitch(Ogre::Degree(mPitchAngle), Ogre::Vector3(1, 0, 0));
 
 	//################# END Construct Sideward thrust roll quaternion ################
 
@@ -114,20 +110,20 @@ void OGREVehicle::update() {
 		mVehicleMeshNode->setOrientation(qSidewardThrustRoll * qForwardThrustPitch);
 	}
 
-	//############# BEGIN Update engine particle emitter ####################
+	//############# BEGIN Update engine particle emitters ####################
 
-	// Set number of particles:
+	bool emit = mpVehicle->mThrustForward > 0;
 
-	mVehicleEngineFlameParticleSystem->setEmitting(mpVehicle->mThrustForward > 0);
-	mVehicleEngineSmokeParticleSystem->setEmitting(mpVehicle->mThrustForward > 0);
+	mEngineFlameParticleSystem->setEmitting(emit);
+	mEngineSmokeParticleSystem->setEmitting(emit);
 
-	Ogre::ParticleEmitter* emitter = mVehicleEngineFlameParticleSystem->getEmitter(0);
+	Ogre::ParticleEmitter* emitter = mEngineFlameParticleSystem->getEmitter(0);
 	emitter->setParticleVelocity(mpVehicle->mThrustForward * 6000);
 	emitter->setEmissionRate(mpVehicle->mThrustForward * 10000);
 
-	emitter = mVehicleEngineSmokeParticleSystem->getEmitter(0);
+	emitter = mEngineSmokeParticleSystem->getEmitter(0);
 	emitter->setEmissionRate(mpVehicle->mThrustForward * 7000);
 
-	//############# END Update engine particle emitter ####################
+	//############# END Update engine particle emitters ####################
 }
 

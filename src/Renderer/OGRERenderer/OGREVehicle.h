@@ -18,19 +18,20 @@ public:
 
 	void update();
 
-
 	Ogre::SceneNode* mVehicleNode;
 	Ogre::SceneNode* mVehicleMeshNode;
 
-	float mVehicleRollAngle;
-	float mVehiclePitchAngle;
+	Ogre::ParticleSystem* mEngineFlameParticleSystem;
+	Ogre::ParticleSystem* mEngineSmokeParticleSystem;
 
-	Ogre::ParticleSystem* mVehicleEngineFlameParticleSystem;
-	Ogre::ParticleSystem* mVehicleEngineSmokeParticleSystem;
-
-	Ogre::SceneManager* mpSceneManager;
+	Ogre::SceneManager* mSceneManager;
 
 	Vehicle* mpVehicle;
+
+protected:
+	float mRollAngle;
+	float mPitchAngle;
+	float mDesiredPitchAngle;
 };
 
 #endif /* OGREVEHICLE_H_ */
