@@ -20,9 +20,13 @@ OGREVehicle::OGREVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
 
 	Ogre::Entity* entVehicle = mSceneManager->createEntity("Vehicle", "Vehicle.mesh");
 
+
+
 	mVehicleNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
 	mVehicleMeshNode = mVehicleNode->createChildSceneNode();
+
+
 	mVehicleMeshNode->attachObject(entVehicle);
 
 	// Set up engine flame particle system:
@@ -84,7 +88,7 @@ void OGREVehicle::update() {
 			mDesiredPitchAngle = -17;
 		}
 
-		mPitchAngle += (mDesiredPitchAngle - mPitchAngle) * 0.05;
+		mPitchAngle += (mDesiredPitchAngle - mPitchAngle) * 0.1;
 	} else {
 		mDesiredPitchAngle = 0;
 

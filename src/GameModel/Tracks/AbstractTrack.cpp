@@ -13,7 +13,7 @@ AbstractTrack::AbstractTrack(Application* a_app) {
 	mpApp = a_app;
 
 	// TODO 3: Make start position configurable in the track
-	mStartPosition.set(2.5, 10, 5);
+	mStartPosition.set(4, 10, 5);
 
 	mSkybox = "SpaceRoads/SkyBoxes/2Moons";
 }

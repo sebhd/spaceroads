@@ -21,7 +21,7 @@ for ii in range(0,1000):
   x = 0
   y = 0
   z = ii * 20
-  sizex = 5
+  sizex = 8
   sizey = 1
   sizez = 20
   

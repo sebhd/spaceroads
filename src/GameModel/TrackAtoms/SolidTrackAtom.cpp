@@ -7,8 +7,7 @@
 
 #include "SolidTrackAtom.h"
 
-SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) :
-		TrackAtom(bbox) {
+SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) : TrackAtom(bbox) {
 
 	mRenderMaterial = "SpaceRoads/Track/Solid";
 	mRenderMeshName = "";
@@ -110,6 +109,7 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	ship->mVelocity -= hitComponent;
 
 	if (hitComponent.length() > mBounceThreshold) {
+	//if (hitComponent.length() > mBounceThreshold) {
 
 		if (mRebound < 0) {
 
