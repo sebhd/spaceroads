@@ -20,12 +20,11 @@ OGREVehicle::OGREVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
 
 	Ogre::Entity* entVehicle = mSceneManager->createEntity("Vehicle", "Vehicle.mesh");
 
-
+	mOrientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3(1, 0, 0));
 
 	mVehicleNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
 	mVehicleMeshNode = mVehicleNode->createChildSceneNode();
-
 
 	mVehicleMeshNode->attachObject(entVehicle);
 
@@ -55,14 +54,33 @@ void OGREVehicle::update() {
 
 	Ogre::Quaternion q;
 
-	q.FromAngleAxis(Ogre::Radian(10), Ogre::Vector3(1, 0, 0));
-
 	const quat& orientation = mpVehicle->getOrientation();
 
 	q.w = orientation.as_vector()[0];
 	q.x = orientation.as_vector()[1];
 	q.y = orientation.as_vector()[2];
 	q.z = orientation.as_vector()[3];
+
+	if (q != mOrientation) {
+
+		Ogre::Quaternion transition = q * mOrientation.Inverse();
+
+		Ogre::Radian a;
+		Ogre::Vector3 v;
+
+		transition.ToAngleAxis(a, v);
+
+		if (a.valueDegrees() > 1) {
+
+			Ogre::Quaternion t2;
+
+			t2.FromAngleAxis(a * 0.03, v);
+
+			mOrientation = t2 * mOrientation;
+		} else {
+			mOrientation = q;
+		}
+	}
 
 	//################# BEGIN Construct Sideward thrust roll quaternion ################
 
@@ -110,7 +128,8 @@ void OGREVehicle::update() {
 		mVehicleNode->setOrientation(q * qSidewardThrustRoll * qForwardThrustPitch);
 	} else {
 		// Roll only the vehicle, not the camera:
-		mVehicleNode->setOrientation(q);
+		mVehicleNode->setOrientation(mOrientation);
+		//mVehicleNode->setOrientation(q);
 		mVehicleMeshNode->setOrientation(qSidewardThrustRoll * qForwardThrustPitch);
 	}
 

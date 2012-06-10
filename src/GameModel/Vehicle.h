@@ -42,7 +42,8 @@ public:
 	float getThrustForward() { return mThrustForward; }
 	float getThrustSideward() { return mThrustSideward; }
 
-	quat mDesiredOrientation;
+	void setOrientation(quat rotQuat);
+
 	bool mAddThrustLeft, mAddThrustRight, mAddThrustForward, mReduceThrustForward;
 	bool mTryJump;
 
@@ -52,10 +53,12 @@ public:
 	float mAccelForward;
 	cml::vector3f mVelocity;
 
+	quat mOrientation;
+
 private:
 
 	std::vector<CollisionInfo> getCollidingTAs();
-	void setOrientation(quat rotQuat);
+
 
 	game::BoundingBox mBBox;
 
@@ -71,7 +74,7 @@ private:
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;
 
-	quat mOrientation;
+
 	cml::vector3f mGravity;
 	cml::vector3f mBBoxPosOffset;
 };

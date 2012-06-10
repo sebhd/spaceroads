@@ -32,6 +32,8 @@ protected:
 	float mRollAngle;
 	float mPitchAngle;
 	float mDesiredPitchAngle;
+
+	Ogre::Quaternion mOrientation;
 };
 
 #endif /* OGREVEHICLE_H_ */

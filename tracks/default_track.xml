@@ -10,8 +10,8 @@
 
 <Atom x="0" y="0" z="120" sizex="8" sizey="1" sizez="80" name=""  material="SpaceRoads/Track/DarkGrey"></Atom>
 
-<Atom x="0" y="0" z="120" sizex="1" sizey="5" sizez="80" name=""  material="none"></Atom>
-<Atom x="7" y="0" z="120" sizex="1" sizey="5" sizez="80" name=""  material="none"></Atom>
+<Atom x="0" y="1" z="120" sizex="1" sizey="5" sizez="80" name=""  material="none"></Atom>
+<Atom x="7" y="1" z="120" sizex="1" sizey="5" sizez="80" name=""  material="none"></Atom>
 <Atom x="0" y="6" z="120" sizex="8" sizey="1" sizez="80" name=""  material="none"></Atom>
 
 

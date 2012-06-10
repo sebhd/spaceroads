@@ -10,6 +10,7 @@
 // TODO 3: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
+
 #include "Vehicle.h"
 #include <vector>
 #include <cmath>
@@ -70,7 +71,6 @@ void Vehicle::reset() {
 
 	setOrientation(mOrientation);
 
-	mDesiredOrientation = mOrientation;
 
 	mpTrack->reset();
 }
@@ -83,26 +83,6 @@ void Vehicle::step() {
 		reset();
 		return;
 	}
-
-	//################# BEGIN Rotation in gewünschte Orientierung ##################
-	if (mOrientation != mDesiredOrientation) {
-
-		quat rotDiff = cml::quaternion_rotation_difference(mDesiredOrientation, mOrientation);
-
-		float diffAngle = 0;
-		cml::vector3f diffVec;
-		cml::quaternion_to_axis_angle(rotDiff, diffVec, diffAngle, (float) 0);
-
-		if (diffAngle > 0.01) {
-			quat rotQuat;
-			cml::quaternion_rotation_axis_angle(rotQuat, diffVec, -diffAngle * (float) 0.05);
-			setOrientation(mOrientation * rotQuat);
-		} else {
-			setOrientation(mDesiredOrientation);
-		}
-	}
-
-	//################# END Rotation in gewünschte Orientierung ##################
 
 	// ################ BEGIN Apply player vehicle control commands ###################
 
@@ -118,8 +98,6 @@ void Vehicle::step() {
 	} else if (mThrustForward < 0) {
 		mThrustForward = 0;
 	}
-
-	//std::cout << mThrustForward << " / " << mMaxThrustForward << std::endl;
 
 	//############ END Update forward thrust ##############
 
@@ -313,6 +291,7 @@ void Vehicle::setOrientation(quat rotQuat) {
 }
 
 void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
-	cml::quaternion_rotate_about_local_axis(mDesiredOrientation, axis, (float) (steps * M_PI / 2));
+	cml::quaternion_rotate_about_local_axis(mOrientation, axis, (float) (steps * M_PI / 2));
+	setOrientation(mOrientation);
 }
 
