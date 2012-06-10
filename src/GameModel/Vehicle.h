@@ -50,6 +50,7 @@ public:
 	float mThrustSideward, mThrustForward;
 
 	float mAccelForward;
+	cml::vector3f mVelocity;
 
 private:
 
@@ -64,17 +65,13 @@ private:
 
 	cml::vector3f mDirLeft;
 	cml::vector3f mDirForward;
-	cml::vector3f mVelocity;
+
 	cml::vector3f mPos;
 
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;
 
-
-
 	quat mOrientation;
-	float mOrientation_angle;
-	cml::vector3f mOrientation_axis;
 	cml::vector3f mGravity;
 	cml::vector3f mBBoxPosOffset;
 };

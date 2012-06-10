@@ -162,6 +162,8 @@ void Vehicle::step() {
 	// Apply gravity:
 	mVelocity += getGravity();
 
+
+
 	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
 
 	// Find colliding track atoms and apply contact effects:
@@ -278,17 +280,21 @@ const quat& Vehicle::getOrientation() {
 void Vehicle::setOrientation(quat rotQuat) {
 	mOrientation = rotQuat;
 
-	cml::quaternion_to_axis_angle(mOrientation, mOrientation_axis, mOrientation_angle, (float) 0);
+	cml::vector3f orientation_axis;
+	float orientation_angle;
+
+	cml::quaternion_to_axis_angle(mOrientation, orientation_axis, orientation_angle, (float) 0);
 
 	// Update gravity vector - it depends directly on the orientation:
+	// TODO 3: Define gravity in track
 	float g = -0.01;
-	mGravity = cml::rotate_vector(cml::vector3f(0, g, 0), mOrientation_axis, mOrientation_angle);
+	mGravity = cml::rotate_vector(cml::vector3f(0, g, 0), orientation_axis, orientation_angle);
 
 	// Update left vector:
-	mDirLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), mOrientation_axis, mOrientation_angle);
+	mDirLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), orientation_axis, orientation_angle);
 
 	// Update forward vector:
-	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), mOrientation_axis, mOrientation_angle);
+	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), orientation_axis, orientation_angle);
 }
 
 void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {

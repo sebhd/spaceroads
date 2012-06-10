@@ -12,7 +12,7 @@
 #include <OgreParticle.h>
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
-#include "cml/cml.h"
+//#include "cml/cml.h"
 
 OGREVehicle::OGREVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
 
@@ -23,6 +23,7 @@ OGREVehicle::OGREVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
 	mVehiclePitchAngle = 0;
 
 	Ogre::Entity* entVehicle = mpSceneManager->createEntity("Vehicle", "Vehicle.mesh");
+
 
 	mVehicleNode = mpSceneManager->getRootSceneNode()->createChildSceneNode();
 
@@ -76,16 +77,26 @@ void OGREVehicle::update() {
 
 	Ogre::Quaternion qSidewardThrustRoll(Ogre::Degree(mVehicleRollAngle), Ogre::Vector3(0, 0, -1));
 
-	/*
-	if (mpVehicle->mJumped) {
-		mVehiclePitchAngle = 10;
-		mpVehicle->mJumped = false;
-	}
-*/
+
 	if (mpVehicle->mAddThrustForward && mVehiclePitchAngle > -7) {
 		mVehiclePitchAngle -= 0.1;
 	} else {
 		mVehiclePitchAngle *= 0.95;
+	}
+
+	cml::vector3f g = mpVehicle->getGravity();
+
+	cml::vector3f velDirGravityComponent = cml::dot(g, mpVehicle->mVelocity) * g;
+
+	float dot = cml::dot(velDirGravityComponent, g);
+
+	if (velDirGravityComponent.length() > 0.000001) {
+	if (dot < 0) {
+		mVehiclePitchAngle = 13;
+	}
+	else {
+		mVehiclePitchAngle = -13;
+	}
 	}
 
 	Ogre::Quaternion qForwardThrustPitch(Ogre::Degree(mVehiclePitchAngle), Ogre::Vector3(1, 0, 0));
