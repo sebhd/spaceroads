@@ -114,9 +114,10 @@ void Vehicle::step() {
 
 	//############# BEGIN Update Sideward thrust ###############
 	if (mAddThrustLeft) {
-		mThrustSideward += 0.0005;
+		// TODO 3: Make sideward thrust configurable
+		mThrustSideward += 0.0003;
 	} else if (mAddThrustRight) {
-		mThrustSideward -= 0.0005;
+		mThrustSideward -= 0.0003;
 	} else {
 		mThrustSideward = 0;
 	}

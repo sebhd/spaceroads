@@ -16,7 +16,7 @@
 <Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="200" jumpForce="0" />
 <Atom jumpForce="0" material="none" y="1" x="0" z="200" scalex="1" scaley="4" scalez="100" />
 <Atom jumpForce="0" material="none" y="1" x="7" z="200" scalex="1" scaley="4" scalez="100" />
-<Atom slipOffset="3.8" material="none" y="5" x="0" z="200" scalex="8" scaley="1" scalez="100" />
+<Atom slipOffset="2.3" material="none" y="5" x="0" z="200" scalex="8" scaley="1" scalez="100" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="300" />
 <Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="320" />
@@ -32,7 +32,7 @@
 <Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="480" jumpForce="0" />
 <Atom jumpForce="0" material="none" y="1" x="0" z="480" scalex="1" scaley="4" scalez="100" />
 <Atom jumpForce="0" material="none" y="1" x="7" z="480" scalex="1" scaley="4" scalez="100" />
-<Atom slipOffset="3.8" material="none" y="5" x="0" z="480" scalex="8" scaley="1" scalez="100" />
+<Atom slipOffset="2.3" material="none" y="5" x="0" z="480" scalex="8" scaley="1" scalez="100" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="580" />
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="600" />
@@ -48,7 +48,7 @@
 <Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="760" jumpForce="0" />
 <Atom jumpForce="0" material="none" y="1" x="0" z="760" scalex="1" scaley="4" scalez="100" />
 <Atom jumpForce="0" material="none" y="1" x="7" z="760" scalex="1" scaley="4" scalez="100" />
-<Atom slipOffset="3.8" material="none" y="5" x="0" z="760" scalex="8" scaley="1" scalez="100" />
+<Atom slipOffset="2.3" material="none" y="5" x="0" z="760" scalex="8" scaley="1" scalez="100" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="860" />
 <Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="880" />
@@ -64,7 +64,7 @@
 <Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="1040" jumpForce="0" />
 <Atom jumpForce="0" material="none" y="1" x="0" z="1040" scalex="1" scaley="4" scalez="100" />
 <Atom jumpForce="0" material="none" y="1" x="7" z="1040" scalex="1" scaley="4" scalez="100" />
-<Atom slipOffset="3.8" material="none" y="5" x="0" z="1040" scalex="8" scaley="1" scalez="100" />
+<Atom slipOffset="2.3" material="none" y="5" x="0" z="1040" scalex="8" scaley="1" scalez="100" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1140" />
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1160" />
@@ -80,7 +80,7 @@
 <Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="1320" jumpForce="0" />
 <Atom jumpForce="0" material="none" y="1" x="0" z="1320" scalex="1" scaley="4" scalez="100" />
 <Atom jumpForce="0" material="none" y="1" x="7" z="1320" scalex="1" scaley="4" scalez="100" />
-<Atom slipOffset="3.8" material="none" y="5" x="0" z="1320" scalex="8" scaley="1" scalez="100" />
+<Atom slipOffset="2.3" material="none" y="5" x="0" z="1320" scalex="8" scaley="1" scalez="100" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1420" />
 <Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1440" />
@@ -96,7 +96,7 @@
 <Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="1600" jumpForce="0" />
 <Atom jumpForce="0" material="none" y="1" x="0" z="1600" scalex="1" scaley="4" scalez="100" />
 <Atom jumpForce="0" material="none" y="1" x="7" z="1600" scalex="1" scaley="4" scalez="100" />
-<Atom slipOffset="3.8" material="none" y="5" x="0" z="1600" scalex="8" scaley="1" scalez="100" />
+<Atom slipOffset="2.3" material="none" y="5" x="0" z="1600" scalex="8" scaley="1" scalez="100" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1700" />
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1720" />
@@ -112,7 +112,7 @@
 <Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="1880" jumpForce="0" />
 <Atom jumpForce="0" material="none" y="1" x="0" z="1880" scalex="1" scaley="4" scalez="100" />
 <Atom jumpForce="0" material="none" y="1" x="7" z="1880" scalex="1" scaley="4" scalez="100" />
-<Atom slipOffset="3.8" material="none" y="5" x="0" z="1880" scalex="8" scaley="1" scalez="100" />
+<Atom slipOffset="2.3" material="none" y="5" x="0" z="1880" scalex="8" scaley="1" scalez="100" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1980" />
 </Track>
