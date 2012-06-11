@@ -5,9 +5,9 @@
  *      Author: sebastian
  */
 
-// TODO 2: Implement some sort of spatial index to speed up collision detection
+// TODO 3: Implement some sort of spatial index to speed up collision detection
 // TODO 3: Detect irrecoverable falling-off the track (and in that case, reset the vehicle)
-// TODO 3: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering
+// TODO 2: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
 

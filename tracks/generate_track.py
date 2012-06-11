@@ -14,6 +14,8 @@ outfile = open(filename, "w")
 outfile.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
 outfile.write("<Track skybox=\"SpaceRoads/SkyBoxes/PurpleNebula2\">\n")
 
+outfile.write('<StartPos x="4" y="10" z="5" />\n')
+
 mat = 0
 
 for ii in range(0,1000):

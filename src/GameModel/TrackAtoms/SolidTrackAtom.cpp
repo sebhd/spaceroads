@@ -31,14 +31,13 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 	// ############## BEGIN Jumping ###############
 
-	// TODO 3: Is this the correct place for the jump code?
+	// TODO 4: Is this the correct place for the jump code?
 	if (ship->mTryJump) {
 		cml::vector3f gravNormalized = cml::normalize(ship->getGravity());
 
 		// NOTE: The factor that gravNormalized needs to be multiplied with depends
 		// on the size/dimensions of the ship's bounding box!
 
-		// TODO 2: Do this check with a 'ray intersects plane' test instead of the 'point is in box' test
 		// This is better because it is independent of the size of the bounding boxes of vehicle & track atom.
 		cml::vector3f tmp = ship->getPosition() + gravNormalized * 2.7;
 

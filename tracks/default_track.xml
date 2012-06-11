@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Track skybox="SpaceRoads/SkyBoxes/PurpleNebula2">
+
+<StartPos x="4" y="10" z="5" />
+
 <Atom x="0" y="0" z="0" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
 <Atom x="0" y="0" z="20" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
 <Atom x="0" y="0" z="40" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>

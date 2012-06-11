@@ -5,7 +5,7 @@
  *      Author: sebastian
  */
 
-// TODO 2: Implement "classic" camera that doesn't translate left/right ...
+// TODO 4: Implement "classic" camera that doesn't translate left/right ...
 // with the vehicle but stays in the centerline of the track instead (problems with some concepts?)
 #include "OgreRenderer.h"
 
@@ -201,40 +201,6 @@ Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int
 	return manual;
 }
 
-/*
- Ogre::MovableObject* OgreRenderer::getTrackAtomGeometry(TrackAtom* ta) {
-
- Ogre::MovableObject* movable;
-
- // If the TrackAtom has no mesh name assigned, create default geometry for it.
- // This will be a simple block with the same size and shape as the TrackAtom's collision bounding box:
- if (ta->mRenderMeshName == "") {
-
- Ogre::String material = ta->mRenderMaterial;
-
- Ogre::ManualObject* manual = createBox(0, 0, 0, ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2],
- material);
-
- //	manual->setMaterialName(0, material);
-
- movable = (Ogre::MovableObject*) manual;
-
- }
- // However, if a mesh is defined, we try to load this mesh from file:
- else {
-
- std::ostringstream s;
- std::string id;
- s << taCount;
- id = s.str();
- taCount++;
-
- movable = mSceneMgr->createEntity(id + "_" + ta->mRenderMeshName, ta->mRenderMeshName);
- }
-
- return movable;
- }
- */
 
 bool OgreRenderer::init() {
 #ifdef _DEBUG
@@ -320,12 +286,12 @@ bool OgreRenderer::init() {
 	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox, 100);
 
 	// Set up ambient light
-	// TODO 2: Define ambient light in track
+	// TODO 3: Define ambient light in track
 	//mSceneMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
 
 	// Set up directional light:
-	// TODO 2: Read light settings from Track class
+	// TODO 3: Read light settings from Track class
 
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
 	l->setType(Ogre::Light::LT_DIRECTIONAL);

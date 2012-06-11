@@ -21,6 +21,16 @@ XMLFileTrack::XMLFileTrack(Application* a_app) :
 
 	mSkybox = trackElem->Attribute("skybox");
 
+	//#################### BEGIN Read Start position ######################
+
+	TiXmlElement* startPosElem = trackElem->FirstChildElement("StartPos");
+
+	if (startPosElem != NULL) {
+		mStartPosition.set(atof(startPosElem->Attribute("x")), atof(startPosElem->Attribute("y")), atof(startPosElem->Attribute("z")));
+	}
+
+	//#################### END Read Start position ######################
+
 	//#################### BEGIN Read <Atom> Elements ######################
 	for (TiXmlElement* taElem = trackElem->FirstChildElement("Atom"); taElem != NULL;
 			taElem = taElem->NextSiblingElement("Atom")) {
