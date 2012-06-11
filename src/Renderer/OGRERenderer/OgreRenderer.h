@@ -8,7 +8,6 @@
 #ifndef OGRERENDERER_H_
 #define OGRERENDERER_H_
 
-
 // OGRE Includes:
 #include <OgreRoot.h>
 #include <OgreWindowEventUtilities.h>
@@ -19,55 +18,51 @@
 
 class Application;
 
-class OgreRenderer : public Ogre::WindowEventListener, public Ogre::FrameListener, public AbstractRenderer
-{
+class OgreRenderer: public Ogre::WindowEventListener, public Ogre::FrameListener, public AbstractRenderer {
 public:
-    OgreRenderer(Application* app);
-    virtual ~OgreRenderer(void);
+	OgreRenderer(Application* app);
+	virtual ~OgreRenderer(void);
 
-    std::string getWindowSize();
+	std::string getWindowSize();
 
-    bool init();
+	bool init();
 
-    bool renderOneFrame();
+	bool renderOneFrame();
 
 protected:
-    // Ogre::WindowEventListener
-    virtual void windowResized(Ogre::RenderWindow* rw);
-    virtual void windowClosed(Ogre::RenderWindow* rw);
+	// Ogre::WindowEventListener
+	virtual void windowResized(Ogre::RenderWindow* rw);
+	virtual void windowClosed(Ogre::RenderWindow* rw);
 
-    // Ogre::FrameListener
-    virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
-    //Ogre::MovableObject* getTrackAtomGeometry(TrackAtom*);
-    void createScene();
+	// Ogre::FrameListener
+	virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+	//Ogre::MovableObject* getTrackAtomGeometry(TrackAtom*);
+	void createScene();
 
-    Ogre::ManualObject* createBox(int x, int y, int z, int size_x, int size_y, int size_z, std::string material);
+	Ogre::ManualObject* createBox(int x, int y, int z, int size_x, int size_y, int size_z, std::string material);
 
 private:
 
-    void buildTrackGeometry();
+	void buildTrackGeometry();
 
-    OGREVehicle* mpVehicle;
+	OGREVehicle* mpVehicle;
 
-    bool mSidewardThrustRollCamera;
+	bool mSidewardThrustRollCamera;
 
-    // OGRE stuff:
-    Ogre::Root* mRoot;
-    Ogre::String mResourcesCfg;
-    Ogre::String mPluginsCfg;
-    Ogre::RenderWindow* mWindow;
-    Ogre::SceneManager* mSceneMgr;
-    Ogre::Camera* mCamera;
+	// OGRE stuff:
+	Ogre::Root* mRoot;
+	Ogre::String mResourcesCfg;
+	Ogre::String mPluginsCfg;
+	Ogre::RenderWindow* mWindow;
+	Ogre::SceneManager* mSceneMgr;
+	Ogre::Camera* mCamera;
 
-    Ogre::SceneNode* mTrackAtomsRootNode;
+	Ogre::SceneNode* mTrackAtomsRootNode;
 
-    Ogre::StaticGeometry* mTrackStaticGeometry;
+	Ogre::StaticGeometry* mTrackStaticGeometry;
 
-
-
-
-
-    	Ogre::Entity* entUnitCube;
+	Ogre::Entity* mEntityTunnel;
+	Ogre::Entity* mEntityUnitCube;
 
 };
 

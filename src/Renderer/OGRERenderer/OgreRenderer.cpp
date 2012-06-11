@@ -308,9 +308,9 @@ bool OgreRenderer::init() {
 
 	meshPtr.get()->buildEdgeList();
 
-	entUnitCube = mSceneMgr->createEntity("entUnitCube", "unitCube");
+	mEntityUnitCube = mSceneMgr->createEntity("entUnitCube", "unitCube");
 
-	Ogre::Entity* entTunnel = mSceneMgr->createEntity("entTunnel", "Cylinder.mesh");
+	mEntityTunnel = mSceneMgr->createEntity("entTunnel", "Cylinder.mesh");
 
 	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
 
@@ -392,26 +392,24 @@ void OgreRenderer::buildTrackGeometry() {
 			Ogre::Vector3 pos(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
 			Ogre::Vector3 scale(ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2]);
 
-			entUnitCube->setMaterialName(Ogre::String(ta->mRenderMaterial));
-			mTrackStaticGeometry->addEntity(entUnitCube, pos, orientation, scale);
+			mEntityUnitCube->setMaterialName(Ogre::String(ta->mRenderMaterial));
+			mTrackStaticGeometry->addEntity(mEntityUnitCube, pos, orientation, scale);
 		}
 	}
-
-	Ogre::Entity* entTunnel = mSceneMgr->createEntity("Tunnel", "Cylinder.mesh");
 
 
 	Ogre::Vector3 scale(8, 10, 80);
 
 
-	mTrackStaticGeometry->addEntity(entTunnel, Ogre::Vector3(0, 1, 120), orientation, scale);
-	mTrackStaticGeometry->addEntity(entTunnel, Ogre::Vector3(0, 1, 320), orientation, scale);
-	mTrackStaticGeometry->addEntity(entTunnel, Ogre::Vector3(0, 1, 520), orientation, scale);
-	mTrackStaticGeometry->addEntity(entTunnel, Ogre::Vector3(0, 1, 720), orientation, scale);
+	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 120), orientation, scale);
+	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 320), orientation, scale);
+	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 520), orientation, scale);
+	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 720), orientation, scale);
 
-	mTrackStaticGeometry->addEntity(entTunnel, Ogre::Vector3(0, 1, 920), orientation, scale);
-	mTrackStaticGeometry->addEntity(entTunnel, Ogre::Vector3(0, 1, 1120), orientation, scale);
-	mTrackStaticGeometry->addEntity(entTunnel, Ogre::Vector3(0, 1, 1320), orientation, scale);
-	mTrackStaticGeometry->addEntity(entTunnel, Ogre::Vector3(0, 1, 1520), orientation, scale);
+	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 920), orientation, scale);
+	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 1120), orientation, scale);
+	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 1320), orientation, scale);
+	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 1520), orientation, scale);
 
 
 

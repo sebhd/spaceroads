@@ -30,6 +30,15 @@
 <Atom x="0" y="0" z="320" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/DarkGrey"></Atom>
 
 
+<Atom x="0" y="20" z="200" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/DarkGrey"></Atom>
+<Atom x="0" y="20" z="220" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/White"></Atom>
+<Atom x="0" y="20" z="240" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/DarkGrey"></Atom>
+<Atom x="0" y="20" z="260" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/White"></Atom>
+<Atom x="0" y="20" z="280" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/DarkGrey"></Atom>
+<Atom x="0" y="20" z="300" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/White"></Atom>
+<Atom x="0" y="20" z="320" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/DarkGrey"></Atom>
+
+
 
 <Atom x="0" y="0" z="340" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/White"></Atom>
 <Atom x="0" y="0" z="360" sizex="8" sizey="1" sizez="20" name=""  material="SpaceRoads/Track/DarkGrey"></Atom>
