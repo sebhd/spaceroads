@@ -27,11 +27,11 @@ def makeTunnel(x,y,z, scalex, scaley, scalez):
     result += makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'jumpForce':0}, True) + "\n"
     
     # Walls:
-    result += makeXMLTag("Atom", {'x':x, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley, 'scalez':scalez, 'material':'none', 'jumpForce':0}, True) + "\n"
-    result += makeXMLTag("Atom", {'x':x + scalex - 1, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley, 'scalez':scalez, 'material':'none', 'jumpForce':0}, True) + "\n"
+    result += makeXMLTag("Atom", {'x':x, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley - 1, 'scalez':scalez, 'material':'none', 'jumpForce':0}, True) + "\n"
+    result += makeXMLTag("Atom", {'x':x + scalex - 1, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley - 1, 'scalez':scalez, 'material':'none', 'jumpForce':0}, True) + "\n"
 
     # Roof:
-    result += makeXMLTag("Atom", {'x':x, 'y':y+scaley, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material':'none'}, True) + "\n"
+    result += makeXMLTag("Atom", {'x':x, 'y':y+scaley, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material':'none', 'slipOffset': scalex / 2 - 0.2}, True) + "\n"
     result += "<!-- ########## END Tunnel ########## -->\n"
     return result
     

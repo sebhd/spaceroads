@@ -21,6 +21,7 @@ public:
 	float mBounceThreshold;
 	float mRebound;
 	float mJumpForce;
+	float mSlipOffset;
 
 
 

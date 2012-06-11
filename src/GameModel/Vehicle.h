@@ -55,6 +55,10 @@ public:
 
 	quat mOrientation;
 
+	cml::vector3f mDirLeft;
+	cml::vector3f mDirForward;
+
+
 private:
 
 	std::vector<CollisionInfo> getCollidingTAs();
@@ -66,8 +70,6 @@ private:
 
 	bool mKilled;
 
-	cml::vector3f mDirLeft;
-	cml::vector3f mDirForward;
 
 	cml::vector3f mPos;
 

@@ -7,7 +7,8 @@
 
 #include "SolidTrackAtom.h"
 
-SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) : TrackAtom(bbox) {
+SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) :
+		TrackAtom(bbox) {
 
 	mRenderMaterial = "SpaceRoads/Track/Solid";
 	mRenderMeshName = "";
@@ -15,6 +16,7 @@ SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) : TrackAtom(bbox) {
 	mBounceThreshold = 0.3;
 	mRebound = 0.3;
 	mJumpForce = 0.7;
+	mSlipOffset = 1;
 }
 
 SolidTrackAtom::~SolidTrackAtom() {
@@ -28,6 +30,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 		ship->mKilled = true;
 	}
 
+	cml::vector3f shipPos = ship->getPosition();
 
 	// ############## BEGIN Jumping ###############
 
@@ -39,7 +42,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 		// on the size/dimensions of the ship's bounding box!
 
 		// This is better because it is independent of the size of the bounding boxes of vehicle & track atom.
-		cml::vector3f tmp = ship->getPosition() + gravNormalized * 2.1;
+		cml::vector3f tmp = shipPos + gravNormalized * 2.1;
 
 		if (mBBox.containsPoint(tmp)) {
 			ship->mVelocity -= gravNormalized * mJumpForce;
@@ -47,6 +50,29 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 		}
 	}
 	// ############## END Jumping ###############
+
+	//############### BEGIN Slip off blocks when we come too close to the edge ##############
+
+	float slipSpeed = 0.01;
+
+	if (abs(shipPos[0] - mBBox.mPos[0]) < mSlipOffset) {
+		ship->mVelocity[0] -= slipSpeed;
+	} else if (abs((mBBox.mPos[0] + mBBox.mSize[0]) - shipPos[0]) < mSlipOffset) {
+		ship->mVelocity[0] += slipSpeed;
+	}
+
+	if (abs(shipPos[1] - mBBox.mPos[1]) < mSlipOffset) {
+		ship->mVelocity[1] -= slipSpeed;
+	} else if (abs((mBBox.mPos[1] + mBBox.mSize[1]) - shipPos[1]) < mSlipOffset) {
+		ship->mVelocity[1] += slipSpeed;
+	}
+
+	if (abs(shipPos[2] - mBBox.mPos[2]) < mSlipOffset) {
+		ship->mVelocity[2] -= slipSpeed;
+	} else if (abs((mBBox.mPos[2] + mBBox.mSize[2]) - shipPos[2]) < mSlipOffset) {
+		ship->mVelocity[2] += slipSpeed;
+	}
+	//############### END Slip off blocks when we come too close to the edge ##############
 }
 
 void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
@@ -108,7 +134,7 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	ship->mVelocity -= hitComponent;
 
 	if (hitComponent.length() > mBounceThreshold) {
-	//if (hitComponent.length() > mBounceThreshold) {
+		//if (hitComponent.length() > mBounceThreshold) {
 
 		if (mRebound < 0) {
 

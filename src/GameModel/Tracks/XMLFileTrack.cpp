@@ -60,6 +60,11 @@ XMLFileTrack::XMLFileTrack(Application* a_app, std::string filename) : AbstractT
 			ta->mRenderMaterial = taElem->Attribute("material");
 		}
 
+		if (taElem->Attribute("slipOffset") != NULL) {
+			ta->mSlipOffset = atof(taElem->Attribute("slipOffset"));
+		}
+
+
 		if (taElem->Attribute("name") != NULL) {
 			ta->mName = taElem->Attribute("name");
 		}
