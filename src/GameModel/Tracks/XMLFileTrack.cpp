@@ -10,12 +10,11 @@
 #include <string>
 #include "../TrackAtoms/SolidTrackAtom.h"
 
-XMLFileTrack::XMLFileTrack(Application* a_app) :
-		AbstractTrack(a_app) {
-	// TODO Auto-generated constructor stub
+XMLFileTrack::XMLFileTrack(Application* a_app, std::string filename) : AbstractTrack(a_app) {
+
 
 	TiXmlDocument doc;
-	doc.LoadFile("tracks/default_track.xml");
+	doc.LoadFile(filename);
 
 	TiXmlElement* trackElem = doc.FirstChildElement("Track");
 

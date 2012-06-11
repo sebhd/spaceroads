@@ -266,6 +266,43 @@ bool OgreRenderer::init() {
 	// Set shadow technique:
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
+	// Create the camera
+	mCamera = mSceneMgr->createCamera("PlayerCam");
+	mCamera->setNearClipDistance(5);
+	mCamera->setFarClipDistance(2000);
+
+	// Create one viewport, entire window
+	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
+	vp->setBackgroundColour(Ogre::ColourValue(0.95, 0.95, 0.95));
+	// Alter the camera aspect ratio to match the viewport
+	mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+
+
+
+	// Build unit cube mesh/entity that is used to represent track atoms:
+	Ogre::ManualObject* unitCube = createBox(0, 0, 0, 1, 1, 1, "SpaceRoads/Track/White");
+	Ogre::MeshPtr meshPtr = unitCube->convertToMesh("UnitCube");
+	meshPtr.get()->buildEdgeList();
+
+	mSceneMgr->createEntity("UnitCube", "UnitCube");
+
+	// Create static geometry object for the track:
+	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
+
+	//Set initial mouse clipping size
+	windowResized(mWindow);
+
+	//Register as a Window listener
+	Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
+
+	mRoot->addFrameListener(this);
+
+	return true;
+}
+
+
+void OgreRenderer::prepareForTrack() {
+
 	// ############### BEGIN Set up track / environment rendering ################
 
 	// Set up skybox:
@@ -279,28 +316,14 @@ bool OgreRenderer::init() {
 	// Set up directional light:
 	// TODO 3: Read directional light properties from Track class
 
-	 Ogre::Light* l = mSceneMgr->createLight("MainLight");
-	 l->setType(Ogre::Light::LT_DIRECTIONAL);
-	 l->setCastShadows(true);
+	Ogre::Light* l = mSceneMgr->createLight("MainLight");
+	l->setType(Ogre::Light::LT_DIRECTIONAL);
+	l->setCastShadows(true);
 
-	 l->setDirection(0.5, -1, 0.5);
-	 l->setDiffuseColour(1, 1, 1);
-	 l->setSpecularColour(1, 1, 1);
+	l->setDirection(0.5, -1, 0.5);
+	l->setDiffuseColour(1, 1, 1);
+	l->setSpecularColour(1, 1, 1);
 
-
-	// Build unit cube mesh/entity that is used to represent track atoms:
-	Ogre::ManualObject* unitCube = createBox(0, 0, 0, 1, 1, 1, "SpaceRoads/Track/White");
-	Ogre::MeshPtr meshPtr = unitCube->convertToMesh("unitCube");
-	meshPtr.get()->buildEdgeList();
-
-	// Load some standard entities:
-	// TODO 2: Load entities on-demand in track geometry generation method
-
-	mSceneMgr->createEntity("UnitCube", "unitCube");
-	//mSceneMgr->createEntity("Tunnel", "Tunnel.mesh");
-
-	// Create static geometry object for the track:
-	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
 
 	// Build track geometry:
 	buildTrackGeometry();
@@ -309,32 +332,12 @@ bool OgreRenderer::init() {
 
 	mpVehicle = new OGREVehicle(mSceneMgr, mpApp->mpPlayerVehicle);
 
-	// Create the camera
-	mCamera = mSceneMgr->createCamera("PlayerCam");
-	mCamera->setNearClipDistance(5);
-	mCamera->setFarClipDistance(2000);
-
 	// Position the camera behind the player's vehicle:
 	mpVehicle->mVehicleNode->attachObject(mCamera);
 	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
 	mCamera->lookAt(mpVehicle->mVehicleNode->getPosition());
-
-	// Create one viewport, entire window
-	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
-	vp->setBackgroundColour(Ogre::ColourValue(0.95, 0.95, 0.95));
-	// Alter the camera aspect ratio to match the viewport
-	mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
-
-	//Set initial mouse clipping size
-	windowResized(mWindow);
-
-	//Register as a Window listener
-	Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
-
-	mRoot->addFrameListener(this);
-
-	return true;
 }
+
 
 void OgreRenderer::buildTrackGeometry() {
 

@@ -5,7 +5,6 @@
  *      Author: sebastian
  */
 
-// TODO 2: Implement 'playTrack(trackFile)' method
 
 #include "Application.h"
 #include <iostream>
@@ -21,18 +20,13 @@ Application::Application() {
 
 	quit = false;
 
-	//mpTrack = new HardcodedTrack(this);
-	//mpTrack = new RandomTrack(this);
-	mpTrack = new XMLFileTrack(this);
-
-	mpPlayerVehicle = new Vehicle(mpTrack);
+	mpTrack = NULL;
+	mpPlayerVehicle = NULL;
 }
-
 
 Application::~Application() {
 	// TODO Auto-generated destructor stub
 }
-
 
 bool Application::keyPressed(const OIS::KeyEvent& evt) {
 
@@ -45,35 +39,33 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 		mpPlayerVehicle->mTryJump = true;
 		break;
 
-
 	case OIS::KC_A:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(1,1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(1, 1);
 		break;
 
 	case OIS::KC_D:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(1,-1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(1, -1);
 		break;
 
 	case OIS::KC_W:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(0,-1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(0, -1);
 		break;
 
 	case OIS::KC_S:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(0,1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(0, 1);
 		break;
 
 	case OIS::KC_Q:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(2, 1);
 		break;
 
 	case OIS::KC_E:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(2,-1);
+		mpPlayerVehicle->cmd_rotateDesiredOrientation(2, -1);
 		break;
 
 	case OIS::KC_R:
 		mpPlayerVehicle->reset();
 		break;
-
 
 	case OIS::KC_RIGHT:
 		mpPlayerVehicle->mAddThrustRight = true;
@@ -82,7 +74,6 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 	case OIS::KC_LEFT:
 		mpPlayerVehicle->mAddThrustLeft = true;
 		break;
-
 
 	case OIS::KC_UP:
 		mpPlayerVehicle->mAddThrustForward = true;
@@ -125,15 +116,28 @@ bool Application::keyReleased(const OIS::KeyEvent& evt) {
 	return true;
 }
 
-void Application::run() {
 
-	mpRenderer = new OgreRenderer(this);
+void Application::playTrackFile(std::string filename) {
 
-	mpRenderer->init();
 
-	mpInputHandler = new OISInputHandler(getRenderer()->getWindowSize());
+	if (mpTrack != NULL)
+	delete (mpTrack);
 
-	mpInputHandler->addKeyListener(this);
+	if (mpPlayerVehicle != NULL)
+	delete (mpPlayerVehicle);
+
+
+	std::cout << "Loading track " << filename << "." << std::endl;
+	mpTrack = new XMLFileTrack(this, filename);
+
+	std::cout << "Creating vehicle." << std::endl;
+	mpPlayerVehicle = new Vehicle(mpTrack);
+
+	std::cout << "Preparing renderer for track.";
+
+	mpRenderer->prepareForTrack();
+
+
 
 
 	timeval currentTime, newTime;
@@ -145,7 +149,6 @@ void Application::run() {
 	unsigned int dt = 5000;
 
 	// TODO 3: Understand performance problem on Eray's Macbook. Might have to do with the game speed timing code.
-
 
 	// TODO 4: Make simulation step frequency configurable by introducing a time factor multiplicator in Vehicle::step() and...
 	// all other places where it matters.
@@ -171,7 +174,7 @@ void Application::run() {
 
 		if (accumulator > 20000) {
 			accumulator = 20000;
-		//	std::cout << "Zu lahm!" << std::endl;
+			//	std::cout << "Zu lahm!" << std::endl;
 		}
 
 		while (accumulator >= dt) {
@@ -190,7 +193,6 @@ void Application::run() {
 
 		gettimeofday(&before, NULL);
 
-
 		// Render next frame:
 		if (!mpRenderer->renderOneFrame()) {
 			//	return false;
@@ -207,9 +209,24 @@ void Application::run() {
 	std::cout << double(frametimetotal) / framecount << std::endl;
 }
 
+
+void Application::init() {
+
+	mpRenderer = new OgreRenderer(this);
+
+	mpRenderer->init();
+
+	mpInputHandler = new OISInputHandler(getRenderer()->getWindowSize());
+
+	mpInputHandler->addKeyListener(this);
+
+}
+
+
 AbstractRenderer* Application::getRenderer() {
 	return mpRenderer;
 }
+
 
 bool Application::handleFrameRenderingQueuedEvent() {
 

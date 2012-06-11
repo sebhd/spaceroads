@@ -28,11 +28,12 @@ public:
 	virtual ~Application();
 
 	bool handleFrameRenderingQueuedEvent();
-	void run();
+	void init();
 
 	bool keyPressed(const OIS::KeyEvent& evt);
 	bool keyReleased(const OIS::KeyEvent& evt);
 
+	void playTrackFile(std::string filename);
 
 	bool quit;
 

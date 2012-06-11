@@ -48,6 +48,17 @@ int main(int argc, char *argv[]) {
 
 	Application app;
 
-	app.run();
+	app.init();
 
+	std::string trackFilePath = "tracks/default_track.xml";
+
+	if (argc == 2) {
+		trackFilePath = argv[1];
+	}
+
+	std::cout << "Now playing track " << trackFilePath << std::endl;
+
+	app.playTrackFile(trackFilePath);
+
+	std::cout << "Bye!" << std::endl;
 }

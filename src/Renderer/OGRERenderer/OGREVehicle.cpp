@@ -70,7 +70,7 @@ void OGREVehicle::update() {
 
 		transition.ToAngleAxis(a, v);
 
-		if (a.valueDegrees() > 1) {
+		if (a.valueDegrees() > 0.1) {
 
 			Ogre::Quaternion t2;
 

@@ -5,6 +5,7 @@
  *      Author: sebastian
  */
 
+// TODO 3: Remove mpTrack pointer from Vehicle class?
 // TODO 3: Implement some sort of spatial index to speed up collision detection
 // TODO 3: Detect irrecoverable falling-off the track (and in that case, reset the vehicle)
 // TODO 2: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering

@@ -9,10 +9,11 @@
 #define XMLFILETRACK_H_
 
 #include "AbstractTrack.h"
+#include <string>
 
 class XMLFileTrack: public AbstractTrack {
 public:
-	XMLFileTrack(Application* a_app);
+	XMLFileTrack(Application* a_app, std::string filename);
 	virtual ~XMLFileTrack();
 };
 

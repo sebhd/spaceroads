@@ -21,6 +21,7 @@ public:
 	virtual bool renderOneFrame() = 0;
 	virtual bool init() = 0;
 	virtual std::string getWindowSize() = 0;
+	virtual void prepareForTrack() = 0;
 
 protected:
     Application* mpApp;

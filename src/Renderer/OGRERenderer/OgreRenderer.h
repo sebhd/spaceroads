@@ -29,6 +29,8 @@ public:
 
 	bool renderOneFrame();
 
+	virtual void prepareForTrack();
+
 protected:
 	// Ogre::WindowEventListener
 	virtual void windowResized(Ogre::RenderWindow* rw);
