@@ -5,6 +5,8 @@
  *      Author: sebastian
  */
 
+// TODO 2: Implement 'playTrack(trackFile)' method
+
 #include "Application.h"
 #include <iostream>
 #include <ctime>

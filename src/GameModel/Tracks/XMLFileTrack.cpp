@@ -22,14 +22,22 @@ XMLFileTrack::XMLFileTrack(Application* a_app) :
 	mSkybox = trackElem->Attribute("skybox");
 
 	//#################### BEGIN Read Start position ######################
-
 	TiXmlElement* startPosElem = trackElem->FirstChildElement("StartPos");
 
 	if (startPosElem != NULL) {
 		mStartPosition.set(atof(startPosElem->Attribute("x")), atof(startPosElem->Attribute("y")), atof(startPosElem->Attribute("z")));
 	}
-
 	//#################### END Read Start position ######################
+
+
+	//#################### BEGIN Read Ambient light ######################
+	TiXmlElement* ambientLightElem = trackElem->FirstChildElement("AmbientLight");
+
+	if (ambientLightElem != NULL) {
+		mAmbientLight.set(atof(ambientLightElem->Attribute("r")), atof(ambientLightElem->Attribute("g")), atof(ambientLightElem->Attribute("b")));
+	}
+	//#################### END Read Ambient light ######################
+
 
 	//#################### BEGIN Read <Atom> Elements ######################
 	for (TiXmlElement* taElem = trackElem->FirstChildElement("Atom"); taElem != NULL;

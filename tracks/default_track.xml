@@ -3,6 +3,8 @@
 
 <StartPos x="4" y="10" z="5" />
 
+<AmbientLight r="0" g="0" b="0" />
+
 <Atom x="0" y="0" z="0" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
 <Atom x="0" y="0" z="20" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
 <Atom x="0" y="0" z="40" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>

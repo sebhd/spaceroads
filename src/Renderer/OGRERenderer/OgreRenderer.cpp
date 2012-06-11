@@ -45,6 +45,7 @@ OgreRenderer::~OgreRenderer(void) {
 // Handler for frameRenderingQueued event:
 bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
+
 	if (mpApp->mpTrack->mHasChanged) {
 		buildTrackGeometry();
 		mpApp->mpTrack->mHasChanged = false;
@@ -258,53 +259,54 @@ bool OgreRenderer::init() {
 	// Set default mipmap level (note: some APIs ignore this)
 	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
-	// initialise all resource groups
+	// initialize all resource groups
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 
-	// Create the SceneManager, in this case a generic one:
+	// Create scene manager:
 	mSceneMgr = mRoot->createSceneManager("OctreeSceneManager");
 
-//	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+	// Set shadow technique:
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
 	// ############### BEGIN Set up track / environment rendering ################
-
-	Ogre::ManualObject* unitCube = createBox(0, 0, 0, 1, 1, 1, "SpaceRoads/Track/White");
-	Ogre::MeshPtr meshPtr = unitCube->convertToMesh("unitCube");
-
-	meshPtr.get()->buildEdgeList();
-
-	mSceneMgr->createEntity("UnitCube", "unitCube");
-	mSceneMgr->createEntity("Tunnel", "Cylinder.mesh");
-
-	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
-
-	// Build the track:
-	buildTrackGeometry();
 
 	// Set up skybox:
 	mSceneMgr->setSkyBox(true, mpApp->mpTrack->mSkybox, 100);
 
 	// Set up ambient light
-	// TODO 3: Define ambient light in track
-	//mSceneMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(mpApp->mpTrack->mAmbientLight[0], mpApp->mpTrack->mAmbientLight[1], mpApp->mpTrack->mAmbientLight[2]));
 
 	// Set up directional light:
-	// TODO 3: Read light settings from Track class
-
+	// TODO 3: Read directional light properties from Track class
+/*
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
 	l->setType(Ogre::Light::LT_DIRECTIONAL);
 	l->setCastShadows(true);
 
 	l->setDirection(0.5, -1, 0.5);
-
 	l->setDiffuseColour(1, 1, 1);
 	l->setSpecularColour(1, 1, 1);
+*/
 
-	//mSceneMgr->getRootSceneNode()->attachObject(l);
+	// Build unit cube mesh/entity that is used to represent track atoms:
+	Ogre::ManualObject* unitCube = createBox(0, 0, 0, 1, 1, 1, "SpaceRoads/Track/White");
+	Ogre::MeshPtr meshPtr = unitCube->convertToMesh("unitCube");
+	meshPtr.get()->buildEdgeList();
+
+
+	// Load some standard entities:
+	// TODO 2: Load entities on-demand in track geometry generation method
+	mSceneMgr->createEntity("UnitCube", "unitCube");
+	mSceneMgr->createEntity("Tunnel", "Cylinder.mesh");
+
+	// Create static geometry object for the track:
+	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
+
+	// Build track geometry:
+	buildTrackGeometry();
 
 	// ############### END Set up track / environment rendering ################
+
 
 	mpVehicle = new OGREVehicle(mSceneMgr, mpApp->mpPlayerVehicle);
 

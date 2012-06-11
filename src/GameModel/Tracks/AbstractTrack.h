@@ -32,7 +32,8 @@ public:
 
 	virtual void reset();
 
-	cml::vector3d mStartPosition;
+	cml::vector3f mStartPosition;
+	cml::vector3f mAmbientLight;
 
 	std::string mSkybox;
 
