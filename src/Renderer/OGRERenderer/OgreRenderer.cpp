@@ -372,10 +372,10 @@ void OgreRenderer::buildTrackGeometry() {
 	//############### BEGIN Add decorative meshes to track geometry #################
 	for (unsigned int ii = 0; ii < mpApp->mpTrack->mMeshes.size(); ii++) {
 
-		TrackMesh* tm = &mpApp->mpTrack->mMeshes[ii];
+		TrackDecorationMesh* tm = &mpApp->mpTrack->mMeshes[ii];
 
 		if (!mSceneMgr->hasEntity(tm->meshName)) {
-			Ogre::Entity* entity = mSceneMgr->createEntity(tm->meshName, tm->meshName + ".mesh");
+			mSceneMgr->createEntity(tm->meshName, tm->meshName + ".mesh");
 		}
 
 		mTrackStaticGeometry->addEntity(mSceneMgr->getEntity(tm->meshName),

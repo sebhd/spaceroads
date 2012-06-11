@@ -7,7 +7,7 @@
 
 // TODO 4: Implementieren, dass sich bewegende TrackAtoms ein Vehicle mit sich schieben können...
 // Derzeit ist es so, dass sich ein sich bewegendes TrackAtom durch ein stillstehendes Vehicle einfach
-// hindurchbewegt (bzw. umgekehrt). Das ist doof. sbecht 2012-05-25
+// hindurchbewegt (bzw. umgekehrt). Das ist doof.
 
 #ifndef ABSTRACTTRACK_H_
 #define ABSTRACTTRACK_H_
@@ -16,7 +16,7 @@
 #include "../TrackAtoms/TrackAtom.h"
 #include "../../cml/cml.h"
 #include "../../Application.h"
-#include "TrackMesh.h"
+#include "TrackDecorationMesh.h"
 
 class Application;
 class TrackAtom;
@@ -39,7 +39,7 @@ public:
 
 	bool mHasChanged;
 
-	std::vector<TrackMesh> mMeshes;
+	std::vector<TrackDecorationMesh> mMeshes;
 
 protected:
 	Application* mpApp;

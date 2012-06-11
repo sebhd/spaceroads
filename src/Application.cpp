@@ -12,7 +12,6 @@
 #include <sys/time.h>
 
 #include "Renderer/OGRERenderer/OgreRenderer.h"
-#include "GameModel/Tracks/HardcodedTrack.h"
 #include "GameModel/Tracks/RandomTrack.h"
 #include "GameModel/Tracks/XMLFileTrack.h"
 

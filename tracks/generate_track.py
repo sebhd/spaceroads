@@ -2,6 +2,43 @@
 
 import sys, os
 
+def makeXMLTag(element, attributes, close):
+    result = "<" + element + " "
+  
+    for key in attributes.keys():
+	value = attributes[key]
+	result = result + key + "=\"" + str(value) + "\" "
+    
+    if close:
+	result = result + "/"
+    
+    result = result + ">"
+    return result
+
+  
+def makeTunnel(x,y,z, scalex, scaley, scalez):
+      
+    result = "<!-- ########## BEGIN Tunnel ########## -->\n"
+    
+    # Decorative mesh:
+    result += makeXMLTag("Mesh", {'x':x, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley':scaley, 'scalez':scalez, 'mesh':"Tunnel"}, True) + "\n"
+   
+    # Floor:
+    result += makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'jumpForce':0}, True) + "\n"
+    
+    # Walls:
+    result += makeXMLTag("Atom", {'x':x, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley, 'scalez':scalez, 'material':'none', 'jumpForce':0}, True) + "\n"
+    result += makeXMLTag("Atom", {'x':x + scalex - 1, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley, 'scalez':scalez, 'material':'none', 'jumpForce':0}, True) + "\n"
+
+    # Roof:
+    result += makeXMLTag("Atom", {'x':x, 'y':y+scaley, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material':'none'}, True) + "\n"
+    result += "<!-- ########## END Tunnel ########## -->\n"
+    return result
+    
+  
+####################### Here begins the program #######################
+
+
 filename = "default_track.xml"
 
 try:
@@ -18,28 +55,40 @@ outfile.write('<StartPos x="4" y="10" z="5" />\n')
 
 mat = 0
 
-for ii in range(0,1000):
-  
-  x = 0
-  y = 0
-  z = ii * 20
-  sizex = 8
-  sizey = 1
-  sizez = 20
-  
-  if mat == 0:
-    material = "SpaceRoads/Track/DarkGrey"
-    mat = 1
-  else:
-    material = "SpaceRoads/Track/White"
-    mat = 0
-  
-  outfile.write("<Atom x=\"" + str(x) 
-		 + "\" y=\"" + str(y) 
-		 + "\" z=\"" + str(z) 
-		 + "\" sizex=\"" + str(sizex) 
-		 + "\" sizey=\"" + str(sizey) 
-		 + "\" sizez=\"" + str(sizez) 
-		 + "\" material=\"" + material + "\"></Atom>\n")
 
+
+
+
+ii = 0
+count = 0
+
+while(ii < 100):
+    
+    x = 0
+    y = 0
+    z = ii * 20
+    scalex = 8
+    scaley = 1
+    scalez = 20
+
+    
+    if count == 10:
+	outfile.write(makeTunnel(x,y,z, scalex, 5,100))	
+	count = 0
+	ii += 5
+    
+    else:
+	if mat == 0:
+	    material = "SpaceRoads/Track/DarkGrey"
+	    mat = 1
+	else:
+	    material = "SpaceRoads/Track/White"
+	    mat = 0
+	
+	outfile.write(makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material}, True) + "\n")
+	    
+	ii += 1
+    
+    count += 1
+		
 outfile.write("</Track>")

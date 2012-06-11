@@ -1,1034 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Track skybox="SpaceRoads/SkyBoxes/PurpleNebula2">
-
 <StartPos x="4" y="10" z="5" />
-
-<AmbientLight r="0" g="0" b="0" />
-
-<Atom x="0" y="0" z="0" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="20" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="40" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="60" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="80" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-
-
-<!-- ############## BEGIN Tunnel ############## -->
-
-<Mesh x="0" y="1" z="100" scalex="8" scaley="10" scalez="100" mesh="Tunnel"/>
-
-<!-- Floor collision object: -->
-<Atom x="0" y="0" z="100" sizex="8" sizey="1" sizez="100"  material="SpaceRoads/Track/DarkGrey"></Atom>
-
-<!-- Walls collision objects: -->
-<Atom x="0" y="1" z="100" sizex="1" sizey="5" sizez="100"  material="none"></Atom>
-<Atom x="7" y="1" z="100" sizex="1" sizey="5" sizez="100"  material="none"></Atom>
-
-<!-- Roof  collision object: -->
-<Atom x="0" y="6" z="100" sizex="8" sizey="1" sizez="100" material="none"></Atom>
-<!-- ############## END Tunnel ############## -->
-
-
-<Atom x="0" y="0" z="200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-
-
-<!-- ############## BEGIN Tunnel ############## -->
-
-<Mesh x="0" y="1" z="500" scalex="8" scaley="10" scalez="100" mesh="Tunnel"/>
-
-<!-- Floor collision object: -->
-<Atom x="0" y="0" z="500" sizex="8" sizey="1" sizez="100"  material="SpaceRoads/Track/DarkGrey"></Atom>
-
-<!-- Walls collision objects: -->
-<Atom x="0" y="1" z="500" sizex="1" sizey="5" sizez="100"  material="none"></Atom>
-<Atom x="7" y="1" z="500" sizex="1" sizey="5" sizez="100"  material="none"></Atom>
-
-<!-- Roof  collision object: -->
-<Atom x="0" y="6" z="500" sizex="8" sizey="1" sizez="100" material="none"></Atom>
-<!-- ############## END Tunnel ############## -->
-
-
-<Atom x="0" y="0" z="600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="1960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="1980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="2960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="2980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="3960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="3980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="4960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="4980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="5960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="5980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="6960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="6980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="7960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="7980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="8960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="8980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="9960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="9980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="10960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="10980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="11960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="11980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="12960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="12980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="13960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="13980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="14960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="14980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="15960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="15980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="16960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="16980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="17960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="17980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="18960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="18980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19000" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19020" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19040" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19060" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19080" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19100" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19120" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19140" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19160" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19180" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19200" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19220" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19240" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19260" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19280" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19300" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19320" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19340" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19360" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19380" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19400" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19420" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19440" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19460" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19480" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19500" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19520" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19540" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19560" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19580" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19600" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19620" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19640" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19660" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19680" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19700" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19720" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19740" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19760" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19780" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19800" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19820" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19840" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19860" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19880" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19900" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19920" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19940" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
-<Atom x="0" y="0" z="19960" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/DarkGrey"></Atom>
-<Atom x="0" y="0" z="19980" sizex="8" sizey="1" sizez="20" material="SpaceRoads/Track/White"></Atom>
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="0" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="40" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="60" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="80" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="100" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="120" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="140" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="160" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="180" />
+<!-- ########## BEGIN Tunnel ########## -->
+<Mesh scalex="8" scaley="5" scalez="100" mesh="Tunnel" y="1" x="0" z="200" />
+<Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="200" jumpForce="0" />
+<Atom jumpForce="0" material="none" y="1" x="0" z="200" scalex="1" scaley="5" scalez="100" />
+<Atom jumpForce="0" material="none" y="1" x="7" z="200" scalex="1" scaley="5" scalez="100" />
+<Atom material="none" scalex="8" scaley="1" scalez="100" y="5" x="0" z="200" />
+<!-- ########## END Tunnel ########## -->
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="300" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="320" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="340" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="360" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="380" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="400" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="420" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="440" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="460" />
+<!-- ########## BEGIN Tunnel ########## -->
+<Mesh scalex="8" scaley="5" scalez="100" mesh="Tunnel" y="1" x="0" z="480" />
+<Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="480" jumpForce="0" />
+<Atom jumpForce="0" material="none" y="1" x="0" z="480" scalex="1" scaley="5" scalez="100" />
+<Atom jumpForce="0" material="none" y="1" x="7" z="480" scalex="1" scaley="5" scalez="100" />
+<Atom material="none" scalex="8" scaley="1" scalez="100" y="5" x="0" z="480" />
+<!-- ########## END Tunnel ########## -->
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="580" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="600" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="620" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="640" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="660" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="680" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="700" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="720" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="740" />
+<!-- ########## BEGIN Tunnel ########## -->
+<Mesh scalex="8" scaley="5" scalez="100" mesh="Tunnel" y="1" x="0" z="760" />
+<Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="760" jumpForce="0" />
+<Atom jumpForce="0" material="none" y="1" x="0" z="760" scalex="1" scaley="5" scalez="100" />
+<Atom jumpForce="0" material="none" y="1" x="7" z="760" scalex="1" scaley="5" scalez="100" />
+<Atom material="none" scalex="8" scaley="1" scalez="100" y="5" x="0" z="760" />
+<!-- ########## END Tunnel ########## -->
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="860" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="880" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="900" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="920" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="940" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="960" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="980" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1000" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1020" />
+<!-- ########## BEGIN Tunnel ########## -->
+<Mesh scalex="8" scaley="5" scalez="100" mesh="Tunnel" y="1" x="0" z="1040" />
+<Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="1040" jumpForce="0" />
+<Atom jumpForce="0" material="none" y="1" x="0" z="1040" scalex="1" scaley="5" scalez="100" />
+<Atom jumpForce="0" material="none" y="1" x="7" z="1040" scalex="1" scaley="5" scalez="100" />
+<Atom material="none" scalex="8" scaley="1" scalez="100" y="5" x="0" z="1040" />
+<!-- ########## END Tunnel ########## -->
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1140" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1160" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1180" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1200" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1220" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1240" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1260" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1280" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1300" />
+<!-- ########## BEGIN Tunnel ########## -->
+<Mesh scalex="8" scaley="5" scalez="100" mesh="Tunnel" y="1" x="0" z="1320" />
+<Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="1320" jumpForce="0" />
+<Atom jumpForce="0" material="none" y="1" x="0" z="1320" scalex="1" scaley="5" scalez="100" />
+<Atom jumpForce="0" material="none" y="1" x="7" z="1320" scalex="1" scaley="5" scalez="100" />
+<Atom material="none" scalex="8" scaley="1" scalez="100" y="5" x="0" z="1320" />
+<!-- ########## END Tunnel ########## -->
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1420" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1440" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1460" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1480" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1500" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1520" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1540" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1560" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1580" />
+<!-- ########## BEGIN Tunnel ########## -->
+<Mesh scalex="8" scaley="5" scalez="100" mesh="Tunnel" y="1" x="0" z="1600" />
+<Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="1600" jumpForce="0" />
+<Atom jumpForce="0" material="none" y="1" x="0" z="1600" scalex="1" scaley="5" scalez="100" />
+<Atom jumpForce="0" material="none" y="1" x="7" z="1600" scalex="1" scaley="5" scalez="100" />
+<Atom material="none" scalex="8" scaley="1" scalez="100" y="5" x="0" z="1600" />
+<!-- ########## END Tunnel ########## -->
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1700" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1720" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1740" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1760" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1780" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1800" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1820" />
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1840" />
+<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1860" />
+<!-- ########## BEGIN Tunnel ########## -->
+<Mesh scalex="8" scaley="5" scalez="100" mesh="Tunnel" y="1" x="0" z="1880" />
+<Atom scalex="8" scaley="1" scalez="100" y="0" x="0" z="1880" jumpForce="0" />
+<Atom jumpForce="0" material="none" y="1" x="0" z="1880" scalex="1" scaley="5" scalez="100" />
+<Atom jumpForce="0" material="none" y="1" x="7" z="1880" scalex="1" scaley="5" scalez="100" />
+<Atom material="none" scalex="8" scaley="1" scalez="100" y="5" x="0" z="1880" />
+<!-- ########## END Tunnel ########## -->
+<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1980" />
 </Track>

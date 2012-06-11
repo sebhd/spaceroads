@@ -12,7 +12,6 @@
 
 XMLFileTrack::XMLFileTrack(Application* a_app, std::string filename) : AbstractTrack(a_app) {
 
-
 	TiXmlDocument doc;
 	doc.LoadFile(filename);
 
@@ -46,9 +45,9 @@ XMLFileTrack::XMLFileTrack(Application* a_app, std::string filename) : AbstractT
 		float y = atof(taElem->Attribute("y"));
 		float z = atof(taElem->Attribute("z"));
 
-		float sizex = atof(taElem->Attribute("sizex"));
-		float sizey = atof(taElem->Attribute("sizey"));
-		float sizez = atof(taElem->Attribute("sizez"));
+		float sizex = atof(taElem->Attribute("scalex"));
+		float sizey = atof(taElem->Attribute("scaley"));
+		float sizez = atof(taElem->Attribute("scalez"));
 
 		SolidTrackAtom* ta = new SolidTrackAtom(
 				game::BoundingBox(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
@@ -74,7 +73,7 @@ XMLFileTrack::XMLFileTrack(Application* a_app, std::string filename) : AbstractT
 	for (TiXmlElement* taElem = trackElem->FirstChildElement("Mesh"); taElem != NULL;
 			taElem = taElem->NextSiblingElement("Mesh")) {
 
-		TrackMesh mesh;
+		TrackDecorationMesh mesh;
 
 		mesh.mPos.set(atof(taElem->Attribute("x")), atof(taElem->Attribute("y")),
 				atof(taElem->Attribute("z")));

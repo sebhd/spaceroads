@@ -5,14 +5,14 @@
  *      Author: sebastian
  */
 
-#include "TrackMesh.h"
+#include "TrackDecorationMesh.h"
 
-TrackMesh::TrackMesh() {
+TrackDecorationMesh::TrackDecorationMesh() {
 	// TODO Auto-generated constructor stub
 
 }
 
-TrackMesh::~TrackMesh() {
+TrackDecorationMesh::~TrackDecorationMesh() {
 	// TODO Auto-generated destructor stub
 }
 

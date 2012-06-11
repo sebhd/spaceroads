@@ -9,10 +9,10 @@
 #define TRACKMESH_H_
 #include "cml/cml.h"
 
-class TrackMesh {
+class TrackDecorationMesh {
 public:
-	TrackMesh();
-	virtual ~TrackMesh();
+	TrackDecorationMesh();
+	virtual ~TrackDecorationMesh();
 
 	cml::vector3f mPos;
 	cml::vector3f mScale;

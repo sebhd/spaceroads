@@ -39,7 +39,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 		// on the size/dimensions of the ship's bounding box!
 
 		// This is better because it is independent of the size of the bounding boxes of vehicle & track atom.
-		cml::vector3f tmp = ship->getPosition() + gravNormalized * 2.7;
+		cml::vector3f tmp = ship->getPosition() + gravNormalized * 2.1;
 
 		if (mBBox.containsPoint(tmp)) {
 			ship->mVelocity -= gravNormalized * mJumpForce;

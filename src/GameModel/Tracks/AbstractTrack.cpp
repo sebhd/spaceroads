@@ -13,6 +13,8 @@ AbstractTrack::AbstractTrack(Application* a_app) {
 	mpApp = a_app;
 
 	mSkybox = "SpaceRoads/SkyBoxes/2Moons";
+
+	mAmbientLight.set(0,0,0);
 }
 
 AbstractTrack::~AbstractTrack() {
