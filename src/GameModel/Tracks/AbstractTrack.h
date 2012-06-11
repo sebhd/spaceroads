@@ -16,6 +16,7 @@
 #include "../TrackAtoms/TrackAtom.h"
 #include "../../cml/cml.h"
 #include "../../Application.h"
+#include "TrackMesh.h"
 
 class Application;
 class TrackAtom;
@@ -36,6 +37,8 @@ public:
 	std::string mSkybox;
 
 	bool mHasChanged;
+
+	std::vector<TrackMesh> mMeshes;
 
 protected:
 	Application* mpApp;

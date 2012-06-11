@@ -57,13 +57,7 @@ private:
 	Ogre::SceneManager* mSceneMgr;
 	Ogre::Camera* mCamera;
 
-	Ogre::SceneNode* mTrackAtomsRootNode;
-
 	Ogre::StaticGeometry* mTrackStaticGeometry;
-
-	Ogre::Entity* mEntityTunnel;
-	Ogre::Entity* mEntityUnitCube;
-
 };
 
 #endif /* OGRERENDERER_H_ */

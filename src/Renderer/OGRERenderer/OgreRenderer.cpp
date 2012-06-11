@@ -308,9 +308,8 @@ bool OgreRenderer::init() {
 
 	meshPtr.get()->buildEdgeList();
 
-	mEntityUnitCube = mSceneMgr->createEntity("entUnitCube", "unitCube");
-
-	mEntityTunnel = mSceneMgr->createEntity("entTunnel", "Cylinder.mesh");
+	mSceneMgr->createEntity("UnitCube", "unitCube");
+	mSceneMgr->createEntity("Tunnel", "Cylinder.mesh");
 
 	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
 
@@ -383,6 +382,8 @@ void OgreRenderer::buildTrackGeometry() {
 	Ogre::Quaternion orientation;
 	orientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3::UNIT_Y);
 
+
+	//############### BEGIN Add track atoms to track geometry #################
 	for (unsigned int ii = 0; ii < trackAtoms.size(); ii++) {
 
 		TrackAtom* ta = trackAtoms[ii];
@@ -392,25 +393,25 @@ void OgreRenderer::buildTrackGeometry() {
 			Ogre::Vector3 pos(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
 			Ogre::Vector3 scale(ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2]);
 
-			mEntityUnitCube->setMaterialName(Ogre::String(ta->mRenderMaterial));
-			mTrackStaticGeometry->addEntity(mEntityUnitCube, pos, orientation, scale);
+			Ogre::Entity* unitcube = mSceneMgr->getEntity("UnitCube");
+			unitcube->setMaterialName(Ogre::String(ta->mRenderMaterial));
+			mTrackStaticGeometry->addEntity(unitcube, pos, orientation, scale);
 		}
 	}
+	//############### END Add track atoms to track geometry #################
 
 
-	Ogre::Vector3 scale(8, 10, 80);
+	//############### BEGIN Add decorative meshes to track geometry #################
+	for (unsigned int ii = 0; ii < mpApp->mpTrack->mMeshes.size(); ii++) {
 
+		TrackMesh* tm = &mpApp->mpTrack->mMeshes[ii];
 
-	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 120), orientation, scale);
-	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 320), orientation, scale);
-	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 520), orientation, scale);
-	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 720), orientation, scale);
-
-	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 920), orientation, scale);
-	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 1120), orientation, scale);
-	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 1320), orientation, scale);
-	mTrackStaticGeometry->addEntity(mEntityTunnel, Ogre::Vector3(0, 1, 1520), orientation, scale);
-
+		mTrackStaticGeometry->addEntity(	mSceneMgr->getEntity(tm->meshName),
+											Ogre::Vector3(tm->mPos[0], tm->mPos[1], tm->mPos[2]),
+											orientation,
+											Ogre::Vector3(tm->mScale[0], tm->mScale[1], tm->mScale[2]));
+	}
+	//############### END Add decorative meshes to track geometry #################
 
 
 	mTrackStaticGeometry->setCastShadows(true);

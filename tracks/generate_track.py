@@ -38,6 +38,6 @@ for ii in range(0,1000):
 		 + "\" sizex=\"" + str(sizex) 
 		 + "\" sizey=\"" + str(sizey) 
 		 + "\" sizez=\"" + str(sizez) 
-		 + "\" name=\"\"  material=\"" + material + "\"></Atom>\n")
+		 + "\" material=\"" + material + "\"></Atom>\n")
 
 outfile.write("</Track>")

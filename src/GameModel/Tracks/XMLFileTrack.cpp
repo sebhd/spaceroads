@@ -21,6 +21,7 @@ XMLFileTrack::XMLFileTrack(Application* a_app) :
 
 	mSkybox = trackElem->Attribute("skybox");
 
+	//#################### BEGIN Read <Atom> Elements ######################
 	for (TiXmlElement* taElem = trackElem->FirstChildElement("Atom"); taElem != NULL;
 			taElem = taElem->NextSiblingElement("Atom")) {
 
@@ -39,15 +40,35 @@ XMLFileTrack::XMLFileTrack(Application* a_app) :
 			ta->mJumpForce = atof(taElem->Attribute("jumpForce"));
 		}
 
-		ta->mRenderMaterial = taElem->Attribute("material");
-		ta->mName = taElem->Attribute("name");
+		if (taElem->Attribute("material") != NULL) {
+			ta->mRenderMaterial = taElem->Attribute("material");
+		}
+
+		if (taElem->Attribute("name") != NULL) {
+			ta->mName = taElem->Attribute("name");
+		}
 
 		mTrackAtoms.push_back(ta);
 
 	}
+	//#################### END Read <Atom> Elements ######################
 
-	TiXmlAttribute ta;
+	//#################### BEGIN Read <Mesh> Elements ######################
+	for (TiXmlElement* taElem = trackElem->FirstChildElement("Mesh"); taElem != NULL;
+			taElem = taElem->NextSiblingElement("Mesh")) {
 
+		TrackMesh mesh;
+
+		mesh.mPos.set(atof(taElem->Attribute("x")), atof(taElem->Attribute("y")),
+				atof(taElem->Attribute("z")));
+		mesh.mScale.set(atof(taElem->Attribute("scalex")), atof(taElem->Attribute("scaley")),
+				atof(taElem->Attribute("scalez")));
+		mesh.meshName = taElem->Attribute("mesh");
+
+		mMeshes.push_back(mesh);
+
+	}
+	//#################### END Read <Mesh> Elements ######################
 }
 
 XMLFileTrack::~XMLFileTrack() {

@@ -169,7 +169,7 @@ void Vehicle::step() {
 
 	gettimeofday(&after, NULL);
 
-	long time = after.tv_usec - before.tv_usec;
+//	long time = after.tv_usec - before.tv_usec;
 
 //	std::cout << time << std::endl;
 
