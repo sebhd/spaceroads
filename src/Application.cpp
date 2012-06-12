@@ -183,24 +183,29 @@ void Application::playTrackFile(std::string filename) {
 				mpTrack->reset();
 			}
 
-			// Do physics / game logic step:
+			// Calculate & apply vehicle-internal effects on it's velocity:
 			mpPlayerVehicle->updateVelocity();
 
-			//######### BEGIN Collision detection & handling (may modify velocity vector) ################
+			/* ATTENTION:
+			 * For some reason that is not yet fully understood, it is neccessary to build a
+			 * complete list of all colliding track atoms *before* any collision is handled.
+			 * In other words:
+			 *
+			 * Detect coll. 1 -> handle coll. 1 -> detect coll. 2 -> handle coll. 2 -> ...
+			 *
+			 * will give undesired results!
+			 *
+			 * We need to detect *all* collisions first, and then handle them.
+			 */
 
-			// Find colliding track atoms and apply contact effects:
-			std::vector<CollisionInfo> collisions = getCollidingTAs();
+			// Find colliding track atoms:
+			std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
 
+			// Apply counter-forces (prevent vehicle from going through walls) & contact effects:
 			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 				collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
-			}
-
-			// Apply counter forces (i.e. make walls stop the vehicle):
-			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 				collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
 			}
-
-			//######### END Collision detection & handling (may modify velocity vector) ################
 
 			mpPlayerVehicle->updatePosition();
 
@@ -225,7 +230,7 @@ void Application::playTrackFile(std::string filename) {
 	std::cout << double(frametimetotal) / framecount << std::endl;
 }
 
-std::vector<CollisionInfo> Application::getCollidingTAs() {
+std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 	std::vector<CollisionInfo> collisions;
 
@@ -275,6 +280,7 @@ std::vector<CollisionInfo> Application::getCollidingTAs() {
 						hitSide = HIT_FRONT;
 					}
 				}
+
 
 				CollisionInfo ci;
 				ci.ta = ta;

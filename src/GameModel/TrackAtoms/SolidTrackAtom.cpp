@@ -34,8 +34,41 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 	// ############## BEGIN Jumping ###############
 
-	// TODO 4: Is this the correct place for the jump code?
-	if (ship->mTryJump) {
+	cml::vector3f wallNormal;
+
+	switch (hs) {
+	case HIT_TOP:
+		wallNormal.set(0, 1, 0);
+		break;
+
+	case HIT_BOTTOM:
+		wallNormal.set(0, -1, 0);
+		break;
+
+	case HIT_FRONT:
+		wallNormal.set(0, 0, 1);
+		break;
+	case HIT_BACK:
+		wallNormal.set(0, 0, -1);
+		break;
+
+	case HIT_RIGHT:
+		wallNormal.set(1, 0, 0);
+		break;
+
+	case HIT_LEFT:
+		wallNormal.set(-1, 0, 0);
+		break;
+
+	default:
+		break;
+	}
+	// #################### END Determine wall normal vector #################
+
+	float dot = cml::dot(ship->getGravity(), wallNormal);
+
+	// Only jump if we hit the ground with the belly (that is, dot < 0)!:
+	if (ship->mTryJump && dot < 0) {
 		cml::vector3f gravNormalized = cml::normalize(ship->getGravity());
 
 		// NOTE: The factor that gravNormalized needs to be multiplied with depends
@@ -50,6 +83,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 			ship->mVelocity -= gravNormalized * mJumpForce;
 			ship->mJumped = true;
 		}
+
 	}
 	// ############## END Jumping ###############
 
@@ -113,7 +147,6 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	// #################### END Determine wall normal vector #################
 
 	float dot = cml::dot(ship->mVelocity, wallNormal);
-	//float dot = cml::dot(ship->mVelocity + ship->mAddVelocity, wallNormal);
 
 	// ATTENTION:
 	// Here we do a sanity check to get around problems which may otherwise happen
@@ -135,8 +168,10 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 
 	cml::vector3f hitComponent = dot * wallNormal;
 
+	// First of all, prevent the vehicle from going through the wall:
 	ship->mVelocity -= hitComponent;
 
+	// Then, apply bouncing:
 	if (hitComponent.length() > mBounceThreshold) {
 
 		if (mRebound < 0) {

@@ -42,7 +42,7 @@ public:
 	virtual ~Application();
 
 
-	std::vector<CollisionInfo> getCollidingTAs();
+	std::vector<CollisionInfo> findCollidingTrackAtoms();
 	bool handleFrameRenderingQueuedEvent();
 	void init();
 
