@@ -28,7 +28,7 @@ public:
 	void cmd_rotateDesiredOrientation(int axis, int steps);
 
 	void cmd_tryJump(bool enabled);
-	void step();
+	void updateVelocity();
 	const cml::vector3f& getGravity();
 	const quat& getOrientation();
 	const cml::vector3f& getPosition();
@@ -48,9 +48,10 @@ public:
 	bool mTryJump;
 
 	bool mJumped;
+
 	float mThrustSideward, mThrustForward;
 
-	float mAccelForward;
+	float mAccelForward, mAccelSideward;
 	cml::vector3f mVelocity;
 
 	quat mOrientation;

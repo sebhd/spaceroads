@@ -41,7 +41,9 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 		// NOTE: The factor that gravNormalized needs to be multiplied with depends
 		// on the size/dimensions of the ship's bounding box!
 
-		// This is better because it is independent of the size of the bounding boxes of vehicle & track atom.
+		// TODO 3: Implement "ground probing ray" here. This would be better because
+		// it is independent of the size of the bounding boxes of vehicle & track atom.
+		// It would also allow us to implement hover behaviour for the vehicle.
 		cml::vector3f tmp = shipPos + gravNormalized * 2.1;
 
 		if (mBBox.containsPoint(tmp)) {
@@ -57,22 +59,19 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 	if (abs(shipPos[0] - mBBox.mPos[0]) < mSlipOffset) {
 		ship->mVelocity[0] -= slipSpeed;
-	} else if (abs((mBBox.mPos[0] + mBBox.mSize[0]) - shipPos[0])
-			< mSlipOffset) {
+	} else if (abs((mBBox.mPos[0] + mBBox.mSize[0]) - shipPos[0]) < mSlipOffset) {
 		ship->mVelocity[0] += slipSpeed;
 	}
 
 	if (abs(shipPos[1] - mBBox.mPos[1]) < mSlipOffset) {
 		ship->mVelocity[1] -= slipSpeed;
-	} else if (abs((mBBox.mPos[1] + mBBox.mSize[1]) - shipPos[1])
-			< mSlipOffset) {
+	} else if (abs((mBBox.mPos[1] + mBBox.mSize[1]) - shipPos[1]) < mSlipOffset) {
 		ship->mVelocity[1] += slipSpeed;
 	}
 
 	if (abs(shipPos[2] - mBBox.mPos[2]) < mSlipOffset) {
 		ship->mVelocity[2] -= slipSpeed;
-	} else if (abs((mBBox.mPos[2] + mBBox.mSize[2]) - shipPos[2])
-			< mSlipOffset) {
+	} else if (abs((mBBox.mPos[2] + mBBox.mSize[2]) - shipPos[2]) < mSlipOffset) {
 		ship->mVelocity[2] += slipSpeed;
 	}
 
@@ -147,8 +146,6 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 			ship->mVelocity -= hitComponent * mRebound;
 		}
 	}
-
-
 
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	dot = cml::dot(ship->mDirForward, wallNormal);

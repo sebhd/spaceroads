@@ -175,15 +175,16 @@ void Application::playTrackFile(std::string filename) {
 			// Do track step:
 			mpTrack->step(mpPlayerVehicle);
 
+			// If the ship is destroyed, reset to the starting position:
 			if (mpPlayerVehicle->mKilled) {
+				std::cout << "Boooooom!!!" << std::endl;
 				mpPlayerVehicle->mPos = mpTrack->mStartPosition;
 				mpPlayerVehicle->reset();
-				//mpPlayerVehicle->mKilled = false;
 				mpTrack->reset();
 			}
 
 			// Do physics / game logic step:
-			mpPlayerVehicle->step();
+			mpPlayerVehicle->updateVelocity();
 
 			//######### BEGIN Collision detection & handling (may modify velocity vector) ################
 

@@ -5,7 +5,6 @@
  *      Author: sebastian
  */
 // TODO 3: Detect irrecoverable falling-off the track (and in that case, reset the vehicle)
-// TODO 2: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
 
@@ -47,6 +46,7 @@ void Vehicle::reset() {
 	//mAccelForward = 0.00005;
 
 	mAccelForward = 0.0001;
+	mAccelSideward = 0.0003;
 
 	mThrustSideward = 0;
 	mThrustForward = 0;
@@ -68,14 +68,10 @@ void Vehicle::reset() {
 	setOrientation(mOrientation);
 }
 
-void Vehicle::step() {
+void Vehicle::updateVelocity() {
 
-	// If the ship is destroyed, reset to the starting position:
-	if (mKilled) {
-		std::cout << "Boooooom!!!" << std::endl;
-		reset();
-		return;
-	}
+	// Apply gravity:
+	mVelocity += getGravity();
 
 	// ################ BEGIN Apply player vehicle control commands ###################
 
@@ -86,6 +82,7 @@ void Vehicle::step() {
 		mThrustForward -= mAccelForward;
 	}
 
+	// Clamp forward thrust:
 	if (mThrustForward > mMaxThrustForward) {
 		mThrustForward = mMaxThrustForward;
 	} else if (mThrustForward < 0) {
@@ -95,26 +92,23 @@ void Vehicle::step() {
 	//############ END Update forward thrust ##############
 
 	//############ BEGIN Apply forward thrust ##############
-	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity)
-			* mDirForward;
+	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
 
-	if (mThrustForward > 0 && forwardComponent.length() < mMaxSpeedForward) {
-		mVelocity += mDirForward * mThrustForward;
-	} else if (mThrustForward < 0 && forwardComponent.length() > 0) {
+	if ((mThrustForward > 0 && forwardComponent.length() < mMaxSpeedForward) || (mThrustForward < 0 && forwardComponent.length() > 0)) {
 		mVelocity += mDirForward * mThrustForward;
 	}
 	//############ END Apply forward thrust ##############
 
 	//############# BEGIN Update Sideward thrust ###############
 	if (mAddThrustLeft) {
-		// TODO 3: Make sideward thrust configurable
-		mThrustSideward += 0.0003;
+		mThrustSideward += mAccelSideward;
 	} else if (mAddThrustRight) {
-		mThrustSideward -= 0.0003;
+		mThrustSideward -= mAccelSideward;
 	} else {
 		mThrustSideward = 0;
 	}
 
+	// Clamp sideward thrust:
 	if (mThrustSideward > mMaxThrustSideward) {
 		mThrustSideward = mMaxThrustSideward;
 	} else if (mThrustSideward < -mMaxThrustSideward) {
@@ -130,14 +124,11 @@ void Vehicle::step() {
 	}
 	//############### END Apply sideward thrust ################
 
-	// Apply speed limits / "friction":
+	// Apply "friction":
 	mVelocity -= forwardComponent * 0.03;
 	mVelocity -= sidewardComponent * 0.02;
 
 	// ################ END Apply player vehicle control commands ###################
-
-	// Apply gravity:
-	mVelocity += getGravity();
 }
 
 
