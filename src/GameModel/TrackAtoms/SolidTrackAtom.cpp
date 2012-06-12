@@ -14,7 +14,7 @@ SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) :
 	mRenderMeshName = "";
 
 	mBounceThreshold = 0.3;
-	mRebound = 0.3;
+	mRebound = 1.4;
 	mJumpForce = 0.7;
 	mSlipOffset = 0.01;
 }
@@ -63,13 +63,10 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	default:
 		break;
 	}
+
+	cml::vector3f hitComponent = cml::dot(ship->mVelocity, wallNormal) * wallNormal;
+
 	// #################### END Determine wall normal vector #################
-
-	float dot2 = cml::dot(ship->mVelocity, wallNormal);
-
-	cml::vector3f hitComponent = dot2 * wallNormal;
-
-	ship->mVelocity -= hitComponent;
 
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	if (cml::dot(ship->mDirForward, wallNormal) < -0.8 && hitComponent.length() > 0.3) {
@@ -78,47 +75,50 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	}
 	//################ END Kill vehicle if it hits something with the nose too fast ###############
 
-
 	//################ BEGIN Jumping ###############
 
-	// Only jump if we hit the ground with the belly (that is, dot < 0)!:
-	if (ship->mTryJump && cml::dot(ship->getGravity(), wallNormal) < 0) {
-		cml::vector3f gravNormalized = cml::normalize(ship->getGravity());
+	if (cml::dot(ship->getGravity(), wallNormal) < 0) {
 
-		// NOTE: The factor that gravNormalized needs to be multiplied with depends
-		// on the size/dimensions of the ship's bounding box!
+		// Only jump if we hit the ground with the belly (that is, dot < 0)!:
+		if (ship->mTryJump) {
 
-		// TODO 3: Implement "ground probing ray" here. This would be better because
-		// it is independent of the size of the bounding boxes of vehicle & track atom.
-		// It would also allow us to implement hover behaviour for the vehicle.
-		cml::vector3f tmp = shipPos + gravNormalized * 2.1;
+			cml::vector3f gravNormalized = cml::normalize(ship->getGravity());
 
-		if (mBBox.containsPoint(tmp)) {
-			ship->mVelocity -= gravNormalized * mJumpForce;
-		}
-	}
-	// ############## END Jumping ###############
+			// NOTE: The factor that gravNormalized needs to be multiplied with depends
+			// on the size/dimensions of the ship's bounding box!
 
+			// TODO 2: Implement "ground probing ray" here. This would be better because
+			// it is independent of the size of the bounding boxes of vehicle & track atom.
+			// It would also allow us to implement hover behaviour for the vehicle.
+			cml::vector3f tmp = shipPos + gravNormalized * 2.5;
 
-	//################ BEGIN Bouncing ###############
-
-	// Do we hit the wall with the belly, and do we even still move towards it?
-	if (cml::dot(ship->getGravity(), wallNormal) < 0 && cml::dot(ship->mVelocity, wallNormal) < 0) {
-
-		if (hitComponent.length() > mBounceThreshold) {
-
-			if (mRebound < 0) {
-				ship->mVelocity -= wallNormal * mRebound;
-			} else {
-				ship->mVelocity -= hitComponent * mRebound;
+			if (mBBox.containsPoint(tmp)) {
+				ship->mVelocity -= (hitComponent + gravNormalized * mJumpForce);
 			}
 		}
+		// ############## END Jumping ###############
+
+		//################ BEGIN Bouncing ###############
+
+		// Do we hit the wall with the belly, and do we even still move towards it?
+		if (cml::dot(ship->mVelocity, wallNormal) < 0) {
+
+			if (hitComponent.length() > mBounceThreshold) {
+
+				if (mRebound < 0) {
+					ship->mVelocity -= wallNormal * mRebound;
+				} else {
+					ship->mVelocity -= hitComponent * mRebound;
+				}
+			}
+		}
+		//################ END Bouncing ###############
 	}
-	//################ END Bouncing ###############
+
 
 	//############### BEGIN Slip off blocks when we come too close to the edge ##############
 
-	float slipSpeed = 0.01;
+	float slipSpeed = 0.005;
 
 	if (abs(shipPos[0] - mBBox.mPos[0]) < mSlipOffset) {
 		ship->mVelocity[0] -= slipSpeed;

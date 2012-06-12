@@ -106,9 +106,9 @@ void OGREVehicle::update() {
 	if (velDirGravityComponent.length() > 0.000001) {
 
 		if (dot < 0) {
-			mDesiredPitchAngle = 17;
+			mDesiredPitchAngle = 15;
 		} else {
-			mDesiredPitchAngle = -17;
+			mDesiredPitchAngle = -15;
 		}
 
 		mPitchAngle += (mDesiredPitchAngle - mPitchAngle) * 0.1;
