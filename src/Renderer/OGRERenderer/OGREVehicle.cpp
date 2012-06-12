@@ -84,7 +84,7 @@ void OGREVehicle::update() {
 
 	//################# BEGIN Construct Sideward thrust roll quaternion ################
 
-	cml::vector3f velDirSidewardComponent = cml::dot(mpVehicle->mDirLeft, mpVehicle->mVelocity) * mpVehicle->mDirLeft;
+//	cml::vector3f velDirSidewardComponent = cml::dot(mpVehicle->mDirLeft, mpVehicle->mVelocity) * mpVehicle->mDirLeft;
 
 	if (mpVehicle->mAddThrustLeft || mpVehicle->mAddThrustRight) {
 		mRollAngle = -mpVehicle->mThrustSideward * 500;

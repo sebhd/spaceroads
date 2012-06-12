@@ -11,7 +11,6 @@
 // TODO 2: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
-
 #include "Vehicle.h"
 #include <vector>
 #include <cmath>
@@ -46,14 +45,12 @@ void Vehicle::reset() {
 	mAddThrustRight = false;
 	mTryJump = false;
 
-
 	mKilled = false;
 
 	// Somewhat close to original game:
 	//mAccelForward = 0.00005;
 
 	mAccelForward = 0.0001;
-
 
 	mThrustSideward = 0;
 	mThrustForward = 0;
@@ -64,16 +61,15 @@ void Vehicle::reset() {
 	mMaxSpeedForward = 0.7;
 	mMaxSpeedSideward = 0.2;
 
-	mPos = mpTrack->mStartPosition;
+
 	mVelocity.set(0, 0, 0);
 
-	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(1, 0, 0), (float) 0);
-	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(0, 1, 0), (float) M_PI);
+	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(1, 0, 0),
+			(float) 0);
+	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(0, 1, 0),
+			(float) M_PI);
 
 	setOrientation(mOrientation);
-
-
-	mpTrack->reset();
 }
 
 void Vehicle::step() {
@@ -103,7 +99,8 @@ void Vehicle::step() {
 	//############ END Update forward thrust ##############
 
 	//############ BEGIN Apply forward thrust ##############
-	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
+	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity)
+			* mDirForward;
 
 	if (mThrustForward > 0 && forwardComponent.length() < mMaxSpeedForward) {
 		mVelocity += mDirForward * mThrustForward;
@@ -146,14 +143,7 @@ void Vehicle::step() {
 	// Apply gravity:
 	mVelocity += getGravity();
 
-
-
 	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
-
-
-	timeval before, after;
-
-	gettimeofday(&before, NULL);
 
 	// Find colliding track atoms and apply contact effects:
 	std::vector<CollisionInfo> collisions = getCollidingTAs();
@@ -162,22 +152,14 @@ void Vehicle::step() {
 		collisions[ii].ta->applyContactEffects(this, collisions[ii].hs);
 	}
 
-	// Find colliding track atoms again, and now apply counter forces:
-	collisions = getCollidingTAs();
-
-	for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-		collisions[ii].ta->applyCounterForces(this, collisions[ii].hs);
-	}
-
-	gettimeofday(&after, NULL);
-
-//	long time = after.tv_usec - before.tv_usec;
-
-//	std::cout << time << std::endl;
-
 	//######### END Collision detection & handling (may modify velocity vector) ################
 
-	//################ BEGIN Enfore speed limits ################
+	//################ BEGIN Enforce speed limits ################
+
+	// TODO 3: Think about and - if it is so - explain why velocity
+	// changes due to speed limits can be done *between* collision
+	// detection and the 'applc counter forces' part of collision
+	// detection without causing trouble.
 
 	// ATTENTION:
 	// Be aware of the fact that in the case of a collision, the vehicle will just pass through
@@ -195,11 +177,18 @@ void Vehicle::step() {
 	if (cml::dot(mDirForward, mVelocity) < 0) {
 		mVelocity -= cml::dot(mDirForward, mVelocity) * mDirForward;
 	}
-	//################ END Enfore speed limits ################
+	//################ END Enforce speed limits ################
+
+
+	// Apply counter forces (i.e. make walls stop the vehicle):
+	for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+		collisions[ii].ta->applyCounterForces(this, collisions[ii].hs);
+	}
 
 	// Finally, move the vehicle by adding the velocity vector to the position:
 	mPos += mVelocity;
 }
+
 
 std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
 
@@ -278,22 +267,27 @@ void Vehicle::setOrientation(quat rotQuat) {
 	cml::vector3f orientation_axis;
 	float orientation_angle;
 
-	cml::quaternion_to_axis_angle(mOrientation, orientation_axis, orientation_angle, (float) 0);
+	cml::quaternion_to_axis_angle(mOrientation, orientation_axis,
+			orientation_angle, (float) 0);
 
 	// Update gravity vector - it depends directly on the orientation:
 	// TODO 3: Define gravity in track
 	float g = -0.01;
-	mGravity = cml::rotate_vector(cml::vector3f(0, g, 0), orientation_axis, orientation_angle);
+	mGravity = cml::rotate_vector(cml::vector3f(0, g, 0), orientation_axis,
+			orientation_angle);
 
 	// Update left vector:
-	mDirLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), orientation_axis, orientation_angle);
+	mDirLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), orientation_axis,
+			orientation_angle);
 
 	// Update forward vector:
-	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), orientation_axis, orientation_angle);
+	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), orientation_axis,
+			orientation_angle);
 }
 
 void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
-	cml::quaternion_rotate_about_local_axis(mOrientation, axis, (float) (steps * M_PI / 2));
+	cml::quaternion_rotate_about_local_axis(mOrientation, axis,
+			(float) (steps * M_PI / 2));
 	setOrientation(mOrientation);
 }
 

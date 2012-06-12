@@ -16,17 +16,32 @@
 #include "Renderer/AbstractRenderer.h"
 #include "InputHandler/OISInputHandler.h"
 #include "GameModel/Tracks/AbstractTrack.h"
+#include "GameModel/TrackAtoms/TrackAtom.h"
+
+
 
 class AbstractTrack;
 class AbstractRenderer;
 class AbstractInputHandler;
 class Vehicle;
+class TrackAtom;
+
+
+
+
+
+
 
 class Application : public OIS::KeyListener {
 public:
+
+
+
 	Application();
 	virtual ~Application();
 
+
+	//std::vector<CollisionInfo> getCollidingTAs();
 	bool handleFrameRenderingQueuedEvent();
 	void init();
 
@@ -39,7 +54,6 @@ public:
 
 	AbstractRenderer* getRenderer();
 
-//	GameModel* mpGameModel;
 
 	Vehicle* mpPlayerVehicle;
 
@@ -52,5 +66,7 @@ private:
 	OISInputHandler* mpInputHandler;
 
 };
+
+
 
 #endif /* APPLICATION_H_ */

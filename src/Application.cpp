@@ -63,7 +63,7 @@ bool Application::keyPressed(const OIS::KeyEvent& evt) {
 		break;
 
 	case OIS::KC_R:
-		mpPlayerVehicle->reset();
+		mpPlayerVehicle->mKilled = true;
 		break;
 
 	case OIS::KC_RIGHT:
@@ -157,8 +157,17 @@ void Application::playTrackFile(std::string filename) {
 
 	timeval before, after;
 
+	mpPlayerVehicle->mKilled = true;
+
 	//########### BEGIN The Main Loop! ##########
 	while (!quit) {
+
+		if (mpPlayerVehicle->mKilled) {
+			mpPlayerVehicle->mPos = mpTrack->mStartPosition;
+			mpPlayerVehicle->reset();
+			mpPlayerVehicle->mKilled = false;
+			mpTrack->reset();
+		}
 
 		gettimeofday(&newTime, NULL);
 
@@ -208,6 +217,72 @@ void Application::playTrackFile(std::string filename) {
 	std::cout << double(frametimetotal) / framecount << std::endl;
 }
 
+
+/*
+std::vector<CollisionInfo> Application::getCollidingTAs() {
+
+	std::vector<CollisionInfo> collisions;
+
+	cml::vector3f bboxPos = mpPlayerVehicle->mPos + mpPlayerVehicle->mBBoxPosOffset;
+
+	std::vector<TrackAtom*> trackAtoms = mpTrack->getTrackAtomsAround(mpPlayerVehicle->mPos);
+
+	for (unsigned int ii = 0; ii < trackAtoms.size(); ++ii) {
+
+		TrackAtom* ta = trackAtoms[ii];
+
+		mpPlayerVehicle->mBBox.mPos = bboxPos + mpPlayerVehicle->mVelocity;
+
+		if (ta->mBBox.intersectsWith(mpPlayerVehicle->mBBox)) {
+
+			mpPlayerVehicle->mBBox.mPos = bboxPos;
+
+			bool x = false, y = false, z = false;
+
+			if (ta->mBBox.getIntersectingAxis(mpPlayerVehicle->mBBox, x, y, z) == 2) {
+
+				TrackAtom::HitSide hitSide = TrackAtom::HIT_NONE;
+
+				if (!x) {
+
+					if (mpPlayerVehicle->mVelocity[0] > 0) {
+						hitSide = TrackAtom::HIT_LEFT;
+					} else {
+						hitSide = TrackAtom::HIT_RIGHT;
+					}
+				}
+
+				else if (!y) {
+
+					if (mpPlayerVehicle->mVelocity[1] > 0) {
+						hitSide = TrackAtom::HIT_BOTTOM;
+					} else {
+						hitSide = TrackAtom::HIT_TOP;
+					}
+				}
+
+				else if (!z) {
+
+					if (mpPlayerVehicle->mVelocity[2] > 0) {
+						hitSide = TrackAtom::HIT_BACK;
+					} else {
+						hitSide = TrackAtom::HIT_FRONT;
+					}
+				}
+
+				CollisionInfo ci;
+				ci.ta = ta;
+				ci.hs = hitSide;
+
+				collisions.push_back(ci);
+			}
+		}
+	}
+
+	return collisions;
+}
+
+*/
 
 void Application::init() {
 

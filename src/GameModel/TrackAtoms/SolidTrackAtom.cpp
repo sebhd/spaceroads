@@ -16,7 +16,7 @@ SolidTrackAtom::SolidTrackAtom(game::BoundingBox bbox) :
 	mBounceThreshold = 0.3;
 	mRebound = 0.3;
 	mJumpForce = 0.7;
-	mSlipOffset = 1;
+	mSlipOffset = 0.01;
 }
 
 SolidTrackAtom::~SolidTrackAtom() {
@@ -57,21 +57,25 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 	if (abs(shipPos[0] - mBBox.mPos[0]) < mSlipOffset) {
 		ship->mVelocity[0] -= slipSpeed;
-	} else if (abs((mBBox.mPos[0] + mBBox.mSize[0]) - shipPos[0]) < mSlipOffset) {
+	} else if (abs((mBBox.mPos[0] + mBBox.mSize[0]) - shipPos[0])
+			< mSlipOffset) {
 		ship->mVelocity[0] += slipSpeed;
 	}
 
 	if (abs(shipPos[1] - mBBox.mPos[1]) < mSlipOffset) {
 		ship->mVelocity[1] -= slipSpeed;
-	} else if (abs((mBBox.mPos[1] + mBBox.mSize[1]) - shipPos[1]) < mSlipOffset) {
+	} else if (abs((mBBox.mPos[1] + mBBox.mSize[1]) - shipPos[1])
+			< mSlipOffset) {
 		ship->mVelocity[1] += slipSpeed;
 	}
 
 	if (abs(shipPos[2] - mBBox.mPos[2]) < mSlipOffset) {
 		ship->mVelocity[2] -= slipSpeed;
-	} else if (abs((mBBox.mPos[2] + mBBox.mSize[2]) - shipPos[2]) < mSlipOffset) {
+	} else if (abs((mBBox.mPos[2] + mBBox.mSize[2]) - shipPos[2])
+			< mSlipOffset) {
 		ship->mVelocity[2] += slipSpeed;
 	}
+
 	//############### END Slip off blocks when we come too close to the edge ##############
 }
 
@@ -110,6 +114,7 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	// #################### END Determine wall normal vector #################
 
 	float dot = cml::dot(ship->mVelocity, wallNormal);
+	//float dot = cml::dot(ship->mVelocity + ship->mAddVelocity, wallNormal);
 
 	// ATTENTION:
 	// Here we do a sanity check to get around problems which may otherwise happen
@@ -134,7 +139,6 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	ship->mVelocity -= hitComponent;
 
 	if (hitComponent.length() > mBounceThreshold) {
-		//if (hitComponent.length() > mBounceThreshold) {
 
 		if (mRebound < 0) {
 
@@ -143,6 +147,8 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 			ship->mVelocity -= hitComponent * mRebound;
 		}
 	}
+
+
 
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	dot = cml::dot(ship->mDirForward, wallNormal);

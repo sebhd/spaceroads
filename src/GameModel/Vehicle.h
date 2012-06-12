@@ -17,8 +17,8 @@ class AbstractTrack;
 struct CollisionInfo;
 
 // So muss ein Ogre-kompatibles Quaternion aussehen:
-typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first, cml::negative_cross> quat;
-
+typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first,
+		cml::negative_cross> quat;
 
 class Vehicle {
 
@@ -39,12 +39,17 @@ public:
 	const cml::vector3f& getPosition();
 	void reset();
 
-	float getThrustForward() { return mThrustForward; }
-	float getThrustSideward() { return mThrustSideward; }
+	float getThrustForward() {
+		return mThrustForward;
+	}
+	float getThrustSideward() {
+		return mThrustSideward;
+	}
 
 	void setOrientation(quat rotQuat);
 
-	bool mAddThrustLeft, mAddThrustRight, mAddThrustForward, mReduceThrustForward;
+	bool mAddThrustLeft, mAddThrustRight;
+	bool mAddThrustForward, mReduceThrustForward;
 	bool mTryJump;
 
 	bool mJumped;
@@ -58,24 +63,20 @@ public:
 	cml::vector3f mDirLeft;
 	cml::vector3f mDirForward;
 
+	bool mKilled;
+
+	cml::vector3f mPos;
 
 private:
 
 	std::vector<CollisionInfo> getCollidingTAs();
 
-
 	game::BoundingBox mBBox;
 
 	AbstractTrack* mpTrack;
 
-	bool mKilled;
-
-
-	cml::vector3f mPos;
-
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;
-
 
 	cml::vector3f mGravity;
 	cml::vector3f mBBoxPosOffset;

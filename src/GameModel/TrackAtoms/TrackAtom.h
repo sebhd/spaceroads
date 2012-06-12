@@ -14,6 +14,9 @@
 
 class Vehicle;
 
+
+
+
 class TrackAtom {
 public:
 
@@ -38,6 +41,7 @@ struct CollisionInfo {
 	TrackAtom* ta;
 	TrackAtom::HitSide hs;
 };
+
 
 
 
