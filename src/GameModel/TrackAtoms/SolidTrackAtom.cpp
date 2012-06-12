@@ -146,7 +146,6 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	}
 	// #################### END Determine wall normal vector #################
 
-	float dot = cml::dot(ship->mVelocity, wallNormal);
 
 	// ATTENTION:
 	// Here we do a sanity check to get around problems which may otherwise happen
@@ -162,14 +161,23 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 
 	// TODO 5: Understand why this happens
 
+	float dot = cml::dot(ship->mVelocity, wallNormal);
+
 	if (dot >= 0) {
 		return;
 	}
 
 	cml::vector3f hitComponent = dot * wallNormal;
 
+
 	// First of all, prevent the vehicle from going through the wall:
 	ship->mVelocity -= hitComponent;
+
+	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
+	if (cml::dot(ship->mDirForward, wallNormal) < -0.8 && hitComponent.length() > 0.3) {
+		ship->mKilled = true;
+	}
+	//################ END Kill vehicle if it hits something with the nose too fast ###############
 
 
 
@@ -188,9 +196,7 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	// sbecht 2012-06-12
 
 	// Do we hit the wall with the belly?
-	dot = cml::dot(ship->getGravity(), wallNormal);
-
-	if (dot >= 0) {
+	if (cml::dot(ship->getGravity(), wallNormal) >= 0) {
 		return;
 	}
 
@@ -204,13 +210,4 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 		}
 	}
 	// ############ END Bouncing ###################
-
-
-	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
-	dot = cml::dot(ship->mDirForward, wallNormal);
-
-	if (dot < -0.8 && hitComponent.length() > 0.3) {
-		ship->mKilled = true;
-	}
-	//################ END Kill vehicle if it hits something with the nose too fast ###############
 }
