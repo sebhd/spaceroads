@@ -47,7 +47,7 @@ public:
 	bool mAddThrustForward, mReduceThrustForward;
 	bool mTryJump;
 
-	bool mJumped;
+
 
 	float mThrustSideward, mThrustForward;
 

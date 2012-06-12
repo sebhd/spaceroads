@@ -208,8 +208,9 @@ void Application::playTrackFile(std::string filename) {
 
 			collisions = findCollidingTrackAtoms();
 			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-			collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
+				collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
 			}
+
 			mpPlayerVehicle->updatePosition();
 
 			accumulator -= dt;
@@ -283,7 +284,6 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 						hitSide = HIT_FRONT;
 					}
 				}
-
 
 				CollisionInfo ci;
 				ci.ta = ta;
