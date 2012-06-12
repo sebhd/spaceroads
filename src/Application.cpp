@@ -6,7 +6,6 @@
  */
 
 // TODO 3: Implement some sort of spatial index to speed up collision detection
-
 #include "Application.h"
 #include <iostream>
 #include <ctime>
@@ -152,13 +151,6 @@ void Application::playTrackFile(std::string filename) {
 	//########### BEGIN The Main Loop! ##########
 	while (!quit) {
 
-		if (mpPlayerVehicle->mKilled) {
-			mpPlayerVehicle->mPos = mpTrack->mStartPosition;
-			mpPlayerVehicle->reset();
-			mpPlayerVehicle->mKilled = false;
-			mpTrack->reset();
-		}
-
 		gettimeofday(&newTime, NULL);
 
 		long frameTime = newTime.tv_usec - currentTime.tv_usec;
@@ -182,6 +174,13 @@ void Application::playTrackFile(std::string filename) {
 
 			// Do track step:
 			mpTrack->step(mpPlayerVehicle);
+
+			if (mpPlayerVehicle->mKilled) {
+				mpPlayerVehicle->mPos = mpTrack->mStartPosition;
+				mpPlayerVehicle->reset();
+				//mpPlayerVehicle->mKilled = false;
+				mpTrack->reset();
+			}
 
 			// Do physics / game logic step:
 			mpPlayerVehicle->step();
@@ -224,7 +223,6 @@ void Application::playTrackFile(std::string filename) {
 
 	std::cout << double(frametimetotal) / framecount << std::endl;
 }
-
 
 std::vector<CollisionInfo> Application::getCollidingTAs() {
 
