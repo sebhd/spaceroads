@@ -313,6 +313,7 @@ void OgreRenderer::prepareForTrack() {
 			Ogre::ColourValue(mpApp->mpTrack->mAmbientLight[0], mpApp->mpTrack->mAmbientLight[1],
 					mpApp->mpTrack->mAmbientLight[2]));
 
+
 	// Set up directional light:
 	// TODO 3: Read directional light properties from Track class
 
@@ -320,9 +321,12 @@ void OgreRenderer::prepareForTrack() {
 	l->setType(Ogre::Light::LT_DIRECTIONAL);
 	l->setCastShadows(true);
 
-	l->setDirection(0.5, -1, 0.5);
-	l->setDiffuseColour(1, 1, 1);
-	l->setSpecularColour(1, 1, 1);
+	l->setDirection(mpApp->mpTrack->mDirectionalLightDir[0], mpApp->mpTrack->mDirectionalLightDir[1], mpApp->mpTrack->mDirectionalLightDir[2]);
+	l->setDiffuseColour(0.7, 0.7, 0.7);
+	l->setSpecularColour(0.7, 0.7, 0.7);
+
+	std::cout << l->getDirection() << std::endl;
+
 
 
 	// Build track geometry:
@@ -374,11 +378,15 @@ void OgreRenderer::buildTrackGeometry() {
 
 		TrackDecorationMesh* tm = &mpApp->mpTrack->mMeshes[ii];
 
-		if (!mSceneMgr->hasEntity(tm->meshName)) {
-			mSceneMgr->createEntity(tm->meshName, tm->meshName + ".mesh");
+		if (!mSceneMgr->hasEntity(tm->mMeshName)) {
+			mSceneMgr->createEntity(tm->mMeshName, tm->mMeshName + ".mesh");
 		}
 
-		mTrackStaticGeometry->addEntity(mSceneMgr->getEntity(tm->meshName),
+		Ogre::Entity* entity = mSceneMgr->getEntity(tm->mMeshName);
+
+		entity->setMaterialName(tm->mRenderMaterial);
+
+		mTrackStaticGeometry->addEntity(entity,
 				Ogre::Vector3(tm->mPos[0], tm->mPos[1], tm->mPos[2]), orientation,
 				Ogre::Vector3(tm->mScale[0], tm->mScale[1], tm->mScale[2]));
 	}

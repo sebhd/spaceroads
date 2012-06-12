@@ -16,7 +16,8 @@ public:
 
 	cml::vector3f mPos;
 	cml::vector3f mScale;
-	std::string meshName;
+	std::string mMeshName;
+	std::string mRenderMaterial;
 
 };
 

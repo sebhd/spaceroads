@@ -30,6 +30,7 @@ public:
 
 	cml::vector3f mStartPosition;
 	cml::vector3f mAmbientLight;
+	cml::vector3f mDirectionalLightDir;
 
 	std::string mSkybox;
 

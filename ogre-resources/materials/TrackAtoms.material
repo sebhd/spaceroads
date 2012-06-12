@@ -6,7 +6,7 @@ material SpaceRoads/Track/Deadly
       {
          lighting on
  
-         ambient 0.1 0.1 0.1 1
+         ambient 1 0 0 1 1
          diffuse 1 0 0 1
          emissive 0 0 0 1
       }
@@ -22,7 +22,7 @@ material SpaceRoads/Track/Jump
       {
          lighting on
  
-         ambient 0.1 0.1 0.1 1
+         ambient 1 1 0 1
          diffuse 1 1 0 1
          emissive 0 0 0 1
       }
@@ -37,7 +37,7 @@ material SpaceRoads/Track/Solid
       {
          lighting on
  
-         ambient 0.1 0.1 0.1 1
+         ambient 0.5 0.5 0.5 1
          diffuse 0.5 0.5 0.5 1
          emissive 0 0 0 1
       }
@@ -52,8 +52,8 @@ material SpaceRoads/Track/White
       {
          lighting on
  
-         ambient 0.1 0.1 0.1 1
-         diffuse 1 1 1 1
+         ambient  1 1 1 1
+         diffuse  1 1 1 1
          emissive 0 0 0 1
       }
    }
@@ -68,8 +68,8 @@ material SpaceRoads/Track/Blue
       {
          lighting on
  
-         ambient 0 0 0.1 1
-         diffuse 0 0 1 1
+         ambient  0 0 1 1
+         diffuse  0 0 1 1
          emissive 0 0 0 1
       }
    }
@@ -84,8 +84,8 @@ material SpaceRoads/Track/Yellow
       {
          lighting on
  
-         ambient 0 0 0.1 1
-         diffuse 1 1 0 1
+         ambient  1 1 0 1
+         diffuse  1 1 0 1
          emissive 0 0 0 1
       }
    }
@@ -99,9 +99,9 @@ material SpaceRoads/Track/Orange
       {
          lighting on
  
-         ambient 0 0 0.1 1
-         diffuse 1 0.5 0 1
-         emissive 0 0 0 1
+         ambient  0 0   1 1
+         diffuse  1 0.5 0 1
+         emissive 0 0   0 1
       }
    }
 }
@@ -114,8 +114,8 @@ material SpaceRoads/Track/Red
       {
          lighting on
  
-         ambient 0 0 0.1 1
-         diffuse 1 0 0 1
+         ambient  1 0 0 1
+         diffuse  1 0 0 1
          emissive 0 0 0 1
       }
    }
@@ -129,9 +129,9 @@ material SpaceRoads/Track/DarkGrey
       {
          lighting on
  
-         ambient 0 0 0 1
-         diffuse 0.2 0.2 0.2 1
-         emissive 0 0 0 1
+         ambient  0.2 0.2 0.2 1
+         diffuse  0.2 0.2 0.2 1
+         emissive 0   0 0 1
       }
    }
 }

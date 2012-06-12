@@ -115,7 +115,6 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 		//################ END Bouncing ###############
 	}
 
-
 	//############### BEGIN Slip off blocks when we come too close to the edge ##############
 
 	float slipSpeed = 0.005;
@@ -143,41 +142,12 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 
-	// #################### BEGIN Determine wall normal vector #################
-	cml::vector3f wallNormal;
-
-	switch (hs) {
-	case HIT_TOP:
-		wallNormal.set(0, 1, 0);
-		break;
-
-	case HIT_BOTTOM:
-		wallNormal.set(0, -1, 0);
-		break;
-
-	case HIT_FRONT:
-		wallNormal.set(0, 0, 1);
-		break;
-	case HIT_BACK:
-		wallNormal.set(0, 0, -1);
-		break;
-
-	case HIT_RIGHT:
-		wallNormal.set(1, 0, 0);
-		break;
-
-	case HIT_LEFT:
-		wallNormal.set(-1, 0, 0);
-		break;
-
-	default:
-		return;
+	if (hs == HIT_TOP || hs == HIT_BOTTOM) {
+		ship->mVelocity[1] = 0;
+	} else if (hs == HIT_LEFT || hs == HIT_RIGHT) {
+		ship->mVelocity[0] = 0;
 	}
-
-	// Prevent the vehicle from going through the wall:
-	float dot = cml::dot(ship->mVelocity, wallNormal);
-
-	if (dot < 0) {
-		ship->mVelocity -= dot * wallNormal;
+	else if (hs == HIT_FRONT || hs == HIT_BACK) {
+		ship->mVelocity[2] = 0;
 	}
 }

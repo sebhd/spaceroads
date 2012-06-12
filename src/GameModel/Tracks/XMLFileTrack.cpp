@@ -37,6 +37,15 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 	//#################### END Read Ambient light ######################
 
 
+	//#################### BEGIN Read Directional light ######################
+	TiXmlElement* directionalLightElem = trackElem->FirstChildElement("DirectionalLight");
+
+	if (directionalLightElem != NULL) {
+		mDirectionalLightDir.set(atof(directionalLightElem->Attribute("x")), atof(directionalLightElem->Attribute("y")), atof(directionalLightElem->Attribute("z")));
+	}
+	//#################### END Read Directional light ######################
+
+
 	//#################### BEGIN Read <Atom> Elements ######################
 	for (TiXmlElement* taElem = trackElem->FirstChildElement("Atom"); taElem != NULL;
 			taElem = taElem->NextSiblingElement("Atom")) {
@@ -82,9 +91,14 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 
 		mesh.mPos.set(atof(taElem->Attribute("x")), atof(taElem->Attribute("y")),
 				atof(taElem->Attribute("z")));
+
 		mesh.mScale.set(atof(taElem->Attribute("scalex")), atof(taElem->Attribute("scaley")),
 				atof(taElem->Attribute("scalez")));
-		mesh.meshName = taElem->Attribute("mesh");
+
+		mesh.mMeshName = taElem->Attribute("mesh");
+
+		if (taElem->Attribute("material") != NULL)
+		mesh.mRenderMaterial = taElem->Attribute("material");
 
 		mMeshes.push_back(mesh);
 

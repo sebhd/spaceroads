@@ -12,6 +12,7 @@ AbstractTrack::AbstractTrack() {
 	mSkybox = "SpaceRoads/SkyBoxes/2Moons";
 
 	mAmbientLight.set(0,0,0);
+	mDirectionalLightDir.set(-1,-1,-1);
 }
 
 AbstractTrack::~AbstractTrack() {

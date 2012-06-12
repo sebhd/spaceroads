@@ -21,7 +21,7 @@ def makeTunnel(x,y,z, scalex, scaley, scalez):
     result = "<!-- ########## BEGIN Tunnel ########## -->\n"
     
     # Decorative mesh:
-    result += makeXMLTag("Mesh", {'x':x, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley':scaley, 'scalez':scalez, 'mesh':"Tunnel"}, True) + "\n"
+    result += makeXMLTag("Mesh", {'x':x, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley':scaley, 'scalez':scalez, 'mesh':"Tunnel", 'material':"SpaceRoads/Track/Red"}, True) + "\n"
    
     # Floor:
     result += makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'jaumpForce':0}, True) + "\n"
@@ -52,11 +52,13 @@ outfile.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
 outfile.write("<Track skybox=\"SpaceRoads/SkyBoxes/PurpleNebula2\">\n")
 
 outfile.write('<StartPos x="4" y="10" z="5" />\n')
+outfile.write('<AmbientLight r="0.3" g="0.3" b="0.3" />\n')
+outfile.write('<DirectionalLight x="-1" y="-1" z="-1">\n')
+
+outfile.write('</DirectionalLight>\n')
+
 
 mat = 0
-
-
-
 
 
 ii = 0
@@ -73,11 +75,11 @@ while(ii < 100):
 
     
 	if count == 10:
-		outfile.write(makeTunnel(x,y,z, scalex, 5.01,100))	
-		outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 100, 'material': material}, True) + "\n")
-		outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 100, 'material': material}, True) + "\n")
+		outfile.write(makeTunnel(x,y,z, scalex, 5.01,60))	
+		outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
+		outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
 		count = 0
-		ii += 5
+		ii += 3
     
 	else:
 		if mat == 0:
@@ -94,6 +96,7 @@ while(ii < 100):
 		
 	#	outfile.write(makeXMLTag("Atom", {'x':x + scalex + 1, 'y':y, 'z':z, 'scalex': 1, 'scaley': 20, 'scalez': scalez, 'material': material}, True) + "\n")
 
+		outfile.write(makeXMLTag("Atom", {'x':x, 'y':y + 50, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material}, True) + "\n")
 		
 		ii += 1
 
