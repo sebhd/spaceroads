@@ -171,7 +171,29 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 	// First of all, prevent the vehicle from going through the wall:
 	ship->mVelocity -= hitComponent;
 
-	// Then, apply bouncing:
+
+
+	// ############ BEGIN Bouncing ###################
+
+	// Only allow bouncing if we hit the wall with the belly!
+	// ATTENTION: This is not just an arbitrary rule! When jumping inside
+	// tunnels, it is required to prevent bouncing off the tunnels roof
+	// and being thrown back through the floor of the tunnel.
+
+	// Of course, if we had better collision detection, the vehicle
+	// wouldn't be pushed through the floor, but since our collision
+	// detection is not perfect, we need to take all possible measures
+	// to prevent the vehicle physis simulation from going into states
+	// that our collision detection cannot handle correctly.
+	// sbecht 2012-06-12
+
+	// Do we hit the wall with the belly?
+	dot = cml::dot(ship->getGravity(), wallNormal);
+
+	if (dot >= 0) {
+		return;
+	}
+
 	if (hitComponent.length() > mBounceThreshold) {
 
 		if (mRebound < 0) {
@@ -181,6 +203,8 @@ void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
 			ship->mVelocity -= hitComponent * mRebound;
 		}
 	}
+	// ############ END Bouncing ###################
+
 
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	dot = cml::dot(ship->mDirForward, wallNormal);

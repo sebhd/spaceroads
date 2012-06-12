@@ -204,9 +204,12 @@ void Application::playTrackFile(std::string filename) {
 			// Apply counter-forces (prevent vehicle from going through walls) & contact effects:
 			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 				collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
-				collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
 			}
 
+			collisions = findCollidingTrackAtoms();
+			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+			collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
+			}
 			mpPlayerVehicle->updatePosition();
 
 			accumulator -= dt;
