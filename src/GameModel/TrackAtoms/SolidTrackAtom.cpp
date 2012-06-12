@@ -33,7 +33,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 	cml::vector3f shipPos = ship->mPos;
 
 	// #################### BEGIN Determine wall normal vector #################
-	cml::vector3f wallNormal;
+	cml::vector3f wallNormal(0,0,0);
 
 	switch (hs) {
 	case HIT_TOP:

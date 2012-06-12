@@ -51,7 +51,7 @@ outfile = open(filename, "w")
 outfile.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
 outfile.write("<Track skybox=\"SpaceRoads/SkyBoxes/PurpleNebula2\">\n")
 
-outfile.write('<StartPos x="4" y="10" z="5" />\n')
+outfile.write('<StartPos x="4" y="10" z="50" />\n')
 outfile.write('<AmbientLight r="0.3" g="0.3" b="0.3" />\n')
 outfile.write('<DirectionalLight x="-1" y="-1" z="-1">\n')
 
@@ -62,7 +62,6 @@ mat = 0
 
 
 ii = 0
-count = 0
 
 while(ii < 100):
     
@@ -74,11 +73,11 @@ while(ii < 100):
 	scalez = 20
 
     
-	if count == 10:
-	    outfile.write(makeTunnel(x,y,z, scalex, 5.01,60))	
+	
+	if (ii - 3) % 20 == 0:
+	    outfile.write(makeTunnel(x,y,z, scalex, 5.01,80))	
 	    #outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
 	    #outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
-	    count = 0
 	
 	
 	if mat == 0:
@@ -89,18 +88,26 @@ while(ii < 100):
 	    material1 = "SpaceRoads/Track/White"
 	    material2 = "SpaceRoads/Track/DarkGrey"
 	    mat = 0
-		
-	outfile.write(makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1}, True) + "\n")
-		
-	outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
-	outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
-		
 	
-	outfile.write(makeXMLTag("Atom", {'x':x, 'y':y + 50, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1}, True) + "\n")
+	
+	
+	if ii  % 10 == 0 or (ii + 1) % 10 == 0:
+	    pass
+	else:
+	    outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1}, True) + "\n")
+		
+	    outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x,          'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1}, True) + "\n")
+	
+	
+	
+	outfile.write(makeXMLTag("Atom", {'x':x - scalex * 4, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1}, True) + "\n")
+	outfile.write(makeXMLTag("Atom", {'x':x + scalex * 5, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1}, True) + "\n")
 		
 	ii += 1
 
-				
-	count += 1
 		
 outfile.write("</Track>")

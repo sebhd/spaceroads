@@ -74,7 +74,7 @@ void OGREVehicle::update() {
 
 			Ogre::Quaternion t2;
 
-			t2.FromAngleAxis(a * 0.03, v);
+			t2.FromAngleAxis(a * 0.05, v);
 
 			mOrientation = t2 * mOrientation;
 		} else {
