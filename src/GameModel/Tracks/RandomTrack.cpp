@@ -10,7 +10,7 @@
 #include "../BoundingBox.h"
 #include <ctime>
 
-RandomTrack::RandomTrack(Application* a_app) : AbstractTrack(a_app) {
+RandomTrack::RandomTrack()  {
 	// TODO Auto-generated constructor stub
 
 	mStartPosition.set(5, 50, 50);
@@ -63,11 +63,11 @@ RandomTrack::~RandomTrack() {
 }
 
 
-void RandomTrack::step() {
+void RandomTrack::step(Vehicle* ship) {
 	// In derived classes, this is the place for code to modify the track at runtime
 
 
-	cml::vector3f shipPos = mpApp->mpPlayerVehicle->getPosition();
+	cml::vector3f shipPos = ship->mPos;
 
 	//############# BEGIN Delete TrackAtoms behind the player vehicle ###########
 	for (unsigned int ii = 0; ii < mTrackAtoms.size(); ii++) {

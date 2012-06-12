@@ -13,7 +13,7 @@
 
 class XMLFileTrack: public AbstractTrack {
 public:
-	XMLFileTrack(Application* a_app, std::string filename);
+	XMLFileTrack(std::string filename);
 	virtual ~XMLFileTrack();
 };
 

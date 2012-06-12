@@ -5,6 +5,7 @@
  *      Author: sebastian
  */
 
+// TODO 3: Implement some sort of spatial index to speed up collision detection
 
 #include "Application.h"
 #include <iostream>
@@ -21,6 +22,7 @@ Application::Application() {
 
 	mpTrack = NULL;
 	mpPlayerVehicle = NULL;
+	mpPlayerVehicle = new Vehicle();
 }
 
 Application::~Application() {
@@ -115,29 +117,17 @@ bool Application::keyReleased(const OIS::KeyEvent& evt) {
 	return true;
 }
 
-
 void Application::playTrackFile(std::string filename) {
 
-
 	if (mpTrack != NULL)
-	delete (mpTrack);
-
-	if (mpPlayerVehicle != NULL)
-	delete (mpPlayerVehicle);
-
+		delete (mpTrack);
 
 	std::cout << "Loading track " << filename << "." << std::endl;
-	mpTrack = new XMLFileTrack(this, filename);
-
-	std::cout << "Creating vehicle." << std::endl;
-	mpPlayerVehicle = new Vehicle(mpTrack);
+	mpTrack = new XMLFileTrack(filename);
 
 	std::cout << "Preparing renderer for track.";
 
 	mpRenderer->prepareForTrack();
-
-
-
 
 	timeval currentTime, newTime;
 
@@ -191,10 +181,28 @@ void Application::playTrackFile(std::string filename) {
 			mpInputHandler->processInput();
 
 			// Do track step:
-			mpTrack->step();
+			mpTrack->step(mpPlayerVehicle);
 
 			// Do physics / game logic step:
 			mpPlayerVehicle->step();
+
+			//######### BEGIN Collision detection & handling (may modify velocity vector) ################
+
+			// Find colliding track atoms and apply contact effects:
+			std::vector<CollisionInfo> collisions = getCollidingTAs();
+
+			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+				collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
+			}
+
+			// Apply counter forces (i.e. make walls stop the vehicle):
+			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+				collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
+			}
+
+			//######### END Collision detection & handling (may modify velocity vector) ################
+
+			mpPlayerVehicle->updatePosition();
 
 			accumulator -= dt;
 		}
@@ -218,7 +226,6 @@ void Application::playTrackFile(std::string filename) {
 }
 
 
-/*
 std::vector<CollisionInfo> Application::getCollidingTAs() {
 
 	std::vector<CollisionInfo> collisions;
@@ -241,32 +248,32 @@ std::vector<CollisionInfo> Application::getCollidingTAs() {
 
 			if (ta->mBBox.getIntersectingAxis(mpPlayerVehicle->mBBox, x, y, z) == 2) {
 
-				TrackAtom::HitSide hitSide = TrackAtom::HIT_NONE;
+				HitSide hitSide = HIT_NONE;
 
 				if (!x) {
 
 					if (mpPlayerVehicle->mVelocity[0] > 0) {
-						hitSide = TrackAtom::HIT_LEFT;
+						hitSide = HIT_LEFT;
 					} else {
-						hitSide = TrackAtom::HIT_RIGHT;
+						hitSide = HIT_RIGHT;
 					}
 				}
 
 				else if (!y) {
 
 					if (mpPlayerVehicle->mVelocity[1] > 0) {
-						hitSide = TrackAtom::HIT_BOTTOM;
+						hitSide = HIT_BOTTOM;
 					} else {
-						hitSide = TrackAtom::HIT_TOP;
+						hitSide = HIT_TOP;
 					}
 				}
 
 				else if (!z) {
 
 					if (mpPlayerVehicle->mVelocity[2] > 0) {
-						hitSide = TrackAtom::HIT_BACK;
+						hitSide = HIT_BACK;
 					} else {
-						hitSide = TrackAtom::HIT_FRONT;
+						hitSide = HIT_FRONT;
 					}
 				}
 
@@ -282,8 +289,6 @@ std::vector<CollisionInfo> Application::getCollidingTAs() {
 	return collisions;
 }
 
-*/
-
 void Application::init() {
 
 	mpRenderer = new OgreRenderer(this);
@@ -296,11 +301,9 @@ void Application::init() {
 
 }
 
-
 AbstractRenderer* Application::getRenderer() {
 	return mpRenderer;
 }
-
 
 bool Application::handleFrameRenderingQueuedEvent() {
 

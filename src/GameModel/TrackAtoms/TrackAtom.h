@@ -12,15 +12,13 @@
 #include "../BoundingBox.h"
 #include "../Vehicle.h"
 
-class Vehicle;
-
-
-
+enum HitSide {
+	HIT_TOP, HIT_BOTTOM, HIT_LEFT, HIT_RIGHT, HIT_FRONT, HIT_BACK, HIT_NONE
+};
 
 class TrackAtom {
 public:
 
-	enum HitSide { HIT_TOP, HIT_BOTTOM, HIT_LEFT, HIT_RIGHT, HIT_FRONT, HIT_BACK, HIT_NONE };
 
 	TrackAtom(game::BoundingBox bbox);
 	virtual ~TrackAtom();
@@ -37,12 +35,12 @@ public:
 	bool mIsDeadly;
 };
 
+
+
 struct CollisionInfo {
 	TrackAtom* ta;
-	TrackAtom::HitSide hs;
+	HitSide hs;
 };
-
-
 
 
 #endif /* TRACKATOM_H_ */

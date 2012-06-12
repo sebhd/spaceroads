@@ -23,8 +23,6 @@ public:
 	float mJumpForce;
 	float mSlipOffset;
 
-
-
 };
 
 #endif /* SOLIDTRACKATOM_H_ */

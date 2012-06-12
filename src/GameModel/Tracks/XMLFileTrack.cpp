@@ -10,7 +10,7 @@
 #include <string>
 #include "../TrackAtoms/SolidTrackAtom.h"
 
-XMLFileTrack::XMLFileTrack(Application* a_app, std::string filename) : AbstractTrack(a_app) {
+XMLFileTrack::XMLFileTrack(std::string filename) {
 
 	TiXmlDocument doc;
 	doc.LoadFile(filename);

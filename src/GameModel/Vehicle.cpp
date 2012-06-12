@@ -4,22 +4,18 @@
  *  Created on: 25.04.2012
  *      Author: sebastian
  */
-
-// TODO 3: Remove mpTrack pointer from Vehicle class?
-// TODO 3: Implement some sort of spatial index to speed up collision detection
 // TODO 3: Detect irrecoverable falling-off the track (and in that case, reset the vehicle)
 // TODO 2: Implement "ground probing ray" underneath the vehicle for more solid "can i jump?"-check and possibility to implement hovering
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
+
 #include "Vehicle.h"
 #include <vector>
 #include <cmath>
 #include <ctime>
 #include <sys/time.h>
 
-Vehicle::Vehicle(AbstractTrack* a_track) {
-
-	mpTrack = a_track;
+Vehicle::Vehicle() {
 
 	// Configure the vehicle's collision AABB:
 	mBBox.mSize.set(4, 4, 4);
@@ -142,17 +138,11 @@ void Vehicle::step() {
 
 	// Apply gravity:
 	mVelocity += getGravity();
+}
 
-	//######### BEGIN Collision detection & handling (may modify velocity vector) ################
 
-	// Find colliding track atoms and apply contact effects:
-	std::vector<CollisionInfo> collisions = getCollidingTAs();
+void Vehicle::updatePosition() {
 
-	for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-		collisions[ii].ta->applyContactEffects(this, collisions[ii].hs);
-	}
-
-	//######### END Collision detection & handling (may modify velocity vector) ################
 
 	//################ BEGIN Enforce speed limits ################
 
@@ -179,79 +169,10 @@ void Vehicle::step() {
 	}
 	//################ END Enforce speed limits ################
 
-
-	// Apply counter forces (i.e. make walls stop the vehicle):
-	for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-		collisions[ii].ta->applyCounterForces(this, collisions[ii].hs);
-	}
-
 	// Finally, move the vehicle by adding the velocity vector to the position:
 	mPos += mVelocity;
 }
 
-
-std::vector<CollisionInfo> Vehicle::getCollidingTAs() {
-
-	std::vector<CollisionInfo> collisions;
-
-	cml::vector3f bboxPos = mPos + mBBoxPosOffset;
-
-	std::vector<TrackAtom*> trackAtoms = mpTrack->getTrackAtomsAround(mPos);
-
-	for (unsigned int ii = 0; ii < trackAtoms.size(); ++ii) {
-
-		TrackAtom* ta = trackAtoms[ii];
-
-		mBBox.mPos = bboxPos + mVelocity;
-
-		if (ta->mBBox.intersectsWith(mBBox)) {
-
-			mBBox.mPos = bboxPos;
-
-			bool x = false, y = false, z = false;
-
-			if (ta->mBBox.getIntersectingAxis(mBBox, x, y, z) == 2) {
-
-				TrackAtom::HitSide hitSide = TrackAtom::HIT_NONE;
-
-				if (!x) {
-
-					if (mVelocity[0] > 0) {
-						hitSide = TrackAtom::HIT_LEFT;
-					} else {
-						hitSide = TrackAtom::HIT_RIGHT;
-					}
-				}
-
-				else if (!y) {
-
-					if (mVelocity[1] > 0) {
-						hitSide = TrackAtom::HIT_BOTTOM;
-					} else {
-						hitSide = TrackAtom::HIT_TOP;
-					}
-				}
-
-				else if (!z) {
-
-					if (mVelocity[2] > 0) {
-						hitSide = TrackAtom::HIT_BACK;
-					} else {
-						hitSide = TrackAtom::HIT_FRONT;
-					}
-				}
-
-				CollisionInfo ci;
-				ci.ta = ta;
-				ci.hs = hitSide;
-
-				collisions.push_back(ci);
-			}
-		}
-	}
-
-	return collisions;
-}
 
 const cml::vector3f& Vehicle::getGravity() {
 	return mGravity;

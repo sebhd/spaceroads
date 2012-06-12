@@ -25,6 +25,7 @@ class AbstractRenderer;
 class AbstractInputHandler;
 class Vehicle;
 class TrackAtom;
+struct CollisionInfo;
 
 
 
@@ -41,7 +42,7 @@ public:
 	virtual ~Application();
 
 
-	//std::vector<CollisionInfo> getCollidingTAs();
+	std::vector<CollisionInfo> getCollidingTAs();
 	bool handleFrameRenderingQueuedEvent();
 	void init();
 

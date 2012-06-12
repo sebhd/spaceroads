@@ -9,16 +9,11 @@
 #define SHIP_H_
 
 #include "BoundingBox.h"
-#include "TrackAtoms/TrackAtom.h"
-#include "Tracks/AbstractTrack.h"
 #include <vector>
 
-class AbstractTrack;
-struct CollisionInfo;
 
 // So muss ein Ogre-kompatibles Quaternion aussehen:
-typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first,
-		cml::negative_cross> quat;
+typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first, cml::negative_cross> quat;
 
 class Vehicle {
 
@@ -27,7 +22,7 @@ public:
 	// Allow SolidTrackAtom class to access private members of Vehicle:
 	friend class SolidTrackAtom;
 
-	Vehicle(AbstractTrack*);
+	Vehicle();
 	virtual ~Vehicle();
 
 	void cmd_rotateDesiredOrientation(int axis, int steps);
@@ -67,19 +62,18 @@ public:
 
 	cml::vector3f mPos;
 
-private:
-
-	std::vector<CollisionInfo> getCollidingTAs();
-
 	game::BoundingBox mBBox;
+	cml::vector3f mBBoxPosOffset;
 
-	AbstractTrack* mpTrack;
+	void updatePosition();
+
+private:
 
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;
 
 	cml::vector3f mGravity;
-	cml::vector3f mBBoxPosOffset;
+
 };
 
 #endif /* SHIP_H_ */

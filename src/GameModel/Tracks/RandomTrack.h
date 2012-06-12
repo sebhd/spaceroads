@@ -10,12 +10,13 @@
 
 #include "AbstractTrack.h"
 
+
 class RandomTrack: public AbstractTrack {
 public:
-	RandomTrack(Application* a_app);
+	RandomTrack();
 	virtual ~RandomTrack();
 
-	virtual void step();
+	virtual void step(Vehicle*);
 	virtual void reset();
 
 protected:
