@@ -183,35 +183,30 @@ void Application::playTrackFile(std::string filename) {
 				mpTrack->reset();
 			}
 
-			// Calculate & apply vehicle-internal effects on it's velocity:
-			mpPlayerVehicle->updateVelocity();
 
-			/* ATTENTION:
-			 * For some reason that is not yet fully understood, it is neccessary to build a
-			 * complete list of all colliding track atoms *before* any collision is handled.
-			 * In other words:
-			 *
-			 * Detect coll. 1 -> handle coll. 1 -> detect coll. 2 -> handle coll. 2 -> ...
-			 *
-			 * will give undesired results!
-			 *
-			 * We need to detect *all* collisions first, and then handle them.
-			 */
+			mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
 
 			// Find colliding track atoms:
 			std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
 
-			// Apply counter-forces (prevent vehicle from going through walls) & contact effects:
-			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-				collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
-			}
-
-			collisions = findCollidingTrackAtoms();
+			// Apply counter-forces (prevent vehicle from going through walls):
 			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 				collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
 			}
 
+
 			mpPlayerVehicle->updatePosition();
+
+			mpPlayerVehicle->mJumpedInThisStep = false;
+
+			// Apply contact effects:
+			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+				collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
+			}
+
+
+			// Calculate & apply vehicle-internal effects on it's velocity:
+			mpPlayerVehicle->updateVelocity();
 
 			accumulator -= dt;
 		}
@@ -296,6 +291,7 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 	return collisions;
 }
+
 
 void Application::init() {
 

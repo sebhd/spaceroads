@@ -58,8 +58,12 @@ public:
 
 	cml::vector3f mDirLeft;
 	cml::vector3f mDirForward;
+	cml::vector3f mOldVel;
+
 
 	bool mKilled;
+
+	bool mJumpedInThisStep;
 
 	cml::vector3f mPos;
 
