@@ -12,6 +12,7 @@
 #include <OISKeyboard.h>
 #include "Input/InputHandler.h"
 #include "GameModel/Track/Track.h"
+#include "GameModel/Racer/LocalHumanRacer.h"
 
 class AbstractRenderer;
 
@@ -37,7 +38,7 @@ public:
 
 	bool quit;
 
-	Racer* mpPlayerVehicle;
+	LocalHumanRacer* mpPlayerVehicle;
 
 	Track* mpTrack;
 

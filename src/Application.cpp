@@ -22,7 +22,7 @@ Application::Application() {
 
 	mpTrack = NULL;
 	mpPlayerVehicle = NULL;
-	mpPlayerVehicle = new Racer();
+	mpPlayerVehicle = new LocalHumanRacer();
 
 	mpRenderer = new OgreRenderer(this);
 
@@ -47,6 +47,9 @@ void Application::handleKeyEvent(KeyboardEventListener::Key key, bool pressed) {
 	default:
 		break;
 	}
+
+	mpPlayerVehicle->handleKeyEvent(key, pressed);
+
 }
 
 void Application::playTrackFile(std::string filename) {
@@ -58,6 +61,8 @@ void Application::playTrackFile(std::string filename) {
 	mpTrack = new XMLFileTrack(filename);
 
 	std::cout << "Preparing renderer for track.";
+
+
 
 	mpPlayerVehicle->reset();
 	mpPlayerVehicle->mPos = mpTrack->mStartPosition;
@@ -79,10 +84,6 @@ void Application::playTrackFile(std::string filename) {
 	// TODO 4: Make simulation step frequency configurable by introducing a time factor multiplicator in Vehicle::step() and...
 	// all other places where it matters.
 
-	unsigned int frametimetotal = 0;
-	unsigned int framecount = 0;
-
-	timeval before, after;
 
 	//########### BEGIN The Main Loop! ##########
 	while (!quit) {
@@ -95,8 +96,6 @@ void Application::playTrackFile(std::string filename) {
 
 		accumulator += frameTime;
 
-		frametimetotal += frameTime;
-		framecount++;
 
 		if (accumulator > 20000) {
 			accumulator = 20000;
@@ -151,22 +150,15 @@ void Application::playTrackFile(std::string filename) {
 			accumulator -= dt;
 		}
 
-		gettimeofday(&before, NULL);
+	//	gettimeofday(&before, NULL);
 
 		// Render next frame:
 		if (!mpRenderer->renderOneFrame()) {
 			//	return false;
 			break;
 		}
-
-		gettimeofday(&after, NULL);
-
-		//std::cout << after.tv_usec - before.tv_usec << std::endl;
-
 	}
 	//########### END The Main Loop! ##########
-
-	std::cout << double(frametimetotal) / framecount << std::endl;
 }
 
 std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
