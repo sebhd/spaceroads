@@ -15,8 +15,8 @@ public:
 	SolidTrackAtom(BoundingBox bbox);
 	virtual ~SolidTrackAtom();
 
-	virtual void applyContactEffects(Vehicle* ship, HitSide hs);
-	virtual void applyCounterForces(Vehicle* ship, HitSide hs);
+	virtual void applyContactEffects(Racer* ship, HitSide hs);
+	virtual void applyCounterForces(Racer* ship, HitSide hs);
 
 	float mBounceThreshold;
 	float mRebound;

@@ -15,7 +15,7 @@ public:
 	GravChangerTrackAtom(BoundingBox bbox);
 	virtual ~GravChangerTrackAtom();
 
-	virtual void applyContactEffects(Vehicle* ship, HitSide hs);
+	virtual void applyContactEffects(Racer* ship, HitSide hs);
 
 	quat mNewOrientation;
 };

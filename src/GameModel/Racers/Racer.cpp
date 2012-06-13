@@ -7,13 +7,13 @@
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
 
-#include "Vehicle.h"
+#include "Racer.h"
 #include <vector>
 #include <cmath>
 #include <ctime>
 #include <sys/time.h>
 
-Vehicle::Vehicle() {
+Racer::Racer() {
 
 	// Configure the vehicle's collision AABB:
 	mBBox.mSize.set(4, 4, 4);
@@ -23,12 +23,12 @@ Vehicle::Vehicle() {
 	reset();
 }
 
-Vehicle::~Vehicle() {
+Racer::~Racer() {
 	// TODO Auto-generated destructor stub
 }
 
 
-void Vehicle::reset() {
+void Racer::reset() {
 
 	mAddThrustForward = false;
 	mReduceThrustForward = false;
@@ -66,7 +66,7 @@ void Vehicle::reset() {
 	mWantReset = false;
 }
 
-void Vehicle::updateVelocity() {
+void Racer::updateVelocity() {
 
 	// Apply gravity:
 	mVelocity += getGravity();
@@ -130,7 +130,7 @@ void Vehicle::updateVelocity() {
 }
 
 
-void Vehicle::updatePosition() {
+void Racer::updatePosition() {
 
 
 	//################ BEGIN Enforce speed limits ################
@@ -158,15 +158,15 @@ void Vehicle::updatePosition() {
 }
 
 
-const cml::vector3f& Vehicle::getGravity() {
+const cml::vector3f& Racer::getGravity() {
 	return mGravity;
 }
 
-const quat& Vehicle::getOrientation() {
+const quat& Racer::getOrientation() {
 	return mOrientation;
 }
 
-void Vehicle::setOrientation(quat rotQuat) {
+void Racer::setOrientation(quat rotQuat) {
 	mOrientation = rotQuat;
 
 	cml::vector3f orientation_axis;
@@ -190,13 +190,13 @@ void Vehicle::setOrientation(quat rotQuat) {
 			orientation_angle);
 }
 
-void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
+void Racer::cmd_rotateDesiredOrientation(int axis, int steps) {
 	cml::quaternion_rotate_about_local_axis(mOrientation, axis,
 			(float) (steps * M_PI / 2));
 	setOrientation(mOrientation);
 }
 
-void Vehicle::cmd_spacebar(bool enable) {
+void Racer::cmd_spacebar(bool enable) {
 
 	if (mKilled) {
 		mWantReset = true;

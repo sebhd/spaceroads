@@ -22,7 +22,7 @@ GravChangerTrackAtom::~GravChangerTrackAtom() {
 }
 
 
-void GravChangerTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
+void GravChangerTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
 	ship->setOrientation(mNewOrientation);
 

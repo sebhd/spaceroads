@@ -9,11 +9,11 @@
 #define OGREVEHICLE_H_
 
 #include <Ogre.h>
-#include "../../GameModel/Vehicle.h"
+#include "../../GameModel/Racers/Racer.h"
 
 class OGRERendererVehicle {
 public:
-	OGRERendererVehicle(Ogre::SceneManager*, Vehicle*);
+	OGRERendererVehicle(Ogre::SceneManager*, Racer*);
 	virtual ~OGRERendererVehicle();
 
 	void update();
@@ -26,7 +26,7 @@ public:
 
 	Ogre::SceneManager* mSceneManager;
 
-	Vehicle* mpVehicle;
+	Racer* mpVehicle;
 
 protected:
 	float mRollAngle;

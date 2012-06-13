@@ -15,11 +15,8 @@
 #include "Input/KeyboardEventListener.h"
 #include "GameModel/Tracks/Track.h"
 #include "GameModel/TrackAtoms/TrackAtom.h"
-#include "GameModel/Pilots/LocalHumanPilot.h"
 
 class AbstractRenderer;
-
-
 
 class Application : public KeyboardEventListener {
 
@@ -43,11 +40,10 @@ public:
 
 	bool quit;
 
-	Vehicle* mpPlayerVehicle;
+	Racer* mpPlayerVehicle;
 
 	Track* mpTrack;
 
-	LocalHumanPilot mPilot;
 
 private:
 	AbstractRenderer* mpRenderer;

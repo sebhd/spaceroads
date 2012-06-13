@@ -11,7 +11,7 @@
 #include <vector>
 #include "TrackDecorationMesh.h"
 #include "../TrackAtoms/TrackAtom.h"
-#include "../Vehicle.h"
+#include "../Racers/Racer.h"
 #include "cml/cml.h"
 
 class Track {

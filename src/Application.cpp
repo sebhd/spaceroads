@@ -22,7 +22,7 @@ Application::Application() {
 
 	mpTrack = NULL;
 	mpPlayerVehicle = NULL;
-	mpPlayerVehicle = new Vehicle();
+	mpPlayerVehicle = new Racer();
 
 	mpRenderer = new OgreRenderer(this);
 
@@ -47,8 +47,6 @@ void Application::handleKeyEvent(KeyboardEventListener::Key key, bool pressed) {
 	default:
 		break;
 	}
-
-	mPilot.handleKeyEvent(key, pressed);
 }
 
 void Application::playTrackFile(std::string filename) {
@@ -64,7 +62,7 @@ void Application::playTrackFile(std::string filename) {
 	mpPlayerVehicle->reset();
 	mpPlayerVehicle->mPos = mpTrack->mStartPosition;
 
-	mPilot.mVehicle = mpPlayerVehicle;
+
 
 	mpRenderer->prepareForTrack();
 
@@ -109,8 +107,6 @@ void Application::playTrackFile(std::string filename) {
 		mpInputHandler->getInput();
 
 		while (accumulator >= dt) {
-
-			mPilot.step();
 
 			if (!mpTrack->mExtent.containsPoint(mpPlayerVehicle->mPos)) {
 				mpPlayerVehicle->mKilled = true;

@@ -15,15 +15,15 @@
 // So muss ein Ogre-kompatibles Quaternion aussehen:
 typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first, cml::negative_cross> quat;
 
-class Vehicle {
+class Racer {
 
 public:
 
 	// Allow SolidTrackAtom class to access private members of Vehicle:
 	friend class SolidTrackAtom;
 
-	Vehicle();
-	virtual ~Vehicle();
+	Racer();
+	virtual ~Racer();
 
 	void cmd_rotateDesiredOrientation(int axis, int steps);
 

@@ -10,7 +10,7 @@
 
 #include <string>
 #include "../util/BoundingBox.h"
-#include "../Vehicle.h"
+#include "../Racers/Racer.h"
 
 enum HitSide {
 	HIT_TOP, HIT_BOTTOM, HIT_LEFT, HIT_RIGHT, HIT_FRONT, HIT_BACK, HIT_NONE
@@ -23,8 +23,8 @@ public:
 	TrackAtom(BoundingBox bbox);
 	virtual ~TrackAtom();
 
-	virtual void applyContactEffects(Vehicle* ship, HitSide hs) = 0;
-	virtual void applyCounterForces(Vehicle* ship, HitSide hs) = 0;
+	virtual void applyContactEffects(Racer* ship, HitSide hs) = 0;
+	virtual void applyCounterForces(Racer* ship, HitSide hs) = 0;
 
 	BoundingBox mBBox;
 

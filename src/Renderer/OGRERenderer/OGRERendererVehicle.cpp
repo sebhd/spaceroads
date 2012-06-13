@@ -12,7 +12,7 @@
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
 
-OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
+OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* a_vehicle) {
 
 	mSceneManager = a_sceneMgr;
 	mpVehicle = a_vehicle;

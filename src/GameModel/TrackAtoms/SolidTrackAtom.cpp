@@ -23,7 +23,7 @@ SolidTrackAtom::~SolidTrackAtom() {
 	// TODO Auto-generated destructor stub
 }
 
-void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
+void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
 	// Is this track atom deadly?
 	if (mIsDeadly) {
@@ -121,7 +121,7 @@ void SolidTrackAtom::applyContactEffects(Vehicle* ship, HitSide hs) {
 
 }
 
-void SolidTrackAtom::applyCounterForces(Vehicle* ship, HitSide hs) {
+void SolidTrackAtom::applyCounterForces(Racer* ship, HitSide hs) {
 
 	if (hs == HIT_TOP || hs == HIT_BOTTOM) {
 		ship->mVelocity[1] = 0;
