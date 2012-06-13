@@ -13,30 +13,20 @@
 
 #include <OISEvents.h>
 #include <OISKeyboard.h>
-#include "Renderer/AbstractRenderer.h"
-#include "InputHandler/OISInputHandler.h"
-#include "GameModel/Tracks/AbstractTrack.h"
+//#include "Renderer/AbstractRenderer.h"
+#include "Input/InputHandler.h"
+#include "Input/KeyboardEventListener.h"
+#include "GameModel/Tracks/Track.h"
 #include "GameModel/TrackAtoms/TrackAtom.h"
+#include "GameModel/Pilots/LocalHumanPilot.h"
 
-
-
-class AbstractTrack;
 class AbstractRenderer;
-class AbstractInputHandler;
-class Vehicle;
-class TrackAtom;
-struct CollisionInfo;
+class KeyboardEventListener;
 
 
+class Application : public KeyboardEventListener {
 
-
-
-
-
-class Application : public OIS::KeyListener {
 public:
-
-
 
 	Application();
 	virtual ~Application();
@@ -44,27 +34,27 @@ public:
 
 	std::vector<CollisionInfo> findCollidingTrackAtoms();
 	bool handleFrameRenderingQueuedEvent();
-	void init();
 
-	bool keyPressed(const OIS::KeyEvent& evt);
-	bool keyReleased(const OIS::KeyEvent& evt);
+	virtual void handleKeyEvent(Key, bool pressed);
 
 	void playTrackFile(std::string filename);
 
-	bool quit;
+	void handleKeyboardInput(Key, bool pressed);
+
 
 	AbstractRenderer* getRenderer();
 
+	bool quit;
 
 	Vehicle* mpPlayerVehicle;
 
-	AbstractTrack* mpTrack;
+	Track* mpTrack;
 
-
+	LocalHumanPilot mPilot;
 
 private:
 	AbstractRenderer* mpRenderer;
-	OISInputHandler* mpInputHandler;
+	InputHandler* mpInputHandler;
 
 };
 

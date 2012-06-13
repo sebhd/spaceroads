@@ -48,8 +48,6 @@ int main(int argc, char *argv[]) {
 
 	Application app;
 
-	app.init();
-
 	std::string trackFilePath = "tracks/default_track.xml";
 
 	if (argc == 2) {

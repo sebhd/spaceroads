@@ -5,9 +5,9 @@
  *      Author: sebastian
  */
 
-#include "AbstractTrack.h"
+#include "Track.h"
 
-AbstractTrack::AbstractTrack() {
+Track::Track() {
 
 	mSkybox = "SpaceRoads/SkyBoxes/2Moons";
 
@@ -15,15 +15,12 @@ AbstractTrack::AbstractTrack() {
 	mDirectionalLightDir.set(-1,-1,-1);
 }
 
-AbstractTrack::~AbstractTrack() {
+Track::~Track() {
 	// TODO Auto-generated destructor stub
 }
 
-void AbstractTrack::step(Vehicle* vehicle) {
-	// In derived classes, this is the place for code to modify the track at runtime
-}
 
-void AbstractTrack::computeExtent() {
+void Track::computeExtent() {
 
 	float minx = 1000000;
 	float miny = 1000000;
@@ -63,11 +60,8 @@ void AbstractTrack::computeExtent() {
 }
 
 
-void AbstractTrack::reset() {
 
-}
-
-const std::vector<TrackAtom*> AbstractTrack::getTrackAtomsAround(cml::vector3f pos) {
+const std::vector<TrackAtom*> Track::getTrackAtomsAround(cml::vector3f pos) {
 
 	return mTrackAtoms;
 }

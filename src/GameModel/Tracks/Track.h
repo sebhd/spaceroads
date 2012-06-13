@@ -14,17 +14,13 @@
 #include "../Vehicle.h"
 #include "../../cml/cml.h"
 
-class AbstractTrack {
+class Track {
 public:
-	AbstractTrack();
-	virtual ~AbstractTrack();
+	Track();
+	virtual ~Track();
 
 	void computeExtent();
 	const std::vector<TrackAtom*> getTrackAtomsAround(cml::vector3f pos);
-
-	virtual void step(Vehicle*);
-
-	virtual void reset();
 
 	cml::vector3f mStartPosition;
 	cml::vector3f mAmbientLight;

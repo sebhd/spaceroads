@@ -27,9 +27,6 @@ Vehicle::~Vehicle() {
 	// TODO Auto-generated destructor stub
 }
 
-const cml::vector3f& Vehicle::getPosition() {
-	return mPos;
-}
 
 void Vehicle::reset() {
 
@@ -65,6 +62,8 @@ void Vehicle::reset() {
 			(float) M_PI);
 
 	setOrientation(mOrientation);
+
+	mWantReset = false;
 }
 
 void Vehicle::updateVelocity() {
@@ -195,5 +194,15 @@ void Vehicle::cmd_rotateDesiredOrientation(int axis, int steps) {
 	cml::quaternion_rotate_about_local_axis(mOrientation, axis,
 			(float) (steps * M_PI / 2));
 	setOrientation(mOrientation);
+}
+
+void Vehicle::cmd_spacebar(bool enable) {
+
+	if (mKilled) {
+		mWantReset = true;
+	}
+	else {
+		mTryJump = enable;
+	}
 }
 

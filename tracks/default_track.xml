@@ -2,7 +2,7 @@
 <Track skybox="SpaceRoads/SkyBoxes/PurpleNebula2">
 <StartPos x="4" y="10" z="50" />
 <AmbientLight r="0.5" g="0.5" b="0.5" />
-<DirectionalLight x="-1" y="-1" z="-1">
+<DirectionalLight x="-1" y="-1" z="1">
 </DirectionalLight>
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="0" />
 <Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="0" />

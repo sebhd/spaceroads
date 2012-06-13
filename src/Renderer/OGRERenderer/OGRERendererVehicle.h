@@ -11,10 +11,10 @@
 #include <Ogre.h>
 #include "../../GameModel/Vehicle.h"
 
-class OGREVehicle {
+class OGRERendererVehicle {
 public:
-	OGREVehicle(Ogre::SceneManager*, Vehicle*);
-	virtual ~OGREVehicle();
+	OGRERendererVehicle(Ogre::SceneManager*, Vehicle*);
+	virtual ~OGRERendererVehicle();
 
 	void update();
 

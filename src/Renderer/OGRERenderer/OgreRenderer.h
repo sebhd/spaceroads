@@ -9,14 +9,12 @@
 #define OGRERENDERER_H_
 
 // OGRE Includes:
+#include "../AbstractRenderer.h"
 #include <OgreRoot.h>
 #include <OgreWindowEventUtilities.h>
-
-#include "../AbstractRenderer.h"
 #include "../../GameModel/TrackAtoms/TrackAtom.h"
-#include "OGREVehicle.h"
+#include "OGRERendererVehicle.h"
 
-class Application;
 
 class OgreRenderer: public Ogre::WindowEventListener, public Ogre::FrameListener, public AbstractRenderer {
 public:
@@ -30,6 +28,9 @@ public:
 	bool renderOneFrame();
 
 	virtual void prepareForTrack();
+
+	virtual void showKilledInfo(bool);
+	virtual void showTrackCompletedInfo(bool);
 
 protected:
 	// Ogre::WindowEventListener
@@ -47,7 +48,7 @@ private:
 
 	void buildTrackGeometry();
 
-	OGREVehicle* mpVehicle;
+	OGRERendererVehicle* mpVehicleRenderer;
 
 	bool mSidewardThrustRollCamera;
 

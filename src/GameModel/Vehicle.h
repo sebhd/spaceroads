@@ -27,25 +27,24 @@ public:
 
 	void cmd_rotateDesiredOrientation(int axis, int steps);
 
-	void cmd_tryJump(bool enabled);
+	void cmd_spacebar(bool enabled);
+
 	void updateVelocity();
 	const cml::vector3f& getGravity();
 	const quat& getOrientation();
-	const cml::vector3f& getPosition();
+
 	void reset();
 
-	float getThrustForward() {
-		return mThrustForward;
-	}
-	float getThrustSideward() {
-		return mThrustSideward;
-	}
 
 	void setOrientation(quat rotQuat);
+
+	void updatePosition();
+
 
 	bool mAddThrustLeft, mAddThrustRight;
 	bool mAddThrustForward, mReduceThrustForward;
 	bool mTryJump;
+	bool mWantReset;
 
 
 
@@ -70,7 +69,6 @@ public:
 	game::BoundingBox mBBox;
 	cml::vector3f mBBoxPosOffset;
 
-	void updatePosition();
 
 private:
 

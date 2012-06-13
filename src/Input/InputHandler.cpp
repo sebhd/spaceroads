@@ -5,14 +5,14 @@
  *      Author: sebastian
  */
 
-#include "AbstractInputHandler.h"
+#include "InputHandler.h"
 
-AbstractInputHandler::AbstractInputHandler(Application* app) : mpApp(app) {
+InputHandler::InputHandler() {
 	// TODO Auto-generated constructor stub
 
 }
 
-AbstractInputHandler::~AbstractInputHandler() {
+InputHandler::~InputHandler() {
 	// TODO Auto-generated destructor stub
 }
 

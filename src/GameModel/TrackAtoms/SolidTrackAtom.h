@@ -10,7 +10,7 @@
 
 #include "TrackAtom.h"
 
-class SolidTrackAtom: public TrackAtom {
+class SolidTrackAtom : public TrackAtom {
 public:
 	SolidTrackAtom(game::BoundingBox bbox);
 	virtual ~SolidTrackAtom();

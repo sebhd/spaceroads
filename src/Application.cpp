@@ -12,8 +12,9 @@
 #include <sys/time.h>
 
 #include "Renderer/OGRERenderer/OgreRenderer.h"
-#include "GameModel/Tracks/RandomTrack.h"
+#include "Input/OISInputHandler.h"
 #include "GameModel/Tracks/XMLFileTrack.h"
+
 
 Application::Application() {
 
@@ -22,98 +23,30 @@ Application::Application() {
 	mpTrack = NULL;
 	mpPlayerVehicle = NULL;
 	mpPlayerVehicle = new Vehicle();
+
+	mpRenderer = new OgreRenderer(this);
+
+	mpRenderer->init();
+
+	mpInputHandler = new OISInputHandler(getRenderer()->getWindowSize());
+
+	mpInputHandler->mListeners.push_back(this);
+
 }
 
 Application::~Application() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Application::keyPressed(const OIS::KeyEvent& evt) {
+void Application::handleKeyEvent(KeyboardEventListener::Key key, bool pressed) {
 
-	switch (evt.key) {
-
-	case OIS::KC_ESCAPE:
+	switch(key) {
+	case KeyboardEventListener::KEY_ESCAPE:
 		quit = true;
-		break;
-	case OIS::KC_SPACE:
-		mpPlayerVehicle->mTryJump = true;
-		break;
-
-	case OIS::KC_A:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(1, 1);
-		break;
-
-	case OIS::KC_D:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(1, -1);
-		break;
-
-	case OIS::KC_W:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(0, -1);
-		break;
-
-	case OIS::KC_S:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(0, 1);
-		break;
-
-	case OIS::KC_Q:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(2, 1);
-		break;
-
-	case OIS::KC_E:
-		mpPlayerVehicle->cmd_rotateDesiredOrientation(2, -1);
-		break;
-
-	case OIS::KC_R:
-		mpPlayerVehicle->mKilled = true;
-		break;
-
-	case OIS::KC_RIGHT:
-		mpPlayerVehicle->mAddThrustRight = true;
-		break;
-
-	case OIS::KC_LEFT:
-		mpPlayerVehicle->mAddThrustLeft = true;
-		break;
-
-	case OIS::KC_UP:
-		mpPlayerVehicle->mAddThrustForward = true;
-		break;
-	case OIS::KC_DOWN:
-		mpPlayerVehicle->mReduceThrustForward = true;
-		break;
-	default:
 		break;
 	}
 
-	return true;
-}
-
-bool Application::keyReleased(const OIS::KeyEvent& evt) {
-	switch (evt.key) {
-
-	case OIS::KC_ESCAPE:
-		quit = true;
-		break;
-	case OIS::KC_SPACE:
-		mpPlayerVehicle->mTryJump = false;
-		break;
-	case OIS::KC_LEFT:
-		mpPlayerVehicle->mAddThrustLeft = false;
-		break;
-	case OIS::KC_RIGHT:
-		mpPlayerVehicle->mAddThrustRight = false;
-		break;
-	case OIS::KC_UP:
-		mpPlayerVehicle->mAddThrustForward = false;
-		break;
-	case OIS::KC_DOWN:
-		mpPlayerVehicle->mReduceThrustForward = false;
-		break;
-	default:
-		break;
-	}
-
-	return true;
+	mPilot.handleKeyEvent(key, pressed);
 }
 
 void Application::playTrackFile(std::string filename) {
@@ -125,6 +58,11 @@ void Application::playTrackFile(std::string filename) {
 	mpTrack = new XMLFileTrack(filename);
 
 	std::cout << "Preparing renderer for track.";
+
+	mpPlayerVehicle->reset();
+	mpPlayerVehicle->mPos = mpTrack->mStartPosition;
+
+	mPilot.mVehicle = mpPlayerVehicle;
 
 	mpRenderer->prepareForTrack();
 
@@ -146,8 +84,6 @@ void Application::playTrackFile(std::string filename) {
 
 	timeval before, after;
 
-	mpPlayerVehicle->mKilled = true;
-
 	//########### BEGIN The Main Loop! ##########
 	while (!quit) {
 
@@ -167,30 +103,30 @@ void Application::playTrackFile(std::string filename) {
 			//	std::cout << "Zu lahm!" << std::endl;
 		}
 
+		// Process input:
+		mpInputHandler->getInput();
+
 		while (accumulator >= dt) {
 
-			// Process input:
-			mpInputHandler->processInput();
-
-			// Do track step:
-			mpTrack->step(mpPlayerVehicle);
-
-			// If the ship is destroyed, reset to the starting position:
-			if (mpPlayerVehicle->mKilled) {
-				std::cout << "Boooooom!!!" << std::endl;
-				mpPlayerVehicle->mPos = mpTrack->mStartPosition;
-				mpPlayerVehicle->reset();
-				mpTrack->reset();
-			}
-
-	//		std::cout << mpPlayerVehicle->mPos << std::endl;
+			mPilot.step();
 
 			if (!mpTrack->mExtent.containsPoint(mpPlayerVehicle->mPos)) {
-				std::cout << "Slipped off the track!" << std::endl;
 				mpPlayerVehicle->mKilled = true;
 			}
 
+			// If the ship is destroyed, reset to the starting position:
+			if (mpPlayerVehicle->mKilled) {
+				mpRenderer->showKilledInfo(true);
 
+			}
+
+			if (mpPlayerVehicle->mWantReset) {
+				mpPlayerVehicle->mPos = mpTrack->mStartPosition;
+				mpPlayerVehicle->reset();
+				mpRenderer->showKilledInfo(false);
+			}
+
+			//		std::cout << mpPlayerVehicle->mPos << std::endl;
 
 			mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
 
@@ -202,7 +138,6 @@ void Application::playTrackFile(std::string filename) {
 				collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
 			}
 
-
 			mpPlayerVehicle->updatePosition();
 
 			mpPlayerVehicle->mJumpedInThisStep = false;
@@ -211,7 +146,6 @@ void Application::playTrackFile(std::string filename) {
 			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 				collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
 			}
-
 
 			// Calculate & apply vehicle-internal effects on it's velocity:
 			mpPlayerVehicle->updateVelocity();
@@ -298,19 +232,6 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 	}
 
 	return collisions;
-}
-
-
-void Application::init() {
-
-	mpRenderer = new OgreRenderer(this);
-
-	mpRenderer->init();
-
-	mpInputHandler = new OISInputHandler(getRenderer()->getWindowSize());
-
-	mpInputHandler->addKeyListener(this);
-
 }
 
 AbstractRenderer* Application::getRenderer() {

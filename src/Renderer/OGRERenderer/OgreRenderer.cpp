@@ -30,7 +30,7 @@ OgreRenderer::OgreRenderer(Application* app) :
 
 	mSidewardThrustRollCamera = false;
 
-	mpVehicle = NULL;
+	mpVehicleRenderer = NULL;
 }
 
 // Destructor:
@@ -45,6 +45,7 @@ OgreRenderer::~OgreRenderer(void) {
 // Handler for frameRenderingQueued event:
 bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
+
 	if (mpApp->mpTrack->mHasChanged) {
 		buildTrackGeometry();
 		mpApp->mpTrack->mHasChanged = false;
@@ -54,8 +55,8 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		return false;
 	}
 
-	if (mpVehicle != NULL) {
-		mpVehicle->update();
+	if (mpVehicleRenderer != NULL) {
+		mpVehicleRenderer->update();
 	}
 
 	return mpApp->handleFrameRenderingQueuedEvent();
@@ -266,10 +267,22 @@ bool OgreRenderer::init() {
 	// Set shadow technique:
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
-	// Create the camera
+	mpVehicleRenderer = new OGRERendererVehicle(mSceneMgr, mpApp->mpPlayerVehicle);
+
+
+	//############### BEGIN Set up camera ##############
 	mCamera = mSceneMgr->createCamera("PlayerCam");
+
 	mCamera->setNearClipDistance(5);
 	mCamera->setFarClipDistance(2000);
+
+	// Position the camera behind the player's vehicle:
+	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
+	mCamera->lookAt(mpVehicleRenderer->mVehicleNode->getPosition());
+
+	Ogre::SceneNode* cameraNode = mpVehicleRenderer->mVehicleNode->createChildSceneNode("CameraNode");
+	cameraNode->attachObject(mCamera);
+
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -277,17 +290,43 @@ bool OgreRenderer::init() {
 	// Alter the camera aspect ratio to match the viewport
 	mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 
+	//############### END Set up camera ##############
 
 
-	// Build unit cube mesh/entity that is used to represent track atoms:
+	//######################## BEGIN Create some entities ############################
+
+	// ####### BEGIN Set up Unit cube mesh/entity that is used to represent track atoms #######
 	Ogre::ManualObject* unitCube = createBox(0, 0, 0, 1, 1, 1, "SpaceRoads/Track/White");
 	Ogre::MeshPtr meshPtr = unitCube->convertToMesh("UnitCube");
 	meshPtr.get()->buildEdgeList();
 
 	mSceneMgr->createEntity("UnitCube", "UnitCube");
+	// ####### END Set up Unit cube mesh/entity that is used to represent track atoms #######
+
+	// "Track completed" sign:
+	Ogre::Entity* entTrackCompleted = mSceneMgr->createEntity("TrackCompleted", "TrackCompleted.mesh");
+	entTrackCompleted->setVisible(false);
+
+
+	// "Ooops" sign:
+	Ogre::Entity* entOoops = mSceneMgr->createEntity("Ooops", "Ooops.mesh");
+	entOoops->setVisible(false);
+
+	//######################## END Create some entities ############################
+
+	// ############# BEGIN Set up game state info node ############
+	Ogre::SceneNode* gameStateInfoNode = cameraNode->createChildSceneNode("TrackCompletedNode");
+	gameStateInfoNode->rotate(Ogre::Vector3(1,0,0), Ogre::Radian(M_PI/2));
+	gameStateInfoNode->setPosition(0,5,0);
+	gameStateInfoNode->scale(0.7,0.7,0.7);
+
+	gameStateInfoNode->attachObject(entTrackCompleted);
+	gameStateInfoNode->attachObject(entOoops);
+	// ############# END Set up game state info node ############
 
 	// Create static geometry object for the track:
 	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
+
 
 	//Set initial mouse clipping size
 	windowResized(mWindow);
@@ -334,18 +373,13 @@ void OgreRenderer::prepareForTrack() {
 
 	// ############### END Set up track / environment rendering ################
 
-	mpVehicle = new OGREVehicle(mSceneMgr, mpApp->mpPlayerVehicle);
 
-	// Position the camera behind the player's vehicle:
-	mpVehicle->mVehicleNode->attachObject(mCamera);
-	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
-	mCamera->lookAt(mpVehicle->mVehicleNode->getPosition());
 }
 
 
 void OgreRenderer::buildTrackGeometry() {
 
-	AbstractTrack* track = mpApp->mpTrack;
+	Track* track = mpApp->mpTrack;
 
 	mTrackStaticGeometry->destroy();
 
@@ -417,6 +451,16 @@ std::string OgreRenderer::getWindowSize() {
 
 	return windowHndStr.str();
 }
+
+void OgreRenderer:: showKilledInfo(bool enable) {
+
+		mSceneMgr->getEntity("Ooops")->setVisible(enable);
+}
+
+void OgreRenderer::showTrackCompletedInfo(bool enable) {
+	mSceneMgr->getEntity("TrackCompleted")->setVisible(enable);
+}
+
 
 //Adjust mouse clipping area
 void OgreRenderer::windowResized(Ogre::RenderWindow* rw) {

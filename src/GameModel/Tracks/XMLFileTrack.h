@@ -8,10 +8,10 @@
 #ifndef XMLFILETRACK_H_
 #define XMLFILETRACK_H_
 
-#include "AbstractTrack.h"
+#include "Track.h"
 #include <string>
 
-class XMLFileTrack: public AbstractTrack {
+class XMLFileTrack: public Track {
 public:
 	XMLFileTrack(std::string filename);
 	virtual ~XMLFileTrack();

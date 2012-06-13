@@ -11,7 +11,6 @@
 #include "Application.h"
 #include <string>
 
-class Application;
 
 class AbstractRenderer {
 public:
@@ -22,6 +21,9 @@ public:
 	virtual bool init() = 0;
 	virtual std::string getWindowSize() = 0;
 	virtual void prepareForTrack() = 0;
+
+	virtual void showKilledInfo(bool) = 0;
+	virtual void showTrackCompletedInfo(bool) = 0;
 
 protected:
     Application* mpApp;
