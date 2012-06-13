@@ -36,6 +36,7 @@ void Racer::reset() {
 	mAddThrustRight = false;
 	mTryJump = false;
 
+	mFinish = false;
 	mKilled = false;
 
 	// Somewhat close to original game:
@@ -198,7 +199,7 @@ void Racer::cmd_rotateDesiredOrientation(int axis, int steps) {
 
 void Racer::cmd_spacebar(bool enable) {
 
-	if (mKilled) {
+	if (mKilled || mFinish) {
 		mWantReset = true;
 	}
 	else {

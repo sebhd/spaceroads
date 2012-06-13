@@ -23,8 +23,8 @@ public:
 	TrackAtom(BoundingBox bbox);
 	virtual ~TrackAtom();
 
-	virtual void applyContactEffects(Racer* ship, HitSide hs) = 0;
-	virtual void applyCounterForces(Racer* ship, HitSide hs) = 0;
+	virtual void applyContactEffects(Racer* ship, HitSide hs);
+	virtual void applyCounterForces(Racer* ship, HitSide hs);
 
 	BoundingBox mBBox;
 
@@ -33,6 +33,8 @@ public:
 	std::string mRenderMeshName;
 
 	bool mIsDeadly;
+
+	bool mIsFinish;
 };
 
 

@@ -59,7 +59,7 @@ public:
 	cml::vector3f mDirForward;
 	cml::vector3f mOldVel;
 
-
+	bool mFinish;
 	bool mKilled;
 
 	bool mJumpedInThisStep;
@@ -69,13 +69,14 @@ public:
 	BoundingBox mBBox;
 	cml::vector3f mBBoxPosOffset;
 
+	cml::vector3f mGravity;
 
 private:
 
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;
 
-	cml::vector3f mGravity;
+
 
 };
 

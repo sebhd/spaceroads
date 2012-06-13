@@ -7,6 +7,7 @@
 
 #include <tinyxml.h>
 #include "XMLFileTrack.h"
+#include <iostream>
 #include <string>
 #include "TrackAtom/SolidTrackAtom.h"
 
@@ -23,30 +24,32 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 	TiXmlElement* startPosElem = trackElem->FirstChildElement("StartPos");
 
 	if (startPosElem != NULL) {
-		mStartPosition.set(atof(startPosElem->Attribute("x")), atof(startPosElem->Attribute("y")), atof(startPosElem->Attribute("z")));
+		mStartPosition.set(atof(startPosElem->Attribute("x")), atof(startPosElem->Attribute("y")),
+				atof(startPosElem->Attribute("z")));
 	}
 	//#################### END Read Start position ######################
-
 
 	//#################### BEGIN Read Ambient light ######################
 	TiXmlElement* ambientLightElem = trackElem->FirstChildElement("AmbientLight");
 
 	if (ambientLightElem != NULL) {
-		mAmbientLight.set(atof(ambientLightElem->Attribute("r")), atof(ambientLightElem->Attribute("g")), atof(ambientLightElem->Attribute("b")));
+		mAmbientLight.set(atof(ambientLightElem->Attribute("r")), atof(ambientLightElem->Attribute("g")),
+				atof(ambientLightElem->Attribute("b")));
 	}
 	//#################### END Read Ambient light ######################
-
 
 	//#################### BEGIN Read Directional light ######################
 	TiXmlElement* directionalLightElem = trackElem->FirstChildElement("DirectionalLight");
 
 	if (directionalLightElem != NULL) {
-		mDirectionalLightDir.set(atof(directionalLightElem->Attribute("x")), atof(directionalLightElem->Attribute("y")), atof(directionalLightElem->Attribute("z")));
+		mDirectionalLightDir.set(atof(directionalLightElem->Attribute("x")), atof(directionalLightElem->Attribute("y")),
+				atof(directionalLightElem->Attribute("z")));
 	}
 	//#################### END Read Directional light ######################
 
-
 	//#################### BEGIN Read <Atom> Elements ######################
+	TrackAtom* ta;
+
 	for (TiXmlElement* taElem = trackElem->FirstChildElement("Atom"); taElem != NULL;
 			taElem = taElem->NextSiblingElement("Atom")) {
 
@@ -58,20 +61,30 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 		float sizey = atof(taElem->Attribute("scaley"));
 		float sizez = atof(taElem->Attribute("scalez"));
 
-		SolidTrackAtom* ta = new SolidTrackAtom(BoundingBox(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
+		std::string type = taElem->Attribute("type");
 
-		if (taElem->Attribute("jumpForce") != NULL) {
-			ta->mJumpForce = atof(taElem->Attribute("jumpForce"));
+		if (type == "finish") {
+			ta = new TrackAtom(BoundingBox(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
+
+			ta->mIsFinish = true;
+
+		} else {
+			ta = new SolidTrackAtom(BoundingBox(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
+
+			SolidTrackAtom* solid = (SolidTrackAtom*) ta;
+
+			if (taElem->Attribute("jumpForce") != NULL) {
+				solid->mJumpForce = atof(taElem->Attribute("jumpForce"));
+			}
+			if (taElem->Attribute("slipOffset") != NULL) {
+				solid->mSlipOffset = atof(taElem->Attribute("slipOffset"));
+			}
+
 		}
 
 		if (taElem->Attribute("material") != NULL) {
 			ta->mRenderMaterial = taElem->Attribute("material");
 		}
-
-		if (taElem->Attribute("slipOffset") != NULL) {
-			ta->mSlipOffset = atof(taElem->Attribute("slipOffset"));
-		}
-
 
 		if (taElem->Attribute("name") != NULL) {
 			ta->mName = taElem->Attribute("name");
@@ -88,8 +101,7 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 
 		TrackDecorationMesh mesh;
 
-		mesh.mPos.set(atof(taElem->Attribute("x")), atof(taElem->Attribute("y")),
-				atof(taElem->Attribute("z")));
+		mesh.mPos.set(atof(taElem->Attribute("x")), atof(taElem->Attribute("y")), atof(taElem->Attribute("z")));
 
 		mesh.mScale.set(atof(taElem->Attribute("scalex")), atof(taElem->Attribute("scaley")),
 				atof(taElem->Attribute("scalez")));
@@ -97,7 +109,7 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 		mesh.mMeshName = taElem->Attribute("mesh");
 
 		if (taElem->Attribute("material") != NULL)
-		mesh.mRenderMaterial = taElem->Attribute("material");
+			mesh.mRenderMaterial = taElem->Attribute("material");
 
 		mMeshes.push_back(mesh);
 

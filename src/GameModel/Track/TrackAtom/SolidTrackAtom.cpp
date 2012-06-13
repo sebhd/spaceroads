@@ -25,7 +25,7 @@ SolidTrackAtom::~SolidTrackAtom() {
 
 void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
-	// Is this track atom deadly?
+
 	if (mIsDeadly) {
 		ship->mKilled = true;
 	}

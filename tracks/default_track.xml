@@ -4,714 +4,715 @@
 <AmbientLight r="0.5" g="0.5" b="0.5" />
 <DirectionalLight x="-1" y="-1" z="1">
 </DirectionalLight>
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="0" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="0" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="20" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="20" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="20" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="20" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="20" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="20" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="20" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="20" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="40" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="40" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="40" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="40" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="40" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="40" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="40" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="40" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="0" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="0" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="20" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="20" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="40" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="40" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="40" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="40" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="40" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="40" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="40" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="40" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
 <Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="60" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="0" z="60" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="7" z="60" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" y="5.01" x="0" z="60" scalex="8" scaley="1" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="60" scalex="1" scaley="4.01" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="60" scalex="1" scaley="4.01" scalez="80" />
+<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="60" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="60" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="60" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="60" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="60" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="60" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="60" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="60" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="60" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="80" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="80" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="80" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="80" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="80" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="80" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="80" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="80" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="100" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="100" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="100" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="100" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="100" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="100" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="100" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="100" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="120" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="120" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="120" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="140" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="140" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="140" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="140" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="140" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="140" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="140" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="140" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="160" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="160" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="160" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="160" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="160" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="160" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="160" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="160" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="180" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="180" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="200" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="200" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="220" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="220" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="220" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="220" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="220" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="220" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="220" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="220" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="240" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="240" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="240" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="260" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="260" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="260" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="260" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="260" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="260" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="260" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="260" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="280" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="280" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="280" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="300" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="300" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="300" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="300" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="300" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="300" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="300" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="300" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="320" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="320" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="320" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="340" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="340" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="340" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="340" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="340" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="340" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="340" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="340" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="360" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="360" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="360" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="360" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="360" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="360" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="360" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="360" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="380" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="380" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="400" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="400" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="420" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="420" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="420" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="420" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="420" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="420" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="420" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="420" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="440" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="440" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="440" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="440" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="60" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="60" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="60" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="60" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="60" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="60" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="60" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="60" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="80" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="80" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="80" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="80" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="80" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="80" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="80" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="80" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="100" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="100" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="120" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="120" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="140" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="140" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="160" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="160" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="180" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="180" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="200" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="200" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="220" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="220" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="240" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="240" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="260" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="260" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="280" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="280" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="300" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="300" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="320" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="320" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="340" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="340" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="360" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="360" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="380" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="380" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="400" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="400" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="420" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="420" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="440" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="440" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
 <Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="460" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="0" z="460" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="7" z="460" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" y="5.01" x="0" z="460" scalex="8" scaley="1" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="460" scalex="1" scaley="4.01" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="460" scalex="1" scaley="4.01" scalez="80" />
+<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="460" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="460" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="460" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="460" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="460" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="460" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="460" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="460" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="460" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="480" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="480" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="480" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="500" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="500" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="500" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="500" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="500" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="500" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="500" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="500" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="520" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="520" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="520" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="540" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="540" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="540" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="540" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="540" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="540" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="540" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="540" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="560" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="560" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="560" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="560" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="560" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="560" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="560" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="560" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="580" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="580" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="600" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="600" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="620" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="620" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="620" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="620" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="620" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="620" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="620" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="620" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="640" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="640" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="640" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="660" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="660" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="660" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="660" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="660" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="660" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="660" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="660" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="680" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="680" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="680" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="700" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="700" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="700" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="700" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="700" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="700" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="700" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="700" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="720" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="720" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="720" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="740" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="740" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="740" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="740" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="740" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="740" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="740" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="740" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="760" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="760" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="760" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="760" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="760" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="760" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="760" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="760" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="780" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="780" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="800" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="800" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="820" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="820" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="820" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="820" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="820" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="820" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="820" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="820" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="840" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="840" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="840" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="840" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="460" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="460" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="480" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="480" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="500" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="500" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="520" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="520" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="540" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="540" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="560" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="560" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="580" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="580" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="600" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="600" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="620" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="620" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="640" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="640" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="660" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="660" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="680" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="680" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="700" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="700" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="720" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="720" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="740" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="740" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="760" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="760" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="780" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="780" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="800" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="800" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="820" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="820" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="840" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="840" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
 <Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="860" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="0" z="860" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="7" z="860" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" y="5.01" x="0" z="860" scalex="8" scaley="1" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="860" scalex="1" scaley="4.01" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="860" scalex="1" scaley="4.01" scalez="80" />
+<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="860" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="860" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="860" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="860" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="860" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="860" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="860" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="860" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="860" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="880" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="880" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="880" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="900" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="900" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="900" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="900" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="900" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="900" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="900" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="900" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="920" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="920" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="920" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="940" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="940" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="940" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="940" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="940" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="940" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="940" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="940" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="960" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="960" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="960" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="960" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="960" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="960" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="960" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="960" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="980" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="980" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1000" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1000" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1020" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1020" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1020" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1020" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1020" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1020" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1020" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1020" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1040" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1040" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1040" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1040" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1040" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1040" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1040" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1040" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1060" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1060" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1060" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1060" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1060" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1060" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1060" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1060" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1080" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1080" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1080" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1080" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1080" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1080" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1080" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1080" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1100" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1100" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1100" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1100" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1100" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1100" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1100" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1100" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1120" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1120" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1120" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1120" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1140" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1140" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1140" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1140" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1140" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1140" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1140" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1140" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1160" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1160" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1160" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1160" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1160" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1160" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1160" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1160" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1180" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1180" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1200" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1200" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1220" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1220" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1220" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1220" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1220" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1220" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1220" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1220" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1240" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1240" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1240" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1240" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1240" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="860" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="860" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="880" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="880" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="900" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="900" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="920" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="920" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="940" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="940" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="960" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="960" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="980" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="980" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1000" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1000" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1020" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1020" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1020" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1020" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1020" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1020" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1020" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1020" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1040" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1040" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1040" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1040" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1040" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1040" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1040" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1040" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1060" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1060" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1060" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1060" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1060" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1060" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1060" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1060" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1080" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1080" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1080" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1080" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1080" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1080" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1080" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1080" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1100" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1100" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1100" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1120" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1120" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1120" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1140" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1140" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1140" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1160" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1160" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1160" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1180" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1180" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1200" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1200" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1220" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1220" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1220" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1240" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1240" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1240" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
 <Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="1260" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="0" z="1260" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="7" z="1260" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" y="5.01" x="0" z="1260" scalex="8" scaley="1" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="1260" scalex="1" scaley="4.01" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="1260" scalex="1" scaley="4.01" scalez="80" />
+<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="1260" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1260" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1260" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1260" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1260" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1260" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1260" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1260" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1260" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1280" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1280" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1280" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1280" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1300" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1300" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1300" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1300" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1300" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1300" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1300" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1300" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1320" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1320" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1320" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1320" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1340" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1340" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1340" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1340" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1340" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1340" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1340" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1340" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1360" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1360" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1360" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1360" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1360" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1360" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1360" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1360" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1380" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1380" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1400" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1400" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1420" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1420" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1420" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1420" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1420" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1420" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1420" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1420" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1440" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1440" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1440" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1440" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1460" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1460" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1460" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1460" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1460" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1460" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1460" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1460" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1480" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1480" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1480" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1480" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1500" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1500" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1500" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1500" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1500" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1500" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1500" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1500" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1520" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1520" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1520" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1520" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1540" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1540" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1540" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1540" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1540" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1540" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1540" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1540" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1560" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1560" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1560" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1560" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1560" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1560" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1560" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1560" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1580" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1580" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1600" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1600" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1620" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1620" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1620" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1620" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1620" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1620" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1620" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1620" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1640" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1640" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1640" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1640" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1640" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1260" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1260" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1260" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1280" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1280" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1280" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1300" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1300" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1300" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1320" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1320" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1320" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1340" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1340" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1340" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1360" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1360" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1360" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1380" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1380" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1400" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1400" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1420" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1420" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1420" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1440" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1440" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1440" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1460" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1460" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1460" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1480" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1480" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1480" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1500" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1500" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1500" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1520" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1520" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1520" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1540" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1540" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1540" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1560" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1560" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1560" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1580" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1580" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1600" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1600" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1620" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1620" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1620" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1640" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1640" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1640" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
 <Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="1660" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="0" z="1660" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" y="1" x="7" z="1660" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" y="5.01" x="0" z="1660" scalex="8" scaley="1" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="1660" scalex="1" scaley="4.01" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="1660" scalex="1" scaley="4.01" scalez="80" />
+<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="1660" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1660" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1660" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1660" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1660" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1660" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1660" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1660" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1660" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1680" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1680" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1680" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1680" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1700" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1700" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1700" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1700" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1700" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1700" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1700" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1700" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1720" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1720" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1720" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1720" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1740" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1740" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1740" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1740" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1740" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1740" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1740" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1740" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1760" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1760" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1760" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1760" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1760" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1760" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1760" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1760" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1780" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1780" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1800" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1800" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1820" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1820" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1820" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1820" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1820" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1820" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1820" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1820" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1840" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1840" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1840" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1840" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1860" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1860" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1860" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1860" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1860" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1860" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1860" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1860" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1880" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1880" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1880" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1880" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1900" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1900" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1900" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1900" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1900" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1900" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1900" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1900" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1920" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1920" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1920" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1920" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1940" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1940" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1940" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1940" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1940" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1940" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1940" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1940" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="8" z="1960" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="0" x="-8" z="1960" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="0" x="0" z="1960" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="8" z="1960" />
-<Atom material="SpaceRoads/Track/White" scalex="8" scaley="1" scalez="20" y="60" x="-8" z="1960" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="8" scaley="1" scalez="20" y="60" x="0" z="1960" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1960" />
-<Atom material="SpaceRoads/Track/DarkGrey" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1960" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="-32" z="1980" />
-<Atom material="SpaceRoads/Track/White" scalex="1" scaley="10" scalez="20" y="25" x="40" z="1980" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1660" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1660" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1660" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1680" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1680" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1680" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1700" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1700" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1700" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1720" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1720" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1720" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1740" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1740" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1740" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1760" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1760" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1760" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1780" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1780" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1800" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1800" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1820" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1820" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1820" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1840" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1840" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1840" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1860" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1860" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1860" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1880" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1880" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1880" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1900" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1900" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1900" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1920" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1920" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1920" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="8" z="1940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-8" z="1940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="0" z="1940" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1940" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1940" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="8" z="1960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-8" z="1960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="8" z="1960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-8" z="1960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="0" z="1960" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1960" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1960" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="-32" z="1980" scalex="1" scaley="10" scalez="20" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="25" x="40" z="1980" scalex="1" scaley="10" scalez="20" />
+<Atom finish="True" material="none" type="finish" y="0" x="0" z="1980" scalex="8" scaley="10" scalez="10" />
 </Track>

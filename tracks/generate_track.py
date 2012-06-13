@@ -27,11 +27,11 @@ def makeTunnel(x,y,z, scalex, scaley, scalez):
   #  result += makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'jaumpForce':0}, True) + "\n"
     
     # Walls:
-    result += makeXMLTag("Atom", {'x':x, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley - 1, 'scalez':scalez, 'material':'none', 'jaumpForce':0}, True) + "\n"
-    result += makeXMLTag("Atom", {'x':x + scalex - 1, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley - 1, 'scalez':scalez, 'material':'none', 'jaumpForce':0}, True) + "\n"
+    result += makeXMLTag("Atom", {'x':x, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley - 1, 'scalez':scalez, 'material':'none', 'jaumpForce':0, 'type':"solid"}, True) + "\n"
+    result += makeXMLTag("Atom", {'x':x + scalex - 1, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley - 1, 'scalez':scalez, 'material':'none', 'jaumpForce':0, 'type':"solid"}, True) + "\n"
 
     # Roof:
-    result += makeXMLTag("Atom", {'x':x, 'y':y+scaley, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material':'none', 'slipOffset': scalex / 2 - 1.7}, True) + "\n"
+    result += makeXMLTag("Atom", {'x':x, 'y':y+scaley, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material':'none', 'slipOffset': scalex / 2 - 1.7, 'type':"solid"}, True) + "\n"
     result += "<!-- ########## END Tunnel ########## -->\n"
     return result
     
@@ -94,20 +94,21 @@ while(ii < 100):
 	if ii  % 10 == 0 or (ii + 1) % 10 == 0:
 	    pass
 	else:
-	    outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
-	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
-	    outfile.write(makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
 		
-	    outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
-	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2}, True) + "\n")
-	    outfile.write(makeXMLTag("Atom", {'x':x,          'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
+	    outfile.write(makeXMLTag("Atom", {'x':x,          'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
 	
 	
 	
-	outfile.write(makeXMLTag("Atom", {'x':x - scalex * 4, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1}, True) + "\n")
-	outfile.write(makeXMLTag("Atom", {'x':x + scalex * 5, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1}, True) + "\n")
+	outfile.write(makeXMLTag("Atom", {'x':x - scalex * 4, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
+	outfile.write(makeXMLTag("Atom", {'x':x + scalex * 5, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
 		
 	ii += 1
 
-		
+outfile.write(makeXMLTag("Atom", {'x': 0, 'y':0, 'z': (ii-1) * 20, 'scalex': 8, 'scaley': 10, 'scalez':10, 'material': "none", 'finish':"True", 'type':"finish" }, True) + "\n")
+
 outfile.write("</Track>")

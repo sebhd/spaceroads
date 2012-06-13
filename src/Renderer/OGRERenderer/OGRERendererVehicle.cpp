@@ -137,7 +137,7 @@ void OGRERendererVehicle::update() {
 
 	//############# BEGIN Update engine particle emitters ####################
 
-	bool emit = mpVehicle->mThrustForward > 0;
+	bool emit = !mpVehicle->mKilled && mpVehicle->mThrustForward > 0;
 
 	mEngineFlameParticleSystem->setEmitting(emit);
 	mEngineSmokeParticleSystem->setEmitting(emit);

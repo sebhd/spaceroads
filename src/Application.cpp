@@ -15,7 +15,6 @@
 #include "Input/OISInputHandler.h"
 #include "GameModel/Track/XMLFileTrack.h"
 
-
 Application::Application() {
 
 	quit = false;
@@ -40,7 +39,7 @@ Application::~Application() {
 
 void Application::handleKeyEvent(KeyboardEventListener::Key key, bool pressed) {
 
-	switch(key) {
+	switch (key) {
 	case KeyboardEventListener::KEY_ESCAPE:
 		quit = true;
 		break;
@@ -62,12 +61,8 @@ void Application::playTrackFile(std::string filename) {
 
 	std::cout << "Preparing renderer for track.";
 
-
-
 	mpPlayerVehicle->reset();
 	mpPlayerVehicle->mPos = mpTrack->mStartPosition;
-
-
 
 	mpRenderer->prepareForTrack();
 
@@ -84,7 +79,6 @@ void Application::playTrackFile(std::string filename) {
 	// TODO 4: Make simulation step frequency configurable by introducing a time factor multiplicator in Vehicle::step() and...
 	// all other places where it matters.
 
-
 	//########### BEGIN The Main Loop! ##########
 	while (!quit) {
 
@@ -95,7 +89,6 @@ void Application::playTrackFile(std::string filename) {
 		currentTime = newTime;
 
 		accumulator += frameTime;
-
 
 		if (accumulator > 20000) {
 			accumulator = 20000;
@@ -111,46 +104,48 @@ void Application::playTrackFile(std::string filename) {
 				mpPlayerVehicle->mKilled = true;
 			}
 
-			// If the ship is destroyed, reset to the starting position:
-			if (mpPlayerVehicle->mKilled) {
-				mpRenderer->showKilledInfo(true);
-
-			}
-
 			if (mpPlayerVehicle->mWantReset) {
 				mpPlayerVehicle->mPos = mpTrack->mStartPosition;
 				mpPlayerVehicle->reset();
 				mpRenderer->showKilledInfo(false);
+				mpRenderer->showTrackCompletedInfo(false);
 			}
 
-			//		std::cout << mpPlayerVehicle->mPos << std::endl;
-
-			mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
-
-			// Find colliding track atoms:
-			std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
-
-			// Apply counter-forces (prevent vehicle from going through walls):
-			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-				collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
+			// If the ship is destroyed, reset to the starting position:
+			if (mpPlayerVehicle->mKilled) {
+				mpRenderer->showKilledInfo(true);
 			}
-
-			mpPlayerVehicle->updatePosition();
-
-			mpPlayerVehicle->mJumpedInThisStep = false;
-
-			// Apply contact effects:
-			for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-				collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
+			else if (mpPlayerVehicle->mFinish) {
+				mpRenderer->showTrackCompletedInfo(true);
 			}
+			else {
+				mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
 
-			// Calculate & apply vehicle-internal effects on it's velocity:
-			mpPlayerVehicle->updateVelocity();
+				// Find colliding track atoms:
+				std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
+
+				// Apply counter-forces (prevent vehicle from going through walls):
+				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+					collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
+				}
+
+				mpPlayerVehicle->updatePosition();
+
+				// Calculate & apply vehicle-internal effects on it's velocity:
+				mpPlayerVehicle->updateVelocity();
+
+				mpPlayerVehicle->mJumpedInThisStep = false;
+
+				// Apply contact effects:
+				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+					collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
+				}
+			}
 
 			accumulator -= dt;
 		}
 
-	//	gettimeofday(&before, NULL);
+		//	gettimeofday(&before, NULL);
 
 		// Render next frame:
 		if (!mpRenderer->renderOneFrame()) {

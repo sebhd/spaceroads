@@ -18,29 +18,31 @@ LocalHumanRacer::~LocalHumanRacer() {
 
 void LocalHumanRacer::handleKeyEvent(Key key, bool pressed) {
 
-	switch(key) {
-	case KEY_SPACE:
+	if (key == KEY_SPACE) {
 		cmd_spacebar(pressed);
-		break;
-
-	case KEY_LEFT:
-		mAddThrustLeft = pressed;
-		break;
-
-	case KEY_RIGHT:
-		mAddThrustRight = pressed;
-		break;
-
-	case KEY_UP:
-		mAddThrustForward = pressed;
-		break;
-
-	case KEY_DOWN:
-		mReduceThrustForward = pressed;
-		break;
-
-	default:
-			break;
 	}
 
+	if (!mKilled) {
+		switch (key) {
+
+		case KEY_LEFT:
+			mAddThrustLeft = pressed;
+			break;
+
+		case KEY_RIGHT:
+			mAddThrustRight = pressed;
+			break;
+
+		case KEY_UP:
+			mAddThrustForward = pressed;
+			break;
+
+		case KEY_DOWN:
+			mReduceThrustForward = pressed;
+			break;
+
+		default:
+			break;
+		}
+	}
 }
