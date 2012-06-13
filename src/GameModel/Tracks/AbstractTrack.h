@@ -19,6 +19,7 @@ public:
 	AbstractTrack();
 	virtual ~AbstractTrack();
 
+	void computeExtent();
 	const std::vector<TrackAtom*> getTrackAtomsAround(cml::vector3f pos);
 
 	virtual void step(Vehicle*);
@@ -34,6 +35,8 @@ public:
 	bool mHasChanged;
 
 	std::vector<TrackDecorationMesh> mMeshes;
+
+	game::BoundingBox mExtent;
 
 protected:
 

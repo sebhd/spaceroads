@@ -183,6 +183,14 @@ void Application::playTrackFile(std::string filename) {
 				mpTrack->reset();
 			}
 
+	//		std::cout << mpPlayerVehicle->mPos << std::endl;
+
+			if (!mpTrack->mExtent.containsPoint(mpPlayerVehicle->mPos)) {
+				std::cout << "Slipped off the track!" << std::endl;
+				mpPlayerVehicle->mKilled = true;
+			}
+
+
 
 			mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
 

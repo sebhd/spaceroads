@@ -104,6 +104,8 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 
 	}
 	//#################### END Read <Mesh> Elements ######################
+
+	computeExtent();
 }
 
 XMLFileTrack::~XMLFileTrack() {

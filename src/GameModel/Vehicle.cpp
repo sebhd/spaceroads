@@ -4,7 +4,6 @@
  *  Created on: 25.04.2012
  *      Author: sebastian
  */
-// TODO 3: Detect irrecoverable falling-off the track (and in that case, reset the vehicle)
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
 

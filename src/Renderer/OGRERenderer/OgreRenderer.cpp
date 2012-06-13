@@ -345,13 +345,13 @@ void OgreRenderer::prepareForTrack() {
 
 void OgreRenderer::buildTrackGeometry() {
 
+	AbstractTrack* track = mpApp->mpTrack;
+
 	mTrackStaticGeometry->destroy();
 
-	// TODO 2: Calculate extent of the static geometry
-	mTrackStaticGeometry->setRegionDimensions(Ogre::Vector3(10000, 10000, 10000));
-	mTrackStaticGeometry->setOrigin(Ogre::Vector3(0, 0, 0));
+	mTrackStaticGeometry->setRenderingDistance(1000);
 
-	std::vector<TrackAtom*> trackAtoms = mpApp->mpTrack->getTrackAtomsAround(cml::vector3f(0, 0, 0));
+	std::vector<TrackAtom*> trackAtoms = track->getTrackAtomsAround(cml::vector3f(0, 0, 0));
 
 	Ogre::Quaternion orientation;
 	orientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3::UNIT_Y);
