@@ -9,7 +9,7 @@
 #define TRACKATOM_H_
 
 #include <string>
-#include "../BoundingBox.h"
+#include "../util/BoundingBox.h"
 #include "../Vehicle.h"
 
 enum HitSide {
@@ -20,13 +20,13 @@ class TrackAtom {
 public:
 
 
-	TrackAtom(game::BoundingBox bbox);
+	TrackAtom(BoundingBox bbox);
 	virtual ~TrackAtom();
 
 	virtual void applyContactEffects(Vehicle* ship, HitSide hs) = 0;
 	virtual void applyCounterForces(Vehicle* ship, HitSide hs) = 0;
 
-	game::BoundingBox mBBox;
+	BoundingBox mBBox;
 
 	std::string mName;
 	std::string mRenderMaterial;

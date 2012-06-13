@@ -44,6 +44,8 @@ void Application::handleKeyEvent(KeyboardEventListener::Key key, bool pressed) {
 	case KeyboardEventListener::KEY_ESCAPE:
 		quit = true;
 		break;
+	default:
+		break;
 	}
 
 	mPilot.handleKeyEvent(key, pressed);

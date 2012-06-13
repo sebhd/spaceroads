@@ -5,11 +5,8 @@
  *      Author: sebastian
  */
 
-// TODO 4: Remove OIS dependency from Application class by introducing a self-made keyboard event message system
-
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
-
 
 #include <OISEvents.h>
 #include <OISKeyboard.h>
@@ -21,7 +18,7 @@
 #include "GameModel/Pilots/LocalHumanPilot.h"
 
 class AbstractRenderer;
-class KeyboardEventListener;
+
 
 
 class Application : public KeyboardEventListener {

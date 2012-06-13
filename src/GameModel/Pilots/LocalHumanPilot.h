@@ -9,7 +9,7 @@
 #define LOCALHUMANPILOT_H_
 
 #include "Pilot.h"
-#include "../../Input/KeyboardEventListener.h"
+#include "../../util/Input/KeyboardEventListener.h"
 
 class KeyboardEventListener;
 

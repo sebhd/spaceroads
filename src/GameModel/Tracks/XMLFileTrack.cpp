@@ -58,8 +58,7 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 		float sizey = atof(taElem->Attribute("scaley"));
 		float sizez = atof(taElem->Attribute("scalez"));
 
-		SolidTrackAtom* ta = new SolidTrackAtom(
-				game::BoundingBox(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
+		SolidTrackAtom* ta = new SolidTrackAtom(BoundingBox(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
 
 		if (taElem->Attribute("jumpForce") != NULL) {
 			ta->mJumpForce = atof(taElem->Attribute("jumpForce"));

@@ -66,7 +66,7 @@ public:
 
 	cml::vector3f mPos;
 
-	game::BoundingBox mBBox;
+	BoundingBox mBBox;
 	cml::vector3f mBBoxPosOffset;
 
 

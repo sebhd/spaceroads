@@ -12,7 +12,7 @@
 
 class SolidTrackAtom : public TrackAtom {
 public:
-	SolidTrackAtom(game::BoundingBox bbox);
+	SolidTrackAtom(BoundingBox bbox);
 	virtual ~SolidTrackAtom();
 
 	virtual void applyContactEffects(Vehicle* ship, HitSide hs);

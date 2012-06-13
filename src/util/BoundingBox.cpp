@@ -7,7 +7,7 @@
 
 #include "BoundingBox.h"
 
-namespace game {
+
 
 BoundingBox::BoundingBox() {
 	// TODO Auto-generated constructor stub
@@ -81,4 +81,3 @@ int BoundingBox::getIntersectingAxis(const BoundingBox& other, bool& x, bool& y,
 }
 
 
-} /* namespace game */

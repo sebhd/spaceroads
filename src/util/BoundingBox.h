@@ -10,7 +10,7 @@
 
 #include "cml/cml.h"
 
-namespace game {
+
 
 class BoundingBox {
 public:
@@ -26,5 +26,5 @@ public:
 	int getIntersectingAxis(const BoundingBox& other, bool& x, bool& y, bool& z);
 };
 
-} /* namespace game */
+
 #endif /* BOUNDINGBOX_H_ */

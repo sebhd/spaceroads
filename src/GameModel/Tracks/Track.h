@@ -12,7 +12,7 @@
 #include "TrackDecorationMesh.h"
 #include "../TrackAtoms/TrackAtom.h"
 #include "../Vehicle.h"
-#include "../../cml/cml.h"
+#include "cml/cml.h"
 
 class Track {
 public:
@@ -32,7 +32,7 @@ public:
 
 	std::vector<TrackDecorationMesh> mMeshes;
 
-	game::BoundingBox mExtent;
+	BoundingBox mExtent;
 
 protected:
 

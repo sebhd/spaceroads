@@ -12,7 +12,7 @@
 
 class GravChangerTrackAtom: public SolidTrackAtom {
 public:
-	GravChangerTrackAtom(game::BoundingBox bbox);
+	GravChangerTrackAtom(BoundingBox bbox);
 	virtual ~GravChangerTrackAtom();
 
 	virtual void applyContactEffects(Vehicle* ship, HitSide hs);
