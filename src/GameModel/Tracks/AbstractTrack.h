@@ -5,9 +5,6 @@
  *      Author: sebastian
  */
 
-// TODO 4: Implementieren, dass sich bewegende TrackAtoms ein Vehicle mit sich schieben können...
-// Derzeit ist es so, dass sich ein sich bewegendes TrackAtom durch ein stillstehendes Vehicle einfach
-// hindurchbewegt (bzw. umgekehrt). Das ist doof.
 #ifndef ABSTRACTTRACK_H_
 #define ABSTRACTTRACK_H_
 

@@ -52,7 +52,7 @@ outfile.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
 outfile.write("<Track skybox=\"SpaceRoads/SkyBoxes/PurpleNebula2\">\n")
 
 outfile.write('<StartPos x="4" y="10" z="50" />\n')
-outfile.write('<AmbientLight r="0.3" g="0.3" b="0.3" />\n')
+outfile.write('<AmbientLight r="0.5" g="0.5" b="0.5" />\n')
 outfile.write('<DirectionalLight x="-1" y="-1" z="-1">\n')
 
 outfile.write('</DirectionalLight>\n')

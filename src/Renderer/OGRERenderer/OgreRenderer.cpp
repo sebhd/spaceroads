@@ -315,7 +315,7 @@ void OgreRenderer::prepareForTrack() {
 
 
 	// Set up directional light:
-	// TODO 3: Read directional light properties from Track class
+	// TODO 3: Read directional light color from Track class
 
 	Ogre::Light* l = mSceneMgr->createLight("MainLight");
 	l->setType(Ogre::Light::LT_DIRECTIONAL);

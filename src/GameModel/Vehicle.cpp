@@ -137,15 +137,10 @@ void Vehicle::updatePosition() {
 
 	//################ BEGIN Enforce speed limits ################
 
-	// TODO 3: Think about and - if it is so - explain why velocity
-	// changes due to speed limits can be done *between* collision
-	// detection and the 'applc counter forces' part of collision
-	// detection without causing trouble.
-
 	// ATTENTION:
-	// Be aware of the fact that in the case of a collision, the vehicle will just pass through
+	// Be aware of the fact that in the case of a collision, the vehicle may pass through
 	// a TrackAtom if its speed in the direction of the colliding wall is larger than the
-	// thickness of the block in that direction! sbecht 2012-05-26
+	// thickness of the block in that direction!
 	// TODO 4: Try to fix this.
 
 	int topSpeed = 2;

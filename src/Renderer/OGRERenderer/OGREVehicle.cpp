@@ -5,6 +5,8 @@
  *      Author: sebastian
  */
 
+// TODO 3: Make vehicle/camera rotation speed framerate-independent.
+
 #include "OGREVehicle.h"
 #include <OgreParticle.h>
 #include <OgreParticleSystem.h>
@@ -19,24 +21,27 @@ OGREVehicle::OGREVehicle(Ogre::SceneManager* a_sceneMgr, Vehicle* a_vehicle) {
 	mPitchAngle = 0;
 
 	Ogre::Entity* entVehicle = mSceneManager->createEntity("Vehicle", "Vehicle.mesh");
+	//Ogre::Entity* entVehicle = mSceneManager->createEntity("OgreHeade", "ogrehead.mesh");
+
 
 	mOrientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3(1, 0, 0));
 
 	mVehicleNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
 	mVehicleMeshNode = mVehicleNode->createChildSceneNode();
+	//mVehicleMeshNode->setScale(0.05,0.05,0.05);
 
 	mVehicleMeshNode->attachObject(entVehicle);
 
 	// Set up engine flame particle system:
 	mEngineFlameParticleSystem = mSceneManager->createParticleSystem("EngineFlame", "SpaceRoads/EngineFlame");
-	Ogre::SceneNode* particleNode = mVehicleNode->createChildSceneNode("EngineFlame");
+	Ogre::SceneNode* particleNode = mVehicleMeshNode->createChildSceneNode("EngineFlame");
 	particleNode->setPosition(0, -1.5, 3);
 	particleNode->attachObject((Ogre::ParticleSystem*) mEngineFlameParticleSystem);
 
 	// Set up engine flame particle system:
 	mEngineSmokeParticleSystem = mSceneManager->createParticleSystem("EngineSmoke", "SpaceRoads/EngineSmoke");
-	particleNode = mVehicleNode->createChildSceneNode("EngineSmoke");
+	particleNode = mVehicleMeshNode->createChildSceneNode("EngineSmoke");
 	particleNode->setPosition(0, -1.5, 3);
 	particleNode->attachObject((Ogre::ParticleSystem*) mEngineSmokeParticleSystem);
 
@@ -104,16 +109,8 @@ void OGREVehicle::update() {
 	dot = cml::dot(velDirGravityComponent, g);
 
 	if (velDirGravityComponent.length() > 0.000001) {
-
-		if (dot < 0) {
-			mDesiredPitchAngle = 15;
-		} else {
-			mDesiredPitchAngle = -15;
-		}
-
-		mPitchAngle += (mDesiredPitchAngle - mPitchAngle) * 0.1;
+		mPitchAngle = -cml::sign(dot) * velDirGravityComponent.length() * 500000;
 	} else {
-		mDesiredPitchAngle = 0;
 
 		if (mpVehicle->mAddThrustForward && mPitchAngle > -7) {
 			mPitchAngle -= 0.1;
