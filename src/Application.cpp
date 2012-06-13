@@ -13,7 +13,7 @@
 
 #include "Renderer/OGRERenderer/OgreRenderer.h"
 #include "Input/OISInputHandler.h"
-#include "GameModel/Tracks/XMLFileTrack.h"
+#include "GameModel/Track/XMLFileTrack.h"
 
 
 Application::Application() {

@@ -10,11 +10,8 @@
 
 #include <OISEvents.h>
 #include <OISKeyboard.h>
-//#include "Renderer/AbstractRenderer.h"
 #include "Input/InputHandler.h"
-#include "Input/KeyboardEventListener.h"
-#include "GameModel/Tracks/Track.h"
-#include "GameModel/TrackAtoms/TrackAtom.h"
+#include "GameModel/Track/Track.h"
 
 class AbstractRenderer;
 

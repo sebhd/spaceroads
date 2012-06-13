@@ -5,10 +5,10 @@
  *      Author: sebastian
  */
 
+#include <tinyxml.h>
 #include "XMLFileTrack.h"
-#include "tinyxml.h"
 #include <string>
-#include "../TrackAtoms/SolidTrackAtom.h"
+#include "TrackAtom/SolidTrackAtom.h"
 
 XMLFileTrack::XMLFileTrack(std::string filename) {
 

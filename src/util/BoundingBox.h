@@ -10,8 +10,6 @@
 
 #include "cml/cml.h"
 
-
-
 class BoundingBox {
 public:
 	BoundingBox();

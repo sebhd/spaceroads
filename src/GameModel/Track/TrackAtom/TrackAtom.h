@@ -10,7 +10,7 @@
 
 #include <string>
 #include "../util/BoundingBox.h"
-#include "../Racers/Racer.h"
+#include "../../Racer/Racer.h"
 
 enum HitSide {
 	HIT_TOP, HIT_BOTTOM, HIT_LEFT, HIT_RIGHT, HIT_FRONT, HIT_BACK, HIT_NONE

@@ -7,8 +7,6 @@
 
 #include "BoundingBox.h"
 
-
-
 BoundingBox::BoundingBox() {
 	// TODO Auto-generated constructor stub
 	mPos.set(0, 0, 0);

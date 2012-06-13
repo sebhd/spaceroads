@@ -9,7 +9,7 @@
 #define OGREVEHICLE_H_
 
 #include <Ogre.h>
-#include "../../GameModel/Racers/Racer.h"
+#include "../../GameModel/Racer/Racer.h"
 
 class OGRERendererVehicle {
 public:

@@ -12,7 +12,7 @@
 #include "../AbstractRenderer.h"
 #include <OgreRoot.h>
 #include <OgreWindowEventUtilities.h>
-#include "../../GameModel/TrackAtoms/TrackAtom.h"
+#include "../../GameModel/Track/TrackAtom/TrackAtom.h"
 #include "OGRERendererVehicle.h"
 
 
