@@ -12,7 +12,7 @@
 
 class GravChangerTrackAtom: public SolidTrackAtom {
 public:
-	GravChangerTrackAtom(BoundingBox bbox);
+	GravChangerTrackAtom(AABB bbox);
 	virtual ~GravChangerTrackAtom();
 
 	virtual void applyContactEffects(Racer* ship, HitSide hs);

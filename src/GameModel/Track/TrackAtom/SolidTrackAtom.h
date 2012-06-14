@@ -12,7 +12,7 @@
 
 class SolidTrackAtom : public TrackAtom {
 public:
-	SolidTrackAtom(BoundingBox bbox);
+	SolidTrackAtom(AABB bbox);
 	virtual ~SolidTrackAtom();
 
 	virtual void applyContactEffects(Racer* ship, HitSide hs);

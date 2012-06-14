@@ -9,24 +9,25 @@
 #define TRACKATOM_H_
 
 #include <string>
-#include "../util/BoundingBox.h"
+#include "../util/AABB.h"
 #include "../../Racer/Racer.h"
 
-enum HitSide {
-	HIT_TOP, HIT_BOTTOM, HIT_LEFT, HIT_RIGHT, HIT_FRONT, HIT_BACK, HIT_NONE
-};
 
 class TrackAtom {
 public:
 
+	enum HitSide {
+		HIT_TOP, HIT_BOTTOM, HIT_LEFT, HIT_RIGHT, HIT_FRONT, HIT_BACK, HIT_NONE
+	};
 
-	TrackAtom(BoundingBox bbox);
+
+	TrackAtom(AABB bbox);
 	virtual ~TrackAtom();
 
 	virtual void applyContactEffects(Racer* ship, HitSide hs);
 	virtual void applyCounterForces(Racer* ship, HitSide hs);
 
-	BoundingBox mBBox;
+	AABB mBBox;
 
 	std::string mName;
 	std::string mRenderMaterial;
@@ -41,7 +42,7 @@ public:
 
 struct CollisionInfo {
 	TrackAtom* ta;
-	HitSide hs;
+	TrackAtom::HitSide hs;
 };
 
 

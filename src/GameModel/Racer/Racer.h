@@ -8,7 +8,7 @@
 #ifndef SHIP_H_
 #define SHIP_H_
 
-#include "BoundingBox.h"
+#include "AABB.h"
 #include <vector>
 
 
@@ -66,7 +66,7 @@ public:
 
 	cml::vector3f mPos;
 
-	BoundingBox mBBox;
+	AABB mBBox;
 	cml::vector3f mBBoxPosOffset;
 
 	cml::vector3f mGravity;

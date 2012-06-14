@@ -10,18 +10,18 @@
 
 #include "cml/cml.h"
 
-class BoundingBox {
+class AABB {
 public:
-	BoundingBox();
-	BoundingBox(cml::vector3f, cml::vector3f);
-	virtual ~BoundingBox();
+	AABB();
+	AABB(cml::vector3f, cml::vector3f);
+	virtual ~AABB();
 
 	cml::vector3f mPos;
 	cml::vector3f mSize;
 
 	bool containsPoint(const cml::vector3f&);
-	bool intersectsWith(const BoundingBox& other);
-	int getIntersectingAxis(const BoundingBox& other, bool& x, bool& y, bool& z);
+	bool intersectsWith(const AABB& other);
+	int getIntersectingAxis(const AABB& other, bool& x, bool& y, bool& z);
 };
 
 

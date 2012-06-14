@@ -7,7 +7,7 @@
 
 #include "SolidTrackAtom.h"
 
-SolidTrackAtom::SolidTrackAtom(BoundingBox bbox) :
+SolidTrackAtom::SolidTrackAtom(AABB bbox) :
 		TrackAtom(bbox) {
 
 	mRenderMaterial = "SpaceRoads/Track/Solid";

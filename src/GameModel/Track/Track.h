@@ -32,7 +32,7 @@ public:
 
 	std::vector<TrackDecorationMesh> mMeshes;
 
-	BoundingBox mExtent;
+	AABB mExtent;
 
 protected:
 

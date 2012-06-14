@@ -9,7 +9,7 @@
 
 #include "GravChangerTrackAtom.h"
 
-GravChangerTrackAtom::GravChangerTrackAtom(BoundingBox bbox) : SolidTrackAtom(bbox) {
+GravChangerTrackAtom::GravChangerTrackAtom(AABB bbox) : SolidTrackAtom(bbox) {
 	// TODO Auto-generated constructor stub
 
 

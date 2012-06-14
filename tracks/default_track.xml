@@ -23,10 +23,10 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="40" scalex="1" scaley="10" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="40" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
-<Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="60" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="60" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="60" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="60" scalex="8" scaley="1" scalez="80" />
+<Mesh material="SpaceRoads/Track/Red" mesh="FlatRoofTunnel" y="1" x="0" z="60" scalex="8" scaley="5" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="60" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="60" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" type="solid" y="5" x="0" z="60" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="60" scalex="8" scaley="1" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="60" scalex="8" scaley="1" scalez="20" />
@@ -165,10 +165,10 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="440" scalex="1" scaley="10" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="440" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
-<Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="460" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="460" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="460" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="460" scalex="8" scaley="1" scalez="80" />
+<Mesh material="SpaceRoads/Track/Red" mesh="FlatRoofTunnel" y="1" x="0" z="460" scalex="8" scaley="5" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="460" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="460" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" type="solid" y="5" x="0" z="460" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="460" scalex="8" scaley="1" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="460" scalex="8" scaley="1" scalez="20" />
@@ -307,10 +307,10 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="840" scalex="1" scaley="10" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="840" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
-<Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="860" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="860" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="860" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="860" scalex="8" scaley="1" scalez="80" />
+<Mesh material="SpaceRoads/Track/Red" mesh="FlatRoofTunnel" y="1" x="0" z="860" scalex="8" scaley="5" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="860" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="860" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" type="solid" y="5" x="0" z="860" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="860" scalex="8" scaley="1" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="860" scalex="8" scaley="1" scalez="20" />
@@ -449,10 +449,10 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1240" scalex="1" scaley="10" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1240" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
-<Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="1260" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="1260" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="1260" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="1260" scalex="8" scaley="1" scalez="80" />
+<Mesh material="SpaceRoads/Track/Red" mesh="FlatRoofTunnel" y="1" x="0" z="1260" scalex="8" scaley="5" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="1260" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="1260" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" type="solid" y="5" x="0" z="1260" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1260" scalex="8" scaley="1" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1260" scalex="8" scaley="1" scalez="20" />
@@ -591,10 +591,10 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="-32" z="1640" scalex="1" scaley="10" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="25" x="40" z="1640" scalex="1" scaley="10" scalez="20" />
 <!-- ########## BEGIN Tunnel ########## -->
-<Mesh material="SpaceRoads/Track/Red" mesh="Tunnel" y="1" x="0" z="1660" scalex="8" scaley="5.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="1660" scalex="1" scaley="4.01" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="1660" scalex="1" scaley="4.01" scalez="80" />
-<Atom slipOffset="2.3" material="none" type="solid" y="5.01" x="0" z="1660" scalex="8" scaley="1" scalez="80" />
+<Mesh material="SpaceRoads/Track/Red" mesh="FlatRoofTunnel" y="1" x="0" z="1660" scalex="8" scaley="5" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="1660" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" jaumpForce="0" type="solid" y="1" x="7" z="1660" scalex="1" scaley="4" scalez="80" />
+<Atom material="none" type="solid" y="5" x="0" z="1660" scalex="8" scaley="1" scalez="80" />
 <!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="8" z="1660" scalex="8" scaley="1" scalez="20" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-8" z="1660" scalex="8" scaley="1" scalez="20" />

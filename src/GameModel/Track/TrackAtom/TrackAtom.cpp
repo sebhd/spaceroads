@@ -8,7 +8,7 @@
 
 #include "TrackAtom.h"
 
-TrackAtom::TrackAtom(BoundingBox bbox) {
+TrackAtom::TrackAtom(AABB bbox) {
 
 	mBBox = bbox;
 	mRenderMaterial = "SolidTrackAtom";

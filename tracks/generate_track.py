@@ -16,12 +16,12 @@ def makeXMLTag(element, attributes, close):
     return result
 
   
-def makeTunnel(x,y,z, scalex, scaley, scalez):
+def makeCurvedRoofTunnel(x,y,z, scalex, scaley, scalez):
       
     result = "<!-- ########## BEGIN Tunnel ########## -->\n"
     
     # Decorative mesh:
-    result += makeXMLTag("Mesh", {'x':x, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley':scaley, 'scalez':scalez, 'mesh':"Tunnel", 'material':"SpaceRoads/Track/Red"}, True) + "\n"
+    result += makeXMLTag("Mesh", {'x':x, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley':scaley, 'scalez':scalez, 'mesh':"CurvedRoofTunnel", 'material':"SpaceRoads/Track/Red"}, True) + "\n"
    
     # Floor:
   #  result += makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'jaumpForce':0}, True) + "\n"
@@ -34,7 +34,27 @@ def makeTunnel(x,y,z, scalex, scaley, scalez):
     result += makeXMLTag("Atom", {'x':x, 'y':y+scaley, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material':'none', 'slipOffset': scalex / 2 - 1.7, 'type':"solid"}, True) + "\n"
     result += "<!-- ########## END Tunnel ########## -->\n"
     return result
+
     
+def makeFlatRoofTunnel(x,y,z, scalex, scaley, scalez):
+      
+    result = "<!-- ########## BEGIN Tunnel ########## -->\n"
+    
+    # Decorative mesh:
+    result += makeXMLTag("Mesh", {'x':x, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley':scaley, 'scalez':scalez, 'mesh':"FlatRoofTunnel", 'material':"SpaceRoads/Track/Red"}, True) + "\n"
+   
+    # Floor:
+  #  result += makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'jaumpForce':0}, True) + "\n"
+    
+    # Walls:
+    result += makeXMLTag("Atom", {'x':x, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley - 1, 'scalez':scalez, 'material':'none', 'jaumpForce':0, 'type':"solid"}, True) + "\n"
+    result += makeXMLTag("Atom", {'x':x + scalex - 1, 'y':y+1, 'z':z, 'scalex':1, 'scaley': scaley - 1, 'scalez':scalez, 'material':'none', 'jaumpForce':0, 'type':"solid"}, True) + "\n"
+
+    # Roof:
+    result += makeXMLTag("Atom", {'x':x, 'y':y+scaley, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material':'none', 'type':"solid"}, True) + "\n"
+    result += "<!-- ########## END Tunnel ########## -->\n"
+    return result
+
   
 ####################### Here begins the program #######################
 
@@ -75,7 +95,7 @@ while(ii < 100):
     
 	
 	if (ii - 3) % 20 == 0:
-	    outfile.write(makeTunnel(x,y,z, scalex, 5.01,80))	
+	    outfile.write(makeFlatRoofTunnel(x,y,z, scalex, 5,80))	
 	    #outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
 	    #outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
 	

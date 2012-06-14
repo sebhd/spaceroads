@@ -74,10 +74,10 @@ void Application::playTrackFile(std::string filename) {
 	// 1/100 sec. simulation frequency
 	unsigned int dt = 5000;
 
-	// TODO 3: Understand performance problem on Eray's Macbook. Might have to do with the game speed timing code.
-
 	// TODO 4: Make simulation step frequency configurable by introducing a time factor multiplicator in Vehicle::step() and...
 	// all other places where it matters.
+
+	unsigned long stepCount = 0;
 
 	//########### BEGIN The Main Loop! ##########
 	while (!quit) {
@@ -114,11 +114,9 @@ void Application::playTrackFile(std::string filename) {
 			// If the ship is destroyed, reset to the starting position:
 			if (mpPlayerVehicle->mKilled) {
 				mpRenderer->showKilledInfo(true);
-			}
-			else if (mpPlayerVehicle->mFinish) {
+			} else if (mpPlayerVehicle->mFinish) {
 				mpRenderer->showTrackCompletedInfo(true);
-			}
-			else {
+			} else {
 				mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
 
 				// Find colliding track atoms:
@@ -143,8 +141,15 @@ void Application::playTrackFile(std::string filename) {
 			}
 
 			accumulator -= dt;
+
+			stepCount++;
 		}
 
+		/*
+		if (stepCount % 100 == 0) {
+			std::cout << double(stepCount) / 100 << std::endl;
+		}
+*/
 		//	gettimeofday(&before, NULL);
 
 		// Render next frame:
@@ -178,32 +183,32 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 			if (ta->mBBox.getIntersectingAxis(mpPlayerVehicle->mBBox, x, y, z) == 2) {
 
-				HitSide hitSide = HIT_NONE;
+				TrackAtom::HitSide hitSide = TrackAtom::HIT_NONE;
 
 				if (!x) {
 
 					if (mpPlayerVehicle->mVelocity[0] > 0) {
-						hitSide = HIT_LEFT;
+						hitSide = TrackAtom::HIT_LEFT;
 					} else {
-						hitSide = HIT_RIGHT;
+						hitSide = TrackAtom::HIT_RIGHT;
 					}
 				}
 
 				else if (!y) {
 
 					if (mpPlayerVehicle->mVelocity[1] > 0) {
-						hitSide = HIT_BOTTOM;
+						hitSide = TrackAtom::HIT_BOTTOM;
 					} else {
-						hitSide = HIT_TOP;
+						hitSide = TrackAtom::HIT_TOP;
 					}
 				}
 
 				else if (!z) {
 
 					if (mpPlayerVehicle->mVelocity[2] > 0) {
-						hitSide = HIT_BACK;
+						hitSide = TrackAtom::HIT_BACK;
 					} else {
-						hitSide = HIT_FRONT;
+						hitSide = TrackAtom::HIT_FRONT;
 					}
 				}
 

@@ -64,12 +64,12 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 		std::string type = taElem->Attribute("type");
 
 		if (type == "finish") {
-			ta = new TrackAtom(BoundingBox(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
+			ta = new TrackAtom(AABB(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
 
 			ta->mIsFinish = true;
 
 		} else {
-			ta = new SolidTrackAtom(BoundingBox(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
+			ta = new SolidTrackAtom(AABB(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
 
 			SolidTrackAtom* solid = (SolidTrackAtom*) ta;
 

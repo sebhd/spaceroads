@@ -69,8 +69,7 @@ void Racer::reset() {
 
 void Racer::updateVelocity() {
 
-	// Apply gravity:
-	mVelocity += getGravity();
+	cml::vector3f addVelocity = getGravity();
 
 	// ################ BEGIN Apply player vehicle control commands ###################
 
@@ -94,7 +93,7 @@ void Racer::updateVelocity() {
 	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
 
 	if ((mThrustForward > 0 && forwardComponent.length() < mMaxSpeedForward) || (mThrustForward < 0 && forwardComponent.length() > 0)) {
-		mVelocity += mDirForward * mThrustForward;
+		addVelocity += mDirForward * mThrustForward;
 	}
 	//############ END Apply forward thrust ##############
 
@@ -119,15 +118,17 @@ void Racer::updateVelocity() {
 	cml::vector3f sidewardComponent = cml::dot(mDirLeft, mVelocity) * mDirLeft;
 
 	if (sidewardComponent.length() < mMaxSpeedSideward) {
-		mVelocity += mDirLeft * mThrustSideward;
+		addVelocity += mDirLeft * mThrustSideward;
 	}
 	//############### END Apply sideward thrust ################
 
 	// Apply "friction":
-	mVelocity -= forwardComponent * 0.03;
-	mVelocity -= sidewardComponent * 0.02;
+	addVelocity -= forwardComponent * 0.03;
+	addVelocity -= sidewardComponent * 0.02;
 
 	// ################ END Apply player vehicle control commands ###################
+
+	mVelocity += addVelocity;
 }
 
 
@@ -142,13 +143,14 @@ void Racer::updatePosition() {
 	// thickness of the block in that direction!
 	// TODO 4: Try to fix this.
 
+	// Enforce top speed limit:
 	int topSpeed = 2;
 
 	if (mVelocity.length() > topSpeed) {
 		mVelocity = mVelocity.normalize() * topSpeed;
 	}
 
-	// Apply backwards spped limit (moving backwards is not allowed at all):
+	// Apply backwards speed limit (moving backwards is not allowed at all):
 	if (cml::dot(mDirForward, mVelocity) < 0) {
 		mVelocity -= cml::dot(mDirForward, mVelocity) * mDirForward;
 	}
