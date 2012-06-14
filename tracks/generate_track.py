@@ -95,8 +95,8 @@ while(ii < 100):
     
 	
 	if (ii - 3) % 20 == 0:
-	    outfile.write(makeFlatRoofTunnel(x,y,z, scalex, 5.0,80))	
-	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley': 5, 'scalez': 80, 'material': "SpaceRoads/Track/Yellow"}, True) + "\n")
+	    outfile.write(makeCurvedRoofTunnel(x,y,z, scalex, 5.0,80))	
+	  #  outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley': 5, 'scalez': 80, 'material': "SpaceRoads/Track/Yellow"}, True) + "\n")
 	    #outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
 	
 	

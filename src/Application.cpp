@@ -165,8 +165,6 @@ void Application::playTrackFile(std::string filename) {
 
 std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
-	std::vector<CollisionInfo> collisions;
-
 	AABB box1 = mpPlayerVehicle->mBBox;
 	box1.mMin += mpPlayerVehicle->mPos;
 	box1.mMax += mpPlayerVehicle->mPos;
@@ -174,6 +172,8 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 	AABB box2 = box1;
 	box2.mMin += mpPlayerVehicle->mVelocity;
 	box2.mMax += mpPlayerVehicle->mVelocity;
+
+	std::vector<CollisionInfo> collisions;
 
 	std::vector<TrackAtom*> trackAtoms = mpTrack->getTrackAtomsAround(mpPlayerVehicle->mPos);
 

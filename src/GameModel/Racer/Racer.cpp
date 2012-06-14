@@ -6,7 +6,6 @@
  */
 // TODO 4: Entscheidung: Soll lenken im Flug  möglich sein?
 // TODO 4: Entscheidlung: Soll man um so weiter zur Seite springen können, je schneller man fliegt?
-
 #include "Racer.h"
 #include <vector>
 #include <cmath>
@@ -19,15 +18,12 @@ Racer::Racer() {
 	mBBox.mMin.set(-1.99, -1.99, -1.99);
 	mBBox.mMax.set(1.99, 1.99, 1.99);
 
-
-
 	reset();
 }
 
 Racer::~Racer() {
 	// TODO Auto-generated destructor stub
 }
-
 
 void Racer::reset() {
 
@@ -55,13 +51,10 @@ void Racer::reset() {
 	mMaxSpeedForward = 0.7;
 	mMaxSpeedSideward = 0.2;
 
-
 	mVelocity.set(0, 0, 0);
 
-	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(1, 0, 0),
-			(float) 0);
-	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(0, 1, 0),
-			(float) M_PI);
+	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(1, 0, 0), (float) 0);
+	cml::quaternion_rotation_axis_angle(mOrientation, cml::vector3f(0, 1, 0), (float) M_PI);
 
 	setOrientation(mOrientation);
 
@@ -93,7 +86,8 @@ void Racer::updateVelocity() {
 	//############ BEGIN Apply forward thrust ##############
 	cml::vector3f forwardComponent = cml::dot(mDirForward, mVelocity) * mDirForward;
 
-	if ((mThrustForward > 0 && forwardComponent.length() < mMaxSpeedForward) || (mThrustForward < 0 && forwardComponent.length() > 0)) {
+	if ((mThrustForward > 0 && forwardComponent.length() < mMaxSpeedForward)
+			|| (mThrustForward < 0 && forwardComponent.length() > 0)) {
 		addVelocity += mDirForward * mThrustForward;
 	}
 	//############ END Apply forward thrust ##############
@@ -132,9 +126,7 @@ void Racer::updateVelocity() {
 	mVelocity += addVelocity;
 }
 
-
 void Racer::updatePosition() {
-
 
 	//################ BEGIN Enforce speed limits ################
 
@@ -161,7 +153,6 @@ void Racer::updatePosition() {
 	mPos += mVelocity;
 }
 
-
 const cml::vector3f& Racer::getGravity() {
 	return mGravity;
 }
@@ -176,27 +167,22 @@ void Racer::setOrientation(quat rotQuat) {
 	cml::vector3f orientation_axis;
 	float orientation_angle;
 
-	cml::quaternion_to_axis_angle(mOrientation, orientation_axis,
-			orientation_angle, (float) 0);
+	cml::quaternion_to_axis_angle(mOrientation, orientation_axis, orientation_angle, (float) 0);
 
 	// Update gravity vector - it depends directly on the orientation:
 	// TODO 3: Define gravity in track
 	float g = -0.01;
-	mGravity = cml::rotate_vector(cml::vector3f(0, g, 0), orientation_axis,
-			orientation_angle);
+	mGravity = cml::rotate_vector(cml::vector3f(0, g, 0), orientation_axis, orientation_angle);
 
 	// Update left vector:
-	mDirLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), orientation_axis,
-			orientation_angle);
+	mDirLeft = cml::rotate_vector(cml::vector3f(-1, 0, 0), orientation_axis, orientation_angle);
 
 	// Update forward vector:
-	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), orientation_axis,
-			orientation_angle);
+	mDirForward = cml::rotate_vector(cml::vector3f(0, 0, -1), orientation_axis, orientation_angle);
 }
 
 void Racer::cmd_rotateDesiredOrientation(int axis, int steps) {
-	cml::quaternion_rotate_about_local_axis(mOrientation, axis,
-			(float) (steps * M_PI / 2));
+	cml::quaternion_rotate_about_local_axis(mOrientation, axis, (float) (steps * M_PI / 2));
 	setOrientation(mOrientation);
 }
 
@@ -204,8 +190,7 @@ void Racer::cmd_spacebar(bool enable) {
 
 	if (mKilled || mFinish) {
 		mWantReset = true;
-	}
-	else {
+	} else {
 		mTryJump = enable;
 	}
 }

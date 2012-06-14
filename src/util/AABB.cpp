@@ -5,19 +5,16 @@
  *      Author: sebastian
  */
 
-// TODO 3: Think about changing "Pos" and "size" to "min" and "max"...
-// NOTE: This is not only name, it's also semantic and requires code changes!
-
 #include "AABB.h"
 
 AABB::AABB() {
-	// TODO Auto-generated constructor stub
+
 	mMin.set(0, 0, 0);
 	mMax.set(0, 0, 0);
 }
 
 AABB::AABB(cml::vector3f a_min, cml::vector3f a_max) {
-	// TODO Auto-generated constructor stub
+
 	mMin = a_min;
 	mMax = a_max;
 }
