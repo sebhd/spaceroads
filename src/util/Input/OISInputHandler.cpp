@@ -54,8 +54,16 @@ bool OISInputHandler::keyPressed(const OIS::KeyEvent& evt) {
 
 	for (unsigned int ii = 0; ii < mListeners.size(); ++ii) {
 
-		switch (evt.key) {
+		mListeners[ii]->handleKeyEvent(int(evt.key), pressed);
 
+		/*
+		switch (evt.key) {
+		case OIS::KC_A:
+			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_A, pressed);
+			break;
+		case OIS::KC_D:
+			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_D, pressed);
+			break;
 		case OIS::KC_DOWN:
 			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_DOWN, pressed);
 			break;
@@ -85,6 +93,7 @@ bool OISInputHandler::keyPressed(const OIS::KeyEvent& evt) {
 		default:
 			break;
 		}
+		*/
 	}
 
 	return true;
@@ -103,7 +112,8 @@ bool OISInputHandler::keyReleased(const OIS::KeyEvent& evt) {
 	bool pressed = false;
 
 	for (unsigned int ii = 0; ii < mListeners.size(); ++ii) {
-
+		mListeners[ii]->handleKeyEvent(evt.key, pressed);
+		/*
 		switch (evt.key) {
 
 		case OIS::KC_ESCAPE:
@@ -130,6 +140,7 @@ bool OISInputHandler::keyReleased(const OIS::KeyEvent& evt) {
 		default:
 			break;
 		}
+		*/
 	}
 
 	return true;

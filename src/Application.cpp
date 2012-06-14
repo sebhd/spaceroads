@@ -37,10 +37,10 @@ Application::~Application() {
 	// TODO Auto-generated destructor stub
 }
 
-void Application::handleKeyEvent(KeyboardEventListener::Key key, bool pressed) {
+void Application::handleKeyEvent(int key, bool pressed) {
 
 	switch (key) {
-	case KeyboardEventListener::KEY_ESCAPE:
+	case KeyboardEventListener::KC_ESCAPE:
 		quit = true;
 		break;
 	default:
@@ -122,6 +122,8 @@ void Application::playTrackFile(std::string filename) {
 				// Find colliding track atoms:
 				std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
 
+			//	std::cout << collisions.size() << std::endl;
+
 				// Apply counter-forces (prevent vehicle from going through walls):
 				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 					collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
@@ -165,7 +167,13 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 	std::vector<CollisionInfo> collisions;
 
-	cml::vector3f bboxPos = mpPlayerVehicle->mPos + mpPlayerVehicle->mBBoxPosOffset;
+	AABB box1 = mpPlayerVehicle->mBBox;
+	box1.mMin += mpPlayerVehicle->mPos;
+	box1.mMax += mpPlayerVehicle->mPos;
+
+	AABB box2 = box1;
+	box2.mMin += mpPlayerVehicle->mVelocity;
+	box2.mMax += mpPlayerVehicle->mVelocity;
 
 	std::vector<TrackAtom*> trackAtoms = mpTrack->getTrackAtomsAround(mpPlayerVehicle->mPos);
 
@@ -173,17 +181,11 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 		TrackAtom* ta = trackAtoms[ii];
 
-		mpPlayerVehicle->mBBox.mMin = bboxPos + mpPlayerVehicle->mVelocity;
-		mpPlayerVehicle->mBBox.mMax = bboxPos + mpPlayerVehicle->mVelocity + cml::vector3f(4,4,4);
-
-		if (ta->mBBox.intersectsWith(mpPlayerVehicle->mBBox)) {
-
-			mpPlayerVehicle->mBBox.mMin = bboxPos;
-			mpPlayerVehicle->mBBox.mMax = bboxPos + cml::vector3f(4,4,4);
+		if (ta->mBBox.intersectsWith(box2)) {
 
 			bool x = false, y = false, z = false;
 
-			if (ta->mBBox.getIntersectingAxis(mpPlayerVehicle->mBBox, x, y, z) == 2) {
+			if (ta->mBBox.getIntersectingAxis(box1, x, y, z) == 2) {
 
 				TrackAtom::HitSide hitSide = TrackAtom::HIT_NONE;
 
@@ -219,6 +221,9 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 				ci.hs = hitSide;
 
 				collisions.push_back(ci);
+			}
+			else {
+			//	std::cout << "Pathologische Situation" << std::endl;
 			}
 		}
 	}

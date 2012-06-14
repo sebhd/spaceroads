@@ -27,7 +27,7 @@ public:
 	std::vector<CollisionInfo> findCollidingTrackAtoms();
 	bool handleFrameRenderingQueuedEvent();
 
-	virtual void handleKeyEvent(Key, bool pressed);
+	virtual void handleKeyEvent(int, bool pressed);
 
 	void playTrackFile(std::string filename);
 

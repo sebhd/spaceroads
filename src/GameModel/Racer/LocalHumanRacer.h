@@ -16,7 +16,7 @@ public:
 	LocalHumanRacer();
 	virtual ~LocalHumanRacer();
 
-	void handleKeyEvent(Key, bool pressed);
+	void handleKeyEvent(int, bool pressed);
 };
 
 #endif /* LOCALHUMANRACER_H_ */

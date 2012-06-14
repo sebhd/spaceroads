@@ -16,34 +16,48 @@ LocalHumanRacer::~LocalHumanRacer() {
 	// TODO Auto-generated destructor stub
 }
 
-void LocalHumanRacer::handleKeyEvent(Key key, bool pressed) {
+void LocalHumanRacer::handleKeyEvent(int key, bool pressed) {
 
-	if (key == KEY_SPACE) {
+	if (key == KC_SPACE) {
 		cmd_spacebar(pressed);
 	}
 
 	if (!mKilled) {
 		switch (key) {
-		case KEY_DOWN:
+
+
+		case KC_A:
+			if (pressed)
+			cmd_rotateDesiredOrientation(1, 1);
+			break;
+
+		case KC_D:
+			if (pressed)
+			cmd_rotateDesiredOrientation(1, -1);
+			break;
+
+		case KC_DOWN:
 			mReduceThrustForward = pressed;
 			break;
 
-		case KEY_E:
+		case KC_E:
+			if (pressed)
 			cmd_rotateDesiredOrientation(2, -1);
 			break;
 
-		case KEY_LEFT:
+		case KC_LEFT:
 			mAddThrustLeft = pressed;
 			break;
-		case KEY_Q:
+		case KC_Q:
+			if (pressed)
 			cmd_rotateDesiredOrientation(2, 1);
 			break;
 
-		case KEY_RIGHT:
+		case KC_RIGHT:
 			mAddThrustRight = pressed;
 			break;
 
-		case KEY_UP:
+		case KC_UP:
 			mAddThrustForward = pressed;
 			break;
 

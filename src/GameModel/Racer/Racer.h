@@ -11,7 +11,6 @@
 #include "AABB.h"
 #include <vector>
 
-
 // So muss ein Ogre-kompatibles Quaternion aussehen:
 typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first, cml::negative_cross> quat;
 
@@ -35,26 +34,26 @@ public:
 
 	void reset();
 
-
 	void setOrientation(quat rotQuat);
 
 	void updatePosition();
-
 
 	bool mAddThrustLeft, mAddThrustRight;
 	bool mAddThrustForward, mReduceThrustForward;
 	bool mTryJump;
 	bool mWantReset;
 
-
-
 	float mThrustSideward, mThrustForward;
 
 	float mAccelForward, mAccelSideward;
-	cml::vector3f mVelocity;
 
 	quat mOrientation;
 
+	AABB mBBox;
+
+	cml::vector3f mGravity;
+	cml::vector3f mPos;
+	cml::vector3f mVelocity;
 	cml::vector3f mDirLeft;
 	cml::vector3f mDirForward;
 	cml::vector3f mOldVel;
@@ -64,19 +63,10 @@ public:
 
 	bool mJumpedInThisStep;
 
-	cml::vector3f mPos;
-
-	AABB mBBox;
-	cml::vector3f mBBoxPosOffset;
-
-	cml::vector3f mGravity;
-
 private:
 
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;
-
-
 
 };
 

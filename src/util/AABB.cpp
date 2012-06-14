@@ -39,12 +39,12 @@ bool AABB::containsPoint(const cml::vector3f& v) {
 
 bool AABB::intersectsWith(const AABB& other) {
 
-	if (mMax[0] < other.mMin[0]) return false;
-	if (mMin[0] > other.mMax[0]) return false;
-	if (mMax[1] < other.mMin[1]) return false;
-	if (mMin[1] > other.mMax[1]) return false;
-	if (mMax[2] < other.mMin[2]) return false;
-	if (mMin[2] > other.mMax[2]) return false;
+	if (mMax[0] <= other.mMin[0]) return false;
+	if (mMin[0] >= other.mMax[0]) return false;
+	if (mMax[1] <= other.mMin[1]) return false;
+	if (mMin[1] >= other.mMax[1]) return false;
+	if (mMax[2] <= other.mMin[2]) return false;
+	if (mMin[2] >= other.mMax[2]) return false;
 
 	return true;
 }
