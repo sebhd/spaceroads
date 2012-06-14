@@ -16,8 +16,8 @@
 Racer::Racer() {
 
 	// Configure the vehicle's collision AABB:
-	mBBox.mSize.set(4, 4, 4);
-	mBBox.mPos.set(0, 4, 0);
+	mBBox.mMax.set(4, 4, 4);
+	mBBox.mMin.set(0, 4, 0);
 	mBBoxPosOffset = cml::vector3f(-2, -2, -2);
 
 	reset();

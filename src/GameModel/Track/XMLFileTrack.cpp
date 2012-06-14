@@ -63,13 +63,15 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 
 		std::string type = taElem->Attribute("type");
 
+		AABB bbox(cml::vector3d(x, y, z), cml::vector3d(x + sizex, y + sizey, z + sizez));
+
 		if (type == "finish") {
-			ta = new TrackAtom(AABB(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
+			ta = new TrackAtom(bbox);
 
 			ta->mIsFinish = true;
 
 		} else {
-			ta = new SolidTrackAtom(AABB(cml::vector3d(x, y, z), cml::vector3d(sizex, sizey, sizez)));
+			ta = new SolidTrackAtom(bbox);
 
 			SolidTrackAtom* solid = (SolidTrackAtom*) ta;
 

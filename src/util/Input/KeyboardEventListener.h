@@ -12,9 +12,11 @@
 class KeyboardEventListener {
 public:
 	enum Key {
+			KEY_E,
 			KEY_ESCAPE,
 			KEY_DOWN,
 			KEY_LEFT,
+			KEY_Q,
 			KEY_RIGHT,
 			KEY_SPACE,
 			KEY_UP

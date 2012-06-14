@@ -173,11 +173,13 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 		TrackAtom* ta = trackAtoms[ii];
 
-		mpPlayerVehicle->mBBox.mPos = bboxPos + mpPlayerVehicle->mVelocity;
+		mpPlayerVehicle->mBBox.mMin = bboxPos + mpPlayerVehicle->mVelocity;
+		mpPlayerVehicle->mBBox.mMax = bboxPos + mpPlayerVehicle->mVelocity + cml::vector3f(4,4,4);
 
 		if (ta->mBBox.intersectsWith(mpPlayerVehicle->mBBox)) {
 
-			mpPlayerVehicle->mBBox.mPos = bboxPos;
+			mpPlayerVehicle->mBBox.mMin = bboxPos;
+			mpPlayerVehicle->mBBox.mMax = bboxPos + cml::vector3f(4,4,4);
 
 			bool x = false, y = false, z = false;
 

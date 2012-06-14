@@ -397,8 +397,8 @@ void OgreRenderer::buildTrackGeometry() {
 
 		if (ta->mRenderMaterial != "none") {
 
-			Ogre::Vector3 pos(ta->mBBox.mPos[0], ta->mBBox.mPos[1], ta->mBBox.mPos[2]);
-			Ogre::Vector3 scale(ta->mBBox.mSize[0], ta->mBBox.mSize[1], ta->mBBox.mSize[2]);
+			Ogre::Vector3 pos(ta->mBBox.mMin[0], ta->mBBox.mMin[1], ta->mBBox.mMin[2]);
+			Ogre::Vector3 scale(ta->mBBox.mMax[0] - ta->mBBox.mMin[0], ta->mBBox.mMax[1] - ta->mBBox.mMin[1], ta->mBBox.mMax[2] - ta->mBBox.mMin[2]);
 
 			Ogre::Entity* unitcube = mSceneMgr->getEntity("UnitCube");
 			unitcube->setMaterialName(Ogre::String(ta->mRenderMaterial));

@@ -34,29 +34,29 @@ void Track::computeExtent() {
 	for (unsigned int ii = 0; ii < mTrackAtoms.size(); ++ii) {
 		TrackAtom* ta = mTrackAtoms[ii];
 
-		cml::vector3f mPos = ta->mBBox.mPos;
-		cml::vector3f mSize = ta->mBBox.mSize;
+		cml::vector3f mPos = ta->mBBox.mMin;
+		cml::vector3f mSize = ta->mBBox.mMax;
 
 		minx = std::min(minx, mPos[0]);
 		miny = std::min(miny, mPos[1]);
 		minz = std::min(minz, mPos[2]);
 
-		maxx = std::max(maxx, mPos[0] + mSize[0]);
-		maxy = std::max(maxy, mPos[1] + mSize[1]);
-		maxz = std::max(maxz, mPos[2] + mSize[2]);
+		maxx = std::max(maxx, mSize[0]);
+		maxy = std::max(maxy, mSize[1]);
+		maxz = std::max(maxz, mSize[2]);
 	}
 
 	float padding = 100;
 
-	mExtent.mPos[0] = minx - padding;
-	mExtent.mPos[1] = miny - padding;
-	mExtent.mPos[2] = minz - padding;
+	mExtent.mMin[0] = minx - padding;
+	mExtent.mMin[1] = miny - padding;
+	mExtent.mMin[2] = minz - padding;
 
-	mExtent.mSize[0] = maxx + padding;
-	mExtent.mSize[1] = maxy + padding;
-	mExtent.mSize[2] = maxz + padding;
+	mExtent.mMax[0] = maxx + padding;
+	mExtent.mMax[1] = maxy + padding;
+	mExtent.mMax[2] = maxz + padding;
 
-	mExtent.mSize -= mExtent.mPos;
+	//mExtent.mSize -= mExtent.mPos;
 }
 
 

@@ -16,8 +16,8 @@ public:
 	AABB(cml::vector3f, cml::vector3f);
 	virtual ~AABB();
 
-	cml::vector3f mPos;
-	cml::vector3f mSize;
+	cml::vector3f mMin;
+	cml::vector3f mMax;
 
 	bool containsPoint(const cml::vector3f&);
 	bool intersectsWith(const AABB& other);

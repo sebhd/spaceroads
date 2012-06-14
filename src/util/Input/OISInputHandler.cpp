@@ -56,27 +56,32 @@ bool OISInputHandler::keyPressed(const OIS::KeyEvent& evt) {
 
 		switch (evt.key) {
 
+		case OIS::KC_DOWN:
+			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_DOWN, pressed);
+			break;
+		case OIS::KC_E:
+			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_E, pressed);
+			break;
 		case OIS::KC_ESCAPE:
 			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_ESCAPE, pressed);
+			break;
+		case OIS::KC_LEFT:
+			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_LEFT, pressed);
+			break;
+		case OIS::KC_Q:
+			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_Q, pressed);
+			break;
+		case OIS::KC_RIGHT:
+			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_RIGHT, pressed);
 			break;
 		case OIS::KC_SPACE:
 			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_SPACE, pressed);
 			break;
-
-		case OIS::KC_RIGHT:
-			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_RIGHT, pressed);
-			break;
-
-		case OIS::KC_LEFT:
-			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_LEFT, pressed);
-			break;
-
 		case OIS::KC_UP:
 			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_UP, pressed);
 			break;
-		case OIS::KC_DOWN:
-			mListeners[ii]->handleKeyEvent(KeyboardEventListener::KEY_DOWN, pressed);
-			break;
+
+
 		default:
 			break;
 		}

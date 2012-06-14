@@ -24,9 +24,19 @@ void LocalHumanRacer::handleKeyEvent(Key key, bool pressed) {
 
 	if (!mKilled) {
 		switch (key) {
+		case KEY_DOWN:
+			mReduceThrustForward = pressed;
+			break;
+
+		case KEY_E:
+			cmd_rotateDesiredOrientation(2, -1);
+			break;
 
 		case KEY_LEFT:
 			mAddThrustLeft = pressed;
+			break;
+		case KEY_Q:
+			cmd_rotateDesiredOrientation(2, 1);
 			break;
 
 		case KEY_RIGHT:
@@ -37,9 +47,6 @@ void LocalHumanRacer::handleKeyEvent(Key key, bool pressed) {
 			mAddThrustForward = pressed;
 			break;
 
-		case KEY_DOWN:
-			mReduceThrustForward = pressed;
-			break;
 
 		default:
 			break;

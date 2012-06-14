@@ -97,7 +97,7 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 	// ################ END Jumping & bouncing ##############
 
 	//############### BEGIN Slip off blocks when we come too close to the edge ##############
-
+/*
 	float slipSpeed = 0.005;
 
 	if (abs(shipPos[0] - mBBox.mPos[0]) < mSlipOffset) {
@@ -117,6 +117,7 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 	} else if (abs((mBBox.mPos[2] + mBBox.mSize[2]) - shipPos[2]) < mSlipOffset) {
 		ship->mVelocity[2] += slipSpeed;
 	}
+	*/
 	//############### END Slip off blocks when we come too close to the edge ##############
 
 }
