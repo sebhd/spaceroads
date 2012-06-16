@@ -71,8 +71,9 @@ void Application::playTrackFile(std::string filename) {
 	gettimeofday(&currentTime, NULL);
 	unsigned long accumulator = 0;
 
-	// 1/100 sec. simulation frequency
+	// 1/200 sec. simulation frequency
 	unsigned int dt = 5000;
+
 
 	// TODO 4: Make simulation step frequency configurable by introducing a time factor multiplicator in Vehicle::step() and...
 	// all other places where it matters.
@@ -86,14 +87,20 @@ void Application::playTrackFile(std::string filename) {
 
 		long frameTime = newTime.tv_usec - currentTime.tv_usec;
 
+		// Prevent "spiral of death":
+		if (frameTime > 20000) {
+			frameTime = 20000;
+		}
+
+		if (frameTime < 0) {
+			frameTime = 0;
+		}
+
+	//	std::cout << frameTime << std::endl;
+
 		currentTime = newTime;
 
 		accumulator += frameTime;
-
-		if (accumulator > 20000) {
-			accumulator = 20000;
-			//	std::cout << "Zu lahm!" << std::endl;
-		}
 
 		// Process input:
 		mpInputHandler->getInput();
@@ -122,8 +129,6 @@ void Application::playTrackFile(std::string filename) {
 				// Find colliding track atoms:
 				std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
 
-			//	std::cout << collisions.size() << std::endl;
-
 				// Apply counter-forces (prevent vehicle from going through walls):
 				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 					collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
@@ -146,13 +151,6 @@ void Application::playTrackFile(std::string filename) {
 
 			stepCount++;
 		}
-
-		/*
-		if (stepCount % 100 == 0) {
-			std::cout << double(stepCount) / 100 << std::endl;
-		}
-*/
-		//	gettimeofday(&before, NULL);
 
 		// Render next frame:
 		if (!mpRenderer->renderOneFrame()) {
