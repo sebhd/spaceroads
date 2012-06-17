@@ -75,8 +75,8 @@ void Application::playTrackFile(std::string filename) {
 	unsigned int dt = 5000;
 
 
-	// TODO 4: Make simulation step frequency configurable by introducing a time factor multiplicator in Vehicle::step() and...
-	// all other places where it matters.
+	// TODO 3: Make simulation step frequency changeable without having to change all acceleration/velocity-related...
+	// variables in the Racer class manually
 
 	unsigned long stepCount = 0;
 
