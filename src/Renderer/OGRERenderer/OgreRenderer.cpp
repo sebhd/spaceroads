@@ -29,8 +29,6 @@ OgreRenderer::OgreRenderer(Application* app) :
 		AbstractRenderer(app), mRoot(0), mResourcesCfg(Ogre::StringUtil::BLANK), mPluginsCfg(Ogre::StringUtil::BLANK) {
 
 	mSidewardThrustRollCamera = false;
-
-	mpVehicleRenderer = NULL;
 }
 
 // Destructor:
@@ -45,7 +43,6 @@ OgreRenderer::~OgreRenderer(void) {
 // Handler for frameRenderingQueued event:
 bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
-
 	if (mpApp->mpTrack->mHasChanged) {
 		buildTrackGeometry();
 		mpApp->mpTrack->mHasChanged = false;
@@ -55,8 +52,10 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		return false;
 	}
 
-	if (mpVehicleRenderer != NULL) {
-		mpVehicleRenderer->update();
+	// Update vehicle renderers:
+
+	for (unsigned int ii = 0; ii < m_vehicleRenderers.size(); ii++) {
+		m_vehicleRenderers[ii]->update();
 	}
 
 	return mpApp->handleFrameRenderingQueuedEvent();
@@ -267,8 +266,14 @@ bool OgreRenderer::init() {
 	// Set shadow technique:
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
-	mpVehicleRenderer = new OGRERendererVehicle(mSceneMgr, mpApp->mpPlayerVehicle);
+	// Instantiate vehicle renderers:
 
+	mCameraNode = new Ogre::SceneNode(mSceneMgr);
+
+	for (unsigned int ii = 0; ii < mpApp->m_racers.size(); ii++) {
+		//mpVehicleRenderer = new OGRERendererVehicle(mSceneMgr, mpApp->m_racers[ii]);
+		m_vehicleRenderers.push_back(new OGRERendererVehicle(mSceneMgr, mpApp->m_racers[ii]));
+	}
 
 	//############### BEGIN Set up camera ##############
 	mCamera = mSceneMgr->createCamera("PlayerCam");
@@ -276,13 +281,9 @@ bool OgreRenderer::init() {
 	mCamera->setNearClipDistance(5);
 	mCamera->setFarClipDistance(2000);
 
-	// Position the camera behind the player's vehicle:
-	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
-	mCamera->lookAt(mpVehicleRenderer->mVehicleNode->getPosition());
+	mCameraNode->attachObject(mCamera);
 
-	Ogre::SceneNode* cameraNode = mpVehicleRenderer->mVehicleNode->createChildSceneNode("CameraNode");
-	cameraNode->attachObject(mCamera);
-
+	cameraFollowRacer(m_vehicleRenderers[0]);
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -291,7 +292,6 @@ bool OgreRenderer::init() {
 	mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 
 	//############### END Set up camera ##############
-
 
 	//######################## BEGIN Create some entities ############################
 
@@ -307,7 +307,6 @@ bool OgreRenderer::init() {
 	Ogre::Entity* entTrackCompleted = mSceneMgr->createEntity("TrackCompleted", "TrackCompleted.mesh");
 	entTrackCompleted->setVisible(false);
 
-
 	// "Ooops" sign:
 	Ogre::Entity* entOoops = mSceneMgr->createEntity("Ooops", "Ooops.mesh");
 	entOoops->setVisible(false);
@@ -315,10 +314,10 @@ bool OgreRenderer::init() {
 	//######################## END Create some entities ############################
 
 	// ############# BEGIN Set up game state info node ############
-	Ogre::SceneNode* gameStateInfoNode = cameraNode->createChildSceneNode("TrackCompletedNode");
-	gameStateInfoNode->rotate(Ogre::Vector3(1,0,0), Ogre::Radian(M_PI/2));
-	gameStateInfoNode->setPosition(0,5,0);
-	gameStateInfoNode->scale(0.7,0.7,0.7);
+	Ogre::SceneNode* gameStateInfoNode = mCameraNode->createChildSceneNode("TrackCompletedNode");
+	gameStateInfoNode->rotate(Ogre::Vector3(1, 0, 0), Ogre::Radian(M_PI / 2));
+	gameStateInfoNode->setPosition(0, 5, 0);
+	gameStateInfoNode->scale(0.7, 0.7, 0.7);
 
 	gameStateInfoNode->attachObject(entTrackCompleted);
 	gameStateInfoNode->attachObject(entOoops);
@@ -326,7 +325,6 @@ bool OgreRenderer::init() {
 
 	// Create static geometry object for the track:
 	mTrackStaticGeometry = mSceneMgr->createStaticGeometry("TrackAtoms");
-
 
 	//Set initial mouse clipping size
 	windowResized(mWindow);
@@ -339,6 +337,14 @@ bool OgreRenderer::init() {
 	return true;
 }
 
+void OgreRenderer::cameraFollowRacer(OGRERendererVehicle* racer) {
+
+	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
+	mCamera->lookAt(racer->mVehicleNode->getPosition());
+
+	racer->mVehicleNode->addChild(mCameraNode);
+
+}
 
 void OgreRenderer::prepareForTrack() {
 
@@ -352,7 +358,6 @@ void OgreRenderer::prepareForTrack() {
 			Ogre::ColourValue(mpApp->mpTrack->mAmbientLight[0], mpApp->mpTrack->mAmbientLight[1],
 					mpApp->mpTrack->mAmbientLight[2]));
 
-
 	// Set up directional light:
 	// TODO 3: Read directional light color from Track class
 
@@ -360,22 +365,19 @@ void OgreRenderer::prepareForTrack() {
 	l->setType(Ogre::Light::LT_DIRECTIONAL);
 	l->setCastShadows(true);
 
-	l->setDirection(mpApp->mpTrack->mDirectionalLightDir[0], mpApp->mpTrack->mDirectionalLightDir[1], mpApp->mpTrack->mDirectionalLightDir[2]);
+	l->setDirection(mpApp->mpTrack->mDirectionalLightDir[0], mpApp->mpTrack->mDirectionalLightDir[1],
+			mpApp->mpTrack->mDirectionalLightDir[2]);
 	l->setDiffuseColour(0.7, 0.7, 0.7);
 	l->setSpecularColour(0.7, 0.7, 0.7);
 
 	std::cout << l->getDirection() << std::endl;
-
-
 
 	// Build track geometry:
 	buildTrackGeometry();
 
 	// ############### END Set up track / environment rendering ################
 
-
 }
-
 
 void OgreRenderer::buildTrackGeometry() {
 
@@ -398,7 +400,8 @@ void OgreRenderer::buildTrackGeometry() {
 		if (ta->mRenderMaterial != "none") {
 
 			Ogre::Vector3 pos(ta->mBBox.mMin[0], ta->mBBox.mMin[1], ta->mBBox.mMin[2]);
-			Ogre::Vector3 scale(ta->mBBox.mMax[0] - ta->mBBox.mMin[0], ta->mBBox.mMax[1] - ta->mBBox.mMin[1], ta->mBBox.mMax[2] - ta->mBBox.mMin[2]);
+			Ogre::Vector3 scale(ta->mBBox.mMax[0] - ta->mBBox.mMin[0], ta->mBBox.mMax[1] - ta->mBBox.mMin[1],
+					ta->mBBox.mMax[2] - ta->mBBox.mMin[2]);
 
 			Ogre::Entity* unitcube = mSceneMgr->getEntity("UnitCube");
 			unitcube->setMaterialName(Ogre::String(ta->mRenderMaterial));
@@ -420,8 +423,7 @@ void OgreRenderer::buildTrackGeometry() {
 
 		entity->setMaterialName(tm->mRenderMaterial);
 
-		mTrackStaticGeometry->addEntity(entity,
-				Ogre::Vector3(tm->mPos[0], tm->mPos[1], tm->mPos[2]), orientation,
+		mTrackStaticGeometry->addEntity(entity, Ogre::Vector3(tm->mPos[0], tm->mPos[1], tm->mPos[2]), orientation,
 				Ogre::Vector3(tm->mScale[0], tm->mScale[1], tm->mScale[2]));
 	}
 	//############### END Add decorative meshes to track geometry #################
@@ -452,15 +454,14 @@ std::string OgreRenderer::getWindowSize() {
 	return windowHndStr.str();
 }
 
-void OgreRenderer:: showKilledInfo(bool enable) {
+void OgreRenderer::showKilledInfo(bool enable) {
 
-		mSceneMgr->getEntity("Ooops")->setVisible(enable);
+	mSceneMgr->getEntity("Ooops")->setVisible(enable);
 }
 
 void OgreRenderer::showTrackCompletedInfo(bool enable) {
 	mSceneMgr->getEntity("TrackCompleted")->setVisible(enable);
 }
-
 
 //Adjust mouse clipping area
 void OgreRenderer::windowResized(Ogre::RenderWindow* rw) {

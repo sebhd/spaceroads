@@ -46,9 +46,8 @@ protected:
 
 private:
 
+	void cameraFollowRacer(OGRERendererVehicle* racer);
 	void buildTrackGeometry();
-
-	OGRERendererVehicle* mpVehicleRenderer;
 
 	bool mSidewardThrustRollCamera;
 
@@ -59,6 +58,9 @@ private:
 	Ogre::RenderWindow* mWindow;
 	Ogre::SceneManager* mSceneMgr;
 	Ogre::Camera* mCamera;
+	Ogre::SceneNode* mCameraNode;
+
+	std::vector<OGRERendererVehicle*> m_vehicleRenderers;
 
 	Ogre::StaticGeometry* mTrackStaticGeometry;
 };

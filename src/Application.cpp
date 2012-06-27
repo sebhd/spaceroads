@@ -17,21 +17,27 @@
 
 Application::Application() {
 
+
+
 	quit = false;
 
 	mpTrack = NULL;
-	mpPlayerVehicle = NULL;
-	mpPlayerVehicle = new LocalHumanRacer();
 
+	// Set up local human player's racer:
+	LocalHumanRacer* playerRacer = new LocalHumanRacer();
+	m_racers.push_back(playerRacer);
+
+
+	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);
-
 	mpRenderer->init();
 
 	mpInputHandler = new OISInputHandler(getRenderer()->getWindowSize());
-
 	mpInputHandler->mListeners.push_back(this);
 
+	mpInputHandler->mListeners.push_back(playerRacer);
 }
+
 
 Application::~Application() {
 	// TODO Auto-generated destructor stub
@@ -46,9 +52,6 @@ void Application::handleKeyEvent(int key, bool pressed) {
 	default:
 		break;
 	}
-
-	mpPlayerVehicle->handleKeyEvent(key, pressed);
-
 }
 
 void Application::playTrackFile(std::string filename) {
@@ -61,8 +64,11 @@ void Application::playTrackFile(std::string filename) {
 
 	std::cout << "Preparing renderer for track.";
 
-	mpPlayerVehicle->reset();
-	mpPlayerVehicle->mPos = mpTrack->mStartPosition;
+	// Reset vehicles:
+	for(unsigned int ii = 0; ii < m_racers.size();ii++) {
+		m_racers[ii]->reset();
+		m_racers[ii]->mPos = mpTrack->mStartPosition;
+	}
 
 	mpRenderer->prepareForTrack();
 
@@ -73,7 +79,6 @@ void Application::playTrackFile(std::string filename) {
 
 	// 1/200 sec. simulation frequency
 	unsigned int dt = 5000;
-
 
 	// TODO 3: Make simulation step frequency changeable without having to change all acceleration/velocity-related...
 	// variables in the Racer class manually
@@ -96,7 +101,7 @@ void Application::playTrackFile(std::string filename) {
 			frameTime = 0;
 		}
 
-	//	std::cout << frameTime << std::endl;
+		//	std::cout << frameTime << std::endl;
 
 		currentTime = newTime;
 
@@ -107,44 +112,50 @@ void Application::playTrackFile(std::string filename) {
 
 		while (accumulator >= dt) {
 
-			if (!mpTrack->mExtent.containsPoint(mpPlayerVehicle->mPos)) {
-				mpPlayerVehicle->mKilled = true;
-			}
+			/*
+			 if (!mpTrack->mExtent.containsPoint(mpPlayerVehicle->mPos)) {
+			 mpPlayerVehicle->mKilled = true;
+			 }
 
-			if (mpPlayerVehicle->mWantReset) {
-				mpPlayerVehicle->mPos = mpTrack->mStartPosition;
-				mpPlayerVehicle->reset();
-				mpRenderer->showKilledInfo(false);
-				mpRenderer->showTrackCompletedInfo(false);
-			}
+			 if (mpPlayerVehicle->mWantReset) {
+			 mpPlayerVehicle->mPos = mpTrack->mStartPosition;
+			 mpPlayerVehicle->reset();
+			 mpRenderer->showKilledInfo(false);
+			 mpRenderer->showTrackCompletedInfo(false);
+			 }
 
-			// If the ship is destroyed, reset to the starting position:
-			if (mpPlayerVehicle->mKilled) {
-				mpRenderer->showKilledInfo(true);
-			} else if (mpPlayerVehicle->mFinish) {
-				mpRenderer->showTrackCompletedInfo(true);
-			} else {
-				mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
+			 // If the ship is destroyed, reset to the starting position:
+			 if (mpPlayerVehicle->mKilled) {
+			 mpRenderer->showKilledInfo(true);
+			 } else if (mpPlayerVehicle->mFinish) {
+			 mpRenderer->showTrackCompletedInfo(true);
+			 } else {
+			 mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
 
-				// Find colliding track atoms:
-				std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
+			 // Find colliding track atoms:
+			 std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
 
-				// Apply counter-forces (prevent vehicle from going through walls):
-				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-					collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
-				}
+			 // Apply counter-forces (prevent vehicle from going through walls):
+			 for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+			 collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
+			 }
 
-				mpPlayerVehicle->updatePosition();
+			 mpPlayerVehicle->updatePosition();
 
-				// Calculate & apply vehicle-internal effects on it's velocity:
-				mpPlayerVehicle->updateVelocity();
+			 // Calculate & apply vehicle-internal effects on it's velocity:
+			 mpPlayerVehicle->updateVelocity();
 
-				mpPlayerVehicle->mJumpedInThisStep = false;
+			 mpPlayerVehicle->mJumpedInThisStep = false;
 
-				// Apply contact effects:
-				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-					collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
-				}
+			 // Apply contact effects:
+			 for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+			 collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
+			 }
+			 }
+			 */
+
+			for(unsigned int ii = 0; ii < m_racers.size();ii++) {
+				doRacerStep(m_racers[ii]);
 			}
 
 			accumulator -= dt;
@@ -161,19 +172,62 @@ void Application::playTrackFile(std::string filename) {
 	//########### END The Main Loop! ##########
 }
 
-std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
+void Application::doRacerStep(Racer* racer) {
+	if (!mpTrack->mExtent.containsPoint(racer->mPos)) {
+		racer->mKilled = true;
+	}
 
-	AABB box1 = mpPlayerVehicle->mBBox;
-	box1.mMin += mpPlayerVehicle->mPos;
-	box1.mMax += mpPlayerVehicle->mPos;
+	if (racer->mWantReset) {
+		racer->mPos = mpTrack->mStartPosition;
+		racer->reset();
+		mpRenderer->showKilledInfo(false);
+		mpRenderer->showTrackCompletedInfo(false);
+	}
+
+	// If the ship is destroyed, reset to the starting position:
+	if (racer->mKilled) {
+		mpRenderer->showKilledInfo(true);
+	} else if (racer->mFinish) {
+		mpRenderer->showTrackCompletedInfo(true);
+	} else {
+		racer->mOldVel = racer->mVelocity;
+
+		// Find colliding track atoms:
+		std::vector<CollisionInfo> collisions = findCollidingTrackAtoms(racer);
+
+		// Apply counter-forces (prevent vehicle from going through walls):
+		for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+			collisions[ii].ta->applyCounterForces(racer, collisions[ii].hs);
+		}
+
+		racer->updatePosition();
+
+		// Calculate & apply vehicle-internal effects on it's velocity:
+		racer->updateVelocity();
+
+		racer->mJumpedInThisStep = false;
+
+		// Apply contact effects:
+		for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+			collisions[ii].ta->applyContactEffects(racer, collisions[ii].hs);
+		}
+	}
+
+}
+
+std::vector<CollisionInfo> Application::findCollidingTrackAtoms(Racer* racer) {
+
+	AABB box1 = racer->mBBox;
+	box1.mMin += racer->mPos;
+	box1.mMax += racer->mPos;
 
 	AABB box2 = box1;
-	box2.mMin += mpPlayerVehicle->mVelocity;
-	box2.mMax += mpPlayerVehicle->mVelocity;
+	box2.mMin += racer->mVelocity;
+	box2.mMax += racer->mVelocity;
 
 	std::vector<CollisionInfo> collisions;
 
-	std::vector<TrackAtom*> trackAtoms = mpTrack->getTrackAtomsAround(mpPlayerVehicle->mPos);
+	std::vector<TrackAtom*> trackAtoms = mpTrack->getTrackAtomsAround(racer->mPos);
 
 	for (unsigned int ii = 0; ii < trackAtoms.size(); ++ii) {
 
@@ -189,7 +243,7 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 				if (!x) {
 
-					if (mpPlayerVehicle->mVelocity[0] > 0) {
+					if (racer->mVelocity[0] > 0) {
 						hitSide = TrackAtom::HIT_LEFT;
 					} else {
 						hitSide = TrackAtom::HIT_RIGHT;
@@ -198,7 +252,7 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 				else if (!y) {
 
-					if (mpPlayerVehicle->mVelocity[1] > 0) {
+					if (racer->mVelocity[1] > 0) {
 						hitSide = TrackAtom::HIT_BOTTOM;
 					} else {
 						hitSide = TrackAtom::HIT_TOP;
@@ -207,7 +261,7 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 
 				else if (!z) {
 
-					if (mpPlayerVehicle->mVelocity[2] > 0) {
+					if (racer->mVelocity[2] > 0) {
 						hitSide = TrackAtom::HIT_BACK;
 					} else {
 						hitSide = TrackAtom::HIT_FRONT;
@@ -219,9 +273,8 @@ std::vector<CollisionInfo> Application::findCollidingTrackAtoms() {
 				ci.hs = hitSide;
 
 				collisions.push_back(ci);
-			}
-			else {
-			//	std::cout << "Pathologische Situation" << std::endl;
+			} else {
+				//	std::cout << "Pathologische Situation" << std::endl;
 			}
 		}
 	}

@@ -24,7 +24,7 @@ public:
 	virtual ~Application();
 
 
-	std::vector<CollisionInfo> findCollidingTrackAtoms();
+	std::vector<CollisionInfo> findCollidingTrackAtoms(Racer*);
 	bool handleFrameRenderingQueuedEvent();
 
 	virtual void handleKeyEvent(int, bool pressed);
@@ -38,12 +38,16 @@ public:
 
 	bool quit;
 
-	LocalHumanRacer* mpPlayerVehicle;
+//	LocalHumanRacer* mpPlayerVehicle;
+
+	std::vector<Racer*> m_racers;
 
 	Track* mpTrack;
 
 
 private:
+	void doRacerStep(Racer*);
+
 	AbstractRenderer* mpRenderer;
 	InputHandler* mpInputHandler;
 
