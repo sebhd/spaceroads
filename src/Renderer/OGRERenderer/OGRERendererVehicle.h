@@ -9,11 +9,13 @@
 #define OGREVEHICLE_H_
 
 #include <Ogre.h>
+#include <string>
 #include "../../GameModel/Racer/Racer.h"
+
 
 class OGRERendererVehicle {
 public:
-	OGRERendererVehicle(Ogre::SceneManager*, Racer*);
+	OGRERendererVehicle(Ogre::SceneManager*, Racer*, std::string);
 	virtual ~OGRERendererVehicle();
 
 	void update();
@@ -31,6 +33,7 @@ public:
 protected:
 	float mRollAngle;
 	float mPitchAngle;
+	std::string name;
 
 
 	Ogre::Quaternion mOrientation;

@@ -25,8 +25,11 @@ Application::Application() {
 
 	// Set up local human player's racer:
 	LocalHumanRacer* playerRacer = new LocalHumanRacer();
+
+
 	m_racers.push_back(playerRacer);
 
+	m_racers.push_back(new Racer());
 
 	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);

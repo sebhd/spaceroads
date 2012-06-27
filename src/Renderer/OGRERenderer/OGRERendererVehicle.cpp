@@ -12,7 +12,9 @@
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
 
-OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* a_vehicle) {
+OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* a_vehicle, std::string aname) {
+
+	name = aname;
 
 	mSceneManager = a_sceneMgr;
 	mpVehicle = a_vehicle;
@@ -20,8 +22,7 @@ OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* 
 	mRollAngle = 0;
 	mPitchAngle = 0;
 
-	Ogre::Entity* entVehicle = mSceneManager->createEntity("Vehicle", "Vehicle.mesh");
-	//Ogre::Entity* entVehicle = mSceneManager->createEntity("OgreHeade", "ogrehead.mesh");
+
 
 
 	mOrientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3(1, 0, 0));
@@ -31,17 +32,22 @@ OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* 
 	mVehicleMeshNode = mVehicleNode->createChildSceneNode();
 	//mVehicleMeshNode->setScale(0.05,0.05,0.05);
 
+	//Ogre::Entity* entVehicle = mSceneManager->getEntity("Vehicle");
+	// Racer model:
+	Ogre::Entity* entVehicle = mSceneManager->createEntity("Vehicle.mesh");
 	mVehicleMeshNode->attachObject(entVehicle);
 
+	// TODO 1: Reimplement
+
 	// Set up engine flame particle system:
-	mEngineFlameParticleSystem = mSceneManager->createParticleSystem("EngineFlame", "SpaceRoads/EngineFlame");
-	Ogre::SceneNode* particleNode = mVehicleMeshNode->createChildSceneNode("EngineFlame");
+	mEngineFlameParticleSystem = mSceneManager->createParticleSystem(name + "_flame", "SpaceRoads/EngineFlame");
+	Ogre::SceneNode* particleNode = mVehicleMeshNode->createChildSceneNode();
 	particleNode->setPosition(0, -1.5, 3);
 	particleNode->attachObject((Ogre::ParticleSystem*) mEngineFlameParticleSystem);
 
 	// Set up engine flame particle system:
-	mEngineSmokeParticleSystem = mSceneManager->createParticleSystem("EngineSmoke", "SpaceRoads/EngineSmoke");
-	particleNode = mVehicleMeshNode->createChildSceneNode("EngineSmoke");
+	mEngineSmokeParticleSystem = mSceneManager->createParticleSystem(name + "_smoke", "SpaceRoads/EngineSmoke");
+	particleNode = mVehicleMeshNode->createChildSceneNode();
 	particleNode->setPosition(0, -1.5, 3);
 	particleNode->attachObject((Ogre::ParticleSystem*) mEngineSmokeParticleSystem);
 
@@ -136,6 +142,9 @@ void OGRERendererVehicle::update() {
 	}
 
 	//############# BEGIN Update engine particle emitters ####################
+
+	// TODO 1: Reimplement
+
 
 	bool emit = !mpVehicle->mKilled && mpVehicle->mThrustForward > 0;
 

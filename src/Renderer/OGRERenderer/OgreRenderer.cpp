@@ -270,29 +270,6 @@ bool OgreRenderer::init() {
 
 	mCameraNode = new Ogre::SceneNode(mSceneMgr);
 
-	for (unsigned int ii = 0; ii < mpApp->m_racers.size(); ii++) {
-		//mpVehicleRenderer = new OGRERendererVehicle(mSceneMgr, mpApp->m_racers[ii]);
-		m_vehicleRenderers.push_back(new OGRERendererVehicle(mSceneMgr, mpApp->m_racers[ii]));
-	}
-
-	//############### BEGIN Set up camera ##############
-	mCamera = mSceneMgr->createCamera("PlayerCam");
-
-	mCamera->setNearClipDistance(5);
-	mCamera->setFarClipDistance(2000);
-
-	mCameraNode->attachObject(mCamera);
-
-	cameraFollowRacer(m_vehicleRenderers[0]);
-
-	// Create one viewport, entire window
-	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
-	vp->setBackgroundColour(Ogre::ColourValue(0.95, 0.95, 0.95));
-	// Alter the camera aspect ratio to match the viewport
-	mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
-
-	//############### END Set up camera ##############
-
 	//######################## BEGIN Create some entities ############################
 
 	// ####### BEGIN Set up Unit cube mesh/entity that is used to represent track atoms #######
@@ -311,7 +288,40 @@ bool OgreRenderer::init() {
 	Ogre::Entity* entOoops = mSceneMgr->createEntity("Ooops", "Ooops.mesh");
 	entOoops->setVisible(false);
 
+	// Racer model:
+	//Ogre::Entity* entVehicle = mSceneMgr->createEntity("Vehicle", "Vehicle.mesh");
+
 	//######################## END Create some entities ############################
+
+	//######################## BEGIN Create Vehicle renderers ############################
+
+	for (unsigned int ii = 0; ii < mpApp->m_racers.size(); ii++) {
+
+		std::stringstream sstream;
+		sstream << ii;
+
+		std::string name = "racer" + sstream.str();
+		m_vehicleRenderers.push_back(new OGRERendererVehicle(mSceneMgr, mpApp->m_racers[ii], name));
+	}
+	//######################## END Create Vehicle renderers ############################
+
+	//############### BEGIN Set up camera ##############
+	mCamera = mSceneMgr->createCamera("PlayerCam");
+
+	mCamera->setNearClipDistance(5);
+	mCamera->setFarClipDistance(2000);
+
+	mCameraNode->attachObject(mCamera);
+
+	cameraFollowRacer(m_vehicleRenderers[0]);
+
+	// Create one viewport, entire window
+	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
+	vp->setBackgroundColour(Ogre::ColourValue(0.95, 0.95, 0.95));
+	// Alter the camera aspect ratio to match the viewport
+	mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+
+	//############### END Set up camera ##############
 
 	// ############# BEGIN Set up game state info node ############
 	Ogre::SceneNode* gameStateInfoNode = mCameraNode->createChildSceneNode("TrackCompletedNode");

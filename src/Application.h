@@ -38,8 +38,6 @@ public:
 
 	bool quit;
 
-//	LocalHumanRacer* mpPlayerVehicle;
-
 	std::vector<Racer*> m_racers;
 
 	Track* mpTrack;
