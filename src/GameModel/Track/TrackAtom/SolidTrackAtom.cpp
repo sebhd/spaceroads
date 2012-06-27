@@ -25,12 +25,9 @@ SolidTrackAtom::~SolidTrackAtom() {
 
 void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
-
 	if (mIsDeadly) {
 		ship->mKilled = true;
 	}
-
-	cml::vector3f shipPos = ship->mPos;
 
 	// #################### BEGIN Determine wall normal vector #################
 	cml::vector3f wallNormal(0,0,0);

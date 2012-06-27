@@ -263,6 +263,9 @@ bool OgreRenderer::init() {
 	// Create scene manager:
 	mSceneMgr = mRoot->createSceneManager("OctreeSceneManager");
 
+	mLight = mSceneMgr->createLight("MainLight");
+
+
 	// Set shadow technique:
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
@@ -371,16 +374,15 @@ void OgreRenderer::prepareForTrack() {
 	// Set up directional light:
 	// TODO 3: Read directional light color from Track class
 
-	Ogre::Light* l = mSceneMgr->createLight("MainLight");
-	l->setType(Ogre::Light::LT_DIRECTIONAL);
-	l->setCastShadows(true);
+	mLight->setType(Ogre::Light::LT_DIRECTIONAL);
+	mLight->setCastShadows(true);
 
-	l->setDirection(mpApp->mpTrack->mDirectionalLightDir[0], mpApp->mpTrack->mDirectionalLightDir[1],
+	mLight->setDirection(mpApp->mpTrack->mDirectionalLightDir[0], mpApp->mpTrack->mDirectionalLightDir[1],
 			mpApp->mpTrack->mDirectionalLightDir[2]);
-	l->setDiffuseColour(0.7, 0.7, 0.7);
-	l->setSpecularColour(0.7, 0.7, 0.7);
+	mLight->setDiffuseColour(0.7, 0.7, 0.7);
+	mLight->setSpecularColour(0.7, 0.7, 0.7);
 
-	std::cout << l->getDirection() << std::endl;
+
 
 	// Build track geometry:
 	buildTrackGeometry();
@@ -393,7 +395,9 @@ void OgreRenderer::buildTrackGeometry() {
 
 	Track* track = mpApp->mpTrack;
 
+	mTrackStaticGeometry->reset();
 	mTrackStaticGeometry->destroy();
+
 
 	mTrackStaticGeometry->setRenderingDistance(1000);
 

@@ -18,6 +18,14 @@ class Racer {
 
 public:
 
+	enum RacerCommand { CMD_SPACE_PRS, CMD_LEFT_PRS, CMD_RIGHT_PRS, CMD_ACCEL_PRS, CMD_BRAKE_PRS,
+					 CMD_SPACE_REL, CMD_LEFT_REL, CMD_RIGHT_REL, CMD_ACCEL_REL, CMD_BRAKE_REL};
+
+	struct ReplayCommand {
+		RacerCommand cmd;
+		unsigned long timestamp;
+	};
+
 	// Allow SolidTrackAtom class to access private members of Vehicle:
 	friend class SolidTrackAtom;
 
@@ -25,18 +33,15 @@ public:
 	virtual ~Racer();
 
 	void cmd_rotateDesiredOrientation(int axis, int steps);
-
 	void cmd_spacebar(bool enabled);
-
-	void updateVelocity();
 	const cml::vector3f& getGravity();
 	const quat& getOrientation();
-
-	void reset();
-
+	virtual void pilotStep(unsigned long step);
+	void processCommand(RacerCommand);
+	virtual void reset();
 	void setOrientation(quat rotQuat);
-
 	void updatePosition();
+	void updateVelocity();
 
 	bool mAddThrustLeft, mAddThrustRight;
 	bool mAddThrustForward, mReduceThrustForward;
@@ -62,6 +67,8 @@ public:
 	bool mKilled;
 
 	bool mJumpedInThisStep;
+
+	std::vector<ReplayCommand> mReplayCommands;
 
 private:
 

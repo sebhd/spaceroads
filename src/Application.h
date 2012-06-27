@@ -13,12 +13,15 @@
 #include "Input/InputHandler.h"
 #include "GameModel/Track/Track.h"
 #include "GameModel/Racer/LocalHumanRacer.h"
+#include "GameModel/Racer/ReplayRacer.h"
 
 class AbstractRenderer;
 
 class Application : public KeyboardEventListener {
 
 public:
+
+	static unsigned long sm_timestamp;
 
 	Application();
 	virtual ~Application();
@@ -37,11 +40,16 @@ public:
 	AbstractRenderer* getRenderer();
 
 	bool quit;
+	bool restart;
 
 	std::vector<Racer*> m_racers;
 
 	Track* mpTrack;
 
+	Racer* mLocalPlayerRacer;
+	ReplayRacer* mReplayRacer;
+
+	std::vector<Racer::ReplayCommand> mReplay;
 
 private:
 	void doRacerStep(Racer*);

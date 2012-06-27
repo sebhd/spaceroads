@@ -16,6 +16,7 @@ public:
 	LocalHumanRacer();
 	virtual ~LocalHumanRacer();
 
+	virtual void pilotStep(unsigned long);
 	void handleKeyEvent(int, bool pressed);
 };
 

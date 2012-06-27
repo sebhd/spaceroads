@@ -15,9 +15,9 @@
 #include "Input/OISInputHandler.h"
 #include "GameModel/Track/XMLFileTrack.h"
 
+unsigned long Application::sm_timestamp = 0;
+
 Application::Application() {
-
-
 
 	quit = false;
 
@@ -26,10 +26,13 @@ Application::Application() {
 	// Set up local human player's racer:
 	LocalHumanRacer* playerRacer = new LocalHumanRacer();
 
+	mLocalPlayerRacer = playerRacer;
 
 	m_racers.push_back(playerRacer);
 
-	m_racers.push_back(new Racer());
+	mReplayRacer = new ReplayRacer();
+
+	m_racers.push_back(mReplayRacer);
 
 	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);
@@ -41,7 +44,6 @@ Application::Application() {
 	mpInputHandler->mListeners.push_back(playerRacer);
 }
 
-
 Application::~Application() {
 	// TODO Auto-generated destructor stub
 }
@@ -52,6 +54,10 @@ void Application::handleKeyEvent(int key, bool pressed) {
 	case KeyboardEventListener::KC_ESCAPE:
 		quit = true;
 		break;
+
+	case KeyboardEventListener::KC_R:
+		restart = true;
+		break;
 	default:
 		break;
 	}
@@ -59,8 +65,12 @@ void Application::handleKeyEvent(int key, bool pressed) {
 
 void Application::playTrackFile(std::string filename) {
 
-	if (mpTrack != NULL)
+	quit = false;
+	restart = false;
+
+	if (mpTrack != NULL) {
 		delete (mpTrack);
+	}
 
 	std::cout << "Loading track " << filename << "." << std::endl;
 	mpTrack = new XMLFileTrack(filename);
@@ -68,10 +78,12 @@ void Application::playTrackFile(std::string filename) {
 	std::cout << "Preparing renderer for track.";
 
 	// Reset vehicles:
-	for(unsigned int ii = 0; ii < m_racers.size();ii++) {
+	for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
 		m_racers[ii]->reset();
 		m_racers[ii]->mPos = mpTrack->mStartPosition;
 	}
+
+	mReplayRacer->mPlayedReplay = mReplay;
 
 	mpRenderer->prepareForTrack();
 
@@ -89,7 +101,7 @@ void Application::playTrackFile(std::string filename) {
 	unsigned long stepCount = 0;
 
 	//########### BEGIN The Main Loop! ##########
-	while (!quit) {
+	while (!quit && !restart) {
 
 		gettimeofday(&newTime, NULL);
 
@@ -115,49 +127,12 @@ void Application::playTrackFile(std::string filename) {
 
 		while (accumulator >= dt) {
 
-			/*
-			 if (!mpTrack->mExtent.containsPoint(mpPlayerVehicle->mPos)) {
-			 mpPlayerVehicle->mKilled = true;
-			 }
+			sm_timestamp = stepCount;
 
-			 if (mpPlayerVehicle->mWantReset) {
-			 mpPlayerVehicle->mPos = mpTrack->mStartPosition;
-			 mpPlayerVehicle->reset();
-			 mpRenderer->showKilledInfo(false);
-			 mpRenderer->showTrackCompletedInfo(false);
-			 }
+			for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
 
-			 // If the ship is destroyed, reset to the starting position:
-			 if (mpPlayerVehicle->mKilled) {
-			 mpRenderer->showKilledInfo(true);
-			 } else if (mpPlayerVehicle->mFinish) {
-			 mpRenderer->showTrackCompletedInfo(true);
-			 } else {
-			 mpPlayerVehicle->mOldVel = mpPlayerVehicle->mVelocity;
+				m_racers[ii]->pilotStep(stepCount);
 
-			 // Find colliding track atoms:
-			 std::vector<CollisionInfo> collisions = findCollidingTrackAtoms();
-
-			 // Apply counter-forces (prevent vehicle from going through walls):
-			 for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-			 collisions[ii].ta->applyCounterForces(mpPlayerVehicle, collisions[ii].hs);
-			 }
-
-			 mpPlayerVehicle->updatePosition();
-
-			 // Calculate & apply vehicle-internal effects on it's velocity:
-			 mpPlayerVehicle->updateVelocity();
-
-			 mpPlayerVehicle->mJumpedInThisStep = false;
-
-			 // Apply contact effects:
-			 for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-			 collisions[ii].ta->applyContactEffects(mpPlayerVehicle, collisions[ii].hs);
-			 }
-			 }
-			 */
-
-			for(unsigned int ii = 0; ii < m_racers.size();ii++) {
 				doRacerStep(m_racers[ii]);
 			}
 
@@ -173,14 +148,24 @@ void Application::playTrackFile(std::string filename) {
 		}
 	}
 	//########### END The Main Loop! ##########
+
+	// TODO 1: Uuuuuuuuuuuuglyyyyyyyyy!
+	if (restart) {
+
+
+		playTrackFile(filename);
+	}
 }
 
 void Application::doRacerStep(Racer* racer) {
+
 	if (!mpTrack->mExtent.containsPoint(racer->mPos)) {
 		racer->mKilled = true;
 	}
 
 	if (racer->mWantReset) {
+		mReplay = mLocalPlayerRacer->mReplayCommands;
+
 		racer->mPos = mpTrack->mStartPosition;
 		racer->reset();
 		mpRenderer->showKilledInfo(false);
@@ -188,6 +173,8 @@ void Application::doRacerStep(Racer* racer) {
 	}
 
 	// If the ship is destroyed, reset to the starting position:
+
+	// TODO 1: Show killed/finished info only when it is true for the local player's racer!
 	if (racer->mKilled) {
 		mpRenderer->showKilledInfo(true);
 	} else if (racer->mFinish) {
@@ -215,7 +202,6 @@ void Application::doRacerStep(Racer* racer) {
 			collisions[ii].ta->applyContactEffects(racer, collisions[ii].hs);
 		}
 	}
-
 }
 
 std::vector<CollisionInfo> Application::findCollidingTrackAtoms(Racer* racer) {

@@ -11,6 +11,8 @@
 #include <cmath>
 #include <ctime>
 #include <sys/time.h>
+#include "../Application.h"
+
 
 Racer::Racer() {
 
@@ -59,6 +61,65 @@ void Racer::reset() {
 	setOrientation(mOrientation);
 
 	mWantReset = false;
+
+	mReplayCommands.clear();
+}
+
+
+void Racer::pilotStep(unsigned long step) {
+	//cmd_spacebar(true);
+
+	/*
+	processCommand(CMD_ACCEL_PRS);
+
+	if (mKilled) {
+		processCommand(CMD_SPACE_PRS);
+	}
+	*/
+}
+
+
+void Racer::processCommand(RacerCommand cmd) {
+
+	switch(cmd) {
+	case CMD_ACCEL_PRS:
+		mAddThrustForward = true;
+		break;
+	case CMD_ACCEL_REL:
+		mAddThrustForward = false;
+		break;
+	case CMD_BRAKE_PRS:
+		mReduceThrustForward = true;
+		break;
+	case CMD_BRAKE_REL:
+		mReduceThrustForward = false;
+		break;
+	case CMD_LEFT_PRS:
+		mAddThrustLeft = true;
+		break;
+	case CMD_LEFT_REL:
+		mAddThrustLeft = false;
+		break;
+	case CMD_RIGHT_PRS:
+		mAddThrustRight = true;
+		break;
+	case CMD_RIGHT_REL:
+		mAddThrustRight = false;
+		break;
+	case CMD_SPACE_PRS:
+		cmd_spacebar(true);
+		break;
+	case CMD_SPACE_REL:
+		cmd_spacebar(false);
+		break;
+	}
+
+	ReplayCommand command;
+	command.cmd = cmd;
+	command.timestamp = Application::sm_timestamp;
+
+
+	mReplayCommands.push_back(command);
 }
 
 void Racer::updateVelocity() {

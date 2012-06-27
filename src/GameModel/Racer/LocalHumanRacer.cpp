@@ -25,7 +25,7 @@ void LocalHumanRacer::handleKeyEvent(int key, bool pressed) {
 	if (!mKilled) {
 		switch (key) {
 
-
+		/*
 		case KC_A:
 			if (pressed)
 			cmd_rotateDesiredOrientation(1, 1);
@@ -36,29 +36,58 @@ void LocalHumanRacer::handleKeyEvent(int key, bool pressed) {
 			cmd_rotateDesiredOrientation(1, -1);
 			break;
 
-		case KC_DOWN:
-			mReduceThrustForward = pressed;
+		case KC_Q:
+			if (pressed)
+			cmd_rotateDesiredOrientation(2, 1);
 			break;
 
 		case KC_E:
 			if (pressed)
 			cmd_rotateDesiredOrientation(2, -1);
 			break;
+*/
+		case KC_DOWN:
+			//mReduceThrustForward = pressed;
+			if (pressed) {
+				processCommand(CMD_BRAKE_PRS);
+			}
+			else {
+				processCommand(CMD_BRAKE_REL);
+			}
+			break;
+
 
 		case KC_LEFT:
-			mAddThrustLeft = pressed;
-			break;
-		case KC_Q:
-			if (pressed)
-			cmd_rotateDesiredOrientation(2, 1);
+			//mAddThrustLeft = pressed;
+			if (pressed) {
+				processCommand(CMD_LEFT_PRS);
+			}
+			else {
+				processCommand(CMD_LEFT_REL);
+			}
+
 			break;
 
 		case KC_RIGHT:
-			mAddThrustRight = pressed;
+			//mAddThrustRight = pressed;
+			if (pressed) {
+				processCommand(CMD_RIGHT_PRS);
+			}
+			else {
+				processCommand(CMD_RIGHT_REL);
+			}
+
 			break;
 
 		case KC_UP:
-			mAddThrustForward = pressed;
+
+			if (pressed) {
+				processCommand(CMD_ACCEL_PRS);
+			}
+			else {
+				processCommand(CMD_ACCEL_REL);
+			}
+			//mAddThrustForward = pressed;
 			break;
 
 
@@ -66,4 +95,8 @@ void LocalHumanRacer::handleKeyEvent(int key, bool pressed) {
 			break;
 		}
 	}
+}
+
+void LocalHumanRacer::pilotStep(unsigned long step) {
+
 }

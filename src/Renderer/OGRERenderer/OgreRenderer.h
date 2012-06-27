@@ -46,10 +46,13 @@ protected:
 
 private:
 
+
 	void cameraFollowRacer(OGRERendererVehicle* racer);
 	void buildTrackGeometry();
 
 	bool mSidewardThrustRollCamera;
+
+	Ogre::Light* mLight;
 
 	// OGRE stuff:
 	Ogre::Root* mRoot;
