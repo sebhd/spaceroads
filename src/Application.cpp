@@ -17,8 +17,6 @@
 #include "Input/OISInputHandler.h"
 #include "GameModel/Track/XMLFileTrack.h"
 
-unsigned long Application::sm_timestamp = 0;
-
 Application::Application() {
 
 	quit = false;
@@ -54,11 +52,6 @@ void Application::handleKeyEvent(int key, bool pressed) {
 	case KeyboardEventListener::KC_ESCAPE:
 		quit = true;
 		break;
-
-	case KeyboardEventListener::KC_R:
-		restart = true;
-		break;
-
 	}
 
 	if (key == KC_SPACE) {
@@ -140,7 +133,6 @@ void Application::handleKeyEvent(int key, bool pressed) {
 void Application::playTrackFile(std::string filename) {
 
 	quit = false;
-	restart = false;
 
 	if (mpTrack != NULL) {
 		delete (mpTrack);
@@ -175,7 +167,7 @@ void Application::playTrackFile(std::string filename) {
 	unsigned long stepCount = 0;
 
 	//########### BEGIN The Main Loop! ##########
-	while (!quit && !restart) {
+	while (!quit) {
 
 		gettimeofday(&newTime, NULL);
 
@@ -205,12 +197,10 @@ void Application::playTrackFile(std::string filename) {
 
 			mReplayRacer->pilotStep(stepCount);
 
-			sm_timestamp = stepCount;
-
 			for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
 
 				doRacerStep(m_racers[ii]);
-				m_racers[ii]->mRaceTime++;
+
 			}
 
 			accumulator -= dt;
@@ -225,17 +215,11 @@ void Application::playTrackFile(std::string filename) {
 		}
 	}
 	//########### END The Main Loop! ##########
-
-
-
-	// TODO 1: Uuuuuuuuuuuuglyyyyyyyyy!
-	if (restart) {
-
-		playTrackFile(filename);
-	}
 }
 
 void Application::doRacerStep(Racer* racer) {
+
+	racer->mRaceTime++;
 
 	if (!mpTrack->mExtent.containsPoint(racer->mPos)) {
 		racer->mKilled = true;

@@ -20,7 +20,7 @@ class Application : public KeyboardEventListener {
 
 public:
 
-	static unsigned long sm_timestamp;
+
 
 	Application();
 	virtual ~Application();
@@ -39,7 +39,7 @@ public:
 	AbstractRenderer* getRenderer();
 
 	bool quit;
-	bool restart;
+
 
 	std::vector<Racer*> m_racers;
 

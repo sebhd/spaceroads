@@ -118,7 +118,7 @@ void Racer::processCommand(RacerCommand cmd) {
 
 	ReplayEntry command;
 	command.cmd = cmd;
-	command.timestamp = Application::sm_timestamp;
+	command.timestamp = mRaceTime;
 
 
 	mReplayCommands.push_back(command);
