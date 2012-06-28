@@ -62,6 +62,8 @@ void Racer::reset() {
 
 	mWantReset = false;
 
+	mRaceTime = 0;
+
 	mReplayCommands.clear();
 }
 
@@ -114,7 +116,7 @@ void Racer::processCommand(RacerCommand cmd) {
 		break;
 	}
 
-	ReplayCommand command;
+	ReplayEntry command;
 	command.cmd = cmd;
 	command.timestamp = Application::sm_timestamp;
 

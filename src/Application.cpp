@@ -7,9 +7,11 @@
 
 // TODO 3: Implement some sort of spatial index to speed up collision detection
 #include "Application.h"
+#include <fstream>
 #include <iostream>
 #include <ctime>
 #include <sys/time.h>
+#include <tinyxml.h>
 
 #include "Renderer/OGRERenderer/OgreRenderer.h"
 #include "Input/OISInputHandler.h"
@@ -40,8 +42,6 @@ Application::Application() {
 
 	mpInputHandler = new OISInputHandler(getRenderer()->getWindowSize());
 	mpInputHandler->mListeners.push_back(this);
-
-//	mpInputHandler->mListeners.push_back(playerRacer);
 }
 
 Application::~Application() {
@@ -62,33 +62,38 @@ void Application::handleKeyEvent(int key, bool pressed) {
 	}
 
 	if (key == KC_SPACE) {
-		mLocalPlayerRacer->cmd_spacebar(pressed);
+		if (pressed) {
+			mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_PRS);
+		} else {
+			mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_REL);
+		}
+
 	}
 
 	if (!mLocalPlayerRacer->mKilled) {
 		switch (key) {
 
-		/*
+
 		 case KC_A:
 		 if (pressed)
-		 cmd_rotateDesiredOrientation(1, 1);
+			 mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, 1);
 		 break;
 
 		 case KC_D:
 		 if (pressed)
-		 cmd_rotateDesiredOrientation(1, -1);
+			 mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, -1);
 		 break;
 
 		 case KC_Q:
 		 if (pressed)
-		 cmd_rotateDesiredOrientation(2, 1);
+			 mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, 1);
 		 break;
 
 		 case KC_E:
 		 if (pressed)
-		 cmd_rotateDesiredOrientation(2, -1);
+			 mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, -1);
 		 break;
-		 */
+
 		case KC_DOWN:
 			//mReduceThrustForward = pressed;
 			if (pressed) {
@@ -152,7 +157,7 @@ void Application::playTrackFile(std::string filename) {
 		m_racers[ii]->mPos = mpTrack->mStartPosition;
 	}
 
-	mReplayRacer->mPlayedReplay = mReplay;
+	mReplayRacer->mPlayedReplay = loadReplayFromFile("replay.xml");
 
 	mpRenderer->prepareForTrack();
 
@@ -194,15 +199,18 @@ void Application::playTrackFile(std::string filename) {
 		// Process input:
 		mpInputHandler->getInput();
 
+
+
 		while (accumulator >= dt) {
+
+			mReplayRacer->pilotStep(stepCount);
 
 			sm_timestamp = stepCount;
 
 			for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
 
-				m_racers[ii]->pilotStep(stepCount);
-
 				doRacerStep(m_racers[ii]);
+				m_racers[ii]->mRaceTime++;
 			}
 
 			accumulator -= dt;
@@ -217,6 +225,8 @@ void Application::playTrackFile(std::string filename) {
 		}
 	}
 	//########### END The Main Loop! ##########
+
+
 
 	// TODO 1: Uuuuuuuuuuuuglyyyyyyyyy!
 	if (restart) {
@@ -245,9 +255,14 @@ void Application::doRacerStep(Racer* racer) {
 	// TODO 1: Show killed/finished info only when it is true for the local player's racer!
 	if (racer->mKilled) {
 		mpRenderer->showKilledInfo(true);
+
 	} else if (racer->mFinish) {
 		mpRenderer->showTrackCompletedInfo(true);
+
+		writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
+
 	} else {
+
 		racer->mOldVel = racer->mVelocity;
 
 		// Find colliding track atoms:
@@ -348,3 +363,42 @@ bool Application::handleFrameRenderingQueuedEvent() {
 	return true;
 }
 
+std::vector<Racer::ReplayEntry> Application::loadReplayFromFile(std::string filename) {
+
+	TiXmlDocument doc;
+	doc.LoadFile(filename);
+
+	std::vector<Racer::ReplayEntry> result;
+
+	TiXmlElement* root = doc.FirstChildElement("replay");
+
+	for (TiXmlElement* elem = root->FirstChildElement("action"); elem != NULL;
+			elem = elem->NextSiblingElement("action")) {
+
+		Racer::ReplayEntry entry;
+
+		entry.timestamp = atoi(elem->Attribute("time"));
+		entry.cmd = (Racer::RacerCommand) atoi(elem->Attribute("cmd"));
+
+		result.push_back(entry);
+	}
+
+	return result;
+}
+
+void Application::writeReplayToFile(std::vector<Racer::ReplayEntry> replay) {
+	std::ofstream myfile;
+	myfile.open("replay.xml");
+
+	myfile << "<replay>\n";
+
+	for (unsigned int ii = 0; ii < replay.size(); ii++) {
+		Racer::ReplayEntry cmd = replay[ii];
+
+		myfile << "<action time=\"" << cmd.timestamp << "\" cmd=\"" << cmd.cmd << "\"/>\n";
+	}
+
+	myfile << "</replay>\n";
+
+	myfile.close();
+}

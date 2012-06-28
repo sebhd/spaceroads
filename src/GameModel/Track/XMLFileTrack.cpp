@@ -63,15 +63,9 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 
 		std::string type = "solid";
 
-
 		if (taElem->Attribute("type") != NULL) {
 			type = taElem->Attribute("type");
 		}
-
-
-
-
-
 
 		AABB bbox(cml::vector3d(x, y, z), cml::vector3d(x + sizex, y + sizey, z + sizez));
 

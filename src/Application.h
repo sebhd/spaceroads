@@ -48,10 +48,14 @@ public:
 	Racer* mLocalPlayerRacer;
 	ReplayRacer* mReplayRacer;
 
-	std::vector<Racer::ReplayCommand> mReplay;
+	std::vector<Racer::ReplayEntry> mReplay;
 
 private:
 	void doRacerStep(Racer*);
+
+	std::vector<Racer::ReplayEntry> loadReplayFromFile(std::string filename);
+
+	void writeReplayToFile(std::vector<Racer::ReplayEntry>);
 
 	AbstractRenderer* mpRenderer;
 	InputHandler* mpInputHandler;

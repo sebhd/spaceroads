@@ -18,10 +18,18 @@ class Racer {
 
 public:
 
-	enum RacerCommand { CMD_SPACE_PRS, CMD_LEFT_PRS, CMD_RIGHT_PRS, CMD_ACCEL_PRS, CMD_BRAKE_PRS,
-					 CMD_SPACE_REL, CMD_LEFT_REL, CMD_RIGHT_REL, CMD_ACCEL_REL, CMD_BRAKE_REL};
+	enum RacerCommand {CMD_SPACE_PRS,
+						CMD_LEFT_PRS,
+						CMD_RIGHT_PRS,
+						CMD_ACCEL_PRS,
+						CMD_BRAKE_PRS,
+						CMD_SPACE_REL,
+						CMD_LEFT_REL,
+						CMD_RIGHT_REL,
+						CMD_ACCEL_REL,
+						CMD_BRAKE_REL};
 
-	struct ReplayCommand {
+	struct ReplayEntry {
 		RacerCommand cmd;
 		unsigned long timestamp;
 	};
@@ -68,9 +76,13 @@ public:
 
 	bool mJumpedInThisStep;
 
-	std::vector<ReplayCommand> mReplayCommands;
+	std::vector<ReplayEntry> mReplayCommands;
+
+	unsigned long int mRaceTime;
+
 
 private:
+
 
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;
