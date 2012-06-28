@@ -198,9 +198,7 @@ void Application::playTrackFile(std::string filename) {
 			mReplayRacer->pilotStep(stepCount);
 
 			for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
-
 				doRacerStep(m_racers[ii]);
-
 			}
 
 			accumulator -= dt;
@@ -230,6 +228,8 @@ void Application::doRacerStep(Racer* racer) {
 
 		racer->mPos = mpTrack->mStartPosition;
 		racer->reset();
+
+		// TODO 3: Was hiermit?
 		mpRenderer->showKilledInfo(false);
 		mpRenderer->showTrackCompletedInfo(false);
 	}
@@ -238,12 +238,24 @@ void Application::doRacerStep(Racer* racer) {
 
 	// TODO 1: Show killed/finished info only when it is true for the local player's racer!
 	if (racer->mKilled) {
-		mpRenderer->showKilledInfo(true);
+
+		if (racer == mLocalPlayerRacer) {
+			mpRenderer->showKilledInfo(true);
+		}
+		else {
+			racer->mWantReset = true;
+		}
 
 	} else if (racer->mFinish) {
-		mpRenderer->showTrackCompletedInfo(true);
 
-		writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
+		if (racer == mLocalPlayerRacer) {
+			mpRenderer->showTrackCompletedInfo(true);
+			writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
+		}
+		else {
+			std::cout << "und nocheinmal!" << std::endl;
+			racer->mWantReset = true;
+		}
 
 	} else {
 
