@@ -12,7 +12,6 @@
 #include <OISKeyboard.h>
 #include "Input/InputHandler.h"
 #include "GameModel/Track/Track.h"
-#include "GameModel/Racer/LocalHumanRacer.h"
 #include "GameModel/Racer/ReplayRacer.h"
 
 class AbstractRenderer;

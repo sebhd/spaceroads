@@ -24,7 +24,7 @@ Application::Application() {
 	mpTrack = NULL;
 
 	// Set up local human player's racer:
-	LocalHumanRacer* playerRacer = new LocalHumanRacer();
+	Racer* playerRacer = new Racer();
 
 	mLocalPlayerRacer = playerRacer;
 
@@ -41,7 +41,7 @@ Application::Application() {
 	mpInputHandler = new OISInputHandler(getRenderer()->getWindowSize());
 	mpInputHandler->mListeners.push_back(this);
 
-	mpInputHandler->mListeners.push_back(playerRacer);
+//	mpInputHandler->mListeners.push_back(playerRacer);
 }
 
 Application::~Application() {
@@ -58,8 +58,77 @@ void Application::handleKeyEvent(int key, bool pressed) {
 	case KeyboardEventListener::KC_R:
 		restart = true;
 		break;
-	default:
-		break;
+
+	}
+
+	if (key == KC_SPACE) {
+		mLocalPlayerRacer->cmd_spacebar(pressed);
+	}
+
+	if (!mLocalPlayerRacer->mKilled) {
+		switch (key) {
+
+		/*
+		 case KC_A:
+		 if (pressed)
+		 cmd_rotateDesiredOrientation(1, 1);
+		 break;
+
+		 case KC_D:
+		 if (pressed)
+		 cmd_rotateDesiredOrientation(1, -1);
+		 break;
+
+		 case KC_Q:
+		 if (pressed)
+		 cmd_rotateDesiredOrientation(2, 1);
+		 break;
+
+		 case KC_E:
+		 if (pressed)
+		 cmd_rotateDesiredOrientation(2, -1);
+		 break;
+		 */
+		case KC_DOWN:
+			//mReduceThrustForward = pressed;
+			if (pressed) {
+				mLocalPlayerRacer->processCommand(Racer::CMD_BRAKE_PRS);
+			} else {
+				mLocalPlayerRacer->processCommand(Racer::CMD_BRAKE_REL);
+			}
+			break;
+
+		case KC_LEFT:
+			//mAddThrustLeft = pressed;
+			if (pressed) {
+				mLocalPlayerRacer->processCommand(Racer::CMD_LEFT_PRS);
+			} else {
+				mLocalPlayerRacer->processCommand(Racer::CMD_LEFT_REL);
+			}
+
+			break;
+
+		case KC_RIGHT:
+			//mAddThrustRight = pressed;
+			if (pressed) {
+				mLocalPlayerRacer->processCommand(Racer::CMD_RIGHT_PRS);
+			} else {
+				mLocalPlayerRacer->processCommand(Racer::CMD_RIGHT_REL);
+			}
+
+			break;
+
+		case KC_UP:
+
+			if (pressed) {
+				mLocalPlayerRacer->processCommand(Racer::CMD_ACCEL_PRS);
+			} else {
+				mLocalPlayerRacer->processCommand(Racer::CMD_ACCEL_REL);
+			}
+			//mAddThrustForward = pressed;
+			break;
+
+		}
 	}
 }
 
@@ -151,7 +220,6 @@ void Application::playTrackFile(std::string filename) {
 
 	// TODO 1: Uuuuuuuuuuuuglyyyyyyyyy!
 	if (restart) {
-
 
 		playTrackFile(filename);
 	}
