@@ -304,7 +304,17 @@ bool OgreRenderer::init() {
 		sstream << ii;
 
 		std::string name = "racer" + sstream.str();
-		m_vehicleRenderers.push_back(new OGRERendererVehicle(mSceneMgr, mpApp->m_racers[ii], name));
+
+		OGRERendererVehicle* vr = new OGRERendererVehicle(mSceneMgr, mpApp->m_racers[ii], name);
+
+		if (mpApp->m_racers[ii] == mpApp->mLocalPlayerRacer) {
+			mLocalPlayerRacer = vr;
+		}
+		else if (mpApp->m_racers[ii] == mpApp->mReplayRacer) {
+			mReplayRacer = vr;
+		}
+
+		m_vehicleRenderers.push_back(vr);
 	}
 	//######################## END Create Vehicle renderers ############################
 
@@ -313,10 +323,10 @@ bool OgreRenderer::init() {
 
 	mCamera->setNearClipDistance(5);
 	mCamera->setFarClipDistance(2000);
+	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
 
 	mCameraNode->attachObject(mCamera);
 
-	cameraFollowRacer(m_vehicleRenderers[0]);
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -352,10 +362,22 @@ bool OgreRenderer::init() {
 
 void OgreRenderer::cameraFollowRacer(OGRERendererVehicle* racer) {
 
-	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
-	mCamera->lookAt(racer->mVehicleNode->getPosition());
+	if (racer->mVehicleNode == NULL) {
+		return;
+	}
+
+
+	Ogre::Node* parent =  mCameraNode->getParent();
+
+	if (parent != NULL) {
+		parent->removeChild(mCameraNode);
+	}
+
 
 	racer->mVehicleNode->addChild(mCameraNode);
+
+
+	mCamera->lookAt(racer->mVehicleNode->getPosition());
 
 }
 
@@ -388,6 +410,13 @@ void OgreRenderer::prepareForTrack() {
 	buildTrackGeometry();
 
 	// ############### END Set up track / environment rendering ################
+
+	if (mpApp->watchReplay) {
+		cameraFollowRacer(mReplayRacer);
+	}
+	else {
+		cameraFollowRacer(mLocalPlayerRacer);
+	}
 
 }
 

@@ -65,6 +65,9 @@ private:
 
 	std::vector<OGRERendererVehicle*> m_vehicleRenderers;
 
+	OGRERendererVehicle* mLocalPlayerRacer;
+	OGRERendererVehicle* mReplayRacer;
+
 	Ogre::StaticGeometry* mTrackStaticGeometry;
 };
 

@@ -20,7 +20,7 @@ class Application : public KeyboardEventListener {
 
 public:
 
-
+	void run();
 
 	Application();
 	virtual ~Application();
@@ -39,6 +39,8 @@ public:
 	AbstractRenderer* getRenderer();
 
 	bool quit;
+	bool stopPlayingTrack;
+	bool watchReplay;
 
 
 	std::vector<Racer*> m_racers;

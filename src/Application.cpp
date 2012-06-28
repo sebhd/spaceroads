@@ -19,6 +19,7 @@
 
 Application::Application() {
 
+	watchReplay = true;
 	quit = false;
 
 	mpTrack = NULL;
@@ -48,90 +49,106 @@ Application::~Application() {
 
 void Application::handleKeyEvent(int key, bool pressed) {
 
-	switch (key) {
-	case KeyboardEventListener::KC_ESCAPE:
-		quit = true;
-		break;
-	}
+	if (watchReplay) {
 
-	if (key == KC_SPACE) {
-		if (pressed) {
-			mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_PRS);
-		} else {
-			mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_REL);
+		switch (key) {
+		case KeyboardEventListener::KC_ESCAPE:
+			quit = true;
+			stopPlayingTrack = true;
+			break;
+
+		default:
+			watchReplay = false;
+			stopPlayingTrack = true;
+
+			break;
+		}
+	} else {
+
+		if (key == KeyboardEventListener::KC_ESCAPE) {
+			stopPlayingTrack = true;
+			quit = true;
 		}
 
-	}
-
-	if (!mLocalPlayerRacer->mKilled) {
-		switch (key) {
-
-
-		 case KC_A:
-		 if (pressed)
-			 mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, 1);
-		 break;
-
-		 case KC_D:
-		 if (pressed)
-			 mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, -1);
-		 break;
-
-		 case KC_Q:
-		 if (pressed)
-			 mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, 1);
-		 break;
-
-		 case KC_E:
-		 if (pressed)
-			 mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, -1);
-		 break;
-
-		case KC_DOWN:
-			//mReduceThrustForward = pressed;
+		if (key == KC_SPACE) {
 			if (pressed) {
-				mLocalPlayerRacer->processCommand(Racer::CMD_BRAKE_PRS);
+				mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_PRS);
 			} else {
-				mLocalPlayerRacer->processCommand(Racer::CMD_BRAKE_REL);
-			}
-			break;
-
-		case KC_LEFT:
-			//mAddThrustLeft = pressed;
-			if (pressed) {
-				mLocalPlayerRacer->processCommand(Racer::CMD_LEFT_PRS);
-			} else {
-				mLocalPlayerRacer->processCommand(Racer::CMD_LEFT_REL);
+				mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_REL);
 			}
 
-			break;
+		}
 
-		case KC_RIGHT:
-			//mAddThrustRight = pressed;
-			if (pressed) {
-				mLocalPlayerRacer->processCommand(Racer::CMD_RIGHT_PRS);
-			} else {
-				mLocalPlayerRacer->processCommand(Racer::CMD_RIGHT_REL);
+		if (!mLocalPlayerRacer->mKilled) {
+			switch (key) {
+
+			case KC_A:
+				if (pressed)
+					mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, 1);
+				break;
+
+			case KC_D:
+				if (pressed)
+					mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, -1);
+				break;
+
+			case KC_Q:
+				if (pressed)
+					mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, 1);
+				break;
+
+			case KC_E:
+				if (pressed)
+					mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, -1);
+				break;
+
+			case KC_DOWN:
+				//mReduceThrustForward = pressed;
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_BRAKE_PRS);
+				} else {
+					mLocalPlayerRacer->processCommand(Racer::CMD_BRAKE_REL);
+				}
+				break;
+
+			case KC_LEFT:
+				//mAddThrustLeft = pressed;
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_LEFT_PRS);
+				} else {
+					mLocalPlayerRacer->processCommand(Racer::CMD_LEFT_REL);
+				}
+
+				break;
+
+			case KC_RIGHT:
+				//mAddThrustRight = pressed;
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_RIGHT_PRS);
+				} else {
+					mLocalPlayerRacer->processCommand(Racer::CMD_RIGHT_REL);
+				}
+
+				break;
+
+			case KC_UP:
+
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_ACCEL_PRS);
+				} else {
+					mLocalPlayerRacer->processCommand(Racer::CMD_ACCEL_REL);
+				}
+				//mAddThrustForward = pressed;
+				break;
+
 			}
-
-			break;
-
-		case KC_UP:
-
-			if (pressed) {
-				mLocalPlayerRacer->processCommand(Racer::CMD_ACCEL_PRS);
-			} else {
-				mLocalPlayerRacer->processCommand(Racer::CMD_ACCEL_REL);
-			}
-			//mAddThrustForward = pressed;
-			break;
-
 		}
 	}
 }
 
 void Application::playTrackFile(std::string filename) {
 
+	stopPlayingTrack = false;
 	quit = false;
 
 	if (mpTrack != NULL) {
@@ -167,7 +184,7 @@ void Application::playTrackFile(std::string filename) {
 	unsigned long stepCount = 0;
 
 	//########### BEGIN The Main Loop! ##########
-	while (!quit) {
+	while (!stopPlayingTrack) {
 
 		gettimeofday(&newTime, NULL);
 
@@ -190,8 +207,6 @@ void Application::playTrackFile(std::string filename) {
 
 		// Process input:
 		mpInputHandler->getInput();
-
-
 
 		while (accumulator >= dt) {
 
@@ -241,8 +256,7 @@ void Application::doRacerStep(Racer* racer) {
 
 		if (racer == mLocalPlayerRacer) {
 			mpRenderer->showKilledInfo(true);
-		}
-		else {
+		} else {
 			racer->mWantReset = true;
 		}
 
@@ -251,9 +265,7 @@ void Application::doRacerStep(Racer* racer) {
 		if (racer == mLocalPlayerRacer) {
 			mpRenderer->showTrackCompletedInfo(true);
 			writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
-		}
-		else {
-			std::cout << "und nocheinmal!" << std::endl;
+		} else {
 			racer->mWantReset = true;
 		}
 
@@ -380,6 +392,16 @@ std::vector<Racer::ReplayEntry> Application::loadReplayFromFile(std::string file
 	}
 
 	return result;
+}
+
+void Application::run() {
+
+	watchReplay = true;
+	std::string trackFilePath = "tracks/default_track.xml";
+
+	while (!quit) {
+		playTrackFile(trackFilePath);
+	}
 }
 
 void Application::writeReplayToFile(std::vector<Racer::ReplayEntry> replay) {
