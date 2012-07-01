@@ -27,7 +27,11 @@ public:
 						CMD_LEFT_REL,
 						CMD_RIGHT_REL,
 						CMD_ACCEL_REL,
-						CMD_BRAKE_REL};
+						CMD_BRAKE_REL,
+						CMD_ROTATE1,
+						CMD_ROTATE2,
+						CMD_ROTATE3,
+						CMD_ROTATE4};
 
 	struct ReplayEntry {
 		RacerCommand cmd;

@@ -83,23 +83,32 @@ void Application::handleKeyEvent(int key, bool pressed) {
 			switch (key) {
 
 			case KC_A:
-				if (pressed)
-					mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, 1);
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE1);
+					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, 1);
+				}
 				break;
 
 			case KC_D:
-				if (pressed)
-					mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, -1);
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE2);
+					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, -1);
+				}
+
 				break;
 
 			case KC_Q:
-				if (pressed)
-					mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, 1);
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE3);
+					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, 1);
+				}
 				break;
 
 			case KC_E:
-				if (pressed)
-					mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, -1);
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE4);
+					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, -1);
+				}
 				break;
 
 			case KC_DOWN:

@@ -114,12 +114,23 @@ void Racer::processCommand(RacerCommand cmd) {
 	case CMD_SPACE_REL:
 		cmd_spacebar(false);
 		break;
+	case CMD_ROTATE1:
+		cmd_rotateDesiredOrientation(1, 1);
+		break;
+	case CMD_ROTATE2:
+		cmd_rotateDesiredOrientation(1, -1);
+		break;
+	case CMD_ROTATE3:
+		cmd_rotateDesiredOrientation(2, 1);
+		break;
+	case CMD_ROTATE4:
+		cmd_rotateDesiredOrientation(2, -1);
+		break;
 	}
 
 	ReplayEntry command;
 	command.cmd = cmd;
 	command.timestamp = mRaceTime;
-
 
 	mReplayCommands.push_back(command);
 }

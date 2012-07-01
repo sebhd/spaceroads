@@ -6,7 +6,6 @@
  */
 
 // TODO 3: Make vehicle/camera rotation speed framerate-independent.
-
 #include "OGRERendererVehicle.h"
 #include <OgreParticle.h>
 #include <OgreParticleSystem.h>
@@ -22,9 +21,6 @@ OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* 
 	mRollAngle = 0;
 	mPitchAngle = 0;
 
-
-
-
 	mOrientation.FromAngleAxis(Ogre::Radian(0), Ogre::Vector3(1, 0, 0));
 
 	mVehicleNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
@@ -34,8 +30,9 @@ OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* 
 
 	//Ogre::Entity* entVehicle = mSceneManager->getEntity("Vehicle");
 	// Racer model:
-	Ogre::Entity* entVehicle = mSceneManager->createEntity("Vehicle.mesh");
-	mVehicleMeshNode->attachObject(entVehicle);
+	mMeshEntity = mSceneManager->createEntity("Vehicle.mesh");
+
+	mVehicleMeshNode->attachObject(mMeshEntity);
 
 	// TODO 1: Reimplement
 
@@ -144,7 +141,6 @@ void OGRERendererVehicle::update() {
 	//############# BEGIN Update engine particle emitters ####################
 
 	// TODO 1: Reimplement
-
 
 	bool emit = !mpVehicle->mKilled && mpVehicle->mThrustForward > 0;
 

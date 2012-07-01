@@ -28,6 +28,7 @@ public:
 
 	Ogre::SceneManager* mSceneManager;
 
+	Ogre::Entity* mMeshEntity;
 	Racer* mpVehicle;
 
 protected:

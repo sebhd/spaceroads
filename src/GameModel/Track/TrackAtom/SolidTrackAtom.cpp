@@ -30,7 +30,7 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 	}
 
 	// #################### BEGIN Determine wall normal vector #################
-	cml::vector3f wallNormal(0,0,0);
+	cml::vector3f wallNormal(0, 0, 0);
 
 	switch (hs) {
 	case HIT_TOP:
@@ -72,7 +72,8 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 	//################ END Kill vehicle if it hits something with the nose too fast ###############
 
 	// ################ BEGIN Jumping & bouncing ##############
-	if (cml::dot(ship->getGravity(), wallNormal) < 0 && cml::dot(ship->mOldVel, wallNormal) < 0 && !ship->mJumpedInThisStep) {
+	if (cml::dot(ship->getGravity(), wallNormal) < 0 && cml::dot(ship->mOldVel, wallNormal) < 0
+			&& !ship->mJumpedInThisStep) {
 
 		// Jumping...
 		if (ship->mTryJump) {
@@ -94,27 +95,29 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 	// ################ END Jumping & bouncing ##############
 
 	//############### BEGIN Slip off blocks when we come too close to the edge ##############
-/*
+
 	float slipSpeed = 0.005;
 
-	if (abs(shipPos[0] - mBBox.mPos[0]) < mSlipOffset) {
+	cml::vector3f shipPos = ship->mPos;
+
+	if (abs(shipPos[0] - mBBox.mMin[0]) < mSlipOffset) {
 		ship->mVelocity[0] -= slipSpeed;
-	} else if (abs((mBBox.mPos[0] + mBBox.mSize[0]) - shipPos[0]) < mSlipOffset) {
+	} else if (abs(shipPos[0] - mBBox.mMax[0]) < mSlipOffset) {
 		ship->mVelocity[0] += slipSpeed;
 	}
 
-	if (abs(shipPos[1] - mBBox.mPos[1]) < mSlipOffset) {
+	if (abs(shipPos[1] - mBBox.mMin[1]) < mSlipOffset) {
 		ship->mVelocity[1] -= slipSpeed;
-	} else if (abs((mBBox.mPos[1] + mBBox.mSize[1]) - shipPos[1]) < mSlipOffset) {
+	} else if (abs(shipPos[1] - mBBox.mMax[1]) < mSlipOffset) {
 		ship->mVelocity[1] += slipSpeed;
 	}
 
-	if (abs(shipPos[2] - mBBox.mPos[2]) < mSlipOffset) {
+	if (abs(shipPos[2] - mBBox.mMin[2]) < mSlipOffset) {
 		ship->mVelocity[2] -= slipSpeed;
-	} else if (abs((mBBox.mPos[2] + mBBox.mSize[2]) - shipPos[2]) < mSlipOffset) {
+	} else if (abs(shipPos[2] - mBBox.mMax[2]) < mSlipOffset) {
 		ship->mVelocity[2] += slipSpeed;
 	}
-	*/
+
 	//############### END Slip off blocks when we come too close to the edge ##############
 
 }

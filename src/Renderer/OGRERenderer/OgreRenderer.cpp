@@ -312,6 +312,7 @@ bool OgreRenderer::init() {
 		}
 		else if (mpApp->m_racers[ii] == mpApp->mReplayRacer) {
 			mReplayRacer = vr;
+			mReplayRacer->mMeshEntity->setMaterialName("Wurst");
 		}
 
 		m_vehicleRenderers.push_back(vr);
