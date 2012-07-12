@@ -14,6 +14,7 @@
 #include <OgreWindowEventUtilities.h>
 #include "../../GameModel/Track/TrackAtom/TrackAtom.h"
 #include "OGRERendererVehicle.h"
+//#include "Gorilla.h"
 
 
 class OgreRenderer: public Ogre::WindowEventListener, public Ogre::FrameListener, public AbstractRenderer {

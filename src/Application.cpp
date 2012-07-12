@@ -33,7 +33,7 @@ Application::Application() {
 
 	mReplayRacer = new ReplayRacer();
 
-	m_racers.push_back(mReplayRacer);
+	//m_racers.push_back(mReplayRacer);
 
 	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);
@@ -260,7 +260,6 @@ void Application::doRacerStep(Racer* racer) {
 
 	// If the ship is destroyed, reset to the starting position:
 
-	// TODO 1: Show killed/finished info only when it is true for the local player's racer!
 	if (racer->mKilled) {
 
 		if (racer == mLocalPlayerRacer) {
