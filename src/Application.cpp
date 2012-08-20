@@ -33,7 +33,7 @@ Application::Application() {
 
 	mReplayRacer = new ReplayRacer();
 
-	//m_racers.push_back(mReplayRacer);
+	m_racers.push_back(mReplayRacer);
 
 	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);

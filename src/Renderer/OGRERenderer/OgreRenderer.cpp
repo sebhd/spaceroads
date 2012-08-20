@@ -265,7 +265,6 @@ bool OgreRenderer::init() {
 
 	mLight = mSceneMgr->createLight("MainLight");
 
-
 	// Set shadow technique:
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
@@ -309,8 +308,7 @@ bool OgreRenderer::init() {
 
 		if (mpApp->m_racers[ii] == mpApp->mLocalPlayerRacer) {
 			mLocalPlayerRacer = vr;
-		}
-		else if (mpApp->m_racers[ii] == mpApp->mReplayRacer) {
+		} else if (mpApp->m_racers[ii] == mpApp->mReplayRacer) {
 			mReplayRacer = vr;
 			mReplayRacer->mMeshEntity->setMaterialName("Wurst");
 		}
@@ -327,7 +325,6 @@ bool OgreRenderer::init() {
 	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
 
 	mCameraNode->attachObject(mCamera);
-
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -358,6 +355,43 @@ bool OgreRenderer::init() {
 
 	mRoot->addFrameListener(this);
 
+	//############## BEGIN Set up Gorilla HUD ################
+	// Create Silverback and load in dejavu
+
+	mSilverback = new Gorilla::Silverback();
+
+	mSilverback->loadAtlas("dejavu");
+	mScreen = mSilverback->createScreen(vp, "dejavu");
+
+
+//	mScreen->setOrientation(Ogre::OR_DEGREE_270);
+	Ogre::Real vpW = mScreen->getWidth(), vpH = mScreen->getHeight();
+
+	// Create our drawing layer
+	mLayer = mScreen->createLayer(0);
+	rect = mLayer->createRectangle(0, 0, vpW, vpH);
+	rect->background_gradient(Gorilla::Gradient_Diagonal, Gorilla::rgb(98, 0, 63), Gorilla::rgb(255, 180, 174));
+
+	markup =
+			mLayer->createMarkupText(9, 5, 5,
+					"%@24%A Haiku\n%@14%Written by Betajaen%@9%\nSo many to choose from\nPretty typefaces on Ogre screen\nTime to update Git");
+
+	caption = mLayer->createCaption(9, vpW - 55, 5, "9");
+	caption->width(50);
+	caption->align(Gorilla::TextAlign_Right);
+
+	caption = mLayer->createCaption(14, vpW - 55, 18, "14");
+	caption->width(50);
+	caption->align(Gorilla::TextAlign_Right);
+
+	caption = mLayer->createCaption(24, vpW - 55, 33, "24");
+	caption->width(50);
+	caption->align(Gorilla::TextAlign_Right);
+
+
+
+	//############## END Set up Gorilla HUD ################
+
 	return true;
 }
 
@@ -367,16 +401,13 @@ void OgreRenderer::cameraFollowRacer(OGRERendererVehicle* racer) {
 		return;
 	}
 
-
-	Ogre::Node* parent =  mCameraNode->getParent();
+	Ogre::Node* parent = mCameraNode->getParent();
 
 	if (parent != NULL) {
 		parent->removeChild(mCameraNode);
 	}
 
-
 	racer->mVehicleNode->addChild(mCameraNode);
-
 
 	mCamera->lookAt(racer->mVehicleNode->getPosition());
 
@@ -405,17 +436,15 @@ void OgreRenderer::prepareForTrack() {
 	mLight->setDiffuseColour(0.7, 0.7, 0.7);
 	mLight->setSpecularColour(0.7, 0.7, 0.7);
 
-
-
 	// Build track geometry:
 	buildTrackGeometry();
 
 	// ############### END Set up track / environment rendering ################
 
-	if (mpApp->watchReplay) {
+	// TODO 3: Ugly
+	if (mpApp->watchReplay && mReplayRacer) {
 		cameraFollowRacer(mReplayRacer);
-	}
-	else {
+	} else {
 		cameraFollowRacer(mLocalPlayerRacer);
 	}
 
@@ -427,7 +456,6 @@ void OgreRenderer::buildTrackGeometry() {
 
 	mTrackStaticGeometry->reset();
 	mTrackStaticGeometry->destroy();
-
 
 	mTrackStaticGeometry->setRenderingDistance(1000);
 

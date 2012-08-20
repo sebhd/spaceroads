@@ -14,8 +14,7 @@
 #include <OgreWindowEventUtilities.h>
 #include "../../GameModel/Track/TrackAtom/TrackAtom.h"
 #include "OGRERendererVehicle.h"
-//#include "Gorilla.h"
-
+#include "Gorilla.h"
 
 class OgreRenderer: public Ogre::WindowEventListener, public Ogre::FrameListener, public AbstractRenderer {
 public:
@@ -47,7 +46,6 @@ protected:
 
 private:
 
-
 	void cameraFollowRacer(OGRERendererVehicle* racer);
 	void buildTrackGeometry();
 
@@ -70,6 +68,18 @@ private:
 	OGRERendererVehicle* mReplayRacer;
 
 	Ogre::StaticGeometry* mTrackStaticGeometry;
+
+	// Gorilla stuff:
+	Gorilla::Silverback* mSilverback;
+	Gorilla::Screen* mScreen;
+	Gorilla::Layer* mLayer;
+
+	Gorilla::Polygon* poly;
+	Gorilla::LineList* list;
+	Gorilla::Caption* caption;
+	Gorilla::Rectangle* rect;
+	Gorilla::QuadList* quads;
+	Gorilla::MarkupText* markup;
 };
 
 #endif /* OGRERENDERER_H_ */
