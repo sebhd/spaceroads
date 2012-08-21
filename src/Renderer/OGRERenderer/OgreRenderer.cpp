@@ -58,7 +58,34 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		m_vehicleRenderers[ii]->update();
 	}
 
-	caption->text("blabla2");
+	std::string secondsString; // string which will contain the result
+	std::string hsecondsString;
+
+	std::ostringstream convert; // stream used for the conversion
+
+	unsigned int seconds =   mpApp->mStopwatch / 1000000;
+	unsigned int hseconds = (mpApp->mStopwatch - (seconds * 1000000)) / 10000;
+
+	convert << seconds;// insert the textual representation of 'Number' in the characters in the stream
+	secondsString = convert.str(); // set 'Result' to the contents of the stream
+
+	while(secondsString.size() < 2) {
+		secondsString = "0" + secondsString;
+	}
+
+
+	std::ostringstream convert2;
+
+	convert2 << hseconds;
+	hsecondsString = convert2.str();
+
+
+	while(hsecondsString.size() < 2) {
+		hsecondsString = "0" + hsecondsString;
+	}
+
+	mStopwatchLabel->text(secondsString + ":" + hsecondsString);
+
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
 
@@ -364,7 +391,6 @@ bool OgreRenderer::init() {
 	mSilverback->loadAtlas("dejavu");
 	mScreen = mSilverback->createScreen(vp, "dejavu");
 
-
 //	mScreen->setOrientation(Ogre::OR_DEGREE_270);
 	Ogre::Real vpW = mScreen->getWidth(), vpH = mScreen->getHeight();
 
@@ -375,20 +401,10 @@ bool OgreRenderer::init() {
 
 //	markup = mLayer->createMarkupText(9, 5, 5, "%@24%A Haiku\n%@14%Written by Betajaen%@9%\nSo many to choose from\nPretty typefaces on Ogre screen\nTime to update Git");
 
-	caption = mLayer->createCaption(9, vpW - 55, 5, "9");
-	caption->width(50);
-	caption->align(Gorilla::TextAlign_Right);
-
-	caption = mLayer->createCaption(14, vpW - 55, 18, "14");
-	caption->width(50);
-	caption->align(Gorilla::TextAlign_Right);
-
-	caption = mLayer->createCaption(24, vpW - 55, 33, "24");
-	caption->width(50);
-	caption->align(Gorilla::TextAlign_Right);
-	caption->text("blabla");
-
-
+	mStopwatchLabel = mLayer->createCaption(24, vpW - 200, 50, "24");
+	mStopwatchLabel->width(150);
+	mStopwatchLabel->align(Gorilla::TextAlign_Right);
+	mStopwatchLabel->text("blabla");
 
 	//############## END Set up Gorilla HUD ################
 

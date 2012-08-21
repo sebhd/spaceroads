@@ -192,6 +192,8 @@ void Application::playTrackFile(std::string filename) {
 
 	unsigned long stepCount = 0;
 
+	mStopwatch = 0;
+
 	//########### BEGIN The Main Loop! ##########
 	while (!stopPlayingTrack) {
 
@@ -227,6 +229,7 @@ void Application::playTrackFile(std::string filename) {
 
 			accumulator -= dt;
 
+			mStopwatch += dt;
 			stepCount++;
 		}
 
