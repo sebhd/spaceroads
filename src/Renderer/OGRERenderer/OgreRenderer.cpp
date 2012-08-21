@@ -58,6 +58,7 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		m_vehicleRenderers[ii]->update();
 	}
 
+	caption->text("blabla2");
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
 
@@ -369,12 +370,10 @@ bool OgreRenderer::init() {
 
 	// Create our drawing layer
 	mLayer = mScreen->createLayer(0);
-	rect = mLayer->createRectangle(0, 0, vpW, vpH);
-	rect->background_gradient(Gorilla::Gradient_Diagonal, Gorilla::rgb(98, 0, 63), Gorilla::rgb(255, 180, 174));
+//	rect = mLayer->createRectangle(0, 0, vpW, vpH);
+//	rect->background_gradient(Gorilla::Gradient_Diagonal, Gorilla::rgb(98, 0, 63), Gorilla::rgb(255, 180, 174));
 
-	markup =
-			mLayer->createMarkupText(9, 5, 5,
-					"%@24%A Haiku\n%@14%Written by Betajaen%@9%\nSo many to choose from\nPretty typefaces on Ogre screen\nTime to update Git");
+//	markup = mLayer->createMarkupText(9, 5, 5, "%@24%A Haiku\n%@14%Written by Betajaen%@9%\nSo many to choose from\nPretty typefaces on Ogre screen\nTime to update Git");
 
 	caption = mLayer->createCaption(9, vpW - 55, 5, "9");
 	caption->width(50);
@@ -387,6 +386,7 @@ bool OgreRenderer::init() {
 	caption = mLayer->createCaption(24, vpW - 55, 33, "24");
 	caption->width(50);
 	caption->align(Gorilla::TextAlign_Right);
+	caption->text("blabla");
 
 
 

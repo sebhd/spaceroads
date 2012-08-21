@@ -42,6 +42,7 @@ public:
 	bool stopPlayingTrack;
 	bool watchReplay;
 
+	unsigned long stopwatch;
 
 	std::vector<Racer*> m_racers;
 
