@@ -27,7 +27,7 @@ void ReplayRacer::pilotStep(unsigned long step) {
 	for(ii = 0; ii < mPlayedReplay.size(); ++ii) {
 		ReplayEntry cmd = mPlayedReplay[ii];
 
-		if (cmd.timestamp == mRaceTime) {
+		if (cmd.timestamp == mStepsCount) {
 			processCommand(cmd.cmd);
 			mLastReplayCmdIndex = ii;
 			commandLeft = true;

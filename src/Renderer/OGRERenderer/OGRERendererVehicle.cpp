@@ -82,6 +82,7 @@ void OGRERendererVehicle::update() {
 
 			Ogre::Quaternion t2;
 
+			// TODO 3: Make rotation speed configurable
 			t2.FromAngleAxis(a * 0.05, v);
 
 			mOrientation = t2 * mOrientation;

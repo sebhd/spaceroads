@@ -12,6 +12,7 @@
 #include "../util/AABB.h"
 #include "../../Racer/Racer.h"
 
+class Racer;
 
 class TrackAtom {
 public:

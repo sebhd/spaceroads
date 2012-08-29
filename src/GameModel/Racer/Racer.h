@@ -10,9 +10,12 @@
 
 #include "AABB.h"
 #include <vector>
+#include "../Track/TrackAtom/TrackAtom.h"
 
 // So muss ein Ogre-kompatibles Quaternion aussehen:
 typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first, cml::negative_cross> quat;
+
+class TrackAtom;
 
 class Racer {
 
@@ -38,6 +41,8 @@ public:
 		unsigned long timestamp;
 	};
 
+	TrackAtom* mLastHit;
+
 	// Allow SolidTrackAtom class to access private members of Vehicle:
 	friend class SolidTrackAtom;
 
@@ -51,14 +56,14 @@ public:
 	virtual void pilotStep(unsigned long step);
 	void processCommand(RacerCommand);
 	virtual void reset();
-	void setOrientation(quat rotQuat);
+
 	void updatePosition();
 	void updateVelocity();
 
 	bool mAddThrustLeft, mAddThrustRight;
 	bool mAddThrustForward, mReduceThrustForward;
 	bool mTryJump;
-	bool mWantReset;
+
 
 	float mThrustSideward, mThrustForward;
 
@@ -75,18 +80,23 @@ public:
 	cml::vector3f mDirForward;
 	cml::vector3f mOldVel;
 
+	// TODO 3: Merge these exclusive states into one variable?
 	bool mFinish;
 	bool mKilled;
+	bool mWantReset;
+
 
 	bool mJumpedInThisStep;
 
 	std::vector<ReplayEntry> mReplayCommands;
 
+	// TODO 3: Merge these two into one?
+	unsigned long int mStepsCount;
 	unsigned long int mRaceTime;
 
 
 private:
-
+	void setOrientation(quat rotQuat);
 
 	float mMaxThrustForward, mMaxThrustSideward;
 	float mMaxSpeedForward, mMaxSpeedSideward;

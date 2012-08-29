@@ -38,6 +38,8 @@ void Racer::reset() {
 	mFinish = false;
 	mKilled = false;
 
+	mLastHit = NULL;
+
 	// Somewhat close to original game:
 	//mAccelForward = 0.00005;
 
@@ -62,6 +64,7 @@ void Racer::reset() {
 
 	mWantReset = false;
 
+	mStepsCount = 0;
 	mRaceTime = 0;
 
 	mReplayCommands.clear();
@@ -130,7 +133,7 @@ void Racer::processCommand(RacerCommand cmd) {
 
 	ReplayEntry command;
 	command.cmd = cmd;
-	command.timestamp = mRaceTime;
+	command.timestamp = mStepsCount;
 
 	mReplayCommands.push_back(command);
 }

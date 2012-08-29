@@ -58,13 +58,20 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		m_vehicleRenderers[ii]->update();
 	}
 
+
+	/*######################### BEGIN Update HUD Stopwatch ######################*/
+
 	std::string secondsString; // string which will contain the result
 	std::string hsecondsString;
 
 	std::ostringstream convert; // stream used for the conversion
 
-	unsigned int seconds =   mpApp->mStopwatch / 1000000;
-	unsigned int hseconds = (mpApp->mStopwatch - (seconds * 1000000)) / 10000;
+	unsigned int time = mpApp->mStopwatch;
+	time = mLocalPlayerRacer->mpVehicle->mRaceTime;
+
+
+	unsigned int seconds =   time / 1000000;
+	unsigned int hseconds = (time - (seconds * 1000000)) / 10000;
 
 	convert << seconds;// insert the textual representation of 'Number' in the characters in the stream
 	secondsString = convert.str(); // set 'Result' to the contents of the stream
@@ -85,6 +92,8 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	}
 
 	mStopwatchLabel->text(secondsString + ":" + hsecondsString);
+
+	/*######################### END Update HUD Stopwatch ######################*/
 
 	return mpApp->handleFrameRenderingQueuedEvent();
 }

@@ -33,7 +33,7 @@ Application::Application() {
 
 	mReplayRacer = new ReplayRacer();
 
-	m_racers.push_back(mReplayRacer);
+	//m_racers.push_back(mReplayRacer);
 
 	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);
@@ -221,10 +221,15 @@ void Application::playTrackFile(std::string filename) {
 
 		while (accumulator >= dt) {
 
+			// TODO 3: Into the for?
 			mReplayRacer->pilotStep(stepCount);
 
 			for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
 				doRacerStep(m_racers[ii]);
+
+				if (!m_racers[ii]->mKilled && !m_racers[ii]->mWantReset && !m_racers[ii]->mFinish) {
+					m_racers[ii]->mRaceTime += dt;
+				}
 			}
 
 			accumulator -= dt;
@@ -244,7 +249,7 @@ void Application::playTrackFile(std::string filename) {
 
 void Application::doRacerStep(Racer* racer) {
 
-	racer->mRaceTime++;
+	racer->mStepsCount++;
 
 	if (!mpTrack->mExtent.containsPoint(racer->mPos)) {
 		racer->mKilled = true;
