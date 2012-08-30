@@ -13,7 +13,6 @@
 #include <sys/time.h>
 #include "../Application.h"
 
-
 Racer::Racer() {
 
 	// Configure the vehicle's collision AABB:
@@ -39,6 +38,7 @@ void Racer::reset() {
 	mKilled = false;
 
 	mLastHit = NULL;
+	mMaxEnergy = 10000;
 
 	// Somewhat close to original game:
 	//mAccelForward = 0.00005;
@@ -67,26 +67,26 @@ void Racer::reset() {
 	mStepsCount = 0;
 	mRaceTime = 0;
 
+	mEnergy = mMaxEnergy;
+
 	mReplayCommands.clear();
 }
-
 
 void Racer::pilotStep(unsigned long step) {
 	//cmd_spacebar(true);
 
 	/*
-	processCommand(CMD_ACCEL_PRS);
+	 processCommand(CMD_ACCEL_PRS);
 
-	if (mKilled) {
-		processCommand(CMD_SPACE_PRS);
-	}
-	*/
+	 if (mKilled) {
+	 processCommand(CMD_SPACE_PRS);
+	 }
+	 */
 }
-
 
 void Racer::processCommand(RacerCommand cmd) {
 
-	switch(cmd) {
+	switch (cmd) {
 	case CMD_ACCEL_PRS:
 		mAddThrustForward = true;
 		break;
@@ -213,18 +213,16 @@ void Racer::updatePosition() {
 	// thickness of the block in that direction!
 	// TODO 4: Try to fix this.
 
-
-	std::cout << mRotatorCountdown << std::endl;
-
+	//############ BEGIN Trigger delayed rotator effects #############
 	if (mRotatorCountdown > 0) {
 		mRotatorCountdown--;
 	}
 
-		if (mRotatorCountdown == 1) {
-			cmd_rotateDesiredOrientation(mRotatorAxis, mRotatorSteps);
-			mRotatorCountdown = 0;
-		}
-
+	if (mRotatorCountdown == 1) {
+		cmd_rotateDesiredOrientation(mRotatorAxis, mRotatorSteps);
+		mRotatorCountdown = 0;
+	}
+	//############ END Trigger delayed rotator effects #############
 
 	// Enforce top speed limit:
 	int topSpeed = 2;

@@ -29,6 +29,11 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 		ship->mKilled = true;
 	}
 
+	if (mIsEnergyRefresher) {
+		// TODO 3: Implement Racer class member that defines max energy!
+		ship->mEnergy = ship->mMaxEnergy;
+	}
+
 	// #################### BEGIN Determine wall normal vector #################
 	cml::vector3f wallNormal(0, 0, 0);
 

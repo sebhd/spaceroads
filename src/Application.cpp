@@ -249,7 +249,8 @@ void Application::playTrackFile(std::string filename) {
 
 void Application::doRacerStep(Racer* racer) {
 
-	racer->mStepsCount++;
+
+	// TODO 3: Move as much as possible from here to Racer class?
 
 	if (!mpTrack->mExtent.containsPoint(racer->mPos)) {
 		racer->mKilled = true;
@@ -267,6 +268,11 @@ void Application::doRacerStep(Racer* racer) {
 	}
 
 	// If the ship is destroyed, reset to the starting position:
+
+	if (racer->mEnergy == 0) {
+		racer->mKilled = true;
+		mpRenderer->showKilledInfo(true);
+	}
 
 	if (racer->mKilled) {
 
@@ -286,6 +292,10 @@ void Application::doRacerStep(Racer* racer) {
 		}
 
 	} else {
+
+		racer->mStepsCount++;
+		racer->mEnergy--;
+
 
 		racer->mOldVel = racer->mVelocity;
 

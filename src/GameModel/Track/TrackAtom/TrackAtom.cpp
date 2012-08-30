@@ -13,7 +13,9 @@ TrackAtom::TrackAtom(AABB bbox) {
 	mBBox = bbox;
 	mRenderMaterial = "SolidTrackAtom";
 	mName = "Unnamed Track Atom";
+
 	mIsDeadly = false;
+	mIsEnergyRefresher = false;
 	mIsFinish = false;
 
 }

@@ -35,7 +35,7 @@ public:
 	std::string mRenderMeshName;
 
 	bool mIsDeadly;
-
+	bool mIsEnergyRefresher;
 	bool mIsFinish;
 };
 

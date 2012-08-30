@@ -77,6 +77,7 @@ private:
 	Gorilla::Polygon* poly;
 	Gorilla::LineList* list;
 	Gorilla::Caption* mStopwatchLabel;
+	Gorilla::Caption* mEnergyLabel;
 	Gorilla::Rectangle* rect;
 	Gorilla::QuadList* quads;
 	Gorilla::MarkupText* markup;

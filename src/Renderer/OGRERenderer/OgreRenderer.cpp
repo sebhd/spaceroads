@@ -58,7 +58,6 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		m_vehicleRenderers[ii]->update();
 	}
 
-
 	/*######################### BEGIN Update HUD Stopwatch ######################*/
 
 	std::string secondsString; // string which will contain the result
@@ -69,31 +68,43 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	unsigned int time = mpApp->mStopwatch;
 	time = mLocalPlayerRacer->mpVehicle->mRaceTime;
 
-
-	unsigned int seconds =   time / 1000000;
+	unsigned int seconds = time / 1000000;
 	unsigned int hseconds = (time - (seconds * 1000000)) / 10000;
 
-	convert << seconds;// insert the textual representation of 'Number' in the characters in the stream
+	convert << seconds; // insert the textual representation of 'Number' in the characters in the stream
 	secondsString = convert.str(); // set 'Result' to the contents of the stream
 
-	while(secondsString.size() < 2) {
+	while (secondsString.size() < 2) {
 		secondsString = "0" + secondsString;
 	}
-
 
 	std::ostringstream convert2;
 
 	convert2 << hseconds;
 	hsecondsString = convert2.str();
 
-
-	while(hsecondsString.size() < 2) {
+	while (hsecondsString.size() < 2) {
 		hsecondsString = "0" + hsecondsString;
 	}
 
 	mStopwatchLabel->text(secondsString + ":" + hsecondsString);
 
 	/*######################### END Update HUD Stopwatch ######################*/
+
+	/*######################### BEGIN Update HUD Energy gauge ######################*/
+
+
+
+	std::ostringstream convert3; // stream used for the conversion
+
+
+	convert3 << mLocalPlayerRacer->mpVehicle->mEnergy;
+
+	std::string energyString = convert3.str();
+
+	mEnergyLabel->text(energyString);
+
+	/*######################### END Update HUD Energy gauge ######################*/
 
 	return mpApp->handleFrameRenderingQueuedEvent();
 }
@@ -414,6 +425,8 @@ bool OgreRenderer::init() {
 	mStopwatchLabel->width(150);
 	mStopwatchLabel->align(Gorilla::TextAlign_Right);
 	mStopwatchLabel->text("blabla");
+
+	mEnergyLabel = mLayer->createCaption(24, 24, 50, "100");
 
 	//############## END Set up Gorilla HUD ################
 

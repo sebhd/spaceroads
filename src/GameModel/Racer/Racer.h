@@ -98,6 +98,10 @@ public:
 	unsigned int mRotatorSteps;
 	unsigned int mRotatorAxis;
 
+
+	unsigned int mEnergy;
+	unsigned int mMaxEnergy;
+
 private:
 	void setOrientation(quat rotQuat);
 

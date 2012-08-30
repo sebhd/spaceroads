@@ -75,6 +75,10 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 			ta = new TrackAtom(bbox);
 			ta->mIsFinish = true;
 		}
+		else if (type == "refresher") {
+			ta = new SolidTrackAtom(bbox);
+			ta->mIsEnergyRefresher = true;
+		}
 		else if (type == "rotator") {
 
 			unsigned int axis = atoi(taElem->Attribute("axis"));
