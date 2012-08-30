@@ -81,7 +81,7 @@ void Application::handleKeyEvent(int key, bool pressed) {
 
 		if (!mLocalPlayerRacer->mKilled) {
 			switch (key) {
-
+/*
 			case KC_A:
 				if (pressed) {
 					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE1);
@@ -110,7 +110,7 @@ void Application::handleKeyEvent(int key, bool pressed) {
 					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, -1);
 				}
 				break;
-
+*/
 			case KC_DOWN:
 				//mReduceThrustForward = pressed;
 				if (pressed) {

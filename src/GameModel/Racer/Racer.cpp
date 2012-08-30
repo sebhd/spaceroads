@@ -213,6 +213,19 @@ void Racer::updatePosition() {
 	// thickness of the block in that direction!
 	// TODO 4: Try to fix this.
 
+
+	std::cout << mRotatorCountdown << std::endl;
+
+	if (mRotatorCountdown > 0) {
+		mRotatorCountdown--;
+	}
+
+		if (mRotatorCountdown == 1) {
+			cmd_rotateDesiredOrientation(mRotatorAxis, mRotatorSteps);
+			mRotatorCountdown = 0;
+		}
+
+
 	// Enforce top speed limit:
 	int topSpeed = 2;
 

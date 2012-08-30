@@ -8,13 +8,20 @@
 <Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="0" z="20" scalex="8" scaley="1" scalez="20" />
 <Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="8" z="40" scalex="8" scaley="1" scalez="20" />
 <Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-8" z="40" scalex="8" scaley="1" scalez="20" />
-<Atom material="SpaceRoads/Track/DarkGrey" 	type="solid" y="0" x="0" z="40" scalex="8" scaley="1" scalez="20" />
-<Atom material="SpaceRoads/Track/White" 	type="rotator" y="0" x="0" z="60" scalex="8" scaley="1" scalez="40" axis="2" steps="1"/>
+<Atom material="SpaceRoads/Track/DarkGrey" 	type="solid" y="0" x="0" z="40" scalex="8" scaley="1" scalez="500" />
 
+   <!-- Rotator -->
+
+   
 <!--
 
 0/0 Z-Achse rückwärts
 	-->
 
-<Atom material="SpaceRoads/Track/DarkGrey" 	type="rotator" y="-20" x="-40" z="60" scalex="80" scaley="1" scalez="200" axis="2" steps="1"/>
+<Atom material="SpaceRoads/Track/White" 	type="rotator" y="0" x="0" z="540" scalex="8" scaley="1" scalez="40" axis="2" steps="1"/>
+
+
+<Atom material="SpaceRoads/Track/DarkGrey" 	type="solid" y="50" x="-50" z="600" scalex="1" scaley="20" scalez="500" />
+
+
 </Track>

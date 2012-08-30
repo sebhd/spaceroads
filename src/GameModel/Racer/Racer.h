@@ -94,6 +94,9 @@ public:
 	unsigned long int mStepsCount;
 	unsigned long int mRaceTime;
 
+	unsigned int mRotatorCountdown;
+	unsigned int mRotatorSteps;
+	unsigned int mRotatorAxis;
 
 private:
 	void setOrientation(quat rotQuat);
