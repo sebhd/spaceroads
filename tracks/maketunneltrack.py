@@ -108,7 +108,7 @@ scalex = 30
 scaley = 1
 
 
-while(ii < 200):
+while(ii < 50):
     
 	x = 0
 	y = 0
@@ -167,6 +167,6 @@ while(ii < 200):
 	ii += 1
 
 # Finish:
-#outfile.write(makeXMLTag("Atom", {'x': 0, 'y':0, 'z': (ii-1) * 20, 'scalex': 8, 'scaley': 10, 'scalez':10, 'material': "none", 'finish':"True", 'type':"finish" }, True) + "\n")
+outfile.write(makeXMLTag("Atom", {'x': x - scalex * 2, 'y':0, 'z': z, 'scalex': scalex * 3, 'scaley': scalex * 3, 'scalez':1, 'material': "none", 'finish':"True", 'type':"finish" }, True) + "\n")
 
 outfile.write("</Track>")
