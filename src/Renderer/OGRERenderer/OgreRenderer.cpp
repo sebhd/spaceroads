@@ -314,7 +314,8 @@ bool OgreRenderer::init() {
 	mLight = mSceneMgr->createLight("MainLight");
 
 	// Set shadow technique:
-	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
+	//mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
+	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
 	// Instantiate vehicle renderers:
 
@@ -426,7 +427,10 @@ bool OgreRenderer::init() {
 	mStopwatchLabel->align(Gorilla::TextAlign_Right);
 	mStopwatchLabel->text("blabla");
 
-	mEnergyLabel = mLayer->createCaption(24, 24, 50, "100");
+
+	mLayer->createCaption(24, 50, 50, "Energy:");
+
+	mEnergyLabel = mLayer->createCaption(24, 200, 50, "0");
 
 	//############## END Set up Gorilla HUD ################
 

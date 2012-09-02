@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Track skybox="SpaceRoads/SkyBoxes/PurpleNebula2">
+<StartPos x="0" y="10" z="0" />
+<AmbientLight r="0.5" g="0.5" b="0.5" />
+<DirectionalLight x="-1" y="-1" z="1" />
+<!-- Solide Grundplatte
+<Atom material="SpaceRoads/Track/DarkGrey" 	type="solid" y="0" x="-10" z="-10" scalex="20" scaley="1" scalez="20" />
+-->
+
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-5" z="-5" scalex="10" scaley="1" scalez="105" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-15" z="100" scalex="10" scaley="1" scalez="150" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="5" z="100" scalex="10" scaley="1" scalez="150" />
+
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-25" z="250" scalex="10" scaley="1" scalez="150" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="15" z="250" scalex="10" scaley="1" scalez="150" />
+
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-35" z="400" scalex="10" scaley="1" scalez="150" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="25" z="400" scalex="10" scaley="1" scalez="150" />
+
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-35" z="550" scalex="10" scaley="1" scalez="150" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="25" z="550" scalex="10" scaley="1" scalez="150" />
+
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-35" z="700" scalex="70" scaley="1" scalez="50" />
+
+<!-- Die Treppe -->
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-35" z="750" scalex="70" scaley="5" scalez="100" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-35" z="850" scalex="70" scaley="10" scalez="100" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-35" z="950" scalex="70" scaley="15" scalez="100" />
+
+<!-- Boden der Schlucht -->
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-35" z="1050" scalex="70" scaley="20" scalez="500" />
+
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-5" z="1550" scalex="10" scaley="20" scalez="50" />
+
+   <!-- Wände der Schlucht -->
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="20" x="-35" z="1050" scalex="30" scaley="20" scalez="500" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="20" x="5" z="1050" scalex="30" scaley="20" scalez="500" />
+
+   <!-- Balken über der Schlucht -->
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="40" x="-15" z="1050" scalex="30" scaley="5" scalez="5" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="40" x="-15" z="1150" scalex="30" scaley="5" scalez="5" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="40" x="-15" z="1250" scalex="30" scaley="5" scalez="5" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="40" x="-15" z="1350" scalex="30" scaley="5" scalez="5" />
+
+
+<!--
+<Atom material="SpaceRoads/Track/DarkGrey" 	type="solid" y="0" x="8" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" 	type="solid" y="0" x="-8" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="0" z="20" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="8" z="40" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/White" 	type="solid" y="0" x="-8" z="40" scalex="8" scaley="1" scalez="20" />
+<Atom material="SpaceRoads/Track/DarkGrey" 	type="solid" y="0" x="0" z="40" scalex="8" scaley="1" scalez="500" />
+-->
+   <!-- Rotator -->
+
+   
+<!--
+
+0/0 Z-Achse rückwärts
+	-->
+<!--
+<Atom material="SpaceRoads/Track/White" 	type="rotator" y="0" x="0" z="540" scalex="8" scaley="1" scalez="40" axis="2" steps="1"/>
+
+
+<Atom material="SpaceRoads/Track/DarkGrey" 	type="solid" y="50" x="-50" z="600" scalex="1" scaley="20" scalez="200" />
+<Atom material="SpaceRoads/Track/Blue" type="refresher" y="50" x="-50" z="800" scalex="1" scaley="20" scalez="200" />
+
+   -->
+</Track>

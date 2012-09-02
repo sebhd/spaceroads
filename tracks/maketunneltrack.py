@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 import sys, os
+import random
 
 def makeXMLTag(element, attributes, close):
     result = "<" + element + " "
@@ -56,7 +57,26 @@ def makeFlatRoofTunnel(x,y,z, scalex, scaley, scalez):
     return result
 
   
+
+def makeBlock(x,y,z, sx,sy,sz, mat, side):
+	h = random.randint(0,100)	
+	if h < 20:
+		pass
+		
+	elif h == 88:
+		outfile.write(makeXMLTag("Atom", {'x': x, 'y':y, 'z':z, 'scalex':sx, 'scaley': sy, 'scalez': sz, 'material': 'SpaceRoads/Track/Yellow', 'type':'rotator', 'rotatorAxis':2, 'rotatorSteps':1}, True) + "\n")
+
+	elif h == 89:
+		outfile.write(makeXMLTag("Atom", {'x': x, 'y':y, 'z':z, 'scalex':sx, 'scaley': sy, 'scalez': sz, 'material': 'SpaceRoads/Track/Red', 'type':'rotator', 'rotatorAxis':2, 'rotatorSteps':-1}, True) + "\n")
+		
+	elif h > 98:
+		outfile.write(makeXMLTag("Atom", {'x': x, 'y':y, 'z':z, 'scalex': sx, 'scaley': sy, 'scalez': sz, 'material': 'SpaceRoads/Track/Blue', 'type':"refresher"}, True) + "\n")
+	else:
+		outfile.write(makeXMLTag("Atom", {'x': x, 'y':y, 'z':z, 'scalex':sx, 'scaley': sy, 'scalez': sz, 'material': mat, 'type':"solid"}, True) + "\n")
+  
 ####################### Here begins the program #######################
+
+random.seed()
 
 
 filename = "default_track.xml"
@@ -72,7 +92,7 @@ outfile.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
 outfile.write("<Track skybox=\"SpaceRoads/SkyBoxes/PurpleNebula2\">\n")
 
 outfile.write('<StartPos x="4" y="10" z="50" />\n')
-outfile.write('<AmbientLight r="0.5" g="0.5" b="0.5" />\n')
+outfile.write('<AmbientLight r="0.4" g="0.4" b="0.4" />\n')
 outfile.write('<DirectionalLight x="-1" y="-1" z="1">\n')
 
 outfile.write('</DirectionalLight>\n')
@@ -83,23 +103,22 @@ mat = 0
 
 ii = 0
 
-scalez = 40
-scalex = 8
+scalez = 50
+scalex = 30
 scaley = 1
 
 
-while(ii < 100):
+while(ii < 200):
     
 	x = 0
 	y = 0
 	z = ii * scalez
 	
 	if (ii - 3) % 20 == 0:
-	    outfile.write(makeCurvedRoofTunnel(x,y,z, scalex, 5.0,80))	
+	    outfile.write(makeCurvedRoofTunnel(x,y,z, scalex, 10,80))	
 	  #  outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley': 5, 'scalez': 80, 'material': "SpaceRoads/Track/Yellow"}, True) + "\n")
 	    #outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
-	
-	
+		
 	if mat == 0:
 	    material1 = "SpaceRoads/Track/DarkGrey"
 	    material2 = "SpaceRoads/Track/White"
@@ -110,27 +129,44 @@ while(ii < 100):
 	    mat = 0
 	
 	
-	if (ii+2)  % 10 == 0:
+	# Boden:
+	makeBlock(x + scalex, y, z, scalex, 1, scalez, material2, 0)
+	makeBlock(x,          y, z, scalex, 1, scalez, material1, 0)
+	makeBlock(x - scalex, y, z, scalex, 1, scalez, material2, 0)
+	
+
+	th = scalex * 3
 		
-		#outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
-		outfile.write(makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
-	elif (ii + 1) % 10 == 0 or (ii + 2) % 10 == 0:
-		pass
-	else:
-	    outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
-	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
-	    outfile.write(makeXMLTag("Atom", {'x':x, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
-		
-	    outfile.write(makeXMLTag("Atom", {'x':x + scalex, 'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
-	    outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': scalez, 'material': material2, 'type':"solid"}, True) + "\n")
-	    outfile.write(makeXMLTag("Atom", {'x':x,          'y':60, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
+	# Decke:
+	makeBlock(x + scalex, th, z, scalex, 1, scalez, material2, 2)
+	makeBlock(x         , th, z, scalex, 1, scalez, material1, 2)
+	makeBlock(x - scalex, th, z, scalex, 1, scalez, material2, 2)
 	
 	
-	outfile.write(makeXMLTag("Atom", {'x':x - scalex * 4, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
-	outfile.write(makeXMLTag("Atom", {'x':x + scalex * 5, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
+	
+	# Wand links:
+	makeBlock(x + scalex*2, y, z, 1, scalex, scalez, material2, 1)
+	makeBlock(x + scalex*2, y + scalex, z, 1, scalex, scalez, material1, 1)
+	makeBlock(x + scalex*2, y + scalex * 2, z, 1, scalex, scalez, material2, 1)
+
+
+	
+	
+	
+	# Wand rechts:
+	makeBlock(x - scalex, y, z, 1, scalex, scalez, material2, 3)
+	makeBlock(x - scalex, y + scalex, z, 1, scalex, scalez, material1, 3)
+	makeBlock(x - scalex, y + scalex * 2, z, 1, scalex, scalez, material2, 3)
+
+	
+	
+	
+	#outfile.write(makeXMLTag("Atom", {'x':x - scalex * 4, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
+	#outfile.write(makeXMLTag("Atom", {'x':x + scalex * 5, 'y':25, 'z':z, 'scalex':1, 'scaley': 10, 'scalez':scalez, 'material': material1, 'type':"solid"}, True) + "\n")
 		
 	ii += 1
 
-outfile.write(makeXMLTag("Atom", {'x': 0, 'y':0, 'z': (ii-1) * 20, 'scalex': 8, 'scaley': 10, 'scalez':10, 'material': "none", 'finish':"True", 'type':"finish" }, True) + "\n")
+# Finish:
+#outfile.write(makeXMLTag("Atom", {'x': 0, 'y':0, 'z': (ii-1) * 20, 'scalex': 8, 'scaley': 10, 'scalez':10, 'material': "none", 'finish':"True", 'type':"finish" }, True) + "\n")
 
 outfile.write("</Track>")

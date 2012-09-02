@@ -38,7 +38,7 @@ void Racer::reset() {
 	mKilled = false;
 
 	mLastHit = NULL;
-	mMaxEnergy = 10000;
+	mMaxEnergy = 5000;
 
 	// Somewhat close to original game:
 	//mAccelForward = 0.00005;

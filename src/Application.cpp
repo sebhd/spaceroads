@@ -19,7 +19,7 @@
 
 Application::Application() {
 
-	watchReplay = true;
+	watchReplay = false;
 	quit = false;
 
 	mpTrack = NULL;

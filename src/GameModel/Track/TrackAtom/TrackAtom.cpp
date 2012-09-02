@@ -18,6 +18,9 @@ TrackAtom::TrackAtom(AABB bbox) {
 	mIsEnergyRefresher = false;
 	mIsFinish = false;
 
+	mRotatorAxis = 0;
+	mRotatorSteps = 0;
+
 }
 
 TrackAtom::~TrackAtom() {

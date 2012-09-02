@@ -83,7 +83,7 @@ void OGRERendererVehicle::update() {
 			Ogre::Quaternion t2;
 
 			// TODO 3: Make rotation speed configurable
-			t2.FromAngleAxis(a * 0.01, v);
+			t2.FromAngleAxis(a * 0.05, v);
 
 			mOrientation = t2 * mOrientation;
 		} else {
@@ -135,7 +135,6 @@ void OGRERendererVehicle::update() {
 	} else {
 		// Roll only the vehicle, not the camera:
 		mVehicleNode->setOrientation(mOrientation);
-		//mVehicleNode->setOrientation(q);
 		mVehicleMeshNode->setOrientation(qSidewardThrustRoll * qForwardThrustPitch);
 	}
 

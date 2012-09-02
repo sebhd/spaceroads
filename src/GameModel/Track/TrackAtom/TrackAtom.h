@@ -37,6 +37,9 @@ public:
 	bool mIsDeadly;
 	bool mIsEnergyRefresher;
 	bool mIsFinish;
+	unsigned int mRotatorSteps;
+	unsigned int mRotatorAxis;
+
 };
 
 

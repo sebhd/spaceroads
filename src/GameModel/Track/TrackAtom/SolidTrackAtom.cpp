@@ -25,15 +25,6 @@ SolidTrackAtom::~SolidTrackAtom() {
 
 void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
-	if (mIsDeadly) {
-		ship->mKilled = true;
-	}
-
-	if (mIsEnergyRefresher) {
-		// TODO 3: Implement Racer class member that defines max energy!
-		ship->mEnergy = ship->mMaxEnergy;
-	}
-
 	// #################### BEGIN Determine wall normal vector #################
 	cml::vector3f wallNormal(0, 0, 0);
 
@@ -76,28 +67,52 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 	}
 	//################ END Kill vehicle if it hits something with the nose too fast ###############
 
-	// ################ BEGIN Jumping & bouncing ##############
-	if (cml::dot(ship->getGravity(), wallNormal) < 0 && cml::dot(ship->mOldVel, wallNormal) < 0
-			&& !ship->mJumpedInThisStep) {
+	// Effects that only happen if ship touches the track atom with its belly:
+	if (cml::dot(ship->getGravity(), wallNormal) < 0 && cml::dot(ship->mOldVel, wallNormal) < 0) {
 
-		// Jumping...
-		if (ship->mTryJump) {
-			ship->mVelocity -= cml::normalize(ship->getGravity()) * mJumpForce;
+		// Refresh energy:
+		if (mIsEnergyRefresher) {
+			ship->mEnergy = ship->mMaxEnergy;
 		}
 
-		// ... or bouncing (never both):
-		else if (hitComponent.length() > mBounceThreshold) {
+		// Deadly block?
+		if (mIsDeadly) {
+			ship->mKilled = true;
+		}
 
-			if (mRebound < 0) {
-				ship->mVelocity -= wallNormal * mRebound;
-			} else {
-				ship->mVelocity -= hitComponent * mRebound;
+		// Rotator?
+
+		if (mRotatorSteps != 0) {
+			// TODO 3: Implement public jump method?
+			ship->mVelocity -= cml::normalize(ship->getGravity()) * 1;
+
+			ship->mRotatorCountdown = 30;
+			ship->mRotatorAxis = mRotatorAxis;
+			ship->mRotatorSteps = mRotatorSteps;
+		}
+
+		// ################ BEGIN Jumping & bouncing ##############
+		if (!ship->mJumpedInThisStep) {
+
+			// Jumping...
+			if (ship->mTryJump) {
+				ship->mVelocity -= cml::normalize(ship->getGravity()) * mJumpForce;
 			}
-		}
 
-		ship->mJumpedInThisStep = true;
+			// ... or bouncing (never both):
+			else if (hitComponent.length() > mBounceThreshold) {
+
+				if (mRebound < 0) {
+					ship->mVelocity -= wallNormal * mRebound;
+				} else {
+					ship->mVelocity -= hitComponent * mRebound;
+				}
+			}
+
+			ship->mJumpedInThisStep = true;
+		}
+		// ################ END Jumping & bouncing ##############
 	}
-	// ################ END Jumping & bouncing ##############
 
 	//############### BEGIN Slip off blocks when we come too close to the edge ##############
 

@@ -81,14 +81,28 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 		}
 		else if (type == "rotator") {
 
-			unsigned int axis = atoi(taElem->Attribute("axis"));
-			unsigned int steps = atof(taElem->Attribute("steps"));
-			ta = new RotatorTrackAtom(bbox, axis, steps);
+
+			unsigned int axis = atoi(taElem->Attribute("rotatorAxis"));
+			unsigned int steps = atof(taElem->Attribute("rotatorSteps"));
+			ta = new SolidTrackAtom(bbox);
+			ta->mRotatorSteps = steps;
+			ta->mRotatorAxis = axis;
+
 		}
 		else {
 			ta = new SolidTrackAtom(bbox);
 
 			SolidTrackAtom* solid = (SolidTrackAtom*) ta;
+
+
+			if (taElem->Attribute("bounceThreshold") != NULL) {
+				solid->mBounceThreshold = atof(taElem->Attribute("bounceThreshold"));
+			}
+
+			if (taElem->Attribute("finish") != NULL) {
+				solid->mSlipOffset = atof(taElem->Attribute("slipOffset"));
+			}
+
 
 			if (taElem->Attribute("jumpForce") != NULL) {
 				solid->mJumpForce = atof(taElem->Attribute("jumpForce"));
@@ -98,9 +112,10 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 				solid->mSlipOffset = atof(taElem->Attribute("slipOffset"));
 			}
 
-			if (taElem->Attribute("finish") != NULL) {
-				solid->mSlipOffset = atof(taElem->Attribute("slipOffset"));
+			if (taElem->Attribute("rebound") != NULL) {
+				solid->mRebound = atof(taElem->Attribute("rebound"));
 			}
+
 		}
 		//################### END Instantiate track atom object depending on type ################
 
@@ -135,7 +150,6 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 			mesh.mRenderMaterial = taElem->Attribute("material");
 
 		mMeshes.push_back(mesh);
-
 	}
 	//#################### END Read <Mesh> Elements ######################
 
