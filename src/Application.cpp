@@ -19,7 +19,7 @@
 
 Application::Application() {
 
-	watchReplay = false;
+	watchReplay = true;
 	quit = false;
 
 	mpTrack = NULL;
@@ -33,7 +33,7 @@ Application::Application() {
 
 	mReplayRacer = new ReplayRacer();
 
-	//m_racers.push_back(mReplayRacer);
+	m_racers.push_back(mReplayRacer);
 
 	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);
@@ -155,7 +155,12 @@ void Application::handleKeyEvent(int key, bool pressed) {
 	}
 }
 
-void Application::playTrackFile(std::string filename) {
+void Application::playTrackFile(std::string filename, bool replay) {
+
+
+
+
+
 
 	stopPlayingTrack = false;
 	quit = false;
@@ -394,6 +399,7 @@ AbstractRenderer* Application::getRenderer() {
 
 bool Application::handleFrameRenderingQueuedEvent() {
 
+
 	return true;
 }
 
@@ -426,7 +432,7 @@ void Application::run() {
 	std::string trackFilePath = "tracks/default_track.xml";
 
 	while (!quit) {
-		playTrackFile(trackFilePath);
+		playTrackFile(trackFilePath, true);
 	}
 }
 

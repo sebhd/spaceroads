@@ -72,12 +72,14 @@ private:
 	// Gorilla stuff:
 	Gorilla::Silverback* mSilverback;
 	Gorilla::Screen* mScreen;
-	Gorilla::Layer* mLayer;
+	Gorilla::Layer* mHUDLayer;
+	Gorilla::Layer* mHintsLayer;
 
 	Gorilla::Polygon* poly;
 	Gorilla::LineList* list;
 	Gorilla::Caption* mStopwatchLabel;
 	Gorilla::Caption* mEnergyLabel;
+	Gorilla::Caption* mPressToPlayLabel;
 	Gorilla::Rectangle* rect;
 	Gorilla::QuadList* quads;
 	Gorilla::MarkupText* markup;

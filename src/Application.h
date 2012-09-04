@@ -31,7 +31,7 @@ public:
 
 	virtual void handleKeyEvent(int, bool pressed);
 
-	void playTrackFile(std::string filename);
+	void playTrackFile(std::string filename, bool replay);
 
 	void handleKeyboardInput(Key, bool pressed);
 

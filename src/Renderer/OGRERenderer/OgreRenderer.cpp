@@ -43,6 +43,8 @@ OgreRenderer::~OgreRenderer(void) {
 // Handler for frameRenderingQueued event:
 bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
+	mHintsLayer->setVisible(mpApp->watchReplay);
+
 	if (mpApp->mpTrack->mHasChanged) {
 		buildTrackGeometry();
 		mpApp->mpTrack->mHasChanged = false;
@@ -417,24 +419,30 @@ bool OgreRenderer::init() {
 	//Ogre::Real vpH = mScreen->getHeight();
 
 	// Create our drawing layer
-	mLayer = mScreen->createLayer(0);
+	mHUDLayer = mScreen->createLayer(0);
+	mHintsLayer = mScreen->createLayer(1);
+
 //	rect = mLayer->createRectangle(0, 0, vpW, vpH);
 //	rect->background_gradient(Gorilla::Gradient_Diagonal, Gorilla::rgb(98, 0, 63), Gorilla::rgb(255, 180, 174));
 
 //	markup = mLayer->createMarkupText(9, 5, 5, "%@24%A Haiku\n%@14%Written by Betajaen%@9%\nSo many to choose from\nPretty typefaces on Ogre screen\nTime to update Git");
 
-	mStopwatchLabel = mLayer->createCaption(24, vpW - 200, 50, "24");
+	mStopwatchLabel = mHUDLayer->createCaption(24, vpW - 200, 50, "24");
 	mStopwatchLabel->width(150);
 	mStopwatchLabel->align(Gorilla::TextAlign_Right);
 	mStopwatchLabel->text("blabla");
 
 
-	mLayer->createCaption(24, 50, 50, "Energy:");
+	mHUDLayer->createCaption(24, 50, 50, "Energy:");
 
-	mEnergyLabel = mLayer->createCaption(24, 200, 50, "0");
+	mEnergyLabel = mHUDLayer->createCaption(24, 200, 50, "0");
 
 	//############## END Set up Gorilla HUD ################
 
+
+	// TODO 3: Compute screen center
+	mPressToPlayLabel = mHintsLayer->createCaption(24, 550, 400, "Press space to play");
+	//mHintsLayer->setVisible(true);
 	return true;
 }
 
