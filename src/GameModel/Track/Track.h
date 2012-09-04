@@ -10,7 +10,7 @@
 
 #include <vector>
 #include "TrackDecorationMesh.h"
-#include "TrackAtom/TrackAtom.h"
+#include "TrackAtom.h"
 #include "../Racer/Racer.h"
 #include "cml/cml.h"
 

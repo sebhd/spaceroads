@@ -60,13 +60,13 @@ def makeFlatRoofTunnel(x,y,z, scalex, scaley, scalez):
 
 def makeBlock(x,y,z, sx,sy,sz, mat, side):
 	h = random.randint(0,100)	
-	if h < 20:
+	if h < 15:
 		pass
 		
-	elif h == 88:
+	elif h == 86 or h == 87:
 		outfile.write(makeXMLTag("Atom", {'x': x, 'y':y, 'z':z, 'scalex':sx, 'scaley': sy, 'scalez': sz, 'material': 'SpaceRoads/Track/Yellow', 'type':'rotator', 'rotatorAxis':2, 'rotatorSteps':1}, True) + "\n")
 
-	elif h == 89:
+	elif h == 88 or h == 89:
 		outfile.write(makeXMLTag("Atom", {'x': x, 'y':y, 'z':z, 'scalex':sx, 'scaley': sy, 'scalez': sz, 'material': 'SpaceRoads/Track/Red', 'type':'rotator', 'rotatorAxis':2, 'rotatorSteps':-1}, True) + "\n")
 		
 	elif h > 98:
@@ -113,9 +113,9 @@ while(ii < 50):
 	x = 0
 	y = 0
 	z = ii * scalez
-	
-	if (ii - 3) % 20 == 0:
-	    outfile.write(makeCurvedRoofTunnel(x,y,z, scalex, 10,80))	
+	#
+	#if (ii - 3) % 20 == 0:
+#	    outfile.write(makeCurvedRoofTunnel(x,y,z, scalex, 10,80))	
 	  #  outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y+1, 'z':z, 'scalex':scalex, 'scaley': 5, 'scalez': 80, 'material': "SpaceRoads/Track/Yellow"}, True) + "\n")
 	    #outfile.write(makeXMLTag("Atom", {'x':x - scalex, 'y':y, 'z':z, 'scalex':scalex, 'scaley': 1, 'scalez': 60, 'material': material}, True) + "\n")
 		
@@ -167,6 +167,6 @@ while(ii < 50):
 	ii += 1
 
 # Finish:
-outfile.write(makeXMLTag("Atom", {'x': x - scalex * 2, 'y':0, 'z': z, 'scalex': scalex * 3, 'scaley': scalex * 3, 'scalez':1, 'material': "none", 'finish':"True", 'type':"finish" }, True) + "\n")
+outfile.write(makeXMLTag("Atom", {'x': x - scalex, 'y':0, 'z': z, 'scalex': scalex * 3, 'scaley': scalex * 3, 'scalez':1, 'material': "none",  'type':"finish" }, True) + "\n")
 
 outfile.write("</Track>")

@@ -29,6 +29,5 @@ src \
 src/Renderer/OGRERenderer \
 src/Renderer \
 src/GameModel/Track \
-src/GameModel/Track/TrackAtom \
 src/GameModel/Racer \
 

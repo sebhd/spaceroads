@@ -10,7 +10,7 @@
 
 #include <string>
 #include "../util/AABB.h"
-#include "../../Racer/Racer.h"
+#include "../Racer/Racer.h"
 
 class Racer;
 
@@ -20,7 +20,6 @@ public:
 	enum HitSide {
 		HIT_TOP, HIT_BOTTOM, HIT_LEFT, HIT_RIGHT, HIT_FRONT, HIT_BACK, HIT_NONE
 	};
-
 
 	TrackAtom(AABB bbox);
 	virtual ~TrackAtom();
@@ -40,14 +39,15 @@ public:
 	unsigned int mRotatorSteps;
 	unsigned int mRotatorAxis;
 
+	float mBounceThreshold;
+	float mRebound;
+	float mJumpForce;
+	float mSlipOffset;
 };
-
-
 
 struct CollisionInfo {
 	TrackAtom* ta;
 	TrackAtom::HitSide hs;
 };
-
 
 #endif /* TRACKATOM_H_ */

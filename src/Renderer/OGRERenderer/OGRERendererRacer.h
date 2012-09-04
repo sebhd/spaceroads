@@ -13,10 +13,10 @@
 #include "../../GameModel/Racer/Racer.h"
 
 
-class OGRERendererVehicle {
+class OGRERendererRacer {
 public:
-	OGRERendererVehicle(Ogre::SceneManager*, Racer*, std::string);
-	virtual ~OGRERendererVehicle();
+	OGRERendererRacer(Ogre::SceneManager*, Racer*, std::string);
+	virtual ~OGRERendererRacer();
 
 	void update();
 

@@ -1,14 +1,26 @@
 /*
- * SolidTrackAtom.cpp
+ * TrackAtom.cpp
  *
- *  Created on: 04.05.2012
+ *  Created on: 25.04.2012
  *      Author: sebastian
  */
 
-#include "SolidTrackAtom.h"
 
-SolidTrackAtom::SolidTrackAtom(AABB bbox) :
-		TrackAtom(bbox) {
+#include "TrackAtom.h"
+
+TrackAtom::TrackAtom(AABB bbox) {
+
+	mBBox = bbox;
+	mRenderMaterial = "SolidTrackAtom";
+	mName = "Unnamed Track Atom";
+
+	mIsDeadly = false;
+	mIsEnergyRefresher = false;
+	mIsFinish = false;
+
+	mRotatorAxis = 0;
+	mRotatorSteps = 0;
+
 
 	mRenderMaterial = "SpaceRoads/Track/Solid";
 	mRenderMeshName = "";
@@ -17,13 +29,27 @@ SolidTrackAtom::SolidTrackAtom(AABB bbox) :
 	mRebound = 0.4;
 	mJumpForce = 0.6;
 	mSlipOffset = 0.01;
+
+
+
+	mBBox = bbox;
+	mRenderMaterial = "SolidTrackAtom";
+	mName = "Unnamed Track Atom";
+
+	mIsDeadly = false;
+	mIsEnergyRefresher = false;
+	mIsFinish = false;
+
+	mRotatorAxis = 0;
+	mRotatorSteps = 0;
 }
 
-SolidTrackAtom::~SolidTrackAtom() {
+TrackAtom::~TrackAtom() {
 	// TODO Auto-generated destructor stub
+
 }
 
-void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
+void TrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
 	// #################### BEGIN Determine wall normal vector #################
 	cml::vector3f wallNormal(0, 0, 0);
@@ -59,6 +85,13 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 	cml::vector3f hitComponent = cml::dot(ship->mOldVel, wallNormal) * wallNormal;
 
 	// #################### END Determine wall normal vector #################
+
+	// Finish check:
+	if (mIsFinish) {
+		ship->mFinish = true;
+		return;
+	}
+
 
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	if (cml::dot(ship->mDirForward, wallNormal) < -0.8 && hitComponent.length() > 0.3) {
@@ -142,7 +175,7 @@ void SolidTrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
 }
 
-void SolidTrackAtom::applyCounterForces(Racer* ship, HitSide hs) {
+void TrackAtom::applyCounterForces(Racer* ship, HitSide hs) {
 
 	if (hs == HIT_TOP || hs == HIT_BOTTOM) {
 		ship->mVelocity[1] = 0;

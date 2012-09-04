@@ -12,8 +12,8 @@
 #include "../AbstractRenderer.h"
 #include <OgreRoot.h>
 #include <OgreWindowEventUtilities.h>
-#include "../../GameModel/Track/TrackAtom/TrackAtom.h"
-#include "OGRERendererVehicle.h"
+#include "../../GameModel/Track/TrackAtom.h"
+#include "OGRERendererRacer.h"
 #include "Gorilla.h"
 
 class OgreRenderer: public Ogre::WindowEventListener, public Ogre::FrameListener, public AbstractRenderer {
@@ -46,7 +46,7 @@ protected:
 
 private:
 
-	void cameraFollowRacer(OGRERendererVehicle* racer);
+	void cameraFollowRacer(OGRERendererRacer* racer);
 	void buildTrackGeometry();
 
 	bool mSidewardThrustRollCamera;
@@ -62,10 +62,10 @@ private:
 	Ogre::Camera* mCamera;
 	Ogre::SceneNode* mCameraNode;
 
-	std::vector<OGRERendererVehicle*> m_vehicleRenderers;
+	std::vector<OGRERendererRacer*> m_vehicleRenderers;
 
-	OGRERendererVehicle* mLocalPlayerRacer;
-	OGRERendererVehicle* mReplayRacer;
+	OGRERendererRacer* mLocalPlayerRacer;
+	OGRERendererRacer* mReplayRacer;
 
 	Ogre::StaticGeometry* mTrackStaticGeometry;
 

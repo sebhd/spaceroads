@@ -6,12 +6,12 @@
  */
 
 // TODO 3: Make vehicle/camera rotation speed framerate-independent.
-#include "OGRERendererVehicle.h"
+#include "OGRERendererRacer.h"
 #include <OgreParticle.h>
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
 
-OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* a_vehicle, std::string aname) {
+OGRERendererRacer::OGRERendererRacer(Ogre::SceneManager* a_sceneMgr, Racer* a_vehicle, std::string aname) {
 
 	name = aname;
 
@@ -50,11 +50,11 @@ OGRERendererVehicle::OGRERendererVehicle(Ogre::SceneManager* a_sceneMgr, Racer* 
 
 }
 
-OGRERendererVehicle::~OGRERendererVehicle() {
+OGRERendererRacer::~OGRERendererRacer() {
 	// TODO Auto-generated destructor stub
 }
 
-void OGRERendererVehicle::update() {
+void OGRERendererRacer::update() {
 
 	const cml::vector3d& pos = mpVehicle->mPos;
 

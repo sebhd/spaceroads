@@ -353,7 +353,7 @@ bool OgreRenderer::init() {
 
 		std::string name = "racer" + sstream.str();
 
-		OGRERendererVehicle* vr = new OGRERendererVehicle(mSceneMgr, mpApp->m_racers[ii], name);
+		OGRERendererRacer* vr = new OGRERendererRacer(mSceneMgr, mpApp->m_racers[ii], name);
 
 		if (mpApp->m_racers[ii] == mpApp->mLocalPlayerRacer) {
 			mLocalPlayerRacer = vr;
@@ -413,7 +413,8 @@ bool OgreRenderer::init() {
 	mScreen = mSilverback->createScreen(vp, "dejavu");
 
 //	mScreen->setOrientation(Ogre::OR_DEGREE_270);
-	Ogre::Real vpW = mScreen->getWidth(), vpH = mScreen->getHeight();
+	Ogre::Real vpW = mScreen->getWidth();
+	//Ogre::Real vpH = mScreen->getHeight();
 
 	// Create our drawing layer
 	mLayer = mScreen->createLayer(0);
@@ -437,7 +438,7 @@ bool OgreRenderer::init() {
 	return true;
 }
 
-void OgreRenderer::cameraFollowRacer(OGRERendererVehicle* racer) {
+void OgreRenderer::cameraFollowRacer(OGRERendererRacer* racer) {
 
 	if (racer->mVehicleNode == NULL) {
 		return;

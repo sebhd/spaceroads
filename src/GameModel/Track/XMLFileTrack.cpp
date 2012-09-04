@@ -9,8 +9,7 @@
 #include "XMLFileTrack.h"
 #include <iostream>
 #include <string>
-#include "TrackAtom/SolidTrackAtom.h"
-#include "TrackAtom/RotatorTrackAtom.h"
+#include "TrackAtom.h"
 
 XMLFileTrack::XMLFileTrack(std::string filename) {
 
@@ -49,7 +48,6 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 	//#################### END Read Directional light ######################
 
 	//#################### BEGIN Read <Atom> Elements ######################
-	TrackAtom* ta;
 
 	for (TiXmlElement* taElem = trackElem->FirstChildElement("Atom"); taElem != NULL;
 			taElem = taElem->NextSiblingElement("Atom")) {
@@ -71,54 +69,47 @@ XMLFileTrack::XMLFileTrack(std::string filename) {
 		AABB bbox(cml::vector3d(x, y, z), cml::vector3d(x + sizex, y + sizey, z + sizez));
 
 		//################### BEGIN Instantiate track atom object depending on type ################
+		TrackAtom* ta = new TrackAtom(bbox);
+
 		if (type == "finish") {
-			ta = new TrackAtom(bbox);
 			ta->mIsFinish = true;
 		}
-		else if (type == "refresher") {
-			ta = new SolidTrackAtom(bbox);
+
+		if (type == "refresher") {
 			ta->mIsEnergyRefresher = true;
 		}
-		else if (type == "rotator") {
 
+		if (type == "rotator") {
 
 			unsigned int axis = atoi(taElem->Attribute("rotatorAxis"));
 			unsigned int steps = atof(taElem->Attribute("rotatorSteps"));
-			ta = new SolidTrackAtom(bbox);
+
 			ta->mRotatorSteps = steps;
 			ta->mRotatorAxis = axis;
 
 		}
-		else {
-			ta = new SolidTrackAtom(bbox);
 
-			SolidTrackAtom* solid = (SolidTrackAtom*) ta;
-
-
-			if (taElem->Attribute("bounceThreshold") != NULL) {
-				solid->mBounceThreshold = atof(taElem->Attribute("bounceThreshold"));
-			}
-
-			if (taElem->Attribute("finish") != NULL) {
-				solid->mSlipOffset = atof(taElem->Attribute("slipOffset"));
-			}
-
-
-			if (taElem->Attribute("jumpForce") != NULL) {
-				solid->mJumpForce = atof(taElem->Attribute("jumpForce"));
-			}
-
-			if (taElem->Attribute("slipOffset") != NULL) {
-				solid->mSlipOffset = atof(taElem->Attribute("slipOffset"));
-			}
-
-			if (taElem->Attribute("rebound") != NULL) {
-				solid->mRebound = atof(taElem->Attribute("rebound"));
-			}
-
+		if (taElem->Attribute("bounceThreshold") != NULL) {
+			ta->mBounceThreshold = atof(taElem->Attribute("bounceThreshold"));
 		}
-		//################### END Instantiate track atom object depending on type ################
 
+		if (taElem->Attribute("slipOffset") != NULL) {
+			ta->mSlipOffset = atof(taElem->Attribute("slipOffset"));
+		}
+
+		if (taElem->Attribute("jumpForce") != NULL) {
+			ta->mJumpForce = atof(taElem->Attribute("jumpForce"));
+		}
+
+		if (taElem->Attribute("slipOffset") != NULL) {
+			ta->mSlipOffset = atof(taElem->Attribute("slipOffset"));
+		}
+
+		if (taElem->Attribute("rebound") != NULL) {
+			ta->mRebound = atof(taElem->Attribute("rebound"));
+		}
+
+		//################### END Instantiate track atom object depending on type ################
 
 		if (taElem->Attribute("material") != NULL) {
 			ta->mRenderMaterial = taElem->Attribute("material");

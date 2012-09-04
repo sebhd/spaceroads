@@ -4,14 +4,15 @@
 <AmbientLight r="0.4" g="0.4" b="0.4" />
 <DirectionalLight x="-1" y="-1" z="1">
 </DirectionalLight>
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="0" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="0" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="0" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="0" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="0" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="0" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="0" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="0" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="0" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="0" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="0" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="0" x="-30" z="0" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="50" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="50" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="50" scalex="30" scaley="1" scalez="50" />
@@ -19,12 +20,10 @@
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="50" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="50" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="50" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/Blue" type="refresher" y="30" x="60" z="50" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="50" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="50" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="50" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="50" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="100" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="100" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="60" x="-30" z="50" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="100" scalex="30" scaley="1" scalez="50" />
@@ -32,71 +31,70 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="100" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="100" scalex="1" scaley="30" scalez="50" />
-<!-- ########## BEGIN Tunnel ########## -->
-<Mesh material="SpaceRoads/Track/Red" mesh="CurvedRoofTunnel" y="1" x="0" z="150" scalex="30" scaley="10" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="150" scalex="1" scaley="9" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="29" z="150" scalex="1" scaley="9" scalez="80" />
-<Atom slipOffset="13.3" material="none" type="solid" y="10" x="0" z="150" scalex="30" scaley="1" scalez="80" />
-<!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="150" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="150" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="150" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="150" scalex="1" scaley="30" scalez="50" />
-<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="0" x="-30" z="150" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="150" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="150" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="200" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="150" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="200" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="200" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="200" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="200" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="200" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="200" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="200" scalex="1" scaley="30" scalez="50" />
-<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="30" x="-30" z="200" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="200" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="250" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="250" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="250" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="250" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="250" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="250" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="250" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/Blue" type="refresher" y="0" x="-30" z="250" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="250" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="250" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/Blue" type="refresher" y="60" x="60" z="250" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="300" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="300" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="300" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="300" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="300" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="300" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="300" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="300" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="300" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="350" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="350" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="400" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="400" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="400" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="400" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="400" scalex="30" scaley="1" scalez="50" />
-<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="0" x="60" z="400" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="400" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="400" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="450" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="450" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="450" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="450" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="450" scalex="30" scaley="1" scalez="50" />
@@ -113,64 +111,64 @@
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="500" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="500" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="500" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="500" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="500" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="500" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="500" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="0" x="-30" z="500" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="500" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="500" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="550" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="550" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="550" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="550" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="550" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="550" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="550" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="600" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="600" scalex="30" scaley="1" scalez="50" />
-<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="0" x="-30" z="600" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="600" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="600" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="90" x="0" z="600" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="600" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="600" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="600" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="600" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="600" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="600" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="30" x="-30" z="600" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="600" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="650" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="650" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="650" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="650" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="650" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="650" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="650" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="650" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="650" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="60" x="60" z="650" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="650" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="700" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="700" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="700" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="650" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="650" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/Blue" type="refresher" y="0" x="30" z="700" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="700" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="700" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="700" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="700" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="700" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="700" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="700" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="700" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="750" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="700" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="750" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="750" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="750" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="750" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="750" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="750" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="750" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="750" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="750" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="750" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="750" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="800" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="800" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="800" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="800" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="800" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="800" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="800" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="800" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="800" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="800" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="800" scalex="1" scaley="30" scalez="50" />
@@ -180,105 +178,112 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="850" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="850" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="850" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="850" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="850" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="850" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="850" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="850" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="900" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="900" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="900" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="900" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="900" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="90" x="0" z="900" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="90" x="-30" z="900" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="900" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="900" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="900" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="0" x="-30" z="900" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="900" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="900" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="950" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="950" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="950" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="950" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="950" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="950" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="950" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1000" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1000" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1000" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="1000" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1000" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1000" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1000" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1050" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1050" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1050" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="1050" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1050" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1050" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1050" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1050" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1050" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1050" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="30" x="60" z="1050" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="60" x="60" z="1050" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1050" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1050" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1100" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1100" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1100" scalex="1" scaley="30" scalez="50" />
-<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="60" x="60" z="1100" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1100" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="30" x="60" z="1100" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1100" scalex="1" scaley="30" scalez="50" />
-<!-- ########## BEGIN Tunnel ########## -->
-<Mesh material="SpaceRoads/Track/Red" mesh="CurvedRoofTunnel" y="1" x="0" z="1150" scalex="30" scaley="10" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="1150" scalex="1" scaley="9" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="29" z="1150" scalex="1" scaley="9" scalez="80" />
-<Atom slipOffset="13.3" material="none" type="solid" y="10" x="0" z="1150" scalex="30" scaley="1" scalez="80" />
-<!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1150" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1150" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="0" x="60" z="1150" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1150" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1150" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1150" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1150" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1150" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="60" x="-30" z="1150" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1200" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1200" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1200" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1200" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/Blue" type="refresher" y="90" x="30" z="1200" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1200" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1200" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1200" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="1200" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1250" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1250" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1250" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="1250" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1250" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1250" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1250" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1250" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1300" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1300" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1300" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1300" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1300" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1300" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1300" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="1300" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1350" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="1350" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1350" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1350" scalex="1" scaley="30" scalez="50" />
@@ -286,11 +291,13 @@
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1400" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1400" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="0" x="0" z="1400" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1400" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1400" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/Blue" type="refresher" y="90" x="30" z="1400" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1400" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1400" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1400" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="1400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1400" scalex="1" scaley="30" scalez="50" />
@@ -299,16 +306,16 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1450" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1450" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1450" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/Blue" type="refresher" y="0" x="60" z="1450" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1450" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1450" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1450" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1450" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1450" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1450" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1500" scalex="30" scaley="1" scalez="50" />
-<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="0" x="0" z="1500" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1500" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1500" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1500" scalex="30" scaley="1" scalez="50" />
-<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="90" x="0" z="1500" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1500" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1500" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1500" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1500" scalex="1" scaley="30" scalez="50" />
@@ -316,86 +323,105 @@
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1500" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1500" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1500" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="1550" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1550" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1550" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1550" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1550" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1550" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1550" scalex="1" scaley="30" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="0" x="-30" z="1550" scalex="1" scaley="30" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1550" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1550" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1600" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1600" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1600" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1600" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1600" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1600" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1600" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1600" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="1600" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1600" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1600" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1600" scalex="1" scaley="30" scalez="50" />
-<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="0" x="30" z="1650" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1650" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1650" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1650" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="90" x="30" z="1650" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1650" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1650" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1650" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1650" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1650" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1650" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1650" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1700" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1700" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/Blue" type="refresher" y="90" x="30" z="1700" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/Blue" type="refresher" y="90" x="0" z="1700" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1700" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1700" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1700" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1700" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1700" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1700" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="1700" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1700" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1700" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1750" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="0" x="30" z="1750" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1750" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1750" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="1750" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1750" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1750" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1750" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1750" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1750" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1750" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1750" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1750" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1800" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1800" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1800" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1800" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1800" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1800" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1800" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1800" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="1800" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1800" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="1800" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1800" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1850" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1850" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1850" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="1850" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1850" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1850" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="1850" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1850" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1850" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1850" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1850" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1850" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="1900" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="1900" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1900" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="1900" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="1900" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="90" x="0" z="1900" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="1900" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="1900" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="1900" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="1900" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="1900" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="1900" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="1950" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="1950" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1950" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="1950" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="1950" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="1950" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/Blue" type="refresher" y="0" x="60" z="1950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="1950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="1950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="1950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="1950" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="1950" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="2000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="2000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="2000" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="2000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="2000" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="2000" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="2000" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="2000" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="2000" scalex="1" scaley="30" scalez="50" />
@@ -412,32 +438,28 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="2050" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2050" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="2050" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="2050" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="2100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="2100" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="2100" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="90" x="30" z="2100" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="2100" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="2100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="2100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="2100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="2100" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="2100" scalex="1" scaley="30" scalez="50" />
-<!-- ########## BEGIN Tunnel ########## -->
-<Mesh material="SpaceRoads/Track/Red" mesh="CurvedRoofTunnel" y="1" x="0" z="2150" scalex="30" scaley="10" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="0" z="2150" scalex="1" scaley="9" scalez="80" />
-<Atom material="none" jaumpForce="0" type="solid" y="1" x="29" z="2150" scalex="1" scaley="9" scalez="80" />
-<Atom slipOffset="13.3" material="none" type="solid" y="10" x="0" z="2150" scalex="30" scaley="1" scalez="80" />
-<!-- ########## END Tunnel ########## -->
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="2150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="2150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2150" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="2150" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="2150" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="90" x="0" z="2150" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="2150" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="2150" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="2150" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="2150" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="2150" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="2150" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2150" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="2200" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="2200" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="2200" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="90" x="30" z="2200" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="2200" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="2200" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="2200" scalex="1" scaley="30" scalez="50" />
@@ -447,51 +469,58 @@
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="2200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="2200" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="2250" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="2250" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2250" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="2250" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="2250" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="2250" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="90" x="-30" z="2250" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="2250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="2250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="2250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="2250" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="2250" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="2300" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/Blue" type="refresher" y="0" x="30" z="2300" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="0" x="0" z="2300" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="2300" scalex="30" scaley="1" scalez="50" />
-<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="90" x="30" z="2300" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="2300" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="2300" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="2300" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="90" x="-30" z="2300" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="2300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="2300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="2300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="2300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="2300" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="2350" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="2300" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="2350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="2350" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="2350" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="2350" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="2350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="2350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="2350" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="2350" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2350" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="2350" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="30" z="2400" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="0" z="2400" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="2400" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="90" x="30" z="2400" scalex="30" scaley="1" scalez="50" />
-<Atom rotatorSteps="-1" material="SpaceRoads/Track/Red" type="rotator" y="90" x="0" z="2400" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="0" z="2400" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="-30" z="2400" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="0" x="60" z="2400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="60" z="2400" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="60" x="60" z="2400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="-30" z="2400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="30" x="-30" z="2400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="60" x="-30" z="2400" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="30" z="2450" scalex="30" scaley="1" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="0" x="0" z="2450" scalex="30" scaley="1" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="-30" z="2450" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2450" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="90" x="30" z="2450" scalex="30" scaley="1" scalez="50" />
+<Atom material="SpaceRoads/Track/White" type="solid" y="90" x="0" z="2450" scalex="30" scaley="1" scalez="50" />
+<Atom rotatorSteps="1" material="SpaceRoads/Track/Yellow" type="rotator" y="90" x="-30" z="2450" scalex="30" scaley="1" scalez="50" rotatorAxis="2" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="60" z="2450" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="60" z="2450" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="60" z="2450" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="0" x="-30" z="2450" scalex="1" scaley="30" scalez="50" />
+<Atom material="SpaceRoads/Track/Blue" type="refresher" y="0" x="-30" z="2450" scalex="1" scaley="30" scalez="50" />
 <Atom material="SpaceRoads/Track/White" type="solid" y="30" x="-30" z="2450" scalex="1" scaley="30" scalez="50" />
-<Atom material="SpaceRoads/Track/DarkGrey" type="solid" y="60" x="-30" z="2450" scalex="1" scaley="30" scalez="50" />
-<Atom finish="True" material="none" type="finish" y="0" x="-60" z="2450" scalex="90" scaley="90" scalez="1" />
+<Atom material="none" type="finish" y="0" x="-30" z="2450" scalex="90" scaley="90" scalez="1" />
 </Track>

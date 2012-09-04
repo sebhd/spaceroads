@@ -10,7 +10,7 @@
 
 #include "AABB.h"
 #include <vector>
-#include "../Track/TrackAtom/TrackAtom.h"
+#include "../Track/TrackAtom.h"
 
 // So muss ein Ogre-kompatibles Quaternion aussehen:
 typedef cml::quaternion<float, cml::fixed<>, cml::scalar_first, cml::negative_cross> quat;
