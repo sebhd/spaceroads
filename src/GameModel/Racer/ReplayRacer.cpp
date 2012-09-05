@@ -34,13 +34,17 @@ void ReplayRacer::pilotStep(unsigned long step) {
 		}
 	}
 
+	// TODO 2: Reimplement!
+	/*
 	if (ii == mPlayedReplay.size() - 1 && !commandLeft) {
 		mWantReset = true;
+
 	}
 
-	if (mKilled) {
+	if (mGameState == -1) {
 		mWantReset = true;
 	}
+	*/
 }
 
 void ReplayRacer::reset() {

@@ -19,21 +19,13 @@
 
 Application::Application() {
 
-	watchReplay = true;
+	mWantReset = false;
+	watchReplay = false;
 	quit = false;
 
 	mpTrack = NULL;
 
-	// Set up local human player's racer:
-	Racer* playerRacer = new Racer();
-
-	mLocalPlayerRacer = playerRacer;
-
-	m_racers.push_back(playerRacer);
-
-	mReplayRacer = new ReplayRacer();
-
-	m_racers.push_back(mReplayRacer);
+	mLocalPlayerRacer = new Racer();
 
 	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);
@@ -54,63 +46,70 @@ void Application::handleKeyEvent(int key, bool pressed) {
 		switch (key) {
 		case KeyboardEventListener::KC_ESCAPE:
 			quit = true;
-			stopPlayingTrack = true;
+
+			mWantReset = true;
 			break;
 
 		default:
 			watchReplay = false;
-			stopPlayingTrack = true;
 
+			mWantReset = true;
 			break;
 		}
 	} else {
 
 		if (key == KeyboardEventListener::KC_ESCAPE) {
-			stopPlayingTrack = true;
+
+			mWantReset = true;
 			quit = true;
 		}
 
 		if (key == KC_SPACE) {
-			if (pressed) {
-				mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_PRS);
-			} else {
-				mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_REL);
-			}
 
+			if (mLocalPlayerRacer->mGameState != 0) {
+				mWantReset = true;
+			} else {
+
+				if (pressed) {
+					mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_PRS);
+				} else {
+					mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_REL);
+				}
+			}
 		}
 
-		if (!mLocalPlayerRacer->mKilled) {
+		if (mLocalPlayerRacer->mGameState == 0) {
 			switch (key) {
-/*
-			case KC_A:
-				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE1);
-					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, 1);
-				}
-				break;
+			/*
+			 case KC_A:
+			 if (pressed) {
+			 mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE1);
+			 //mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, 1);
+			 }
+			 break;
 
-			case KC_D:
-				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE2);
-					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, -1);
-				}
+			 case KC_D:
+			 if (pressed) {
+			 mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE2);
+			 //mLocalPlayerRacer->cmd_rotateDesiredOrientation(1, -1);
+			 }
 
-				break;
+			 break;
 
-			case KC_Q:
-				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE3);
-					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, 1);
-				}
-				break;
+			 case KC_Q:
+			 if (pressed) {
+			 mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE3);
+			 //mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, 1);
+			 }
+			 break;
 
-			case KC_E:
-				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE4);
-					//mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, -1);
-				}
-				break;
-*/
+			 case KC_E:
+			 if (pressed) {
+			 mLocalPlayerRacer->processCommand(Racer::CMD_ROTATE4);
+			 //mLocalPlayerRacer->cmd_rotateDesiredOrientation(2, -1);
+			 }
+			 break;
+			 */
 			case KC_DOWN:
 				//mReduceThrustForward = pressed;
 				if (pressed) {
@@ -157,12 +156,8 @@ void Application::handleKeyEvent(int key, bool pressed) {
 
 void Application::playTrackFile(std::string filename, bool replay) {
 
+	mWantReset = false;
 
-
-
-
-
-	stopPlayingTrack = false;
 	quit = false;
 
 	if (mpTrack != NULL) {
@@ -173,14 +168,17 @@ void Application::playTrackFile(std::string filename, bool replay) {
 	mpTrack = new XMLFileTrack(filename);
 
 	std::cout << "Preparing renderer for track.";
+	/*
+	 // Reset vehicles:
+	 for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
+	 m_racers[ii]->reset();
+	 m_racers[ii]->mPos = mpTrack->mStartPosition;
+	 }
+	 */
+	mLocalPlayerRacer->reset();
+	mLocalPlayerRacer->mPos = mpTrack->mStartPosition;
 
-	// Reset vehicles:
-	for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
-		m_racers[ii]->reset();
-		m_racers[ii]->mPos = mpTrack->mStartPosition;
-	}
-
-	mReplayRacer->mPlayedReplay = loadReplayFromFile("replay.xml");
+	//mReplayRacer->mPlayedReplay = loadReplayFromFile("replay.xml");
 
 	mpRenderer->prepareForTrack();
 
@@ -200,7 +198,7 @@ void Application::playTrackFile(std::string filename, bool replay) {
 	mStopwatch = 0;
 
 	//########### BEGIN The Main Loop! ##########
-	while (!stopPlayingTrack) {
+	while (!mWantReset) {
 
 		gettimeofday(&newTime, NULL);
 
@@ -224,17 +222,95 @@ void Application::playTrackFile(std::string filename, bool replay) {
 		// Process input:
 		mpInputHandler->getInput();
 
+		//################# BEGIN Update racers ##############
 		while (accumulator >= dt) {
 
 			// TODO 3: Into the for?
-			mReplayRacer->pilotStep(stepCount);
+			//mReplayRacer->pilotStep(stepCount);
 
-			for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
-				doRacerStep(m_racers[ii]);
+			/*
+			 if (watchReplay) {
+			 doRacerStep(mReplayRacer);
 
-				if (!m_racers[ii]->mKilled && !m_racers[ii]->mWantReset && !m_racers[ii]->mFinish) {
-					m_racers[ii]->mRaceTime += dt;
+			 } else {
+			 for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
+			 doRacerStep(m_racers[ii]);
+
+			 if (!m_racers[ii]->mKilled && !m_racers[ii]->mWantReset && !m_racers[ii]->mFinish) {
+			 m_racers[ii]->mRaceTime += dt;
+			 }
+			 }
+			 }
+			 */
+
+			// TODO 3: Move logic from doRacerStep() back here?
+			//doRacerStep(mLocalPlayerRacer);
+			Racer* racer = mLocalPlayerRacer;
+
+			// TODO 3: Move as much as possible from here to Racer class?
+
+			// Kill racer if it leaves the track's bounding box:
+			if (!mpTrack->mExtent.containsPoint(racer->mPos)) {
+				racer->mGameState = -1;
+			}
+
+			/*
+			 if (racer->mWantReset) {
+			 mReplay = mLocalPlayerRacer->mReplayCommands;
+
+			 racer->mPos = mpTrack->mStartPosition;
+			 racer->reset();
+			 }
+			 */
+			// If the ship is destroyed, reset to the starting position:
+			if (racer->mEnergy == 0) {
+				racer->mGameState = -1;
+			}
+
+			else if (racer->mGameState == 1) {
+
+				// TODO 3: Only write replay if this wasn't a replay itself!
+				writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
+
+				/*
+				 if (racer == mLocalPlayerRacer) {
+				 writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
+				 } else {
+				 racer->mWantReset = true;
+				 }
+				 */
+			}
+
+			if (racer->mGameState == 0) {
+
+				racer->mStepsCount++;
+				racer->mEnergy--;
+
+				racer->mOldVel = racer->mVelocity;
+
+				// Find colliding track atoms:
+				std::vector<CollisionInfo> collisions = findCollidingTrackAtoms(racer);
+
+				// Apply counter-forces (prevent vehicle from going through walls):
+				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+					collisions[ii].ta->applyCounterForces(racer, collisions[ii].hs);
 				}
+
+				racer->updatePosition();
+
+				// Calculate & apply vehicle-internal effects on it's velocity:
+				racer->updateVelocity();
+
+				racer->mJumpedInThisStep = false;
+
+				// Apply contact effects:
+				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
+					collisions[ii].ta->applyContactEffects(racer, collisions[ii].hs);
+				}
+			}
+
+			if (mLocalPlayerRacer->mGameState == 0) {
+				mLocalPlayerRacer->mRaceTime += dt;
 			}
 
 			accumulator -= dt;
@@ -242,7 +318,25 @@ void Application::playTrackFile(std::string filename, bool replay) {
 			mStopwatch += dt;
 			stepCount++;
 		}
+		//################# END Update racers ##############
 
+		//########### BEGIN Update HUD #################
+
+		if (mLocalPlayerRacer->mGameState == -1) {
+			mpRenderer->showKilledInfo(true);
+		}
+
+		else if (mLocalPlayerRacer->mGameState == 1) {
+			mpRenderer->showTrackCompletedInfo(true);
+		}
+
+		/*
+		 if (mLocalPlayerRacer->mWantReset) {
+		 mpRenderer->showKilledInfo(false);
+		 mpRenderer->showTrackCompletedInfo(false);
+		 }
+		 */
+		//########### END Update HUD #################
 		// Render next frame:
 		if (!mpRenderer->renderOneFrame()) {
 			//	return false;
@@ -252,79 +346,6 @@ void Application::playTrackFile(std::string filename, bool replay) {
 	//########### END The Main Loop! ##########
 }
 
-void Application::doRacerStep(Racer* racer) {
-
-
-	// TODO 3: Move as much as possible from here to Racer class?
-
-	if (!mpTrack->mExtent.containsPoint(racer->mPos)) {
-		racer->mKilled = true;
-	}
-
-	if (racer->mWantReset) {
-		mReplay = mLocalPlayerRacer->mReplayCommands;
-
-		racer->mPos = mpTrack->mStartPosition;
-		racer->reset();
-
-		// TODO 3: Was hiermit?
-		mpRenderer->showKilledInfo(false);
-		mpRenderer->showTrackCompletedInfo(false);
-	}
-
-	// If the ship is destroyed, reset to the starting position:
-
-	if (racer->mEnergy == 0) {
-		racer->mKilled = true;
-		mpRenderer->showKilledInfo(true);
-	}
-
-	if (racer->mKilled) {
-
-		if (racer == mLocalPlayerRacer) {
-			mpRenderer->showKilledInfo(true);
-		} else {
-			racer->mWantReset = true;
-		}
-
-	} else if (racer->mFinish) {
-
-		if (racer == mLocalPlayerRacer) {
-			mpRenderer->showTrackCompletedInfo(true);
-			writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
-		} else {
-			racer->mWantReset = true;
-		}
-
-	} else {
-
-		racer->mStepsCount++;
-		racer->mEnergy--;
-
-
-		racer->mOldVel = racer->mVelocity;
-
-		// Find colliding track atoms:
-		std::vector<CollisionInfo> collisions = findCollidingTrackAtoms(racer);
-
-		// Apply counter-forces (prevent vehicle from going through walls):
-		for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-			collisions[ii].ta->applyCounterForces(racer, collisions[ii].hs);
-		}
-
-		racer->updatePosition();
-
-		// Calculate & apply vehicle-internal effects on it's velocity:
-		racer->updateVelocity();
-
-		racer->mJumpedInThisStep = false;
-
-		// Apply contact effects:
-		for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-			collisions[ii].ta->applyContactEffects(racer, collisions[ii].hs);
-		}
-	}
-}
 
 std::vector<CollisionInfo> Application::findCollidingTrackAtoms(Racer* racer) {
 
@@ -399,7 +420,6 @@ AbstractRenderer* Application::getRenderer() {
 
 bool Application::handleFrameRenderingQueuedEvent() {
 
-
 	return true;
 }
 
@@ -428,7 +448,6 @@ std::vector<Racer::ReplayEntry> Application::loadReplayFromFile(std::string file
 
 void Application::run() {
 
-	watchReplay = true;
 	std::string trackFilePath = "tracks/default_track.xml";
 
 	while (!quit) {

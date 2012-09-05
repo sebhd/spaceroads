@@ -80,11 +80,7 @@ public:
 	cml::vector3f mDirForward;
 	cml::vector3f mOldVel;
 
-	// TODO 3: Merge these exclusive states into one variable?
-	bool mFinish;
-	bool mKilled;
-	bool mWantReset;
-
+	int mGameState;
 
 	bool mJumpedInThisStep;
 

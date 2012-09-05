@@ -34,8 +34,7 @@ void Racer::reset() {
 	mAddThrustRight = false;
 	mTryJump = false;
 
-	mFinish = false;
-	mKilled = false;
+	mGameState = 0;
 
 	mLastHit = NULL;
 	mMaxEnergy = 5000;
@@ -62,7 +61,6 @@ void Racer::reset() {
 
 	setOrientation(mOrientation);
 
-	mWantReset = false;
 
 	mStepsCount = 0;
 	mRaceTime = 0;
@@ -275,11 +273,6 @@ void Racer::cmd_rotateDesiredOrientation(int axis, int steps) {
 }
 
 void Racer::cmd_spacebar(bool enable) {
-
-	if (mKilled || mFinish) {
-		mWantReset = true;
-	} else {
-		mTryJump = enable;
-	}
+	mTryJump = enable;
 }
 

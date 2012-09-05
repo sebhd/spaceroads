@@ -39,22 +39,19 @@ public:
 	AbstractRenderer* getRenderer();
 
 	bool quit;
-	bool stopPlayingTrack;
 	bool watchReplay;
 
-	unsigned long mStopwatch;
+	bool mWantReset;
 
-	std::vector<Racer*> m_racers;
+	unsigned long mStopwatch;
 
 	Track* mpTrack;
 
 	Racer* mLocalPlayerRacer;
-	ReplayRacer* mReplayRacer;
 
 	std::vector<Racer::ReplayEntry> mReplay;
 
 private:
-	void doRacerStep(Racer*);
 
 	std::vector<Racer::ReplayEntry> loadReplayFromFile(std::string filename);
 

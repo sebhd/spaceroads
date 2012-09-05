@@ -88,14 +88,14 @@ void TrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
 	// Finish check:
 	if (mIsFinish) {
-		ship->mFinish = true;
+		ship->mGameState = 1;
 		return;
 	}
 
 
 	//################ BEGIN Kill vehicle if it hits something with the nose too fast ###############
 	if (cml::dot(ship->mDirForward, wallNormal) < -0.8 && hitComponent.length() > 0.3) {
-		ship->mKilled = true;
+		ship->mGameState = -1;
 		return;
 	}
 	//################ END Kill vehicle if it hits something with the nose too fast ###############
@@ -110,7 +110,7 @@ void TrackAtom::applyContactEffects(Racer* ship, HitSide hs) {
 
 		// Deadly block?
 		if (mIsDeadly) {
-			ship->mKilled = true;
+			ship->mGameState = -1;
 		}
 
 		// Rotator?

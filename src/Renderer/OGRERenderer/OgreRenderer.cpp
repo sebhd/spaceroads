@@ -5,6 +5,7 @@
  *      Author: sebastian
  */
 
+// TODO 1: Fix wrong camera orientation after reset when gravity vector was changed during previous run
 // TODO 4: Implement "classic" camera that doesn't translate left/right ...
 // with the vehicle but stays in the centerline of the track instead (problems with some concepts?)
 #include "OgreRenderer.h"
@@ -55,10 +56,12 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	}
 
 	// Update vehicle renderers:
-
+/*
 	for (unsigned int ii = 0; ii < m_vehicleRenderers.size(); ii++) {
 		m_vehicleRenderers[ii]->update();
 	}
+	*/
+	mLocalPlayerRacer->update();
 
 	/*######################### BEGIN Update HUD Stopwatch ######################*/
 
@@ -348,6 +351,7 @@ bool OgreRenderer::init() {
 
 	//######################## BEGIN Create Vehicle renderers ############################
 
+	/*
 	for (unsigned int ii = 0; ii < mpApp->m_racers.size(); ii++) {
 
 		std::stringstream sstream;
@@ -366,6 +370,9 @@ bool OgreRenderer::init() {
 
 		m_vehicleRenderers.push_back(vr);
 	}
+*/
+	mLocalPlayerRacer = new OGRERendererRacer(mSceneMgr, mpApp->mLocalPlayerRacer, "racer");
+
 	//######################## END Create Vehicle renderers ############################
 
 	//############### BEGIN Set up camera ##############
@@ -492,12 +499,10 @@ void OgreRenderer::prepareForTrack() {
 
 	// ############### END Set up track / environment rendering ################
 
-	// TODO 3: Ugly
-	if (mpApp->watchReplay && mReplayRacer) {
-		cameraFollowRacer(mReplayRacer);
-	} else {
-		cameraFollowRacer(mLocalPlayerRacer);
-	}
+	showKilledInfo(false);
+	showTrackCompletedInfo(false);
+
+	cameraFollowRacer(mLocalPlayerRacer);
 
 }
 

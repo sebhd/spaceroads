@@ -37,7 +37,9 @@ OGRERendererRacer::OGRERendererRacer(Ogre::SceneManager* a_sceneMgr, Racer* a_ve
 	// TODO 1: Reimplement
 
 	// Set up engine flame particle system:
+
 	mEngineFlameParticleSystem = mSceneManager->createParticleSystem(name + "_flame", "SpaceRoads/EngineFlame");
+
 	Ogre::SceneNode* particleNode = mVehicleMeshNode->createChildSceneNode();
 	particleNode->setPosition(0, -1.5, 3);
 	particleNode->attachObject((Ogre::ParticleSystem*) mEngineFlameParticleSystem);
@@ -142,7 +144,7 @@ void OGRERendererRacer::update() {
 
 	// TODO 1: Reimplement
 
-	bool emit = !mpVehicle->mKilled && mpVehicle->mThrustForward > 0;
+	bool emit = (mpVehicle->mGameState == 0) && mpVehicle->mThrustForward > 0;
 
 	mEngineFlameParticleSystem->setEmitting(emit);
 	mEngineSmokeParticleSystem->setEmitting(emit);
