@@ -13,7 +13,7 @@ RM := rm -rf
 -include src/Renderer/OGRERenderer/subdir.mk
 -include src/Renderer/subdir.mk
 -include src/GameModel/Track/subdir.mk
--include src/GameModel/Racer/subdir.mk
+-include src/GameModel/subdir.mk
 -include src/subdir.mk
 -include subdir.mk
 -include objects.mk

@@ -7,16 +7,19 @@
 
 // TODO 3: Make vehicle/camera rotation speed framerate-independent.
 #include "OGRERendererRacer.h"
+#include "../Application.h"
 #include <OgreParticle.h>
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
 
-OGRERendererRacer::OGRERendererRacer(Ogre::SceneManager* a_sceneMgr, Racer* a_vehicle, std::string aname) {
+OGRERendererRacer::OGRERendererRacer(Ogre::SceneManager* a_sceneMgr, Application* app, std::string aname) {
 
 	name = aname;
 
+	mpApp = app;
+
 	mSceneManager = a_sceneMgr;
-	mpVehicle = a_vehicle;
+	//mpVehicle = app->mLocalPlayerRacer;
 
 	mRollAngle = 0;
 	mPitchAngle = 0;
@@ -57,6 +60,8 @@ OGRERendererRacer::~OGRERendererRacer() {
 }
 
 void OGRERendererRacer::update() {
+
+	mpVehicle = mpApp->mRacer;
 
 	const cml::vector3d& pos = mpVehicle->mPos;
 

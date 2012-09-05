@@ -10,12 +10,12 @@
 
 #include <Ogre.h>
 #include <string>
-#include "../../GameModel/Racer/Racer.h"
-
+#include "../../GameModel/Racer.h"
+#include "../Application.h"
 
 class OGRERendererRacer {
 public:
-	OGRERendererRacer(Ogre::SceneManager*, Racer*, std::string);
+	OGRERendererRacer(Ogre::SceneManager*, Application*, std::string);
 	virtual ~OGRERendererRacer();
 
 	void update();
@@ -30,6 +30,8 @@ public:
 
 	Ogre::Entity* mMeshEntity;
 	Racer* mpVehicle;
+
+	Application* mpApp;
 
 protected:
 	float mRollAngle;

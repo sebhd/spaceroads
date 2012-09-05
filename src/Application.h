@@ -12,9 +12,11 @@
 #include <OISKeyboard.h>
 #include "Input/InputHandler.h"
 #include "GameModel/Track/Track.h"
-#include "GameModel/Racer/ReplayRacer.h"
+
 
 class AbstractRenderer;
+
+
 
 class Application : public KeyboardEventListener {
 
@@ -39,7 +41,7 @@ public:
 	AbstractRenderer* getRenderer();
 
 	bool quit;
-	bool watchReplay;
+	bool mWatchReplay;
 
 	bool mWantReset;
 
@@ -47,15 +49,16 @@ public:
 
 	Track* mpTrack;
 
-	Racer* mLocalPlayerRacer;
+	Racer* mRacer;
 
-	std::vector<Racer::ReplayEntry> mReplay;
+	std::vector<ReplayEntry> mReplay;
+	unsigned int mLastReplayCmdIndex;
 
 private:
 
-	std::vector<Racer::ReplayEntry> loadReplayFromFile(std::string filename);
+	std::vector<ReplayEntry> loadReplayFromFile(std::string filename);
 
-	void writeReplayToFile(std::vector<Racer::ReplayEntry>);
+	void writeReplayToFile(std::vector<ReplayEntry>);
 
 	AbstractRenderer* mpRenderer;
 	InputHandler* mpInputHandler;

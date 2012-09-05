@@ -10,7 +10,7 @@
 
 #include <string>
 #include "../util/AABB.h"
-#include "../Racer/Racer.h"
+#include "../Racer.h"
 
 class Racer;
 

@@ -44,7 +44,7 @@ OgreRenderer::~OgreRenderer(void) {
 // Handler for frameRenderingQueued event:
 bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 
-	mHintsLayer->setVisible(mpApp->watchReplay);
+	mHintsLayer->setVisible(mpApp->mWatchReplay);
 
 	if (mpApp->mpTrack->mHasChanged) {
 		buildTrackGeometry();
@@ -371,7 +371,9 @@ bool OgreRenderer::init() {
 		m_vehicleRenderers.push_back(vr);
 	}
 */
-	mLocalPlayerRacer = new OGRERendererRacer(mSceneMgr, mpApp->mLocalPlayerRacer, "racer");
+
+	// TODO 1: Weg hier?
+	mLocalPlayerRacer = new OGRERendererRacer(mSceneMgr, mpApp, "racer");
 
 	//######################## END Create Vehicle renderers ############################
 
@@ -493,6 +495,8 @@ void OgreRenderer::prepareForTrack() {
 			mpApp->mpTrack->mDirectionalLightDir[2]);
 	mLight->setDiffuseColour(0.7, 0.7, 0.7);
 	mLight->setSpecularColour(0.7, 0.7, 0.7);
+
+
 
 	// Build track geometry:
 	buildTrackGeometry();

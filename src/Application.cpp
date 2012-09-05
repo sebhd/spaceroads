@@ -16,16 +16,19 @@
 #include "Renderer/OGRERenderer/OgreRenderer.h"
 #include "Input/OISInputHandler.h"
 #include "GameModel/Track/XMLFileTrack.h"
+#include "GameModel/Racer.h"
+
+struct ReplayEntry;
 
 Application::Application() {
 
 	mWantReset = false;
-	watchReplay = false;
+	mWatchReplay = false;
 	quit = false;
 
 	mpTrack = NULL;
 
-	mLocalPlayerRacer = new Racer();
+	mRacer = new Racer();
 
 	// Set up the renderer:
 	mpRenderer = new OgreRenderer(this);
@@ -41,7 +44,7 @@ Application::~Application() {
 
 void Application::handleKeyEvent(int key, bool pressed) {
 
-	if (watchReplay) {
+	if (mWatchReplay) {
 
 		switch (key) {
 		case KeyboardEventListener::KC_ESCAPE:
@@ -51,7 +54,7 @@ void Application::handleKeyEvent(int key, bool pressed) {
 			break;
 
 		default:
-			watchReplay = false;
+			mWatchReplay = false;
 
 			mWantReset = true;
 			break;
@@ -66,19 +69,19 @@ void Application::handleKeyEvent(int key, bool pressed) {
 
 		if (key == KC_SPACE) {
 
-			if (mLocalPlayerRacer->mGameState != 0) {
+			if (mRacer->mGameState != 0) {
 				mWantReset = true;
 			} else {
 
 				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_PRS);
+					mRacer->processCommand(Racer::CMD_SPACE_PRS);
 				} else {
-					mLocalPlayerRacer->processCommand(Racer::CMD_SPACE_REL);
+					mRacer->processCommand(Racer::CMD_SPACE_REL);
 				}
 			}
 		}
 
-		if (mLocalPlayerRacer->mGameState == 0) {
+		if (mRacer->mGameState == 0) {
 			switch (key) {
 			/*
 			 case KC_A:
@@ -113,18 +116,18 @@ void Application::handleKeyEvent(int key, bool pressed) {
 			case KC_DOWN:
 				//mReduceThrustForward = pressed;
 				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_BRAKE_PRS);
+					mRacer->processCommand(Racer::CMD_BRAKE_PRS);
 				} else {
-					mLocalPlayerRacer->processCommand(Racer::CMD_BRAKE_REL);
+					mRacer->processCommand(Racer::CMD_BRAKE_REL);
 				}
 				break;
 
 			case KC_LEFT:
 				//mAddThrustLeft = pressed;
 				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_LEFT_PRS);
+					mRacer->processCommand(Racer::CMD_LEFT_PRS);
 				} else {
-					mLocalPlayerRacer->processCommand(Racer::CMD_LEFT_REL);
+					mRacer->processCommand(Racer::CMD_LEFT_REL);
 				}
 
 				break;
@@ -132,9 +135,9 @@ void Application::handleKeyEvent(int key, bool pressed) {
 			case KC_RIGHT:
 				//mAddThrustRight = pressed;
 				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_RIGHT_PRS);
+					mRacer->processCommand(Racer::CMD_RIGHT_PRS);
 				} else {
-					mLocalPlayerRacer->processCommand(Racer::CMD_RIGHT_REL);
+					mRacer->processCommand(Racer::CMD_RIGHT_REL);
 				}
 
 				break;
@@ -142,9 +145,9 @@ void Application::handleKeyEvent(int key, bool pressed) {
 			case KC_UP:
 
 				if (pressed) {
-					mLocalPlayerRacer->processCommand(Racer::CMD_ACCEL_PRS);
+					mRacer->processCommand(Racer::CMD_ACCEL_PRS);
 				} else {
-					mLocalPlayerRacer->processCommand(Racer::CMD_ACCEL_REL);
+					mRacer->processCommand(Racer::CMD_ACCEL_REL);
 				}
 				//mAddThrustForward = pressed;
 				break;
@@ -156,7 +159,10 @@ void Application::handleKeyEvent(int key, bool pressed) {
 
 void Application::playTrackFile(std::string filename, bool replay) {
 
+
 	mWantReset = false;
+
+	mLastReplayCmdIndex = 0;
 
 	quit = false;
 
@@ -175,10 +181,10 @@ void Application::playTrackFile(std::string filename, bool replay) {
 	 m_racers[ii]->mPos = mpTrack->mStartPosition;
 	 }
 	 */
-	mLocalPlayerRacer->reset();
-	mLocalPlayerRacer->mPos = mpTrack->mStartPosition;
+	mRacer->reset();
+	mRacer->mPos = mpTrack->mStartPosition;
 
-	//mReplayRacer->mPlayedReplay = loadReplayFromFile("replay.xml");
+	mReplay = loadReplayFromFile("replay.xml");
 
 	mpRenderer->prepareForTrack();
 
@@ -225,92 +231,68 @@ void Application::playTrackFile(std::string filename, bool replay) {
 		//################# BEGIN Update racers ##############
 		while (accumulator >= dt) {
 
-			// TODO 3: Into the for?
-			//mReplayRacer->pilotStep(stepCount);
+			//	mRacer->pilotStep(stepCount);
 
-			/*
-			 if (watchReplay) {
-			 doRacerStep(mReplayRacer);
+			if (mWatchReplay) {
+				bool commandLeft = false;
 
-			 } else {
-			 for (unsigned int ii = 0; ii < m_racers.size(); ii++) {
-			 doRacerStep(m_racers[ii]);
+				unsigned int ii = 0;
 
-			 if (!m_racers[ii]->mKilled && !m_racers[ii]->mWantReset && !m_racers[ii]->mFinish) {
-			 m_racers[ii]->mRaceTime += dt;
-			 }
-			 }
-			 }
-			 */
+				for (ii = 0; ii < mReplay.size(); ++ii) {
+					ReplayEntry cmd = mReplay[ii];
 
-			// TODO 3: Move logic from doRacerStep() back here?
-			//doRacerStep(mLocalPlayerRacer);
-			Racer* racer = mLocalPlayerRacer;
+					if (cmd.timestamp == mRacer->mStepsCount) {
+						mRacer->processCommand(cmd.cmd);
+						mLastReplayCmdIndex = ii;
+						commandLeft = true;
+					}
+				}
+			}
 
 			// TODO 3: Move as much as possible from here to Racer class?
 
 			// Kill racer if it leaves the track's bounding box:
-			if (!mpTrack->mExtent.containsPoint(racer->mPos)) {
-				racer->mGameState = -1;
+			if (!mpTrack->mExtent.containsPoint(mRacer->mPos)) {
+				mRacer->mGameState = -1;
 			}
 
-			/*
-			 if (racer->mWantReset) {
-			 mReplay = mLocalPlayerRacer->mReplayCommands;
-
-			 racer->mPos = mpTrack->mStartPosition;
-			 racer->reset();
-			 }
-			 */
 			// If the ship is destroyed, reset to the starting position:
-			if (racer->mEnergy == 0) {
-				racer->mGameState = -1;
+			if (mRacer->mEnergy == 0) {
+				mRacer->mGameState = -1;
 			}
 
-			else if (racer->mGameState == 1) {
+			if (mRacer->mGameState == 1) {
 
 				// TODO 3: Only write replay if this wasn't a replay itself!
-				writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
-
-				/*
-				 if (racer == mLocalPlayerRacer) {
-				 writeReplayToFile(mLocalPlayerRacer->mReplayCommands);
-				 } else {
-				 racer->mWantReset = true;
-				 }
-				 */
+				writeReplayToFile(mRacer->mReplayCommands);
 			}
 
-			if (racer->mGameState == 0) {
+			else if (mRacer->mGameState == 0) {
 
-				racer->mStepsCount++;
-				racer->mEnergy--;
+				mRacer->mStepsCount++;
+				mRacer->mEnergy--;
 
-				racer->mOldVel = racer->mVelocity;
+				mRacer->mOldVel = mRacer->mVelocity;
 
 				// Find colliding track atoms:
-				std::vector<CollisionInfo> collisions = findCollidingTrackAtoms(racer);
+				std::vector<CollisionInfo> collisions = findCollidingTrackAtoms(mRacer);
 
 				// Apply counter-forces (prevent vehicle from going through walls):
 				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-					collisions[ii].ta->applyCounterForces(racer, collisions[ii].hs);
+					collisions[ii].ta->applyCounterForces(mRacer, collisions[ii].hs);
 				}
 
-				racer->updatePosition();
+				mRacer->updatePosition();
 
 				// Calculate & apply vehicle-internal effects on it's velocity:
-				racer->updateVelocity();
+				mRacer->updateVelocity();
 
-				racer->mJumpedInThisStep = false;
+				mRacer->mJumpedInThisStep = false;
 
 				// Apply contact effects:
 				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
-					collisions[ii].ta->applyContactEffects(racer, collisions[ii].hs);
+					collisions[ii].ta->applyContactEffects(mRacer, collisions[ii].hs);
 				}
-			}
-
-			if (mLocalPlayerRacer->mGameState == 0) {
-				mLocalPlayerRacer->mRaceTime += dt;
 			}
 
 			accumulator -= dt;
@@ -322,21 +304,16 @@ void Application::playTrackFile(std::string filename, bool replay) {
 
 		//########### BEGIN Update HUD #################
 
-		if (mLocalPlayerRacer->mGameState == -1) {
+		if (mRacer->mGameState == -1) {
 			mpRenderer->showKilledInfo(true);
 		}
 
-		else if (mLocalPlayerRacer->mGameState == 1) {
+		else if (mRacer->mGameState == 1) {
 			mpRenderer->showTrackCompletedInfo(true);
 		}
 
-		/*
-		 if (mLocalPlayerRacer->mWantReset) {
-		 mpRenderer->showKilledInfo(false);
-		 mpRenderer->showTrackCompletedInfo(false);
-		 }
-		 */
 		//########### END Update HUD #################
+
 		// Render next frame:
 		if (!mpRenderer->renderOneFrame()) {
 			//	return false;
@@ -345,7 +322,6 @@ void Application::playTrackFile(std::string filename, bool replay) {
 	}
 	//########### END The Main Loop! ##########
 }
-
 
 std::vector<CollisionInfo> Application::findCollidingTrackAtoms(Racer* racer) {
 
@@ -423,19 +399,19 @@ bool Application::handleFrameRenderingQueuedEvent() {
 	return true;
 }
 
-std::vector<Racer::ReplayEntry> Application::loadReplayFromFile(std::string filename) {
+std::vector<ReplayEntry> Application::loadReplayFromFile(std::string filename) {
 
 	TiXmlDocument doc;
 	doc.LoadFile(filename);
 
-	std::vector<Racer::ReplayEntry> result;
+	std::vector<ReplayEntry> result;
 
 	TiXmlElement* root = doc.FirstChildElement("replay");
 
 	for (TiXmlElement* elem = root->FirstChildElement("action"); elem != NULL;
 			elem = elem->NextSiblingElement("action")) {
 
-		Racer::ReplayEntry entry;
+		ReplayEntry entry;
 
 		entry.timestamp = atoi(elem->Attribute("time"));
 		entry.cmd = (Racer::RacerCommand) atoi(elem->Attribute("cmd"));
@@ -450,19 +426,21 @@ void Application::run() {
 
 	std::string trackFilePath = "tracks/default_track.xml";
 
+	mWatchReplay = true;
+
 	while (!quit) {
 		playTrackFile(trackFilePath, true);
 	}
 }
 
-void Application::writeReplayToFile(std::vector<Racer::ReplayEntry> replay) {
+void Application::writeReplayToFile(std::vector<ReplayEntry> replay) {
 	std::ofstream myfile;
 	myfile.open("replay.xml");
 
 	myfile << "<replay>\n";
 
 	for (unsigned int ii = 0; ii < replay.size(); ii++) {
-		Racer::ReplayEntry cmd = replay[ii];
+		ReplayEntry cmd = replay[ii];
 
 		myfile << "<action time=\"" << cmd.timestamp << "\" cmd=\"" << cmd.cmd << "\"/>\n";
 	}
