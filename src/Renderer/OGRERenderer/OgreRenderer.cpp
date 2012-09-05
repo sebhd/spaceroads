@@ -71,7 +71,7 @@ bool OgreRenderer::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 	std::ostringstream convert; // stream used for the conversion
 
 	unsigned int time = mpApp->mStopwatch;
-	time = mLocalPlayerRacer->mpVehicle->mRaceTime;
+
 
 	unsigned int seconds = time / 1000000;
 	unsigned int hseconds = (time - (seconds * 1000000)) / 10000;
@@ -375,6 +375,8 @@ bool OgreRenderer::init() {
 	// TODO 1: Weg hier?
 	mLocalPlayerRacer = new OGRERendererRacer(mSceneMgr, mpApp, "racer");
 
+
+
 	//######################## END Create Vehicle renderers ############################
 
 	//############### BEGIN Set up camera ##############
@@ -385,6 +387,9 @@ bool OgreRenderer::init() {
 	mCamera->setPosition(Ogre::Vector3(0, 10, 40));
 
 	mCameraNode->attachObject(mCamera);
+
+	cameraFollowRacer(mLocalPlayerRacer);
+
 
 	// Create one viewport, entire window
 	Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -506,7 +511,7 @@ void OgreRenderer::prepareForTrack() {
 	showKilledInfo(false);
 	showTrackCompletedInfo(false);
 
-	cameraFollowRacer(mLocalPlayerRacer);
+
 
 }
 

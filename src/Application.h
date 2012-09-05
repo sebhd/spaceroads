@@ -20,6 +20,8 @@ class AbstractRenderer;
 
 class Application : public KeyboardEventListener {
 
+
+
 public:
 
 	void run();
@@ -40,12 +42,14 @@ public:
 
 	AbstractRenderer* getRenderer();
 
+	unsigned long mStopwatch;
+
 	bool quit;
 	bool mWatchReplay;
 
 	bool mWantReset;
 
-	unsigned long mStopwatch;
+
 
 	Track* mpTrack;
 

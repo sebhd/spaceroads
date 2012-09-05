@@ -231,10 +231,9 @@ void Application::playTrackFile(std::string filename, bool replay) {
 		//################# BEGIN Update racers ##############
 		while (accumulator >= dt) {
 
-			//	mRacer->pilotStep(stepCount);
-
+			//############# BEGIN Replay playback racer control ################
 			if (mWatchReplay) {
-				bool commandLeft = false;
+			//	bool commandLeft = false;
 
 				unsigned int ii = 0;
 
@@ -242,12 +241,14 @@ void Application::playTrackFile(std::string filename, bool replay) {
 					ReplayEntry cmd = mReplay[ii];
 
 					if (cmd.timestamp == mRacer->mStepsCount) {
+					//if (cmd.timestamp == mStopwatch) {
 						mRacer->processCommand(cmd.cmd);
 						mLastReplayCmdIndex = ii;
-						commandLeft = true;
+				//		commandLeft = true;
 					}
 				}
 			}
+			//############# END Replay playback racer control ################
 
 			// TODO 3: Move as much as possible from here to Racer class?
 
@@ -256,10 +257,6 @@ void Application::playTrackFile(std::string filename, bool replay) {
 				mRacer->mGameState = -1;
 			}
 
-			// If the ship is destroyed, reset to the starting position:
-			if (mRacer->mEnergy == 0) {
-				mRacer->mGameState = -1;
-			}
 
 			if (mRacer->mGameState == 1) {
 
@@ -268,9 +265,6 @@ void Application::playTrackFile(std::string filename, bool replay) {
 			}
 
 			else if (mRacer->mGameState == 0) {
-
-				mRacer->mStepsCount++;
-				mRacer->mEnergy--;
 
 				mRacer->mOldVel = mRacer->mVelocity;
 
