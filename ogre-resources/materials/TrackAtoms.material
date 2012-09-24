@@ -41,6 +41,8 @@ material SpaceRoads/Track/Solid
          diffuse 0.5 0.5 0.5 1
          emissive 0 0 0 1
       }
+      
+      
    }
 }
 
@@ -140,9 +142,24 @@ material SpaceRoads/Track/Red
 
 material SpaceRoads/Track/DarkGrey
 {
-   technique
+  technique
+    {
+       pass
+        {
+          texture_unit
+          {
+            texture rustymetal.jpg
+            scale 0.1 0.1
+            // this means that the texture will be tiled 10 times (1/10 = 0.1)
+          }
+       }   
+    }
+
+/*
+  technique
    {
-      pass
+     
+   pass
       {
          lighting on
  
@@ -151,4 +168,5 @@ material SpaceRoads/Track/DarkGrey
          emissive 0   0 0 1
       }
    }
+  */ 
 }

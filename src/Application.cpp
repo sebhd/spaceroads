@@ -28,6 +28,7 @@ Application::Application() {
 
 	mpTrack = NULL;
 
+
 	mRacer = new Racer();
 
 	// Set up the renderer:
@@ -233,7 +234,6 @@ void Application::playTrackFile(std::string filename, bool replay) {
 
 			//############# BEGIN Replay playback racer control ################
 			if (mWatchReplay) {
-			//	bool commandLeft = false;
 
 				unsigned int ii = 0;
 
@@ -241,10 +241,8 @@ void Application::playTrackFile(std::string filename, bool replay) {
 					ReplayEntry cmd = mReplay[ii];
 
 					if (cmd.timestamp == mRacer->mStepsCount) {
-					//if (cmd.timestamp == mStopwatch) {
 						mRacer->processCommand(cmd.cmd);
 						mLastReplayCmdIndex = ii;
-				//		commandLeft = true;
 					}
 				}
 			}
@@ -266,6 +264,8 @@ void Application::playTrackFile(std::string filename, bool replay) {
 
 			else if (mRacer->mGameState == 0) {
 
+				// TODO 3: Figure out if separation between "apply counter forces" and "apply contact effects" is still/ really required
+
 				mRacer->mOldVel = mRacer->mVelocity;
 
 				// Find colliding track atoms:
@@ -274,6 +274,7 @@ void Application::playTrackFile(std::string filename, bool replay) {
 				// Apply counter-forces (prevent vehicle from going through walls):
 				for (unsigned int ii = 0; ii < collisions.size(); ++ii) {
 					collisions[ii].ta->applyCounterForces(mRacer, collisions[ii].hs);
+
 				}
 
 				mRacer->updatePosition();
@@ -396,9 +397,17 @@ bool Application::handleFrameRenderingQueuedEvent() {
 std::vector<ReplayEntry> Application::loadReplayFromFile(std::string filename) {
 
 	TiXmlDocument doc;
-	doc.LoadFile(filename);
+	bool success = doc.LoadFile(filename);
+
+	std::cout << success << std::endl;
 
 	std::vector<ReplayEntry> result;
+
+	if (!success) {
+		return result;
+	}
+
+
 
 	TiXmlElement* root = doc.FirstChildElement("replay");
 

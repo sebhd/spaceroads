@@ -3,9 +3,9 @@
 material Material 
 {
     receive_shadows on
-    technique b2ogre_1346323001.605471
+    technique b2ogre_1348480967.891579
     {
-        pass b2ogre_1346323001.605546
+        pass b2ogre_1348480967.891658
         {
             ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
             diffuse 0.6400000190734865 0.6400000190734865 0.6400000190734865 1.0

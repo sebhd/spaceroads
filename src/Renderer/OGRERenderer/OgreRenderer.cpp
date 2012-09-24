@@ -175,13 +175,13 @@ Ogre::ManualObject* OgreRenderer::createBox(int x, int y, int z, int size_x, int
 	manual->position(x + size_x, y + size_y, z + size_z); //  right back top 		- vertex7
 	manual->position(x, y + size_y, z + size_z); // left  back top 		- vertex8
 
+
 	manual->index(0);
 	manual->index(7);
 	manual->index(3);
 	manual->index(6);
 	manual->index(3);
 	manual->index(7);
-
 	manual->end();
 	//#################### END Top #####################
 
